@@ -1,0 +1,26 @@
+{
+  "glyphs": {},
+  "familyName": "helvetiker",
+  "ascender": 1,
+  "descender": 0,
+  "underlinePosition": 0,
+  "underlineThickness": 0,
+  "boundingBox": {
+    "yMin": 0,
+    "yMax": 1,
+    "xMin": 0,
+    "xMax": 1
+  },
+  "resolution": 1000,
+  "original_font_information": {
+    "format": 0,
+    "copyright": "Copyright (c) 2009 Yamaoka Yasuhiro",
+    "fontFamily": "helvetiker",
+    "fontSubFamily": "Regular",
+    "uniqueID": "helvetiker",
+    "fullName": "helvetiker",
+    "version": "Version 1.0",
+    "postScriptName": "helvetiker",
+    "description": "A simple font for Three.js text geometry"
+  }
+}
