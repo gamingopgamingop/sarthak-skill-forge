@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { OrbitControls, Text3D, MeshTransmissionMaterial, Environment, Float, Sphere } from "@react-three/drei";
+import { OrbitControls, Text, Float, Box } from "@react-three/drei";
 import { motion } from "framer-motion";
 import anime from "animejs";
 import { Card } from "@/components/ui/card";
@@ -9,7 +9,7 @@ import { Badge } from "@/components/ui/badge";
 import { Mesh } from "three";
 import { Play, Pause, RotateCcw } from "lucide-react";
 
-// Animated 3D Cube Component
+// Simplified 3D Cube Component
 const AnimatedCube = ({ position, color }: { position: [number, number, number], color: string }) => {
   const meshRef = useRef<Mesh>(null);
   
@@ -23,23 +23,13 @@ const AnimatedCube = ({ position, color }: { position: [number, number, number],
 
   return (
     <Float speed={1.4} rotationIntensity={1} floatIntensity={2}>
-      <mesh ref={meshRef} position={position}>
-        <boxGeometry args={[1, 1, 1]} />
-        <MeshTransmissionMaterial
-          backside
-          samples={4}
-          thickness={3}
-          chromaticAberration={0.025}
-          anisotropy={0.1}
-          distortion={0.1}
-          distortionScale={0.1}
-          temporalDistortion={0.2}
-          iridescence={1}
-          iridescenceIOR={1}
-          iridescenceThicknessRange={[0, 1400]}
+      <Box ref={meshRef} position={position} args={[1, 1, 1]}>
+        <meshStandardMaterial 
           color={color}
+          metalness={0.8}
+          roughness={0.2}
         />
-      </mesh>
+      </Box>
     </Float>
   );
 };
@@ -48,49 +38,44 @@ const AnimatedCube = ({ position, color }: { position: [number, number, number],
 const FloatingSpheres = () => {
   return (
     <>
-      {Array.from({ length: 5 }).map((_, i) => (
+      {Array.from({ length: 3 }).map((_, i) => (
         <Float key={i} speed={1 + i * 0.2} rotationIntensity={1} floatIntensity={2}>
-          <Sphere
+          <mesh
             position={[
-              (Math.random() - 0.5) * 8,
               (Math.random() - 0.5) * 6,
-              (Math.random() - 0.5) * 6
+              (Math.random() - 0.5) * 4,
+              (Math.random() - 0.5) * 4
             ]}
-            scale={0.2 + Math.random() * 0.3}
+            scale={0.3 + Math.random() * 0.2}
           >
+            <sphereGeometry args={[1, 16, 16]} />
             <meshStandardMaterial 
-              color={`hsl(${200 + i * 30}, 70%, 60%)`}
+              color={`hsl(${200 + i * 50}, 70%, 60%)`}
               transparent
-              opacity={0.6}
+              opacity={0.7}
               roughness={0}
               metalness={0.8}
             />
-          </Sphere>
+          </mesh>
         </Float>
       ))}
     </>
   );
 };
 
-// 3D Text Component
+// Simple 3D Text Component
 const Logo3D = () => {
   return (
     <Float speed={0.5} rotationIntensity={0.2} floatIntensity={0.5}>
-      <Text3D
-        font="/fonts/helvetiker_regular.typeface.json"
-        position={[-2, 0, 0]}
-        size={0.8}
-        height={0.1}
-        curveSegments={12}
-        bevelEnabled
-        bevelThickness={0.02}
-        bevelSize={0.02}
-        bevelOffset={0}
-        bevelSegments={5}
+      <Text
+        position={[-1, 0, 0]}
+        fontSize={0.8}
+        color="hsl(var(--primary))"
+        anchorX="center"
+        anchorY="middle"
       >
         SARTHAK
-        <meshStandardMaterial color="hsl(var(--primary))" metalness={0.8} roughness={0.2} />
-      </Text3D>
+      </Text>
     </Float>
   );
 };
@@ -213,7 +198,6 @@ const TechShowcase = () => {
             
             <div className="h-96 rounded-lg overflow-hidden bg-gradient-to-br from-background to-accent/5">
               <Canvas camera={{ position: [0, 0, 8], fov: 45 }}>
-                <Environment preset="city" />
                 <ambientLight intensity={0.5} />
                 <pointLight position={[10, 10, 10]} intensity={1} />
                 <spotLight position={[-10, -10, -10]} angle={0.15} penumbra={1} />
@@ -223,6 +207,7 @@ const TechShowcase = () => {
                 <AnimatedCube position={[0, 2, 0]} color="hsl(var(--secondary))" />
                 
                 <FloatingSpheres />
+                <Logo3D />
                 
                 <OrbitControls 
                   enablePan={true} 
