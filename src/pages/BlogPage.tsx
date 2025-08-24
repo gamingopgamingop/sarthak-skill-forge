@@ -1,63 +1,69 @@
+import React from "react";
 import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ExternalLink, Calendar, Clock, Tag, ArrowRight } from "lucide-react";
+import { Skeleton } from "@/components/ui/skeleton";
+import { useWordPressBlog } from "@/hooks/useWordPressBlog";
+import { 
+  ExternalLink, 
+  Calendar, 
+  Clock, 
+  Tag, 
+  ArrowRight, 
+  BookOpen,
+  TrendingUp,
+  Users,
+  Eye
+} from "lucide-react";
 
 const BlogPage = () => {
-  const blogPosts = [
-    {
-      title: "Advanced Python OOP Concepts",
-      excerpt: "Deep dive into object-oriented programming with Python, covering inheritance, polymorphism, and design patterns.",
-      date: "2024-01-15",
-      readTime: "12 min read",
-      tags: ["Python", "OOP", "Programming"],
-      featured: true
-    },
-    {
-      title: "Building AI Chatbots with FastAPI",
-      excerpt: "Complete guide to creating intelligent chatbots using FastAPI, integrating with modern AI APIs.",
-      date: "2024-01-10",
-      readTime: "15 min read",
-      tags: ["AI", "FastAPI", "Chatbots"]
-    },
-    {
-      title: "Database Design Best Practices",
-      excerpt: "Essential principles for designing scalable and efficient databases with PostgreSQL.",
-      date: "2024-01-05",
-      readTime: "10 min read",
-      tags: ["Database", "PostgreSQL", "Design"]
-    },
-    {
-      title: "Web Automation with Python",
-      excerpt: "Learn how to automate web tasks using Python, Selenium, and modern scraping techniques.",
-      date: "2024-01-01",
-      readTime: "18 min read",
-      tags: ["Python", "Automation", "Web Scraping"]
-    },
-    {
-      title: "React Performance Optimization",
-      excerpt: "Techniques to improve React app performance, including memoization, lazy loading, and bundle optimization.",
-      date: "2023-12-28",
-      readTime: "14 min read",
-      tags: ["React", "Performance", "JavaScript"]
-    },
-    {
-      title: "Machine Learning for Beginners",
-      excerpt: "Introduction to machine learning concepts with practical Python examples and real-world applications.",
-      date: "2023-12-25",
-      readTime: "20 min read",
-      tags: ["Machine Learning", "Python", "AI"]
-    }
+  // You can replace this with your actual WordPress site URL
+  const { posts, loading, error, featuredPost, categories } = useWordPressBlog();
+
+  const getReadTime = (content: string) => {
+    const wordsPerMinute = 200;
+    const words = content.replace(/<[^>]*>/g, '').split(' ').length;
+    return Math.ceil(words / wordsPerMinute);
+  };
+
+  const stripHtml = (html: string) => {
+    const div = document.createElement('div');
+    div.innerHTML = html;
+    return div.textContent || div.innerText || '';
+  };
+
+  const blogStats = [
+    { icon: <BookOpen />, title: "100+", subtitle: "Articles Published", color: "from-blue-500 to-cyan-500" },
+    { icon: <Users />, title: "50K+", subtitle: "Monthly Readers", color: "from-green-500 to-emerald-500" },
+    { icon: <Eye />, title: "500K+", subtitle: "Total Views", color: "from-purple-500 to-pink-500" },
+    { icon: <TrendingUp />, title: "95%", subtitle: "Reader Satisfaction", color: "from-orange-500 to-red-500" }
   ];
 
-  const categories = [
-    { name: "Python", count: 25, color: "from-blue-500 to-cyan-500" },
-    { name: "Web Development", count: 18, color: "from-green-500 to-emerald-500" },
-    { name: "AI & ML", count: 12, color: "from-purple-500 to-pink-500" },
-    { name: "Database", count: 8, color: "from-orange-500 to-red-500" },
-    { name: "Automation", count: 6, color: "from-yellow-500 to-orange-500" }
-  ];
+  if (loading) {
+    return (
+      <main className="min-h-screen pt-20">
+        <div className="max-w-7xl mx-auto px-6 py-16">
+          <div className="text-center mb-16">
+            <Skeleton className="h-16 w-96 mx-auto mb-4" />
+            <Skeleton className="h-6 w-128 mx-auto" />
+          </div>
+          
+          <div className="grid md:grid-cols-4 gap-6 mb-16">
+            {[...Array(4)].map((_, i) => (
+              <Skeleton key={i} className="h-32" />
+            ))}
+          </div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[...Array(6)].map((_, i) => (
+              <Skeleton key={i} className="h-80" />
+            ))}
+          </div>
+        </div>
+      </main>
+    );
+  }
 
   return (
     <main className="min-h-screen pt-20">
@@ -69,43 +75,69 @@ const BlogPage = () => {
           transition={{ duration: 0.8 }}
         >
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            <span className="gradient-text">Urban Jiva Blog</span>
+            <span className="gradient-text">Sarthak Devs Blog</span>
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Exploring 50+ programming languages, tech trends, and digital innovation through in-depth articles and tutorials
+            Exploring programming languages, frameworks, AI innovations, and digital transformation through comprehensive tutorials and industry insights
           </p>
         </motion.div>
 
-        {/* Blog Stats & Categories */}
+        {/* Blog Stats */}
         <motion.div 
-          className="grid md:grid-cols-5 gap-6 mb-16"
+          className="grid md:grid-cols-4 gap-6 mb-16"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          {categories.map((category, index) => (
+          {blogStats.map((stat, index) => (
             <motion.div
-              key={category.name}
+              key={stat.title}
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              <Card className="card-hover p-4 text-center relative overflow-hidden">
-                <div className={`absolute inset-0 bg-gradient-to-br ${category.color} opacity-5 group-hover:opacity-10 transition-opacity`} />
+              <Card className="card-hover p-6 text-center relative overflow-hidden">
+                <div className={`absolute inset-0 bg-gradient-to-br ${stat.color} opacity-5 group-hover:opacity-10 transition-opacity`} />
                 
                 <div className="relative z-10">
-                  <div className="text-2xl font-bold text-foreground mb-1">{category.count}</div>
-                  <div className="text-sm text-muted-foreground">{category.name}</div>
+                  <div className={`text-primary mb-3 flex justify-center bg-gradient-to-br ${stat.color} bg-clip-text text-transparent`}>
+                    {React.cloneElement(stat.icon, { className: "h-8 w-8" })}
+                  </div>
+                  <div className="text-2xl font-bold text-foreground mb-1">{stat.title}</div>
+                  <div className="text-sm text-muted-foreground">{stat.subtitle}</div>
                 </div>
               </Card>
             </motion.div>
           ))}
         </motion.div>
 
-        {/* Featured Post */}
-        {blogPosts.filter(post => post.featured).map((post, index) => (
+        {/* Categories */}
+        {categories.length > 0 && (
           <motion.div 
-            key={post.title}
+            className="grid md:grid-cols-5 gap-4 mb-16"
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+          >
+            {categories.map((category, index) => (
+              <motion.div
+                key={category.id}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
+                <Card className="card-hover p-4 text-center">
+                  <div className="text-lg font-semibold text-foreground mb-1">{category.count}</div>
+                  <div className="text-sm text-muted-foreground">{category.name}</div>
+                </Card>
+              </motion.div>
+            ))}
+          </motion.div>
+        )}
+
+        {/* Featured Post */}
+        {featuredPost && (
+          <motion.div 
             className="mb-16"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
@@ -113,57 +145,61 @@ const BlogPage = () => {
           >
             <Card className="card-hover p-8 bg-gradient-to-br from-primary/5 to-accent/5 border border-accent/20">
               <Badge variant="secondary" className="mb-4 bg-primary text-primary-foreground">
-                Featured Post
+                Latest Article
               </Badge>
               
-              <h2 className="text-3xl font-bold mb-4 text-foreground">{post.title}</h2>
-              <p className="text-muted-foreground mb-6 text-lg">{post.excerpt}</p>
+              <h2 className="text-3xl font-bold mb-4 text-foreground">
+                {stripHtml(featuredPost.title.rendered)}
+              </h2>
+              <p className="text-muted-foreground mb-6 text-lg">
+                {stripHtml(featuredPost.excerpt.rendered).substring(0, 200)}...
+              </p>
               
               <div className="flex flex-wrap items-center gap-4 mb-6 text-sm text-muted-foreground">
                 <div className="flex items-center">
                   <Calendar className="h-4 w-4 mr-1" />
-                  {new Date(post.date).toLocaleDateString()}
+                  {new Date(featuredPost.date).toLocaleDateString()}
                 </div>
                 <div className="flex items-center">
                   <Clock className="h-4 w-4 mr-1" />
-                  {post.readTime}
+                  {getReadTime(featuredPost.content.rendered || featuredPost.excerpt.rendered)} min read
                 </div>
               </div>
               
-              <div className="flex flex-wrap gap-2 mb-6">
-                {post.tags.map((tag) => (
-                  <Badge key={tag} variant="secondary" className="bg-muted/10 text-foreground border border-accent/20">
-                    <Tag className="h-3 w-3 mr-1" />
-                    {tag}
-                  </Badge>
-                ))}
-              </div>
-              
-              <Button variant="tech" size="lg">
+              <Button 
+                variant="default" 
+                size="lg"
+                onClick={() => window.open(featuredPost.link, '_blank')}
+                className="bg-gradient-to-r from-primary to-accent hover:from-primary/80 hover:to-accent/80"
+              >
                 Read Full Article
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </Card>
           </motion.div>
-        ))}
+        )}
 
         {/* Blog Posts Grid */}
         <motion.div 
           className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
         >
-          {blogPosts.filter(post => !post.featured).map((post, index) => (
+          {posts.slice(1).map((post, index) => (
             <motion.div
-              key={post.title}
+              key={post.id}
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
             >
-              <Card className="card-hover p-6 h-full">
-                <h3 className="text-xl font-bold mb-3 text-foreground">{post.title}</h3>
-                <p className="text-muted-foreground mb-4 line-clamp-3">{post.excerpt}</p>
+              <Card className="card-hover p-6 h-full flex flex-col">
+                <h3 className="text-xl font-bold mb-3 text-foreground line-clamp-2">
+                  {stripHtml(post.title.rendered)}
+                </h3>
+                <p className="text-muted-foreground mb-4 flex-grow line-clamp-3">
+                  {stripHtml(post.excerpt.rendered).substring(0, 120)}...
+                </p>
                 
                 <div className="flex items-center gap-4 mb-4 text-sm text-muted-foreground">
                   <div className="flex items-center">
@@ -172,25 +208,17 @@ const BlogPage = () => {
                   </div>
                   <div className="flex items-center">
                     <Clock className="h-4 w-4 mr-1" />
-                    {post.readTime}
+                    {getReadTime(post.content.rendered || post.excerpt.rendered)} min
                   </div>
                 </div>
                 
-                <div className="flex flex-wrap gap-1 mb-4">
-                  {post.tags.slice(0, 2).map((tag) => (
-                    <Badge key={tag} variant="secondary" className="bg-muted/10 text-foreground border border-accent/20 text-xs">
-                      {tag}
-                    </Badge>
-                  ))}
-                  {post.tags.length > 2 && (
-                    <Badge variant="secondary" className="bg-muted/10 text-foreground border border-accent/20 text-xs">
-                      +{post.tags.length - 2}
-                    </Badge>
-                  )}
-                </div>
-                
-                <Button variant="outline" size="sm" className="w-full group">
-                  Read More
+                <Button 
+                  variant="outline" 
+                  size="sm" 
+                  className="w-full group mt-auto"
+                  onClick={() => window.open(post.link, '_blank')}
+                >
+                  Read Article
                   <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </Card>
@@ -198,24 +226,44 @@ const BlogPage = () => {
           ))}
         </motion.div>
 
+        {error && (
+          <motion.div 
+            className="text-center mb-8"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+          >
+            <Card className="p-6 border-destructive/20 bg-destructive/5">
+              <p className="text-destructive">
+                {error}. Showing sample articles for demonstration.
+              </p>
+            </Card>
+          </motion.div>
+        )}
+
         {/* CTA Section */}
         <motion.div 
           className="text-center"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
         >
           <Card className="p-8 bg-gradient-to-br from-primary/5 to-accent/5 border border-accent/20">
             <h2 className="text-2xl font-bold mb-4 text-foreground">
-              Visit Urban Jiva Blog
+              Visit Sarthak Devs Blog
             </h2>
             <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-              Explore the complete collection of articles covering programming languages, 
-              frameworks, and cutting-edge technology trends.
+              Explore the complete collection of programming tutorials, tech insights, 
+              and industry best practices from a seasoned full-stack developer.
             </p>
-            <Button variant="tech" size="lg">
+            <Button 
+              variant="default" 
+              size="lg"
+              onClick={() => window.open('https://sarthakdevs.me/blog', '_blank')}
+              className="bg-gradient-to-r from-primary to-accent hover:from-primary/80 hover:to-accent/80"
+            >
               <ExternalLink className="mr-2 h-5 w-5" />
-              Visit Blog
+              Visit Full Blog
             </Button>
           </Card>
         </motion.div>
