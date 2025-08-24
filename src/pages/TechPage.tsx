@@ -108,25 +108,25 @@ const TechPage = () => {
   ];
 
   return (
-    <main className="min-h-screen pt-20">
-      <div className="max-w-7xl mx-auto px-6 py-16">
+    <main className="min-h-screen pt-16 sm:pt-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-16">
         <motion.div 
           className="text-center mb-16"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6">
             <span className="gradient-text">Tech Stack Mastery</span>
           </h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto px-4">
             Comprehensive expertise across modern technologies, from frontend frameworks to cloud infrastructure and AI integration
           </p>
         </motion.div>
 
         {/* Achievements */}
         <motion.div 
-          className="grid md:grid-cols-4 gap-6 mb-16"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-16"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
@@ -138,12 +138,12 @@ const TechPage = () => {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              <Card className="card-hover p-6 text-center">
-                <div className="text-primary mb-3 flex justify-center">
-                  {React.cloneElement(achievement.icon, { className: "h-8 w-8" })}
+              <Card className="card-hover p-4 sm:p-6 text-center">
+                <div className="text-primary mb-2 sm:mb-3 flex justify-center">
+                  {React.cloneElement(achievement.icon, { className: "h-6 w-6 sm:h-8 sm:w-8" })}
                 </div>
-                <div className="text-2xl font-bold text-foreground mb-1">{achievement.title}</div>
-                <div className="text-sm text-muted-foreground">{achievement.subtitle}</div>
+                <div className="text-lg sm:text-2xl font-bold text-foreground mb-1">{achievement.title}</div>
+                <div className="text-xs sm:text-sm text-muted-foreground">{achievement.subtitle}</div>
               </Card>
             </motion.div>
           ))}
@@ -163,18 +163,18 @@ const TechPage = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: categoryIndex * 0.2 }}
             >
-              <Card className="card-hover p-8">
-                <div className="flex items-center gap-4 mb-8">
-                  <div className={`p-3 rounded-lg bg-gradient-to-br ${category.color} text-white`}>
+              <Card className="card-hover p-4 sm:p-6 lg:p-8">
+                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4 mb-6 sm:mb-8">
+                  <div className={`p-2 sm:p-3 rounded-lg bg-gradient-to-br ${category.color} text-white`}>
                     {category.icon}
                   </div>
-                  <div>
-                    <h2 className="text-2xl font-bold text-foreground">{category.title}</h2>
-                    <p className="text-muted-foreground">Advanced proficiency and hands-on experience</p>
+                  <div className="flex-1">
+                    <h2 className="text-xl sm:text-2xl font-bold text-foreground">{category.title}</h2>
+                    <p className="text-sm sm:text-base text-muted-foreground">Advanced proficiency and hands-on experience</p>
                   </div>
                 </div>
 
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
                   {category.technologies.map((tech, techIndex) => (
                     <motion.div
                       key={tech.name}
@@ -183,13 +183,13 @@ const TechPage = () => {
                       transition={{ duration: 0.4, delay: techIndex * 0.05 }}
                       className="space-y-3"
                     >
-                      <div className="flex justify-between items-center">
-                        <span className="font-medium text-foreground">{tech.name}</span>
+                      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 sm:gap-2">
+                        <span className="font-medium text-foreground text-sm sm:text-base">{tech.name}</span>
                         <div className="flex items-center gap-2">
                           <Badge variant="secondary" className="text-xs">
                             {tech.years}
                           </Badge>
-                          <span className="text-sm text-muted-foreground">{tech.level}%</span>
+                          <span className="text-xs sm:text-sm text-muted-foreground">{tech.level}%</span>
                         </div>
                       </div>
                       <Progress value={tech.level} className="h-2" />
@@ -209,10 +209,10 @@ const TechPage = () => {
           transition={{ duration: 0.8, delay: 0.6 }}
         >
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">
+            <h2 className="text-2xl sm:text-3xl font-bold mb-4">
               <span className="gradient-text">Interactive Tech Showcase</span>
             </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto px-4">
               Experience cutting-edge web technologies with interactive 3D graphics and advanced animations
             </p>
           </div>

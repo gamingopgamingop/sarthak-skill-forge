@@ -5,6 +5,8 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navigation from "@/components/Navigation";
+import AIGreeting from "@/components/AIGreeting";
+import Chatbot from "@/components/Chatbot";
 import Home from "@/pages/Home";
 import AboutPage from "@/pages/AboutPage";
 import SkillsPage from "@/pages/SkillsPage";
@@ -24,6 +26,7 @@ const App = () => (
       <BrowserRouter>
         <div className="min-h-screen bg-background text-foreground">
           <Navigation />
+          <AIGreeting />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<AboutPage />} />
@@ -34,6 +37,7 @@ const App = () => (
             <Route path="/contact" element={<ContactPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
+          <Chatbot />
         </div>
       </BrowserRouter>
     </TooltipProvider>
