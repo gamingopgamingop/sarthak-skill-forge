@@ -34,26 +34,26 @@ const Contact = () => {
   ];
 
   return (
-    <section className="py-20 px-6">
+    <section className="py-12 sm:py-20 px-4 sm:px-6">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-6xl font-bold mb-6">
+        <div className="text-center mb-12 sm:mb-16">
+          <h2 className="text-3xl sm:text-4xl lg:text-6xl font-bold mb-4 sm:mb-6">
             <span className="gradient-text">Let's Connect</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto px-4">
             Ready to collaborate on innovative projects or discuss opportunities? I'd love to hear from you!
           </p>
         </div>
         
-        <div className="grid lg:grid-cols-2 gap-12">
+        <div className="grid lg:grid-cols-2 gap-8 sm:gap-12">
           {/* Contact Form */}
-          <Card className="card-hover p-8">
-            <h3 className="text-2xl font-bold mb-6 text-foreground">
+          <Card className="card-hover p-6 sm:p-8">
+            <h3 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-foreground">
               Send a Message
             </h3>
             
-            <form className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-4">
+            <form className="space-y-4 sm:space-y-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="text-sm font-medium text-foreground mb-2 block">
                     Name
@@ -91,7 +91,7 @@ const Contact = () => {
                 </label>
                 <Textarea 
                   placeholder="Tell me about your project or inquiry..." 
-                  rows={6}
+                  rows={5}
                   className="bg-muted/10 border-accent/20 focus:border-accent resize-none"
                 />
               </div>
@@ -104,26 +104,26 @@ const Contact = () => {
           </Card>
           
           {/* Contact Info */}
-          <div className="space-y-8">
-            <div className="space-y-6">
+          <div className="space-y-6 sm:space-y-8">
+            <div className="space-y-4 sm:space-y-6">
               {contactInfo.map((info, index) => (
                 <Card 
                   key={index} 
-                  className="card-hover p-6 group"
+                  className="card-hover p-4 sm:p-6 group"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
-                  <div className="flex items-center space-x-4">
-                    <div className="p-3 rounded-lg bg-gradient-to-br from-primary to-secondary group-hover:scale-110 transition-transform">
-                      <info.icon className="h-6 w-6 text-background" />
+                  <div className="flex items-center space-x-3 sm:space-x-4">
+                    <div className="p-2 sm:p-3 rounded-lg bg-gradient-to-br from-primary to-secondary group-hover:scale-110 transition-transform">
+                      <info.icon className="h-5 w-5 sm:h-6 sm:w-6 text-background" />
                     </div>
                     <div>
-                      <h4 className="text-lg font-semibold text-foreground">
+                      <h4 className="text-base sm:text-lg font-semibold text-foreground">
                         {info.title}
                       </h4>
-                      <p className="text-accent font-medium">
+                      <p className="text-accent font-medium text-sm sm:text-base">
                         {info.value}
                       </p>
-                      <p className="text-muted-foreground text-sm">
+                      <p className="text-muted-foreground text-xs sm:text-sm">
                         {info.description}
                       </p>
                     </div>
@@ -133,30 +133,30 @@ const Contact = () => {
             </div>
             
             {/* Social Links */}
-            <Card className="card-hover p-6">
-              <h4 className="text-lg font-semibold text-foreground mb-4">
+            <Card className="card-hover p-4 sm:p-6">
+              <h4 className="text-base sm:text-lg font-semibold text-foreground mb-3 sm:mb-4">
                 Follow Me
               </h4>
-              <div className="flex space-x-4">
+              <div className="flex flex-wrap gap-3 sm:space-x-4">
                 {socialLinks.map((social, index) => (
                   <Button 
                     key={index}
                     variant="tech" 
                     size="icon" 
-                    className="rounded-full group"
+                    className="rounded-full group h-10 w-10 sm:h-12 sm:w-12"
                   >
-                    <social.icon className="h-5 w-5 group-hover:scale-110 transition-transform" />
+                    <social.icon className="h-4 w-4 sm:h-5 sm:w-5 group-hover:scale-110 transition-transform" />
                   </Button>
                 ))}
               </div>
             </Card>
             
             {/* CTA Card */}
-            <Card className="card-hover p-6 text-center">
-              <h4 className="text-lg font-semibold text-foreground mb-2">
+            <Card className="card-hover p-4 sm:p-6 text-center">
+              <h4 className="text-base sm:text-lg font-semibold text-foreground mb-2">
                 Open to Opportunities
               </h4>
-              <p className="text-muted-foreground mb-4">
+              <p className="text-muted-foreground mb-3 sm:mb-4 text-sm sm:text-base">
                 Actively seeking internships, collaborations, and freelance projects
               </p>
               <Button variant="glow" className="w-full">

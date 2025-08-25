@@ -49,37 +49,37 @@ const Skills = () => {
   ];
 
   return (
-    <section className="py-20 px-6">
+    <section className="py-12 sm:py-20 px-4 sm:px-6">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-6xl font-bold mb-6">
+        <div className="text-center mb-12 sm:mb-16">
+          <h2 className="text-3xl sm:text-4xl lg:text-6xl font-bold mb-4 sm:mb-6">
             <span className="gradient-text">Skills & Expertise</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto px-4">
             A comprehensive skill set spanning programming, AI, writing, and entrepreneurship
           </p>
         </div>
         
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {skillCategories.map((category, index) => (
             <Card 
               key={index} 
-              className="card-hover group p-6 relative overflow-hidden"
+              className="card-hover group p-4 sm:p-6 relative overflow-hidden"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <div className={`absolute inset-0 bg-gradient-to-br ${category.color} opacity-5 group-hover:opacity-10 transition-opacity`} />
               
               <div className="relative z-10">
-                <div className="flex items-center mb-4">
-                  <div className={`p-3 rounded-lg bg-gradient-to-br ${category.color} mr-4`}>
-                    <category.icon className="h-6 w-6 text-background" />
+                <div className="flex flex-col sm:flex-row sm:items-center mb-4 gap-3 sm:gap-4">
+                  <div className={`p-2 sm:p-3 rounded-lg bg-gradient-to-br ${category.color} w-fit`}>
+                    <category.icon className="h-5 w-5 sm:h-6 sm:w-6 text-background" />
                   </div>
-                  <h3 className="text-xl font-bold text-foreground">
+                  <h3 className="text-lg sm:text-xl font-bold text-foreground">
                     {category.title}
                   </h3>
                 </div>
                 
-                <p className="text-muted-foreground mb-6 leading-relaxed">
+                <p className="text-muted-foreground mb-4 sm:mb-6 leading-relaxed text-sm sm:text-base">
                   {category.description}
                 </p>
                 
@@ -88,7 +88,7 @@ const Skills = () => {
                     <Badge 
                       key={skillIndex} 
                       variant="secondary" 
-                      className="bg-muted/10 text-foreground border border-accent/20 hover:bg-accent/10 transition-colors"
+                      className="bg-muted/10 text-foreground border border-accent/20 hover:bg-accent/10 transition-colors text-xs sm:text-sm"
                     >
                       {skill}
                     </Badge>
