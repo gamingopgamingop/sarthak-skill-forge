@@ -7,6 +7,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import AIGreeting from "@/components/AIGreeting";
 import Chatbot from "@/components/Chatbot";
+import CursorEffects from "@/components/CursorEffects";
+import MouseFollower from "@/components/MouseFollower";
+import InteractiveBackground from "@/components/InteractiveBackground";
 import Home from "@/pages/Home";
 import AboutPage from "@/pages/AboutPage";
 import SkillsPage from "@/pages/SkillsPage";
@@ -24,7 +27,10 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <div className="min-h-screen bg-background text-foreground">
+        <div className="min-h-screen bg-background text-foreground relative">
+          <CursorEffects />
+          <MouseFollower />
+          <InteractiveBackground />
           <Navigation />
           <AIGreeting />
           <Routes>

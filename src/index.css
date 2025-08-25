@@ -24,6 +24,9 @@
     --primary-foreground: 0 0% 98%;
     --primary-glow: 200 100% 70%;
     
+    /* HSL values for canvas effects */
+    --primary-hsl: 217, 91%, 60%;
+    
     /* Secondary - Purple accent */
     --secondary: 270 95% 75%;
     --secondary-foreground: 240 10% 3.9%;
