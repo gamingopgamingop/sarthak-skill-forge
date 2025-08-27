@@ -17,6 +17,9 @@ import ProjectsPage from "@/pages/ProjectsPage";
 import TechPage from "@/pages/TechPage";
 import BlogPage from "@/pages/BlogPage";
 import ContactPage from "@/pages/ContactPage";
+import TestimonialsPage from "@/pages/TestimonialsPage";
+import ServicesPage from "@/pages/ServicesPage";
+import GalleryPage from "@/pages/GalleryPage";
 import NotFound from "@/pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -41,6 +44,9 @@ const App = () => (
             <Route path="/tech" element={<TechPage />} />
             <Route path="/blog" element={<BlogPage />} />
             <Route path="/contact" element={<ContactPage />} />
+            <Route path="/testimonials" element={<TestimonialsPage />} />
+            <Route path="/services" element={<ServicesPage />} />
+            <Route path="/gallery" element={<GalleryPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
           <Chatbot />
