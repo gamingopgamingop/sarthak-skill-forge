@@ -1,5 +1,9 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { useToast } from '@/hooks/use-toast';
+import { 
+  FaReact, FaNodeJs, FaPython, FaJs, FaHtml5, FaCss3Alt
+} from "react-icons/fa6";
+import { SiTypescript, SiTailwindcss, SiNextdotjs, SiVite, SiMongodb, SiPostgresql, SiRedis, SiDocker } from "react-icons/si";
 
 export interface Project {
   id: string;
@@ -39,7 +43,7 @@ const fetchProjects = async (): Promise<Project[]> => {
       stats: "100+ Topics Covered",
       gradient: "from-primary to-secondary",
       techStack: [
-        { name: "Python", icon: "Code" },
+        { name: "Python", icon: "FaPython" },
         { name: "Education", icon: "BookOpen" },
         { name: "Writing", icon: "Palette" }
       ],
@@ -64,9 +68,9 @@ const fetchProjects = async (): Promise<Project[]> => {
       stats: "50+ Programming Languages",
       gradient: "from-secondary to-accent",
       techStack: [
-        { name: "React", icon: "Globe" },
-        { name: "Backend", icon: "Server" },
-        { name: "Database", icon: "Database" }
+        { name: "React", icon: "FaReact" },
+        { name: "Node.js", icon: "FaNodeJs" },
+        { name: "MongoDB", icon: "SiMongodb" }
       ],
       metrics: {
         views: "25K+",
@@ -89,9 +93,9 @@ const fetchProjects = async (): Promise<Project[]> => {
       stats: "Multiple AI Solutions",
       gradient: "from-accent to-primary",
       techStack: [
-        { name: "AI/ML", icon: "Brain" },
-        { name: "Automation", icon: "Zap" },
-        { name: "Mobile", icon: "Smartphone" }
+        { name: "Python", icon: "FaPython" },
+        { name: "TypeScript", icon: "SiTypescript" },
+        { name: "React", icon: "FaReact" }
       ],
       metrics: {
         views: "15K+",

@@ -8,11 +8,17 @@ import {
   BookOpen, Globe, Bot, Code, Brain, Zap, 
   Smartphone, Database, Server, Palette, Shield, Trophy
 } from "lucide-react";
+import { 
+  FaReact, FaNodeJs, FaPython, FaJs, FaHtml5, FaCss3Alt
+} from "react-icons/fa6";
+import { SiTypescript, SiTailwindcss, SiNextdotjs, SiVite, SiMongodb, SiPostgresql, SiRedis, SiDocker } from "react-icons/si";
 import { useLikeProject, useViewProject } from "@/hooks/useProjects";
 
 const iconMap = {
   BookOpen, Globe, Bot, Code, Brain, Zap, 
-  Smartphone, Database, Server, Palette, Shield, Trophy
+  Smartphone, Database, Server, Palette, Shield, Trophy,
+  FaReact, FaNodeJs, FaPython, FaJs, FaHtml5, FaCss3Alt,
+  SiTypescript, SiTailwindcss, SiNextdotjs, SiVite, SiMongodb, SiPostgresql, SiRedis, SiDocker
 };
 
 interface AdditionalProject {
