@@ -48,7 +48,7 @@ const Navigation = () => {
                 <Button
                   variant={isActive(item.path) ? "tech" : "ghost"}
                   size="sm"
-                  className="relative"
+                  className="relative hover:bg-primary/20 hover:text-primary"
                 >
                   {item.name}
                   {isActive(item.path) && (
