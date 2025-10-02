@@ -38,7 +38,7 @@ const Navigation = () => {
             <div className="p-2 rounded-lg bg-gradient-to-br from-primary to-accent">
               <Code2 className="h-6 w-6 text-background" />
             </div>
-            <span className="text-xl font-bold gradient-text">SarthakDevs</span>
+            <span className="text-xl font-bold gradient-text">SarthakDev</span>
           </Link>
 
           {/* Desktop Navigation */}
