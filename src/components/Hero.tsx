@@ -34,12 +34,13 @@ const Hero = () => {
           <p className="text-sm sm:text-lg lg:text-xl text-foreground/90 mb-8 sm:mb-12 max-w-3xl mx-auto leading-relaxed animate-slide-up px-4 font-medium" style={{ animationDelay: "0.6s" }}>
             Building the Future of Tech: Turning Ideas into Automated, Real-World Solutions
           </p>
-          <a href="https://github.com/gamingopgamingop" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile">
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center mb-12 sm:mb-16 animate-slide-up px-4" style={{ animationDelay: "0.8s" }}>
+          <a href="https://github.com/gamingopgamingop" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile">
             <Button variant="hero" size="lg" className="group w-full sm:w-auto shadow-lg shadow-primary/30">
               <FileText className="mr-2 group-hover:rotate-12 transition-transform" />
               View My Work
             </Button>
+            </a>
             <a href="mailto:gamingopgamingop.spam+sarthakdev@gmail.com" target="_blank" rel="noopener noreferrer" aria-label="Email">
             <Button variant="outline" size="lg" className="group w-full sm:w-auto border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground">
               <Mail className="mr-2 group-hover:scale-110 transition-transform" />
