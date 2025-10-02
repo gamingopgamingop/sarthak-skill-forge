@@ -2,6 +2,8 @@ import { Button } from "@/components/ui/button";
 import { ChevronDown, Github, Linkedin, Mail, FileText , ArrowRight , ArrowLeft , Sparkles , ArrowUpRight , ArrowUpLeft , ArrowDownRight , ArrowDownLeft, ArrowUp, ArrowDown, ArrowRightUp, ArrowRightDown, ArrowLeftUp, ArrowLeftDown, ArrowRightLeft, ArrowRightRight, ArrowLeftLeft, ArrowLeftRight  ,ArrowBigUp, ArrowBigDown, ArrowBigRight, ArrowBigLeft , ArrowBigRightUp, ArrowBigRightDown, ArrowBigLeftUp, ArrowBigLeftDown, ArrowBigRightLeft, ArrowBigRightRight, ArrowBigLeftLeft, ArrowBigLeftRight ,ArrowBigUpRight, ArrowBigUpLeft, ArrowBigDownRight, ArrowBigDownLeft, ArrowBigUp, ArrowBigDown, ArrowBigRightUp, ArrowBigRightDown, ArrowBigLeftUp, ArrowBigLeftDown, ArrowBigRightLeft, ArrowBigRightRight, ArrowBigLeftLeft, ArrowBigLeftRight , import { ChevronDown, Github, Linkedin, Mail, FileText , ArrowRight , ArrowLeft , Sparkles , ArrowUpRight , ArrowUpLeft , ArrowDownRight , ArrowDownLeft, ArrowUp, ArrowDown, ArrowRightUp, ArrowRightDown, ArrowLeftUp, ArrowLeftDown, ArrowRightLeft, ArrowRightRight, ArrowLeftLeft, ArrowLeftRight  ,ArrowBigUp, ArrowBigDown, ArrowBigRight, ArrowBigLeft , ArrowBigRightUp, ArrowBigRightDown, ArrowBigLeftUp, ArrowBigLeftDown, ArrowBigRightLeft, ArrowBigRightRight, ArrowBigLeftLeft, ArrowBigLeftRight ,ArrowBigUpRight, ArrowBigUpLeft, ArrowBigDownRight, ArrowBigDownLeft, ArrowBigUp, ArrowBigDown, ArrowBigRightUp, ArrowBigRightDown, ArrowBigLeftUp, ArrowBigLeftDown, ArrowBigRightLeft, ArrowBigRightRight, ArrowBigLeftLeft, ArrowBigLeftRight , ChevronUp } from "lucide-react";
 } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
+import { motion } from "framer-motion";
+
 
 const Hero = () => {
   return (
