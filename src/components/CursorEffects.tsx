@@ -31,12 +31,12 @@ const CursorEffects = () => {
     };
 
     const handleMouseEnter = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
-      if (target.matches('button, a, [role="button"], .interactive')) {
+      const target = e.target; 
+      // as HTMLElement;
+    if (target instanceof Element && target.matches('button, a, [role="button"], .interactive')) {
         setIsHovering(true);
-      }
-    };
-
+    }
+};
     const handleMouseLeave = () => {
       setIsHovering(false);
     };
