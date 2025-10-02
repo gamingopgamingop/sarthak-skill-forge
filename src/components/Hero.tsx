@@ -47,16 +47,27 @@ const Hero = () => {
           </div>
           
           {/* Social Links */}
-          <div className="flex justify-center space-x-4 sm:space-x-6 mb-8 sm:mb-12 animate-slide-up" style={{ animationDelay: "1s" }}>
-            <Button variant="outline" size="icon" className="rounded-full h-10 w-10 sm:h-12 sm:w-12 border-primary/50 hover:bg-primary hover:border-primary hover:text-primary-foreground transition-all">
-              <Github className="h-4 w-4 sm:h-5 sm:w-5" />
-            </Button>
-            <Button variant="outline" size="icon" className="rounded-full h-10 w-10 sm:h-12 sm:w-12 border-primary/50 hover:bg-primary hover:border-primary hover:text-primary-foreground transition-all">
-              <Linkedin className="h-4 w-4 sm:h-5 sm:w-5" />
-            </Button>
-            <Button variant="outline" size="icon" className="rounded-full h-10 w-10 sm:h-12 sm:w-12 border-primary/50 hover:bg-primary hover:border-primary hover:text-primary-foreground transition-all">
-              <Mail className="h-4 w-4 sm:h-5 sm:w-5" />
-            </Button>
+          <div className="flex justify-center space-x-4 sm:space-x-6 mb-8 sm:mb-12 animate-slide-up" style={{ animationDelay: "1s" }}>   
+            <a href="https://github.com/sarthakbansal" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile">
+              <Button variant="outline" size="icon" className="rounded-full h-10 w-10 sm:h-12 sm:w-12 border-primary/50 hover:bg-primary hover:border-primary hover:text-primary-foreground transition-all">
+                <Github className="h-4 w-4 sm:h-5 sm:w-5" />
+              </Button>
+            </a>
+            <a href="https://www.linkedin.com/in/sarthak-bansal-2121212121/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile">
+              <Button variant="outline" size="icon" className="rounded-full h-10 w-10 sm:h-12 sm:w-12 border-primary/50 hover:bg-primary hover:border-primary hover:text-primary-foreground transition-all">
+                <Linkedin className="h-4 w-4 sm:h-5 sm:w-5" />
+              </Button>
+            </a>
+            <a href="mailto:sarthak@skillforge.dev" target="_blank" rel="noopener noreferrer" aria-label="Email">
+              <Button variant="outline" size="icon" className="rounded-full h-10 w-10 sm:h-12 sm:w-12 border-primary/50 hover:bg-primary hover:border-primary hover:text-primary-foreground transition-all">
+                <Mail className="h-4 w-4 sm:h-5 sm:w-5" />
+              </Button>
+            </a>
+            <a href="mailto:sarthak@skillforge.dev" target="_blank" rel="noopener noreferrer" aria-label="Email">
+              <Button variant="outline" size="icon" className="rounded-full h-10 w-10 sm:h-12 sm:w-12 border-primary/50 hover:bg-primary hover:border-primary hover:text-primary-foreground transition-all">
+                <Mail className="h-4 w-4 sm:h-5 sm:w-5" />
+              </Button>
+            </a>
           </div>
         </div>
         
