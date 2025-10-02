@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ChevronDown, Github, Linkedin, Mail, FileText } from "lucide-react";
+import { ChevronDown, Github, Linkedin, Mail, FileText , ArrowRight , ArrowLeft , Sparkles , ArrowUpRight , ArrowUpLeft , ArrowDownRight , ArrowDownLeft, ArrowUp, ArrowDown, ArrowRightUp, ArrowRightDown, ArrowLeftUp, ArrowLeftDown, ArrowRightLeft, ArrowRightRight, ArrowLeftLeft, ArrowLeftRight } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
 
 const Hero = () => {
