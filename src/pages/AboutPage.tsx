@@ -59,7 +59,7 @@ const AboutPage = () => {
             <div className="space-y-4">
               <div className="flex items-center">
                 <GraduationCap className="h-5 w-5 text-primary mr-3" />
-                <span className="text-muted-foreground">BCA Student (First Year)</span>
+                <span className="text-muted-foreground">BCA Student (Second Year)</span>
               </div>
               <div className="flex items-center">
                 <MapPin className="h-5 w-5 text-primary mr-3" />
