@@ -36,6 +36,7 @@ const CursorEffects = () => {
     if (target instanceof Element && target.matches('button, a, [role="button"], .interactive')) {
         setIsHovering(true);
     }
+    else { setIsHovering(false); }
 };
     const handleMouseLeave = () => {
       setIsHovering(false);
