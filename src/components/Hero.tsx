@@ -41,7 +41,7 @@ const Hero = () => {
               View My Work
             </Button>
             </a>
-            <a href="mailto:gamingopgamingop.spam+sarthakdev@gmail.com" target="_blank" rel="noopener noreferrer" aria-label="Email">
+            <a href="mailto:gamingopgamingop+sarthakdev@gmail.com" target="_blank" rel="noopener noreferrer" aria-label="Email">
             <Button variant="outline" size="lg" className="group w-full sm:w-auto border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground">
               <Mail className="mr-2 group-hover:scale-110 transition-transform" />
               Get In Touch
@@ -61,7 +61,7 @@ const Hero = () => {
                 <Linkedin className="h-4 w-4 sm:h-5 sm:w-5" />
               </Button>
             </a>
-            <a href="mailto:gamingopgamingop.spam+sarthakdev@gmail.com" target="_blank" rel="noopener noreferrer" aria-label="Email">
+            <a href="mailto:gamingopgamingop+sarthakdev@gmail.com" target="_blank" rel="noopener noreferrer" aria-label="Email">
               <Button variant="outline" size="icon" className="rounded-full h-10 w-10 sm:h-12 sm:w-12 border-primary/50 hover:bg-primary hover:border-primary hover:text-primary-foreground transition-all">
                 <Mail className="h-4 w-4 sm:h-5 sm:w-5" />
               </Button>
