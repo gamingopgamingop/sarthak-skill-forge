@@ -18,30 +18,29 @@ const Hero = () => {
       {/* Content */}
       <div className="relative z-10 text-center px-4 sm:px-6 max-w-4xl mx-auto">
         <div className="animate-slide-up">
-          <h1 className="text-3xl sm:text-5xl lg:text-7xl font-bold mb-4 sm:mb-6">
+          <h1 className="text-3xl sm:text-5xl lg:text-7xl font-extrabold mb-4 sm:mb-6">
             <span className="gradient-text">Sarthak Bansal</span>
           </h1>
           
           <div className="text-base sm:text-xl lg:text-2xl text-muted-foreground mb-6 sm:mb-8 space-y-1 sm:space-y-2">
             <p className="animate-slide-up px-2" style={{ animationDelay: "0.2s" }}>
-              First-Year BCA Student • Passionate Programmer • Tech Entrepreneur
+              Python Expert • AI Developer • eBook Author
             </p>
             <p className="animate-slide-up px-2" style={{ animationDelay: "0.4s" }}>
-              Python Expert • AI Developer • eBook Author • Blogger
+              Second-Year BCA Student • Tech Entrepreneur • Blogger
             </p>
           </div>
           
-          <p className="text-sm sm:text-lg lg:text-xl text-foreground/80 mb-8 sm:mb-12 max-w-3xl mx-auto leading-relaxed animate-slide-up px-4" style={{ animationDelay: "0.6s" }}>
-            Turning creative ideas into real-world solutions through code, automation, and innovation. 
-            Building the future one project at a time.
+          <p className="text-sm sm:text-lg lg:text-xl text-foreground/90 mb-8 sm:mb-12 max-w-3xl mx-auto leading-relaxed animate-slide-up px-4 font-medium" style={{ animationDelay: "0.6s" }}>
+            Building the Future of Tech: Turning Ideas into Automated, Real-World Solutions
           </p>
           
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center mb-12 sm:mb-16 animate-slide-up px-4" style={{ animationDelay: "0.8s" }}>
-            <Button variant="hero" size="lg" className="group w-full sm:w-auto">
+            <Button variant="hero" size="lg" className="group w-full sm:w-auto shadow-lg shadow-primary/30">
               <FileText className="mr-2 group-hover:rotate-12 transition-transform" />
               View My Work
             </Button>
-            <Button variant="glow" size="lg" className="group w-full sm:w-auto">
+            <Button variant="outline" size="lg" className="group w-full sm:w-auto border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground">
               <Mail className="mr-2 group-hover:scale-110 transition-transform" />
               Get In Touch
             </Button>
@@ -49,13 +48,13 @@ const Hero = () => {
           
           {/* Social Links */}
           <div className="flex justify-center space-x-4 sm:space-x-6 mb-8 sm:mb-12 animate-slide-up" style={{ animationDelay: "1s" }}>
-            <Button variant="tech" size="icon" className="rounded-full h-10 w-10 sm:h-12 sm:w-12">
+            <Button variant="outline" size="icon" className="rounded-full h-10 w-10 sm:h-12 sm:w-12 border-primary/50 hover:bg-primary hover:border-primary hover:text-primary-foreground transition-all">
               <Github className="h-4 w-4 sm:h-5 sm:w-5" />
             </Button>
-            <Button variant="tech" size="icon" className="rounded-full h-10 w-10 sm:h-12 sm:w-12">
+            <Button variant="outline" size="icon" className="rounded-full h-10 w-10 sm:h-12 sm:w-12 border-primary/50 hover:bg-primary hover:border-primary hover:text-primary-foreground transition-all">
               <Linkedin className="h-4 w-4 sm:h-5 sm:w-5" />
             </Button>
-            <Button variant="tech" size="icon" className="rounded-full h-10 w-10 sm:h-12 sm:w-12">
+            <Button variant="outline" size="icon" className="rounded-full h-10 w-10 sm:h-12 sm:w-12 border-primary/50 hover:bg-primary hover:border-primary hover:text-primary-foreground transition-all">
               <Mail className="h-4 w-4 sm:h-5 sm:w-5" />
             </Button>
           </div>
