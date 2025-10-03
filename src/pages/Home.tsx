@@ -1,4 +1,5 @@
 import Hero from "@/components/Hero";
+import SEO from "@/components/SEO";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -29,6 +30,7 @@ const Home = () => {
 
   return (
     <main className="min-h-screen">
+      <SEO />
       <Hero />
       
       {/* Quick Highlights Section */}

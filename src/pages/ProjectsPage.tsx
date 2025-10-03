@@ -1,4 +1,5 @@
 import Projects from "@/components/Projects";
+import SEO from "@/components/SEO";
 import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -36,6 +37,11 @@ const ProjectsPage = () => {
 
   return (
     <main className="min-h-screen pt-20">
+      <SEO 
+        title="Projects Portfolio | Sarthak Bansal - Python, AI & Web Development"
+        description="Explore Sarthak Bansal's portfolio of projects including Python eBooks, AI automation systems, web applications, and educational content. View live demos and source code on GitHub."
+        keywords="Python projects, AI automation projects, web development portfolio, educational eBooks, Django applications, React projects, GitHub portfolio"
+      />
       <div className="max-w-7xl mx-auto px-6 py-16">
         <motion.div 
           className="text-center mb-16"

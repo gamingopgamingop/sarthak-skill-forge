@@ -1,4 +1,5 @@
 import Contact from "@/components/Contact";
+import SEO from "@/components/SEO";
 import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -48,6 +49,11 @@ const ContactPage = () => {
 
   return (
     <main className="min-h-screen pt-20">
+      <SEO 
+        title="Contact Sarthak Bansal | Hire Python Developer & AI Specialist"
+        description="Get in touch with Sarthak Bansal for Python development, AI automation, web applications, and technical consulting. Available for freelance projects and collaborations. Response within 24 hours."
+        keywords="contact Python developer, hire AI developer, freelance web developer, Python consultation, AI chatbot development services, automation expert contact"
+      />
       <div className="max-w-7xl mx-auto px-6 py-16">
         <motion.div 
           className="text-center mb-16"

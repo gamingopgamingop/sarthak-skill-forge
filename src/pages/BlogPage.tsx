@@ -1,4 +1,5 @@
 import React from "react";
+import SEO from "@/components/SEO";
 import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -67,6 +68,11 @@ const BlogPage = () => {
 
   return (
     <main className="min-h-screen pt-20">
+      <SEO 
+        title="Tech Blog | Sarthak Bansal - Programming Tutorials & Insights"
+        description="Read Sarthak Bansal's blog featuring 50+ programming languages, Python tutorials, AI insights, web development guides, and tech innovations. Stay updated with the latest in technology."
+        keywords="programming blog, Python tutorials, AI articles, web development guides, tech insights, programming languages, coding tips, software development blog"
+      />
       <div className="max-w-7xl mx-auto px-6 py-16">
         <motion.div 
           className="text-center mb-16"
