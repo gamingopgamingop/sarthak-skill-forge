@@ -3,7 +3,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route , Link,HashRouter, useLocation , useNavigate , Navigate,Location} from "react-router-dom";
+import { BrowserRouter, Routes, Route , Link,HashRouter, useLocation , useNavigate , Navigate,Location ,useNavigationType , useNavigation} from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import AIGreeting from "@/components/AIGreeting";
 import Chatbot from "@/components/Chatbot";
@@ -28,6 +28,8 @@ const queryClient = new QueryClient();
 useEffect(() => {
   const location = useLocation();
   const navigate = useNavigate();
+  const navigationType = useNavigationType();
+  const navigation = useNavigation();
   if (location.pathname === "/") {
     navigate("/# home");
   }
