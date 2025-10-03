@@ -2,8 +2,8 @@ import { useEffect } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider, useQuery } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route, Link, HashRouter, useLocation, useNavigate, Navigate, Location, useNavigationType, useNavigation } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
+import { Routes, Route, Link, useLocation, useNavigate, Navigate, Location, useNavigationType, useNavigation } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import AIGreeting from "@/components/AIGreeting";
 import Chatbot from "@/components/Chatbot";
@@ -22,9 +22,6 @@ import ServicesPage from "@/pages/ServicesPage";
 import GalleryPage from "@/pages/GalleryPage";
 import NotFound from "@/pages/NotFound";
 
-const queryClient = new QueryClient();
-
-// Separate component for route handling logic
 const RouteHandler = () => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -45,45 +42,34 @@ const RouteHandler = () => {
   return null;
 };
 
-// App content component
-const AppContent = () => {
-  return (
-    <div className="min-h-screen bg-background text-foreground relative">
-      <CursorEffects />
-      <MouseFollower />
-      <InteractiveBackground />
-      <Navigation />
-      <AIGreeting />
-      <RouteHandler />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<AboutPage />} />
-        <Route path="/skills" element={<SkillsPage />} />
-        <Route path="/projects" element={<ProjectsPage />} />
-        <Route path="/tech" element={<TechPage />} />
-        <Route path="/blog" element={<BlogPage />} />
-        <Route path="/contact" element={<ContactPage />} />
-        <Route path="/testimonials" element={<TestimonialsPage />} />
-        <Route path="/services" element={<ServicesPage />} />
-        <Route path="/gallery" element={<GalleryPage />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-      <Chatbot />
-    </div>
-  );
-};
-
 const App = () => {
   return (
-    <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <HashRouter basename="/">
-          <AppContent />
-        </HashRouter>
-      </TooltipProvider>
-    </QueryClientProvider>
+    <TooltipProvider>
+      <Toaster />
+      <Sonner />
+      <div className="min-h-screen bg-background text-foreground relative">
+        <CursorEffects />
+        <MouseFollower />
+        <InteractiveBackground />
+        <Navigation />
+        <AIGreeting />
+        <RouteHandler />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/skills" element={<SkillsPage />} />
+          <Route path="/projects" element={<ProjectsPage />} />
+          <Route path="/tech" element={<TechPage />} />
+          <Route path="/blog" element={<BlogPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/testimonials" element={<TestimonialsPage />} />
+          <Route path="/services" element={<ServicesPage />} />
+          <Route path="/gallery" element={<GalleryPage />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+        <Chatbot />
+      </div>
+    </TooltipProvider>
   );
 };
 
