@@ -9,28 +9,28 @@ const Contact = () => {
     {
       icon: Mail,
       title: "Email",
-      value: "sarthak@skillforge.dev",
+      value: "gamingopgamingop67+sarthakdev@gmail.com",
       description: "Drop me a line anytime"
     },
     {
       icon: Phone,
       title: "Phone",
-      value: "+91 9876543210",
+      value: "+91 9557324171",
       description: "Call for urgent inquiries"
     },
     {
       icon: MapPin,
       title: "Location",
-      value: "India",
+      value: "India (UTC +5:30)",
       description: "Available for remote work"
     }
   ];
 
   const socialLinks = [
-    { icon: Github, label: "GitHub", url: "#" },
-    { icon: Linkedin, label: "LinkedIn", url: "#" },
-    { icon: Twitter, label: "Twitter", url: "#" },
-    { icon: Mail, label: "Email", url: "#" }
+    { icon: Github, label: "GitHub", url: "https://github.com/gamingopgamingop" },
+    { icon: Linkedin, label: "LinkedIn", url: "https://www.linkedin.com/in/sarthak-bansal-01550432b/" },
+    { icon: Twitter, label: "Twitter", url: "https://twitter.com/gamingopgamingop" },
+    { icon: Mail, label: "Email", url: "gamingopgamingop67+sarthakdev@gmail.com" }
   ];
 
   return (
