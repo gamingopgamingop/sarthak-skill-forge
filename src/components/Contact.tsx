@@ -2,7 +2,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Mail, Phone, MapPin, Send, Github, Linkedin, Twitter } from "lucide-react";
+import { Mail, Phone, MapPin, Send, Github, Linkedin, Twitter, Download } from "lucide-react";
 
 const Contact = () => {
   const contactInfo = [
@@ -96,7 +96,7 @@ const Contact = () => {
                 />
               </div>
               
-              <Button variant="hero" size="lg" className="w-full group">
+              <Button variant="hero" size="lg" className="w-full group hover:scale-105 transition-all duration-300 ">
                 <Send className="mr-2 group-hover:translate-x-1 transition-transform" />
                 Send Message
               </Button>
@@ -144,6 +144,7 @@ const Contact = () => {
                     variant="tech" 
                     size="icon" 
                     className="rounded-full group h-10 w-10 sm:h-12 sm:w-12"
+                    onClick={() => window.open(social.url, '_blank')}
                   >
                     <social.icon className="h-4 w-4 sm:h-5 sm:w-5 group-hover:scale-110 transition-transform" />
                   </Button>
@@ -159,7 +160,8 @@ const Contact = () => {
               <p className="text-muted-foreground mb-3 sm:mb-4 text-sm sm:text-base">
                 Actively seeking internships, collaborations, and freelance projects
               </p>
-              <Button variant="glow" className="w-full">
+              <Button variant="glow" className="w-full group hover:scale-105 transition-all duration-300 ">
+                <Download className="mr-2 group-hover:scale-110 transition-transform" />
                 Download Resume
               </Button>
             </Card>
