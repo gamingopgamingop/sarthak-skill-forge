@@ -73,6 +73,50 @@ const SkillsPage = () => {
     { name: "Project Management", level: 87, category: "other", years: 2 },
     { name: "Code Review", level: 88, category: "other", years: 2 },
     { name: "Testing & Debugging", level: 90, category: "other", years: 2.5 },
+    
+    // SEO & Web Optimization - Meta & Head Management
+    { name: "react-helmet", level: 85, category: "seo", years: 1.5 },
+    { name: "react-helmet-async", level: 82, category: "seo", years: 1.5 },
+    { name: "react-meta-tags", level: 80, category: "seo", years: 1 },
+    { name: "react-document-meta", level: 78, category: "seo", years: 1 },
+    { name: "react-head", level: 75, category: "seo", years: 1 },
+    { name: "next/head", level: 88, category: "seo", years: 1.5 },
+    { name: "gatsby-plugin-react-helmet", level: 75, category: "seo", years: 1 },
+    
+    // SEO Helpers & Components
+    { name: "react-seo-component", level: 82, category: "seo", years: 1.5 },
+    { name: "react-seo-meta-tags", level: 80, category: "seo", years: 1.5 },
+    { name: "react-seo", level: 78, category: "seo", years: 1 },
+    { name: "next-seo", level: 85, category: "seo", years: 1.5 },
+    { name: "gatsby-plugin-next-seo", level: 72, category: "seo", years: 1 },
+    
+    // Performance & Pre-rendering
+    { name: "react-snap", level: 80, category: "seo", years: 1 },
+    { name: "react-snapshots", level: 75, category: "seo", years: 1 },
+    { name: "preact", level: 70, category: "seo", years: 0.5 },
+    { name: "react-lazyload", level: 85, category: "seo", years: 1.5 },
+    { name: "react-lazy-load-image", level: 83, category: "seo", years: 1.5 },
+    
+    // Structured Data & Schema.org
+    { name: "react-schemaorg", level: 78, category: "seo", years: 1 },
+    { name: "JSON-LD Implementation", level: 82, category: "seo", years: 1.5 },
+    { name: "gatsby-plugin-json-ld", level: 73, category: "seo", years: 1 },
+    
+    // Analytics & Tracking
+    { name: "react-ga4", level: 87, category: "seo", years: 1.5 },
+    { name: "react-gtm-module", level: 82, category: "seo", years: 1.5 },
+    { name: "react-facebook-pixel", level: 78, category: "seo", years: 1 },
+    { name: "use-analytics", level: 75, category: "seo", years: 1 },
+    { name: "posthog-js", level: 73, category: "seo", years: 0.5 },
+    
+    // Sitemap & Robots
+    { name: "react-sitemap", level: 80, category: "seo", years: 1 },
+    { name: "next-sitemap", level: 85, category: "seo", years: 1.5 },
+    { name: "gatsby-plugin-sitemap", level: 75, category: "seo", years: 1 },
+    { name: "robots.txt Configuration", level: 88, category: "seo", years: 2 },
+    { name: "OpenGraph Protocol", level: 85, category: "seo", years: 1.5 },
+    { name: "Twitter Cards", level: 82, category: "seo", years: 1.5 },
+    { name: "Core Web Vitals", level: 80, category: "seo", years: 1 },
   ];
 
   const certifications = [
@@ -130,11 +174,12 @@ const SkillsPage = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
         >
           <Tabs defaultValue="all" className="w-full">
-            <TabsList className="grid w-full max-w-md mx-auto grid-cols-5 mb-8">
+            <TabsList className="grid w-full max-w-2xl mx-auto grid-cols-6 mb-8">
               <TabsTrigger value="all">All</TabsTrigger>
               <TabsTrigger value="programming">Code</TabsTrigger>
               <TabsTrigger value="database">DB</TabsTrigger>
               <TabsTrigger value="ai">AI</TabsTrigger>
+              <TabsTrigger value="seo">SEO</TabsTrigger>
               <TabsTrigger value="other">Other</TabsTrigger>
             </TabsList>
 
@@ -163,7 +208,7 @@ const SkillsPage = () => {
               </Card>
             </TabsContent>
 
-            {["programming", "database", "ai", "other"].map((category) => (
+            {["programming", "database", "ai", "seo", "other"].map((category) => (
               <TabsContent key={category} value={category}>
                 <Card className="p-8">
                   <h2 className="text-2xl font-bold mb-6 text-foreground capitalize">
