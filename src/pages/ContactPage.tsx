@@ -10,22 +10,22 @@ const ContactPage = () => {
       icon: Mail,
       title: "Email",
       description: "Send me an email for project inquiries",
-      value: "hello@sarthakdevs.me",
-      action: "mailto:hello@sarthakdevs.me"
+      value: "gamingopgamingop67+sarthakdev@gmail.com",
+      action: "mailto:gamingopgamingop67+sarthakdev@gmail.com"
     },
     {
       icon: MessageSquare,
       title: "WhatsApp",
       description: "Quick chat for urgent matters",
-      value: "+91 XXX XXX XXXX",
-      action: "https://wa.me/91XXXXXXXXXX"
+      value: "+91 9557324171",
+      action: "https://wa.me/919557324171"
     },
     {
       icon: Phone,
       title: "Phone",
       description: "Call for direct consultation",
-      value: "+91 XXX XXX XXXX",
-      action: "tel:+91XXXXXXXXXX"
+      value: "+91 9557324171",
+      action: "tel:+919557324171"
     }
   ];
 
