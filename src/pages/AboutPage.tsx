@@ -1,4 +1,5 @@
 import About from "@/components/About";
+import SEO from "@/components/SEO";
 import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -32,6 +33,11 @@ const AboutPage = () => {
 
   return (
     <main className="min-h-screen pt-20">
+      <SEO 
+        title="About Sarthak Bansal | Python Developer & Tech Entrepreneur"
+        description="Learn about Sarthak Bansal, a second-year BCA student passionate about Python programming, AI automation, and creating innovative tech solutions. Discover my journey, goals, and vision for the future of technology."
+        keywords="Sarthak Bansal, Python developer, BCA student, tech entrepreneur, AI automation, programming journey, software developer background"
+      />
       <div className="max-w-7xl mx-auto px-6 py-16">
         <motion.div 
           className="text-center mb-16"

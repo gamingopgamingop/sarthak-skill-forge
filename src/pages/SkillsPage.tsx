@@ -1,4 +1,5 @@
 import Skills from "@/components/Skills";
+import SEO from "@/components/SEO";
 import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -151,6 +152,11 @@ const SkillsPage = () => {
 
   return (
     <main className="min-h-screen pt-20">
+      <SEO 
+        title="Technical Skills & Expertise | Sarthak Bansal"
+        description="Explore Sarthak Bansal's comprehensive technical skills including Python, AI/ML, web development frameworks, SEO libraries, databases, and more. View certifications and achievements in software development."
+        keywords="Python skills, React developer, Django expertise, AI machine learning, database design, SEO optimization, technical certifications, programming achievements"
+      />
       <div className="max-w-7xl mx-auto px-6 py-16">
         <motion.div 
           className="text-center mb-16"
