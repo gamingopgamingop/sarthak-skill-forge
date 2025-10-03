@@ -2,8 +2,7 @@ import { useEffect } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { useQuery } from "@tanstack/react-query";
-import { Routes, Route, useLocation, useNavigate, useNavigationType, useNavigation } from "react-router-dom";
+import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import AIGreeting from "@/components/AIGreeting";
 import Chatbot from "@/components/Chatbot";
@@ -22,16 +21,9 @@ import ServicesPage from "@/pages/ServicesPage";
 import GalleryPage from "@/pages/GalleryPage";
 import NotFound from "@/pages/NotFound";
 
-const RouteHandler = () => {
+const App = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const navigationType = useNavigationType();
-  const navigation = useNavigation();
-  
-  const { data: locationData } = useQuery({
-    queryKey: ["locationData"],
-    queryFn: () => location.pathname,
-  });
 
   useEffect(() => {
     if (location.pathname === "/") {
@@ -39,10 +31,6 @@ const RouteHandler = () => {
     }
   }, [location.pathname, navigate]);
 
-  return null;
-};
-
-const App = () => {
   return (
     <TooltipProvider>
       <Toaster />
@@ -53,7 +41,6 @@ const App = () => {
         <InteractiveBackground />
         <Navigation />
         <AIGreeting />
-        <RouteHandler />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<AboutPage />} />
