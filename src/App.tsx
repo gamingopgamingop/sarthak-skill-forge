@@ -3,7 +3,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { useQuery } from "@tanstack/react-query";
-import { Routes, Route, Link, useLocation, useNavigate, Navigate, Location, useNavigationType, useNavigation } from "react-router-dom";
+import { Routes, Route, useLocation, useNavigate, useNavigationType, useNavigation } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import AIGreeting from "@/components/AIGreeting";
 import Chatbot from "@/components/Chatbot";
