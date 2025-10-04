@@ -39,6 +39,7 @@
     "@radix-ui/react-toggle": "^1.1.9",
     "@radix-ui/react-toggle-group": "^1.1.10",
     "@radix-ui/react-tooltip": "^1.2.7",
+    "@reach/router": "^1.3.4",
     "@react-three/drei": "^9.122.0",
     "@react-three/fiber": "^8.18.0",
     "@tanstack/react-query": "^5.83.0",
@@ -79,12 +80,15 @@
     "react-seo-component": "^2.0.2",
     "react-seo-meta-tags": "^1.3.1",
     "recharts": "^2.15.4",
+    "router5": "^8.0.1",
     "sonner": "^1.7.4",
     "tailwind-merge": "^2.6.0",
     "tailwindcss-animate": "^1.0.7",
     "three": "^0.160.1",
+    "universal-router": "^10.0.1",
     "use-analytics": "^1.1.0",
     "vaul": "^0.9.9",
+    "wouter": "^3.7.1",
     "zod": "^3.25.76"
   },
   "devDependencies": {
