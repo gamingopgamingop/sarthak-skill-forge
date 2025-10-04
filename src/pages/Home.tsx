@@ -1,6 +1,7 @@
 import Hero from "@/components/Hero";
 import SEO from "@/components/SEO";
 import { motion } from "framer-motion";
+import { Parallax } from 'react-scroll-parallax';
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { ArrowRight, BookOpen, Code2, Rocket } from "lucide-react";
@@ -36,29 +37,26 @@ const Home = () => {
       {/* Quick Highlights Section */}
       <section className="py-20 px-6">
         <div className="max-w-7xl mx-auto">
-          <motion.div 
+          <div 
             className="text-center mb-16"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
+            data-aos="fade-up"
           >
-            <h2 className="text-3xl md:text-5xl font-bold mb-6">
-              <span className="gradient-text">What I Do</span>
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            <Parallax speed={-5}>
+              <h2 className="text-3xl md:text-5xl font-bold mb-6">
+                <span className="gradient-text">What I Do</span>
+              </h2>
+            </Parallax>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="100">
               From Python programming to AI automation, I create solutions that make a difference
             </p>
-          </motion.div>
+          </div>
 
           <div className="grid md:grid-cols-3 gap-8 mb-16">
             {highlights.map((highlight, index) => (
-              <motion.div
+              <div
                 key={highlight.title}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.2 }}
-                viewport={{ once: true }}
+                data-aos="zoom-in"
+                data-aos-delay={index * 100}
               >
                 <Card className="card-hover p-6 h-full">
                   <div className="flex items-center mb-4">
@@ -81,17 +79,15 @@ const Home = () => {
                     </Button>
                   </Link>
                 </Card>
-              </motion.div>
+              </div>
             ))}
           </div>
 
           {/* CTA Section */}
-          <motion.div 
+          <div 
             className="text-center"
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
+            data-aos="fade-up"
+            data-aos-duration="1000"
           >
             <Card className="p-8 bg-gradient-to-br from-primary/5 to-accent/5 border border-accent/20">
               <h3 className="text-2xl font-bold mb-4 text-foreground">
@@ -115,7 +111,7 @@ const Home = () => {
                 </Link>
               </div>
             </Card>
-          </motion.div>
+          </div>
         </div>
       </section>
     </main>
