@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu, X, Code2 } from "lucide-react";
 
-const Navigation = () => {
+export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("/");
 
@@ -20,110 +20,99 @@ const Navigation = () => {
     { name: "Contact", path: "/contact" }
   ];
 
-  const isActive = (path: string) => activeTab === path;
-
-  const handleNavClick = (path: string) => {
-    setActiveTab(path);
-    setIsOpen(false);
-  };
-
   return (
-    <>
-      <header 
-        className="sticky top-0 left-0 right-0 w-full border-b border-accent/20 bg-background/80 backdrop-blur-xl supports-[backdrop-filter]:bg-background/70 shadow-lg transition-all duration-300"
-        style={{ zIndex: 9999 }}
-      >
-        <div className="container mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            {/* Logo */}
-            <button 
-              onClick={() => handleNavClick("/")}
-              className="flex items-center space-x-2 relative z-50 hover:opacity-80 transition-opacity"
-            >
-              <div className="p-2 rounded-lg bg-gradient-to-br from-primary to-accent">
-                <Code2 className="h-6 w-6 text-background" />
-              </div>
-              <span className="text-xl font-bold gradient-text">SarthakDev</span>
-            </button>
+    <div className="sticky top-0 w-full z-[9999] border-b border-zinc-200 dark:border-zinc-800 bg-white/80 dark:bg-zinc-950/80 backdrop-blur-xl shadow-sm">
+      <div className="container mx-auto px-6 py-4">
+        <div className="flex items-center justify-between">
+          {/* Logo */}
+          <button 
+            onClick={() => setActiveTab("/")}
+            className="flex items-center gap-2 z-50 hover:opacity-80 transition-opacity"
+          >
+            <div className="p-2 rounded-lg bg-gradient-to-br from-blue-500 to-purple-500">
+              <Code2 className="h-6 w-6 text-white" />
+            </div>
+            <span className="text-xl font-bold bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">
+              SarthakDev
+            </span>
+          </button>
 
-            {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center space-x-1 relative z-50">
-              {navItems.map((item) => (
-                <button key={item.path} onClick={() => handleNavClick(item.path)}>
-                  <Button
-                    variant={isActive(item.path) ? "default" : "ghost"}
-                    size="sm"
-                    className="relative hover:bg-primary/20 hover:text-primary transition-all duration-200"
-                  >
-                    {item.name}
-                  </Button>
-                </button>
-              ))}
-            </nav>
-
-            {/* Mobile Navigation */}
-            <Sheet open={isOpen} onOpenChange={setIsOpen}>
-              <SheetTrigger asChild className="md:hidden relative z-50">
-                <Button variant="ghost" size="sm">
-                  <Menu className="h-5 w-5" />
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center gap-1 z-50">
+            {navItems.map((item) => (
+              <button key={item.path} onClick={() => setActiveTab(item.path)}>
+                <Button
+                  variant={activeTab === item.path ? "default" : "ghost"}
+                  size="sm"
+                  className="hover:bg-blue-500/10 hover:text-blue-500 transition-all"
+                >
+                  {item.name}
                 </Button>
-              </SheetTrigger>
-              <SheetContent 
-                side="right" 
-                className="w-80 bg-background/95 backdrop-blur-xl" 
-                style={{ zIndex: 10000 }}
-              >
-                <div className="flex items-center justify-between mb-8">
-                  <span className="text-lg font-bold gradient-text">Navigation</span>
-                  <Button variant="ghost" size="sm" onClick={() => setIsOpen(false)}>
-                    <X className="h-5 w-5" />
-                  </Button>
-                </div>
-                
-                <nav className="flex flex-col space-y-2">
-                  {navItems.map((item) => (
-                    <button 
-                      key={item.path} 
-                      onClick={() => handleNavClick(item.path)}
-                      className="w-full"
-                    >
-                      <Button
-                        variant={isActive(item.path) ? "default" : "ghost"}
-                        size="sm"
-                        className="w-full justify-start"
-                      >
-                        {item.name}
-                      </Button>
-                    </button>
-                  ))}
-                </nav>
+              </button>
+            ))}
+          </nav>
 
-                <div className="mt-8 pt-8 border-t border-accent/20">
-                  <p className="text-sm text-muted-foreground mb-4">
-                    Ready to work together?
-                  </p>
-                  <button onClick={() => handleNavClick("/contact")} className="w-full">
-                    <Button variant="default" className="w-full">
-                      Get In Touch
+          {/* Mobile Navigation */}
+          <Sheet open={isOpen} onOpenChange={setIsOpen}>
+            <SheetTrigger asChild className="md:hidden z-50">
+              <Button variant="ghost" size="sm">
+                <Menu className="h-5 w-5" />
+              </Button>
+            </SheetTrigger>
+            <SheetContent 
+              side="right" 
+              className="w-80 bg-white/95 dark:bg-zinc-950/95 backdrop-blur-xl z-[10000]"
+            >
+              <div className="flex items-center justify-between mb-8">
+                <span className="text-lg font-bold bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">
+                  Navigation
+                </span>
+                <Button variant="ghost" size="sm" onClick={() => setIsOpen(false)}>
+                  <X className="h-5 w-5" />
+                </Button>
+              </div>
+              
+              <nav className="flex flex-col gap-2">
+                {navItems.map((item) => (
+                  <button 
+                    key={item.path} 
+                    onClick={() => {
+                      setActiveTab(item.path);
+                      setIsOpen(false);
+                    }}
+                    className="w-full"
+                  >
+                    <Button
+                      variant={activeTab === item.path ? "default" : "ghost"}
+                      size="sm"
+                      className="w-full justify-start"
+                    >
+                      {item.name}
                     </Button>
                   </button>
-                </div>
-              </SheetContent>
-            </Sheet>
-          </div>
+                ))}
+              </nav>
+
+              <div className="mt-8 pt-8 border-t border-zinc-200 dark:border-zinc-800">
+                <p className="text-sm text-zinc-600 dark:text-zinc-400 mb-4">
+                  Ready to work together?
+                </p>
+                <button 
+                  onClick={() => {
+                    setActiveTab("/contact");
+                    setIsOpen(false);
+                  }} 
+                  className="w-full"
+                >
+                  <Button variant="default" className="w-full">
+                    Get In Touch
+                  </Button>
+                </button>
+              </div>
+            </SheetContent>
+          </Sheet>
         </div>
-      </header>
-
-      <style>{`
-        .gradient-text {
-          background: linear-gradient(to right, hsl(var(--primary)), hsl(var(--accent)));
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
-        }
-      `}</style>
-    </>
+      </div>
+    </div>
   );
-};
-
-export default Navigation;
+}
