@@ -22,6 +22,7 @@ import TestimonialsPage from "@/pages/TestimonialsPage";
 import ServicesPage from "@/pages/ServicesPage";
 import GalleryPage from "@/pages/GalleryPage";
 import NotFound from "@/pages/errors/NotFound";
+i
 
 const App = () => {
   const location = useLocation();
