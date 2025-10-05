@@ -90,13 +90,17 @@ export default defineConfig(({ mode }) => ({
     sourcemap: mode === "development",
   },
 
-  // Pre-bundle frequently used dependencies for speed
+  // Pre-bundle frequently used dependencies for faster dev startup
   optimizeDeps: {
     include: [
       "react",
       "react-dom",
       "react-router-dom",
       "@tanstack/react-query",
+      "@tanstack/react-query-devtools",
+      "react-helmet-async",
+      "react-scroll-parallax",
+      "aos",
     ],
   },
 
