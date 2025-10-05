@@ -22,7 +22,7 @@ import TestimonialsPage from "@/pages/TestimonialsPage";
 import ServicesPage from "@/pages/ServicesPage";
 import GalleryPage from "@/pages/GalleryPage";
 import NotFound from "@/pages/errors/NotFound";
-i
+im
 
 const App = () => {
   const location = useLocation();

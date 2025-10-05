@@ -30,6 +30,7 @@ const ServerError = lazy(() => import("./pages/errors/ServerError"));
 const ThankYou = lazy(() => import("./pages/info/ThankYou"));
 const NotFound = lazy(() => import("./pages/errors/NotFound"));
 
+
 // Page loader component
 const PageLoader = () => (
   <div className="flex items-center justify-center min-h-screen bg-background">

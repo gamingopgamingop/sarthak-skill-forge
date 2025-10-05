@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
@@ -8,7 +9,41 @@ import reactBabel from '@vitejs/plugin-react';
 // Optional: install with `npm install -D vite-plugin-imagemin`
 // import viteImagemin from "vite-plugin-imagemin";
 
-export default defineConfig(({ mode }) => ({
+export default defineConfig(async ({ mode }) => {
+  // Try to load optional plugins only if installed (keeps CI/dev resilient on low disk)
+  let crittersPlugin: any = null;
+  let compressionPlugin: any = null;
+  let viteImagemin: any = null;
+  try {
+    const mod = await import('vite-plugin-critters');
+    crittersPlugin = mod.default?.({
+      preload: 'swap',
+      pruneSource: true,
+      reduceInlineStyles: true,
+    });
+  } catch {}
+  try {
+    const mod = await import('vite-plugin-compression');
+    const compression = mod.default;
+    compressionPlugin = [
+      compression({ algorithm: 'brotliCompress', ext: '.br' }),
+      compression({ algorithm: 'gzip', ext: '.gz' }),
+    ];
+  } catch {}
+  try {
+    const mod = await import('vite-plugin-imagemin');
+    viteImagemin = mod.default?.({
+      gifsicle: { optimizationLevel: 3 },
+      mozjpeg: { progressive: true, quality: 78 },
+      optipng: { optimizationLevel: 7 },
+      svgo: { plugins: [{ name: 'removeViewBox', active: false }] },
+      // webp/avif will be auto-enabled if imagemin-webp/avif are present
+      webp: { quality: 78 },
+      avif: { quality: 50 },
+    });
+  } catch {}
+
+  return ({
   server: {
     host: "::",
     port: 8080,
@@ -17,6 +52,12 @@ export default defineConfig(({ mode }) => ({
   plugins: [
     react(),
     mode === "development" && componentTagger(),
+    // Optionally inline critical CSS when plugin is available
+    crittersPlugin,
+    // Optionally precompress assets
+    ...(compressionPlugin ?? []),
+    // Optionally compress images during build
+    viteImagemin,
     // Uncomment after installing vite-plugin-imagemin
     /*
     viteImagemin({
@@ -88,6 +129,7 @@ export default defineConfig(({ mode }) => ({
         drop_console: mode === "production",
         drop_debugger: mode === "production",
       },
+      format: { comments: false },
     },
 
     // Enable source maps only during development
@@ -145,4 +187,5 @@ export default defineConfig(({ mode }) => ({
 
   // Cleaner log output for Vercel/CLI
   logLevel: "info",
-}));
+  });
+});
