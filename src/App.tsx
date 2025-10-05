@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import SimpleBar from 'simplebar-react';
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -36,27 +37,29 @@ const App = () => {
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <div className="min-h-screen bg-background text-foreground relative">
-        <CursorEffects />
-        <MouseFollower />
-        <InteractiveBackground />
-        <Navigation />
-        <AIGreeting />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/skills" element={<SkillsPage />} />
-          <Route path="/projects" element={<ProjectsPage />} />
-          <Route path="/tech" element={<TechPage />} />
-          <Route path="/blog" element={<BlogPage />} />
-          <Route path="/contact" element={<ContactPage />} />
-          <Route path="/testimonials" element={<TestimonialsPage />} />
-          <Route path="/services" element={<ServicesPage />} />
-          <Route path="/gallery" element={<GalleryPage />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-        <Chatbot />
-      </div>
+      <SimpleBar style={{ maxHeight: '100vh' }}>
+        <div className="min-h-screen bg-background text-foreground relative">
+          <CursorEffects />
+          <MouseFollower />
+          <InteractiveBackground />
+          <Navigation />
+          <AIGreeting />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/skills" element={<SkillsPage />} />
+            <Route path="/projects" element={<ProjectsPage />} />
+            <Route path="/tech" element={<TechPage />} />
+            <Route path="/blog" element={<BlogPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="/testimonials" element={<TestimonialsPage />} />
+            <Route path="/services" element={<ServicesPage />} />
+            <Route path="/gallery" element={<GalleryPage />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+          <Chatbot />
+        </div>
+      </SimpleBar>
     </TooltipProvider>
   );
 };

@@ -2,6 +2,7 @@ import Hero from "@/components/Hero";
 import SEO from "@/components/SEO";
 import { motion } from "framer-motion";
 import { Parallax } from 'react-scroll-parallax';
+import { Link as ScrollLink } from 'react-scroll';
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { ArrowRight, BookOpen, Code2, Rocket, ArrowDown } from "lucide-react";
@@ -37,14 +38,22 @@ const Home = () => {
         
         {/* Scroll Down Indicator */}
         <div className="flex justify-center pb-8">
-          <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity }}
-            className="flex flex-col items-center gap-2 text-muted-foreground"
+          <ScrollLink
+            to="highlights-section"
+            smooth={true}
+            duration={800}
+            offset={-80}
+            className="cursor-pointer"
           >
-            <span className="text-sm font-medium">Scroll to explore</span>
-            <ArrowDown className="h-5 w-5" />
-          </motion.div>
+            <motion.div
+              animate={{ y: [0, 10, 0] }}
+              transition={{ duration: 1.5, repeat: Infinity }}
+              className="flex flex-col items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
+            >
+              <span className="text-sm font-medium">Scroll to explore</span>
+              <ArrowDown className="h-5 w-5" />
+            </motion.div>
+          </ScrollLink>
         </div>
       </div>
       
@@ -55,9 +64,11 @@ const Home = () => {
             className="text-center mb-16"
             data-aos="fade-up"
           >
-            <h2 className="text-3xl md:text-5xl font-bold mb-6">
-              <span className="gradient-text">What I Do</span>
-            </h2>
+            <Parallax speed={-5}>
+              <h2 className="text-3xl md:text-5xl font-bold mb-6">
+                <span className="gradient-text">What I Do</span>
+              </h2>
+            </Parallax>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="100">
               From Python programming to AI automation, I create solutions that make a difference
             </p>
