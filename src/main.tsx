@@ -6,6 +6,7 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { HelmetProvider } from 'react-helmet-async'
 import { RouterProvider } from 'react-router-dom'
 import { ParallaxProvider } from 'react-scroll-parallax'
+import { ClerkProvider } from '@clerk/clerk-react'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 import 'simplebar-react/dist/simplebar.min.css'
@@ -54,19 +55,27 @@ const AppLoader = () => (
   </div>
 );
 
+const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
+if (!PUBLISHABLE_KEY) {
+  // Throw to surface misconfiguration early
+  throw new Error('Missing VITE_CLERK_PUBLISHABLE_KEY')
+}
+
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <HelmetProvider>
-        <ParallaxProvider>
-          <AOSInit />
-          <Suspense fallback={<AppLoader />}>
-            <RouterProvider router={routes} />
-          </Suspense>
-          <SpeedInsights />
-          <ReactQueryDevtools initialIsOpen={false} />
-        </ParallaxProvider>
-      </HelmetProvider>
-    </QueryClientProvider>
+    <ClerkProvider publishableKey={PUBLISHABLE_KEY} afterSignOutUrl="/">
+      <QueryClientProvider client={queryClient}>
+        <HelmetProvider>
+          <ParallaxProvider>
+            <AOSInit />
+            <Suspense fallback={<AppLoader />}>
+              <RouterProvider router={routes} />
+            </Suspense>
+            <SpeedInsights />
+            <ReactQueryDevtools initialIsOpen={false} />
+          </ParallaxProvider>
+        </HelmetProvider>
+      </QueryClientProvider>
+    </ClerkProvider>
   </StrictMode>,
 )

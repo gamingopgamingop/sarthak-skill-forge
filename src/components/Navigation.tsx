@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu, X, Code2 } from "lucide-react";
+import { SignedIn, SignedOut, SignInButton, SignUpButton, UserButton } from "@clerk/clerk-react";
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
@@ -56,6 +57,17 @@ export default function Navigation() {
                 </Button>
               </Link>
             ))}
+            <SignedOut>
+              <SignInButton>
+                <Button size="sm" variant="outline" className="ml-2">Sign in</Button>
+              </SignInButton>
+              <SignUpButton>
+                <Button size="sm" className="ml-2">Sign up</Button>
+              </SignUpButton>
+            </SignedOut>
+            <SignedIn>
+              <UserButton appearance={{ elements: { avatarBox: "ml-2" } }} />
+            </SignedIn>
           </nav>
 
           {/* Mobile Navigation */}
@@ -96,6 +108,21 @@ export default function Navigation() {
                     </Button>
                   </Link>
                 ))}
+                <div className="pt-2">
+                  <SignedOut>
+                    <SignInButton>
+                      <Button size="sm" variant="outline" className="w-full mb-2">Sign in</Button>
+                    </SignInButton>
+                    <SignUpButton>
+                      <Button size="sm" className="w-full">Sign up</Button>
+                    </SignUpButton>
+                  </SignedOut>
+                  <SignedIn>
+                    <div className="flex justify-start">
+                      <UserButton />
+                    </div>
+                  </SignedIn>
+                </div>
               </nav>
 
               <div className="mt-8 pt-8 border-t border-zinc-200 dark:border-zinc-800">
