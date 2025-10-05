@@ -5,6 +5,7 @@ import { Card } from "@/components/ui/card";
 import { Home, ArrowLeft } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import SEO from "@/components/SEO";
+im
 
 const NotFound = () => {
   const navigate = useNavigate();
