@@ -98,12 +98,23 @@ export default defineConfig(({ mode }) => ({
       "react",
       "react-dom",
       "react-router-dom",
+      "@tanstack/react-router",
+      "@tanstack/react-router-devtools",
+      "@tanstack/react-table",
+      "@tanstack/react-form",
+      "@tanstack/form-core",
+      "@tanstack/react-virtual",
+      "@tanstack/react-store",
+      "@tanstack/react-ranger",
       "@tanstack/react-query",
       "@tanstack/react-query-devtools",
+      "@clerk/clerk-react",
       "react-helmet-async",
       "react-scroll-parallax",
       "aos",
     ],
+    // Ensure a single React instance
+    dedupe: ["react", "react-dom"]
   },
 
   // Cleaner log output for Vercel/CLI

@@ -1,6 +1,8 @@
 import { createBrowserRouter } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import App from "./App";
+// TanStack Router host, mounted under /tsr/*
+const TsrHost = lazy(() => import("./tsr/router"));
 
 // Lazy load all page components
 const Home = lazy(() => import("./pages/Home"));
@@ -121,6 +123,14 @@ const routes = createBrowserRouter([
         element: (
           <SuspenseWrapper>
             <Gallery />
+          </SuspenseWrapper>
+        ),
+      },
+      {
+        path: "/tsr/*",
+        element: (
+          <SuspenseWrapper>
+            <TsrHost />
           </SuspenseWrapper>
         ),
       },
