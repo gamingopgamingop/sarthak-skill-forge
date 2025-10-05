@@ -11,21 +11,24 @@ export default defineConfig(({ mode }) => ({
     host: "::",
     port: 8080,
   },
+
   plugins: [
     react(),
     mode === "development" && componentTagger(),
-    // Uncomment if you install vite-plugin-imagemin
-    // viteImagemin({
-    //   gifsicle: { optimizationLevel: 7, interlaced: false },
-    //   optipng: { optimizationLevel: 7 },
-    //   mozjpeg: { quality: 80, progressive: true },
-    //   svgo: {
-    //     plugins: [
-    //       { name: "removeViewBox", active: false },
-    //       { name: "removeEmptyAttrs", active: true },
-    //     ],
-    //   },
-    // }),
+    // Uncomment after installing vite-plugin-imagemin
+    /*
+    viteImagemin({
+      gifsicle: { optimizationLevel: 7, interlaced: false },
+      optipng: { optimizationLevel: 7 },
+      mozjpeg: { quality: 80, progressive: true },
+      svgo: {
+        plugins: [
+          { name: "removeViewBox", active: false },
+          { name: "removeEmptyAttrs", active: true },
+        ],
+      },
+    })
+    */
   ].filter(Boolean),
 
   resolve: {
@@ -35,20 +38,17 @@ export default defineConfig(({ mode }) => ({
   },
 
   build: {
-    // Show warning if a chunk exceeds 2MB
+    // Slightly relaxed to 2000 KB for larger chunks
     chunkSizeWarningLimit: 2000,
 
     rollupOptions: {
       output: {
-        // Split vendor bundles manually for caching & performance
+        // Dynamic vendor chunk splitting for flexible optimization
         manualChunks(id) {
           if (id.includes("node_modules")) {
             if (id.includes("react")) return "vendor-react";
             if (id.includes("@tanstack")) return "vendor-query";
-            if (
-              id.includes("framer-motion") ||
-              id.includes("lucide-react")
-            )
+            if (id.includes("framer-motion") || id.includes("lucide-react"))
               return "vendor-animation";
             if (
               id.includes("@radix-ui") ||
@@ -61,12 +61,14 @@ export default defineConfig(({ mode }) => ({
           }
         },
 
+        // Optimized asset naming conventions
         assetFileNames: (assetInfo) => {
           const ext = assetInfo.name.split(".").pop();
-          if (/\.(png|jpe?g|svg|gif|tiff|bmp|ico)$/i.test(assetInfo.name))
+          if (/\.(png|jpe?g|svg|gif|tiff|bmp|ico)$/i.test(assetInfo.name)) {
             return `assets/images/[name]-[hash].${ext}`;
-          if (/\.(woff2?|eot|ttf|otf)$/i.test(assetInfo.name))
+          } else if (/\.(woff2?|eot|ttf|otf)$/i.test(assetInfo.name)) {
             return `assets/fonts/[name]-[hash].${ext}`;
+          }
           return `assets/[name]-[hash].${ext}`;
         },
 
@@ -75,6 +77,7 @@ export default defineConfig(({ mode }) => ({
       },
     },
 
+    // Use terser to remove console/debugger in production
     minify: "terser",
     terserOptions: {
       compress: {
@@ -83,9 +86,11 @@ export default defineConfig(({ mode }) => ({
       },
     },
 
+    // Enable source maps only during development
     sourcemap: mode === "development",
   },
 
+  // Pre-bundle frequently used dependencies for speed
   optimizeDeps: {
     include: [
       "react",
@@ -94,4 +99,7 @@ export default defineConfig(({ mode }) => ({
       "@tanstack/react-query",
     ],
   },
+
+  // Cleaner log output for Vercel/CLI
+  logLevel: "info",
 }));
