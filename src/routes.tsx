@@ -3,6 +3,15 @@ import { lazy, Suspense } from "react";
 import App from "./App";
 // TanStack Router host, mounted under /tsr/*
 const TsrHost = lazy(() => import("./tsr/router"));
+// Alternative routers demos
+const WouterHost = lazy(() => import("./alt/wouter"));
+const ReachHost = lazy(() => import("./alt/reach"));
+const UniversalHost = lazy(() => import("./alt/universal"));
+const Router5Host = lazy(() => import("./alt/router5"));
+const PageJsHost = lazy(() => import("./alt/page"));
+const NavigoHost = lazy(() => import("./alt/navigo"));
+const HookrouterHost = lazy(() => import("./alt/hookrouter"));
+const NaviHost = lazy(() => import("./alt/navi"));
 
 // Lazy load all page components
 const Home = lazy(() => import("./pages/Home"));
@@ -51,6 +60,70 @@ const routes = createBrowserRouter([
         element: (
           <SuspenseWrapper>
             <Home />
+          </SuspenseWrapper>
+        ),
+      },
+      {
+        path: "/alt/wouter/*",
+        element: (
+          <SuspenseWrapper>
+            <WouterHost />
+          </SuspenseWrapper>
+        ),
+      },
+      {
+        path: "/alt/reach/*",
+        element: (
+          <SuspenseWrapper>
+            <ReachHost />
+          </SuspenseWrapper>
+        ),
+      },
+      {
+        path: "/alt/universal/*",
+        element: (
+          <SuspenseWrapper>
+            <UniversalHost />
+          </SuspenseWrapper>
+        ),
+      },
+      {
+        path: "/alt/router5/*",
+        element: (
+          <SuspenseWrapper>
+            <Router5Host />
+          </SuspenseWrapper>
+        ),
+      },
+      {
+        path: "/alt/page/*",
+        element: (
+          <SuspenseWrapper>
+            <PageJsHost />
+          </SuspenseWrapper>
+        ),
+      },
+      {
+        path: "/alt/navigo/*",
+        element: (
+          <SuspenseWrapper>
+            <NavigoHost />
+          </SuspenseWrapper>
+        ),
+      },
+      {
+        path: "/alt/hookrouter/*",
+        element: (
+          <SuspenseWrapper>
+            <HookrouterHost />
+          </SuspenseWrapper>
+        ),
+      },
+      {
+        path: "/alt/navi/*",
+        element: (
+          <SuspenseWrapper>
+            <NaviHost />
           </SuspenseWrapper>
         ),
       },
