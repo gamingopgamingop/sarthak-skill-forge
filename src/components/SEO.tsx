@@ -7,7 +7,6 @@ interface SEOProps {
   ogImage?: string;
   ogType?: string;
   canonicalUrl?: string;
-  noindex?: boolean;
   article?: {
     publishedTime?: string;
     modifiedTime?: string;
@@ -23,7 +22,6 @@ const SEO = ({
   ogImage = "/images.png",
   ogType = "website",
   canonicalUrl,
-  noindex = false,
   article,
 }: SEOProps) => {
   const siteUrl = "https://sarthakdevs.me";
@@ -129,8 +127,8 @@ const SEO = ({
       )}
 
       {/* Additional SEO tags */}
-      <meta name="robots" content={noindex ? "noindex, nofollow" : "index, follow"} />
-      <meta name="googlebot" content={noindex ? "noindex, nofollow" : "index, follow"} />
+      <meta name="robots" content="index, follow" />
+      <meta name="googlebot" content="index, follow" />
       <meta name="language" content="English" />
       <meta name="revisit-after" content="7 days" />
       <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
