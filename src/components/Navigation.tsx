@@ -1,11 +1,12 @@
 import { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu, X, Code2 } from "lucide-react";
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
-  const [activeTab, setActiveTab] = useState("/");
+  const location = useLocation();
 
   const navItems = [
     { name: "Home", path: "/" },
@@ -17,16 +18,17 @@ export default function Navigation() {
     { name: "Testimonials", path: "/testimonials" },
     { name: "Tech", path: "/tech" },
     { name: "Blog", path: "/blog" },
-    { name: "Contact", path: "/contact" }
+    { name: "Contact", path: "/contact" },
   ];
 
   return (
-    <div className="sticky top-0 w-full z-[9999] border-b border-zinc-200 dark:border-zinc-800 bg-white/80 dark:bg-zinc-950/80 backdrop-blur-xl shadow-sm">
+    <header className="sticky top-0 w-full z-[9999] border-b border-zinc-200 dark:border-zinc-800 bg-white/80 dark:bg-zinc-950/80 backdrop-blur-xl shadow-sm">
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
+          
           {/* Logo */}
-          <button 
-            onClick={() => setActiveTab("/")}
+          <Link
+            to="/"
             className="flex items-center gap-2 z-50 hover:opacity-80 transition-opacity"
           >
             <div className="p-2 rounded-lg bg-gradient-to-br from-blue-500 to-purple-500">
@@ -35,20 +37,24 @@ export default function Navigation() {
             <span className="text-xl font-bold bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">
               SarthakDev
             </span>
-          </button>
+          </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-1 z-50">
             {navItems.map((item) => (
-              <button key={item.path} onClick={() => setActiveTab(item.path)}>
+              <Link key={item.path} to={item.path}>
                 <Button
-                  variant={activeTab === item.path ? "default" : "ghost"}
+                  variant={location.pathname === item.path ? "default" : "ghost"}
                   size="sm"
-                  className="hover:bg-blue-500/10 hover:text-blue-500 transition-all"
+                  className={`transition-all ${
+                    location.pathname === item.path
+                      ? "bg-blue-500 text-white hover:bg-blue-600"
+                      : "hover:bg-blue-500/10 hover:text-blue-500"
+                  }`}
                 >
                   {item.name}
                 </Button>
-              </button>
+              </Link>
             ))}
           </nav>
 
@@ -59,8 +65,9 @@ export default function Navigation() {
                 <Menu className="h-5 w-5" />
               </Button>
             </SheetTrigger>
-            <SheetContent 
-              side="right" 
+
+            <SheetContent
+              side="right"
               className="w-80 bg-white/95 dark:bg-zinc-950/95 backdrop-blur-xl z-[10000]"
             >
               <div className="flex items-center justify-between mb-8">
@@ -71,25 +78,23 @@ export default function Navigation() {
                   <X className="h-5 w-5" />
                 </Button>
               </div>
-              
+
               <nav className="flex flex-col gap-2">
                 {navItems.map((item) => (
-                  <button 
-                    key={item.path} 
-                    onClick={() => {
-                      setActiveTab(item.path);
-                      setIsOpen(false);
-                    }}
+                  <Link
+                    key={item.path}
+                    to={item.path}
+                    onClick={() => setIsOpen(false)}
                     className="w-full"
                   >
                     <Button
-                      variant={activeTab === item.path ? "default" : "ghost"}
+                      variant={location.pathname === item.path ? "default" : "ghost"}
                       size="sm"
                       className="w-full justify-start"
                     >
                       {item.name}
                     </Button>
-                  </button>
+                  </Link>
                 ))}
               </nav>
 
@@ -97,22 +102,16 @@ export default function Navigation() {
                 <p className="text-sm text-zinc-600 dark:text-zinc-400 mb-4">
                   Ready to work together?
                 </p>
-                <button 
-                  onClick={() => {
-                    setActiveTab("/contact");
-                    setIsOpen(false);
-                  }} 
-                  className="w-full"
-                >
+                <Link to="/contact" onClick={() => setIsOpen(false)} className="w-full">
                   <Button variant="default" className="w-full">
                     Get In Touch
                   </Button>
-                </button>
+                </Link>
               </div>
             </SheetContent>
           </Sheet>
         </div>
       </div>
-    </div>
+    </header>
   );
 }
