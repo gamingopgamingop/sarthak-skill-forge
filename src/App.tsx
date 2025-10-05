@@ -22,7 +22,7 @@ import TestimonialsPage from "@/pages/TestimonialsPage";
 import ServicesPage from "@/pages/ServicesPage";
 import GalleryPage from "@/pages/GalleryPage";
 import NotFound from "@/pages/errors/NotFound";
-im
+
 
 const App = () => {
   const location = useLocation();
@@ -35,7 +35,7 @@ const App = () => {
   }, [location.pathname, navigate]);
 
   return (
-    <TooltipProvider>
+      <TooltipProvider>
       <Toaster />
       <Sonner />
       <SimpleBar style={{ maxHeight: '100vh' }}>
