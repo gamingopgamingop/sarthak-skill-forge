@@ -2,7 +2,10 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
 import { componentTagger } from "lovable-tagger";
-import viteImagemin from "vite-plugin-imagemin";
+
+// Optional: Install with `npm install -D vite-plugin-imagemin`
+// Uncomment the lines below after installing the package
+// import viteImagemin from "vite-plugin-imagemin";
 
 export default defineConfig(({ mode }) => ({
   server: {
@@ -12,25 +15,26 @@ export default defineConfig(({ mode }) => ({
   plugins: [
     react(),
     mode === 'development' && componentTagger(),
-    viteImagemin({
-      gifsicle: { 
-        optimizationLevel: 7,
-        interlaced: false
-      },
-      optipng: { 
-        optimizationLevel: 7 
-      },
-      mozjpeg: { 
-        quality: 80,
-        progressive: true
-      },
-      svgo: { 
-        plugins: [
-          { name: 'removeViewBox', active: false },
-          { name: 'removeEmptyAttrs', active: true }
-        ]
-      }
-    })
+    // Uncomment after installing vite-plugin-imagemin
+    // viteImagemin({
+    //   gifsicle: { 
+    //     optimizationLevel: 7,
+    //     interlaced: false
+    //   },
+    //   optipng: { 
+    //     optimizationLevel: 7 
+    //   },
+    //   mozjpeg: { 
+    //     quality: 80,
+    //     progressive: true
+    //   },
+    //   svgo: { 
+    //     plugins: [
+    //       { name: 'removeViewBox', active: false },
+    //       { name: 'removeEmptyAttrs', active: true }
+    //     ]
+    //   }
+    // })
   ].filter(Boolean),
   resolve: {
     alias: {
