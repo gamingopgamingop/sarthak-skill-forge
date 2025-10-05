@@ -14,10 +14,10 @@ const Contact = lazy(() => import("./pages/ContactPage"));
 const Testimonials = lazy(() => import("./pages/TestimonialsPage"));
 const Services = lazy(() => import("./pages/ServicesPage"));
 const Gallery = lazy(() => import("./pages/GalleryPage"));
-const ComingSoon = lazy(() => import("./pages/ComingSoon"));
-const ServerError = lazy(() => import("./pages/ServerError"));
-const ThankYou = lazy(() => import("./pages/ThankYou"));
-const NotFound = lazy(() => import("./pages/NotFound"));
+const ComingSoon = lazy(() => import("./pages/info/ComingSoon"));
+const ServerError = lazy(() => import("./pages/errors/ServerError"));
+const ThankYou = lazy(() => import("./pages/info/ThankYou"));
+const NotFound = lazy(() => import("./pages/errors/NotFound"));
 
 // Page loader component
 const PageLoader = () => (
