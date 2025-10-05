@@ -134,7 +134,8 @@
     "imagemin-gifsicle": "^7.0.0",
     "imagemin-optipng": "^8.0.0",
     "imagemin-mozjpeg": "^10.0.0",
-    "imagemin-svgo": "^10.0.1"
+    "imagemin-svgo": "^10.0.1",
+    "terser": "^5.36.0"
 
   }
 }
