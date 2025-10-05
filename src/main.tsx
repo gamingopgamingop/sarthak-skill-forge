@@ -1,4 +1,4 @@
-import { StrictMode, useEffect, lazy, Suspense } from 'react'
+import { StrictMode, useEffect, Suspense } from 'react'
 import { createRoot } from 'react-dom/client'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { SpeedInsights } from "@vercel/speed-insights/react"
@@ -10,9 +10,7 @@ import AOS from 'aos'
 import 'aos/dist/aos.css'
 import 'simplebar-react/dist/simplebar.min.css'
 import './index.css'
-
-// Lazy load routes
-const routes = lazy(() => import('./routes.tsx'))
+import routes from './routes.tsx'
 
 // Initialize AOS
 const AOSInit = () => {
