@@ -60,6 +60,19 @@ This project is built with:
 - shadcn-ui
 - Tailwind CSS
 
+## React Animation Libraries Overview
+
+| Library | What it’s good for / Unique Features | Trade-offs / When it might be less ideal |
+| --- | --- | --- |
+| **React Spring** | Physics-based animations, smooth natural motions; good for interactive UI elements. ([DEV Community](https://dev.to/sovannaro/13-awesome-react-animation-libraries-to-elevate-your-design-projects-549g?utm_source=chatgpt.com)) | Slightly larger API surface; more setup required for some animations vs using built-in variants in Framer Motion. |
+| **GSAP (GreenSock Animation Platform)** | Very powerful timelines, fine control; works with raw JS, SVG, canvas, etc. High performance. ([DEV Community](https://dev.to/sovannaro/13-awesome-react-animation-libraries-to-elevate-your-design-projects-549g?utm_source=chatgpt.com)) | More complex sometimes; steeper learning curve; may add more bundle size especially if you need many features. |
+| **Anime.js** | Lightweight, good for CSS properties, SVGs, DOM; simpler timeline/sequence animations. ([积玉工作室](https://jiyushe.com/producthunk/best-framer-motion-alternatives-and-competitors.html?utm_source=chatgpt.com)) | Fewer abstractions for gestures or layout transitions; might need more manual orchestration. |
+| **React Motion** | Another physics-based approach; less opinionated, good if you want control. ([Developer Updates](https://www.developerupdates.com/blog/useful-react-animation-libraries?utm_source=chatgpt.com)) | Less feature rich in terms of gestures/shared layout etc compared to Framer Motion; maybe less active development (depending on version). |
+| **Popmotion** | Functional style animation library; good for low level control, springs, keyframes. ([积玉工作室](https://jiyushe.com/producthunk/best-framer-motion-alternatives-and-competitors.html?utm_source=chatgpt.com)) | Less “batteries included” for layout transitions, shared element transitions; more work to assemble complex animations. |
+| **React Transition Group** | Light & simple; good for enter/exit (mount/unmount) animations, simple transitions. ([DEV Community](https://dev.to/sovannaro/13-awesome-react-animation-libraries-to-elevate-your-design-projects-549g?utm_source=chatgpt.com)) | Not as rich for gesture support, layout transitions, or animation variants. More low-level. |
+| **Lottie / lottie-react** | Great if you want vector animations designed in After Effects etc; small size; nice for decorative animations, icons etc. ([积玉工作室](https://jiyushe.com/producthunk/best-framer-motion-alternatives-and-competitors.html?utm_source=chatgpt.com)) | Not built for layout transitions, gestures, or dynamic interactive animations (you get what was created in AE mostly). |
+| **React Flip Toolkit** | Useful for shared layout / list reordering animations (FLIP technique) etc. Very effective for list animations and reordering. ([reddit.com](https://www.reddit.com/r/reactjs/comments/uou1jp?utm_source=chatgpt.com)) | More specific in scope; you might need other libraries for gesture, complex animation flows, etc. |
+
 ## How can I deploy this project?
 
 Simply open [Lovable](https://lovable.dev/projects/c3f59b9b-7bbc-4f6c-8fd2-f89738d8aed2) and click on Share -> Publish.
