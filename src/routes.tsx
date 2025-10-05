@@ -25,6 +25,7 @@ const Contact = lazy(() => import("./pages/ContactPage"));
 const Testimonials = lazy(() => import("./pages/TestimonialsPage"));
 const Services = lazy(() => import("./pages/ServicesPage"));
 const Gallery = lazy(() => import("./pages/GalleryPage"));
+const AnimationsShowcase = lazy(() => import("./pages/AnimationsShowcase"));
 const ComingSoon = lazy(() => import("./pages/info/ComingSoon"));
 const ServerError = lazy(() => import("./pages/errors/ServerError"));
 const ThankYou = lazy(() => import("./pages/info/ThankYou"));
@@ -197,6 +198,14 @@ const routes = createBrowserRouter([
         element: (
           <SuspenseWrapper>
             <Gallery />
+          </SuspenseWrapper>
+        ),
+      },
+      {
+        path: "/animations",
+        element: (
+          <SuspenseWrapper>
+            <AnimationsShowcase />
           </SuspenseWrapper>
         ),
       },
