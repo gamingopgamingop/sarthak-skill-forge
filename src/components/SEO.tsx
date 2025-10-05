@@ -1,4 +1,4 @@
-import { Helmet } from 'react-helmet-async';
+import { Helmet } from "react-helmet-async";
 
 interface SEOProps {
   title?: string;
@@ -17,8 +17,8 @@ interface SEOProps {
 
 const SEO = ({
   title = "Sarthak Bansal - Python Expert | AI Developer | Tech Entrepreneur",
-  description = "Second-Year BCA Student specializing in Python, AI automation, and full-stack development. Building innovative tech solutions and sharing knowledge through eBooks and tutorials.",
-  keywords = "Python developer, AI automation, machine learning, web development, React, Django, FastAPI, tech entrepreneur, programming eBooks, BCA student, software engineer, automation expert, chatbot development",
+  description = "Portfolio of Sarthak Bansal — showcasing Python, AI, and full-stack projects with innovation, automation, and creativity.",
+  keywords = "Python developer, AI automation, React, Django, FastAPI, fullstack developer, portfolio, BCA student, software engineer, tech entrepreneur",
   ogImage = "/images.png",
   ogType = "website",
   canonicalUrl,
@@ -26,57 +26,59 @@ const SEO = ({
 }: SEOProps) => {
   const siteUrl = "https://sarthakdevs.me";
   const fullUrl = canonicalUrl || siteUrl;
+  const imageUrl = `${siteUrl}${ogImage}`;
 
-  // Structured Data - Person Schema
+  // Core schemas
   const personSchema = {
     "@context": "https://schema.org",
     "@type": "Person",
     name: "Sarthak Bansal",
     url: siteUrl,
-    image: `${siteUrl}/images.png`,
+    image: imageUrl,
     jobTitle: "Python Developer & AI Specialist",
-    worksFor: {
-      "@type": "Organization",
-      name: "Freelance",
-    },
-    alumniOf: "BCA Student",
-    description: "Python Expert, AI Developer, and Tech Entrepreneur specializing in automation and full-stack development",
+    worksFor: { "@type": "Organization", name: "Freelance" },
+    alumniOf: "Bachelor of Computer Applications",
+    description,
     sameAs: [
       "https://github.com/gamingopgamingop",
-      "https://www.linkedin.com/in/sarthak-bansal-01550432b/",
-    ],
-    knowsAbout: [
-      "Python Programming",
-      "Artificial Intelligence",
-      "Machine Learning",
-      "Web Development",
-      "Automation",
-      "Django",
-      "React",
-      "Database Design",
+      "https://linkedin.com/in/sarthak-bansal-01550432b/",
     ],
   };
 
-  // Structured Data - Website Schema
   const websiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: "Sarthak Bansal Portfolio",
     url: siteUrl,
-    description: "Portfolio showcasing Python development, AI projects, and tech innovations",
-    author: {
-      "@type": "Person",
-      name: "Sarthak Bansal",
-    },
+    description,
+    author: { "@type": "Person", name: "Sarthak Bansal" },
   };
 
-  // Article Schema (if article props provided)
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: siteUrl,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: title,
+        item: fullUrl,
+      },
+    ],
+  };
+
   const articleSchema = article
     ? {
         "@context": "https://schema.org",
         "@type": "Article",
         headline: title,
-        description: description,
+        description,
         author: {
           "@type": "Person",
           name: article.author || "Sarthak Bansal",
@@ -84,58 +86,59 @@ const SEO = ({
         datePublished: article.publishedTime,
         dateModified: article.modifiedTime,
         keywords: article.tags?.join(", "),
+        mainEntityOfPage: { "@type": "WebPage", "@id": fullUrl },
       }
     : null;
 
   return (
     <Helmet>
-      {/* Primary Meta Tags */}
+      {/* HTML Attributes */}
+      <html lang="en" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+      {/* Title & Description */}
       <title>{title}</title>
-      <meta name="title" content={title} />
       <meta name="description" content={description} />
       <meta name="keywords" content={keywords} />
       <meta name="author" content="Sarthak Bansal" />
       <link rel="canonical" href={fullUrl} />
 
-      {/* Open Graph / Facebook */}
+      {/* Favicon + Theme */}
+      <link rel="icon" href="/favicon.ico" />
+      <meta name="theme-color" content="#0ea5e9" />
+
+      {/* Open Graph */}
       <meta property="og:type" content={ogType} />
-      <meta property="og:url" content={fullUrl} />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
-      <meta property="og:image" content={`${siteUrl}${ogImage}`} />
+      <meta property="og:image" content={imageUrl} />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+      <meta property="og:url" content={fullUrl} />
       <meta property="og:site_name" content="Sarthak Bansal Portfolio" />
       <meta property="og:locale" content="en_US" />
+      <meta property="og:locale:alternate" content="en_GB" />
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:url" content={fullUrl} />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content={`${siteUrl}${ogImage}`} />
+      <meta name="twitter:image" content={imageUrl} />
       <meta name="twitter:creator" content="@sarthakdevs" />
+      <meta name="twitter:site" content="@sarthakdevs" />
 
-      {/* Article specific tags */}
-      {article && (
-        <>
-          <meta property="article:published_time" content={article.publishedTime} />
-          <meta property="article:modified_time" content={article.modifiedTime} />
-          <meta property="article:author" content={article.author || "Sarthak Bansal"} />
-          {article.tags?.map((tag) => (
-            <meta key={tag} property="article:tag" content={tag} />
-          ))}
-        </>
-      )}
-
-      {/* Additional SEO tags */}
-      <meta name="robots" content="index, follow" />
+      {/* Robots + Indexing */}
+      <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
       <meta name="googlebot" content="index, follow" />
-      <meta name="language" content="English" />
-      <meta name="revisit-after" content="7 days" />
-      <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
 
-      {/* JSON-LD Structured Data */}
+      {/* Performance Hints */}
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+
+      {/* Structured Data */}
       <script type="application/ld+json">{JSON.stringify(personSchema)}</script>
       <script type="application/ld+json">{JSON.stringify(websiteSchema)}</script>
+      <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
       {articleSchema && (
         <script type="application/ld+json">{JSON.stringify(articleSchema)}</script>
       )}
