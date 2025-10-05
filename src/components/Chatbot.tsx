@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import SimpleBar from 'simplebar-react';
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -192,56 +193,58 @@ const Chatbot = () => {
               {/* Messages */}
               {!isMinimized && (
                 <>
-                  <div className="h-80 overflow-y-auto p-4 space-y-4">
-                    {messages.map((message) => (
-                      <motion.div
-                        key={message.id}
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className={`flex gap-2 ${message.isBot ? "justify-start" : "justify-end"}`}
-                      >
-                        {message.isBot && (
+                  <SimpleBar style={{ maxHeight: '320px' }} className="p-4">
+                    <div className="space-y-4">
+                      {messages.map((message) => (
+                        <motion.div
+                          key={message.id}
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          className={`flex gap-2 ${message.isBot ? "justify-start" : "justify-end"}`}
+                        >
+                          {message.isBot && (
+                            <div className="flex-shrink-0 h-6 w-6 rounded-full bg-primary/10 flex items-center justify-center">
+                              <Bot className="h-3 w-3 text-primary" />
+                            </div>
+                          )}
+                          <div
+                            className={`max-w-xs px-3 py-2 rounded-lg text-sm ${
+                              message.isBot
+                                ? "bg-muted text-foreground"
+                                : "bg-primary text-primary-foreground"
+                            }`}
+                          >
+                            {message.content}
+                          </div>
+                          {!message.isBot && (
+                            <div className="flex-shrink-0 h-6 w-6 rounded-full bg-primary/10 flex items-center justify-center">
+                              <User className="h-3 w-3 text-primary" />
+                            </div>
+                          )}
+                        </motion.div>
+                      ))}
+                      
+                      {isTyping && (
+                        <motion.div
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          className="flex gap-2 justify-start"
+                        >
                           <div className="flex-shrink-0 h-6 w-6 rounded-full bg-primary/10 flex items-center justify-center">
                             <Bot className="h-3 w-3 text-primary" />
                           </div>
-                        )}
-                        <div
-                          className={`max-w-xs px-3 py-2 rounded-lg text-sm ${
-                            message.isBot
-                              ? "bg-muted text-foreground"
-                              : "bg-primary text-primary-foreground"
-                          }`}
-                        >
-                          {message.content}
-                        </div>
-                        {!message.isBot && (
-                          <div className="flex-shrink-0 h-6 w-6 rounded-full bg-primary/10 flex items-center justify-center">
-                            <User className="h-3 w-3 text-primary" />
+                          <div className="bg-muted px-3 py-2 rounded-lg">
+                            <div className="flex gap-1">
+                              <div className="w-2 h-2 bg-primary/60 rounded-full animate-bounce" />
+                              <div className="w-2 h-2 bg-primary/60 rounded-full animate-bounce" style={{ animationDelay: "0.1s" }} />
+                              <div className="w-2 h-2 bg-primary/60 rounded-full animate-bounce" style={{ animationDelay: "0.2s" }} />
+                            </div>
                           </div>
-                        )}
-                      </motion.div>
-                    ))}
-                    
-                    {isTyping && (
-                      <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        className="flex gap-2 justify-start"
-                      >
-                        <div className="flex-shrink-0 h-6 w-6 rounded-full bg-primary/10 flex items-center justify-center">
-                          <Bot className="h-3 w-3 text-primary" />
-                        </div>
-                        <div className="bg-muted px-3 py-2 rounded-lg">
-                          <div className="flex gap-1">
-                            <div className="w-2 h-2 bg-primary/60 rounded-full animate-bounce" />
-                            <div className="w-2 h-2 bg-primary/60 rounded-full animate-bounce" style={{ animationDelay: "0.1s" }} />
-                            <div className="w-2 h-2 bg-primary/60 rounded-full animate-bounce" style={{ animationDelay: "0.2s" }} />
-                          </div>
-                        </div>
-                      </motion.div>
-                    )}
-                    <div ref={messagesEndRef} />
-                  </div>
+                        </motion.div>
+                      )}
+                      <div ref={messagesEndRef} />
+                    </div>
+                  </SimpleBar>
 
                   {/* Input */}
                   <div className="p-4 border-t border-border">

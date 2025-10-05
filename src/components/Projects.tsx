@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import SimpleBar from 'simplebar-react';
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -98,26 +99,28 @@ const Projects = () => {
 
         {/* Filters and Controls */}
         <div className="flex flex-col sm:flex-row gap-4 mb-8">
-          <div className="flex flex-wrap gap-2 flex-1">
-            {categories.map((category) => {
-              const IconComponent = category.icon;
-              return (
-                <Button
-                  key={category.id}
-                  variant={filter === category.id ? "default" : "outline"}
-                  size="sm"
-                  onClick={() => setFilter(category.id)}
-                  className="flex items-center gap-2"
-                >
-                  <IconComponent className="h-4 w-4" />
-                  <span>{category.name}</span>
-                  <Badge variant="secondary" className="ml-1 text-xs">
-                    {category.count}
-                  </Badge>
-                </Button>
-              );
-            })}
-          </div>
+          <SimpleBar style={{ maxHeight: '100px' }} className="flex-1">
+            <div className="flex flex-wrap gap-2 pb-2">
+              {categories.map((category) => {
+                const IconComponent = category.icon;
+                return (
+                  <Button
+                    key={category.id}
+                    variant={filter === category.id ? "default" : "outline"}
+                    size="sm"
+                    onClick={() => setFilter(category.id)}
+                    className="flex items-center gap-2"
+                  >
+                    <IconComponent className="h-4 w-4" />
+                    <span>{category.name}</span>
+                    <Badge variant="secondary" className="ml-1 text-xs">
+                      {category.count}
+                    </Badge>
+                  </Button>
+                );
+              })}
+            </div>
+          </SimpleBar>
           
           <div className="flex gap-2">
             <Button
