@@ -53,8 +53,14 @@
     "@tanstack/form-core": "^0.27.0",
     "@tanstack/react-form": "^0.27.0",
     "@tanstack/react-store": "^0.3.0",
+<<<<<<< HEAD
     "@tanstack/react-ranger": "^0.20.0",
     "@tanstack/react-ranger": "0.0.4",
+=======
+    "@tanstack/react-ranger": "^0.0.6",
+    "@tanstack/react-virtual": "^3.13.12",
+    "@types/three": "^0.160.0",
+>>>>>>> c0e64e9 (updated)
     "@vercel/speed-insights": "^1.2.0",
     "animejs": "^3.2.2",
     "aos": "^2.3.4",
