@@ -12,6 +12,9 @@ import 'aos/dist/aos.css'
 import 'simplebar-react/dist/simplebar.min.css'
 import './index.css'
 import routes from './routes.tsx'
+import { ConvexProvider, ConvexReactClient } from "convex/react";
+
+const convex = new ConvexReactClient(import.meta.env.VITE_CONVEX_URL as string);
 
 // Initialize AOS
 const AOSInit = () => {
