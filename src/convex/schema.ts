@@ -21,6 +21,19 @@ export type Project = {
   createdAt?: string;
 };
 
+export type Task = {
+  _id?: string;
+  title: string;
+  description?: string | null;
+  status?: 'todo' | 'in_progress' | 'completed' | 'archived';
+  dueDate?: string | null; // ISO timestamp
+  assignedTo?: string | null; // user id
+  createdBy?: string | null;
+  createdAt?: string;
+  updatedAt?: string;
+  deleted?: boolean;
+};
+
 // Users collection: store minimal user data if you plan to persist users
 export type User = {
   _id?: string;
