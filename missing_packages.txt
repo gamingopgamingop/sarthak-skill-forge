@@ -2,3 +2,4 @@
     // "@tanstack/react-ranger": "^0.20.0",
     // "@tanstack/react-ranger": "^0.0.6",
     "@tanstack/react-router-devtools": "^1.134.0",
+    "@clerk/clerk-react": "^6.9.2"
