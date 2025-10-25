@@ -14,6 +14,13 @@ import './index.css'
 import routes from './routes.tsx'
 import { ConvexProvider, ConvexReactClient } from "convex/react";
 
+const VITE_CLERK_VITE_CLERK_VITE_CLERK_PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_VITE_CLERK_VITE_CLERK_VITE_CLERK_PUBLISHABLE_KEY;
+
+if (!VITE_CLERK_VITE_CLERK_VITE_CLERK_PUBLISHABLE_KEY) {
+  throw new Error('Add your Clerk Publishable Key to the .env file');
+}
+
+
 const convex = new ConvexReactClient(import.meta.env.VITE_CONVEX_URL as string);
 
 // Initialize AOS
@@ -58,15 +65,10 @@ const AppLoader = () => (
   </div>
 );
 
-const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
-if (!PUBLISHABLE_KEY) {
-  // Throw to surface misconfiguration early
-  throw new Error('Missing VITE_CLERK_PUBLISHABLE_KEY')
-}
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <ClerkProvider publishableKey={PUBLISHABLE_KEY} afterSignOutUrl="/">
+    <ClerkProvider publishableKey={VITE_CLERK_VITE_CLERK_PUBLISHABLE_KEY} afterSignOutUrl="/">
       <QueryClientProvider client={queryClient}>
         <HelmetProvider>
           <ParallaxProvider>
