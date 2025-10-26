@@ -13,9 +13,10 @@
 
   },
   "dependencies": {
+    "classnames": "^2.5.1",
     "axios": "^1.12.2",
     "date-fns": "^4.1.0",
-
+    "bootstrap": "^5.3.8",
     "lodash": "^4.17.21",
     "zustand": "^5.0.8",
     "recoil": "^0.7.7",
@@ -93,7 +94,7 @@
     "react-headroom": "^3.2.1",
     "react-helmet": "^6.1.0",
     "react-helmet-async": "^2.0.5",
-    "react-hook-form": "^7.61.1",
+    "react-hook-form": "^7.65.0",
     "react-icons": "^5.5.0",
     "react-infinite-scroll-component": "^6.1.0",
     "react-lazy-load-image-component": "^1.6.3",
@@ -124,7 +125,7 @@
     "use-analytics": "^1.1.0",
     "vaul": "^0.9.9",
     "wouter": "^3.7.1",
-    "zod": "^3.25.76",
+    "zod": "^4.1.12",
     "@clerk/clerk-react": "^5.53.3",
     "gsap": "^3.13.0",
     "@gsap/react": "^2.1.2",
@@ -137,7 +138,23 @@
     "systemjs": "^6.15.1",
     "@loadable/component": "^5.16.7",
     "appwrite": "^21.2.1",
-    "@supabase/supabase-js": "^2.76.1"
+    "@supabase/supabase-js": "^2.76.1",
+    "msw": "^2.11.6",
+    "react-query-form": "^1.0.0",
+    "yup": "^1.7.1",
+    "formik": "^2.4.6",
+    "react-final-form": "^7.0.0",
+    "uniform": "^0.5.1",
+    "formstate": "^2.1.0",
+    "mobx-react-form": "^6.12.3"
+
+
+
+
+
+
+
+
 
 
 
