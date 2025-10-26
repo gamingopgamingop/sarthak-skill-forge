@@ -1,7 +1,7 @@
-// {
-//   "imports": {
-//     "@react-mf/navbar": "https://localhost:8080/react-mf-navbar.js",
-//     "@react-mf/planets": "https://react.microfrontends.app/planets/2717466e748e53143474beb6baa38e3e5320edd7/react-mf-planets.js",
-//     "@react-mf/things": "https://react.microfrontends.app/things/7f209a1ed9ac9690835c57a3a8eb59c17114bb1d/react-mf-things.js"
-//   }
-// }
+{
+  "imports": {
+    "@react-mf/navbar": "https://localhost:8080/react-mf-navbar.js",
+    "@react-mf/planets": "https://react.microfrontends.app/planets/2717466e748e53143474beb6baa38e3e5320edd7/react-mf-planets.js",
+    "@react-mf/things": "https://react.microfrontends.app/things/7f209a1ed9ac9690835c57a3a8eb59c17114bb1d/react-mf-things.js"
+  }
+}
