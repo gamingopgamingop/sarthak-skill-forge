@@ -167,7 +167,31 @@
     "react-use": "^17.6.0",
     "react-step-builder": "^3.0.6",
     "react-step-wizard": "^5.3.11",
-    "react-hook-form-persist": "^3.0.0"
+    "react-hook-form-persist": "^3.0.0",
+    "react-redux": "^9.2.0",
+    "redux": "^5.0.1",
+    "@reduxjs/toolkit": "^2.9.2",
+    "mobx": "^6.15.0",
+    "mobx-react-lite": "^4.1.1",
+    "jotai": "^2.15.0",
+    "xstate": "^5.23.0",
+    "effector": "^23.4.4",
+    "valtio": "^2.1.8",
+    "nanostores": "^1.0.1",
+    "easy-peasy": "^6.1.0",
+    "overmind": "^28.1.0"
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
