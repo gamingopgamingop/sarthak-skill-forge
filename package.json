@@ -181,7 +181,9 @@
     "easy-peasy": "^6.1.0",
     "overmind": "^28.1.0",
     "jotai-devtools": "^0.13.0",
-    "jotai-immer": "^0.4.1"
+    "jotai-immer": "^0.4.1",
+    "lru-cache": "^11.2.2"
+
 
 
 
