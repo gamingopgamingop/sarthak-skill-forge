@@ -1,4 +1,3 @@
-// vite.config.ts
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
@@ -7,6 +6,7 @@ import viteImageminVheemstra from "@vheemstra/vite-plugin-imagemin";
 import viteImageminOriginal from "vite-plugin-imagemin";
 import imageminMozjpeg from "imagemin-mozjpeg";
 import imageminWebp from "imagemin-webp";
+
 export default defineConfig(({ mode }) => ({
   server: { host: "::", port: 8080 },
 
@@ -14,15 +14,17 @@ export default defineConfig(({ mode }) => ({
     react(),
     mode === "development" && componentTagger(),
 
-    // First plugin: @vheemstra/vite-plugin-imagemin
+    // @vheemstra/vite-plugin-imagemin fixed
     viteImageminVheemstra({
-      gifsicle: { optimizationLevel: 3 },
-      mozjpeg: { progressive: true, quality: 75 },
-      optipng: { optimizationLevel: 7 },
-      webp: { quality: 80 },
+      plugins: {
+        gifsicle: { optimizationLevel: 3 },
+        mozjpeg: { progressive: true, quality: 75 },
+        optipng: { optimizationLevel: 7 },
+        webp: { quality: 80 },
+      },
     }),
 
-    // Second plugin: vite-plugin-imagemin
+    // vite-plugin-imagemin (official)
     viteImageminOriginal({
       gifsicle: { optimizationLevel: 7, interlaced: false },
       optipng: { optimizationLevel: 7 },
