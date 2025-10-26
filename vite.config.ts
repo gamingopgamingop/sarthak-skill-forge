@@ -6,7 +6,7 @@ import { componentTagger } from "lovable-tagger";
 
 
 // Optional: install with `npm install -D vite-plugin-imagemin`
-// import viteImagemin from "vite-plugin-imagemin";
+import viteImagemin from "vite-plugin-imagemin";
 
 export default defineConfig(async ({ mode }) => {
   // Try to load optional plugins only if installed (keeps CI/dev resilient on low disk)
@@ -58,7 +58,7 @@ export default defineConfig(async ({ mode }) => {
     // Optionally compress images during build
     viteImagemin,
     // Uncomment after installing vite-plugin-imagemin
-    /*
+    
     viteImagemin({
       gifsicle: { optimizationLevel: 7, interlaced: false },
       optipng: { optimizationLevel: 7 },
@@ -70,7 +70,6 @@ export default defineConfig(async ({ mode }) => {
         ],
       },
     })
-    */
   ].filter(Boolean),
 
   resolve: {
