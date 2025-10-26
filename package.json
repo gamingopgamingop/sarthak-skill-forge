@@ -117,7 +117,9 @@
     "vaul": "^0.9.9",
     "wouter": "^3.7.1",
     "zod": "^3.25.76",
-    "@clerk/clerk-react": "^5.53.3"
+    "@clerk/clerk-react": "^5.53.3",
+    "gsap": "^3.13.0"
+
 
   },
   "devDependencies": {
