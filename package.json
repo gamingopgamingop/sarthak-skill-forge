@@ -120,7 +120,9 @@
     "@clerk/clerk-react": "^5.53.3",
     "gsap": "^3.13.0",
     "@gsap/react": "^2.1.2",
-    "router5-plugin-browser": "^8.0.1"
+    "router5-plugin-browser": "^8.0.1",
+    "@react-spring/web": "^10.0.3"
+
 
 
 
