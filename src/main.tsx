@@ -69,6 +69,7 @@ const AppLoader = () => (
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <ClerkProvider publishableKey={VITE_CLERK_PUBLISHABLE_KEY} afterSignOutUrl="/">
+    <ConvexProvider client={convex}>
       <QueryClientProvider client={queryClient}>
         <HelmetProvider>
           <ParallaxProvider>
@@ -81,6 +82,7 @@ createRoot(document.getElementById('root')!).render(
           </ParallaxProvider>
         </HelmetProvider>
       </QueryClientProvider>
+      </ConvexProvider>
     </ClerkProvider>
   </StrictMode>,
 )
