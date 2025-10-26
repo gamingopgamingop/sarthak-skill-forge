@@ -11,7 +11,7 @@ import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 import { useVirtualizer } from "@tanstack/react-virtual";
 import { createColumnHelper, flexRender, getCoreRowModel, useReactTable } from "@tanstack/react-table";
 import { useForm } from "@tanstack/react-form";
-import { createStore } from "@tanstack/react-store";
+import { Store } from '@tanstack/store';
 import { useRanger } from "@tanstack/react-ranger";
 import { useMemo, useRef } from "react";
 
