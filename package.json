@@ -183,7 +183,9 @@
     "jotai-devtools": "^0.13.0",
     "jotai-immer": "^0.4.1",
     "lru-cache": "^11.2.2",
-    "webpack-config-single-spa-react": "^8.0.0"
+    "webpack-config-single-spa-react": "^8.0.0",
+    "qiankun": "^2.10.16"
+
 
 
 
