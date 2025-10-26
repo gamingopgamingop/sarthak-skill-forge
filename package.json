@@ -165,6 +165,12 @@
     "react-jsonschema-form": "^1.8.1",
     "debounce": "^2.2.0",
     "react-use": "^17.6.0",
+    "react-step-builder": "^3.0.6",
+    "react-step-wizard": "^5.3.11",
+    "react-hook-form-persist": "^3.0.0"
+
+
+
 
 
 
