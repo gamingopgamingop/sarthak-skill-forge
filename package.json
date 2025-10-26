@@ -64,6 +64,7 @@
     "date-fns": "^3.6.0",
     "embla-carousel-react": "^8.6.0",
     "motion": "^12.23.24",
+    "framer-motion": "^12.23.24",
     "hookrouter": "^1.2.5",
     "input-otp": "^1.4.2",
     "locomotive-scroll": "^4.1.4",
