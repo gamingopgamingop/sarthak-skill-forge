@@ -63,7 +63,7 @@
     "@tanstack/react-store": "^0.3.0",
     "@tanstack/react-ranger": "0.0.4",
     "@tanstack/react-virtual": "^3.13.12",
-    "@types/three": "^0.160.0",
+    "@types/three": "^0.180.0",
     "@vercel/speed-insights": "^1.2.0",
     "animejs": "^3.2.2",
     "aos": "^2.3.4",
@@ -182,6 +182,7 @@
     "overmind": "^28.1.0",
     "jotai-devtools": "^0.13.0",
     "jotai-immer": "^0.4.1"
+
 
 
 
