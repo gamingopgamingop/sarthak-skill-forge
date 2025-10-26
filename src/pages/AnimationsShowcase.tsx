@@ -36,6 +36,7 @@ export default function AnimationsShowcase() {
   const [hasGSAP, setHasGSAP] = useState(false);
   const [hasSpring, setHasSpring] = useState(false);
   const [hasMotion, setHasMotion] = useState(false);
+
   const [hasPopmotion, setHasPopmotion] = useState(false);
   const [hasRTG, setHasRTG] = useState(false);
   const [hasLottie, setHasLottie] = useState(false);
@@ -44,7 +45,7 @@ export default function AnimationsShowcase() {
   useEffect(() => {
     import("gsap").then(() => setHasGSAP(true)).catch(() => {});
     import("@react-spring/web").then(() => setHasSpring(true)).catch(() => {});
-    import("react-motion").then(() => setHasMotion(true)).catch(() => {});
+    import("motion").then(() => setHasMotion(true)).catch(() => {});
     import("popmotion").then(() => setHasPopmotion(true)).catch(() => {});
     import("react-transition-group").then(() => setHasRTG(true)).catch(() => {});
     import("lottie-react").then(() => setHasLottie(true)).catch(() => {});
@@ -124,14 +125,14 @@ export default function AnimationsShowcase() {
         )}
       </Section>
 
-      <Section title="React Motion" docsHref="https://github.com/chenglou/react-motion">
-        <Availability installed={hasMotion} pkg="react-motion" />
+      <Section title="React Motion" docsHref="https://github.com/chenglou/motion">
+        <Availability installed={hasMotion} pkg="motion" />
         {hasMotion ? (
           <React.Suspense fallback={<div>Loading…</div>}>
             <MotionDemo />
           </React.Suspense>
         ) : (
-          <div className="text-sm text-muted-foreground">Install <code className="px-1 rounded bg-muted">react-motion</code> to enable this demo.</div>
+          <div className="text-sm text-muted-foreground">Install <code className="px-1 rounded bg-muted">motion</code> to enable this demo.</div>
         )}
       </Section>
 
