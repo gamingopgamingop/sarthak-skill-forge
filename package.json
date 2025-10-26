@@ -192,7 +192,9 @@
     "@luigi-project/client": "^2.25.1",
     "@luigi-project/core": "^2.25.1",
     "fundamental-styles": "^0.39.11",
-    "@sap-theming/theming-base-content": "^11.32.1"
+    "@sap-theming/theming-base-content": "^11.32.1",
+    "@intentjs/cli": "^0.0.22",
+
 
 
 
