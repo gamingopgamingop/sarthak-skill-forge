@@ -132,7 +132,7 @@
     "systemjs": "^6.15.1",
     "@loadable/component": "^5.16.7",
     "appwrite": "^21.2.1",
-    "@supabase/supabase-js": "^2.76.1",
+    "@supabase/supabase-js": "^2.76.1"
 
 
 
