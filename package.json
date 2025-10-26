@@ -119,7 +119,9 @@
     "zod": "^3.25.76",
     "@clerk/clerk-react": "^5.53.3",
     "gsap": "^3.13.0",
-    "@gsap/react": "^2.1.2"
+    "@gsap/react": "^2.1.2",
+    "router5-plugin-browser": "^8.0.1"
+
 
 
 
