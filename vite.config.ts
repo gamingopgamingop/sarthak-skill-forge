@@ -3,10 +3,16 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
 import { componentTagger } from "lovable-tagger";
+import viteImagemin from '@vheemstra/vite-plugin-imagemin'
+import viteImagemin from "vite-plugin-imagemin";
+
+// The minifiers you want to use:
+import imageminMozjpeg from 'imagemin-mozjpeg'
+import imageminWebp from 'imagemin-webp'
+
 
 
 // Optional: install with `npm install -D vite-plugin-imagemin`
-import viteImagemin from "vite-plugin-imagemin";
 
 export default defineConfig(async ({ mode }) => {
   // Try to load optional plugins only if installed (keeps CI/dev resilient on low disk)
