@@ -22,7 +22,7 @@
     "recoil": "^0.7.7",
     "@vheemstra/vite-plugin-imagemin": "^2.2.1",
     "convex": "^1.28.0",
-    "@hookform/resolvers": "^3.10.0",
+    "@hookform/resolvers": "^5.2.2",
     "@radix-ui/react-accordion": "^1.2.11",
     "@radix-ui/react-alert-dialog": "^1.1.14",
     "@radix-ui/react-aspect-ratio": "^1.1.7",
@@ -150,7 +150,30 @@
     "joi": "^18.0.1",
     "valibot": "^1.1.0",
     "superstruct": "^2.0.2",
-    "vest": "^5.4.6"
+    "vest": "^5.4.6",
+    "@mui/icons-material": "^7.3.4",
+    "@mui/lab": "^7.0.1-beta.18",
+    "@mui/material": "^7.3.4",
+    "@mui/x-date-pickers": "^8.15.0",
+    "@mui/styled-engine-sc": "^7.3.3",
+    "styled-components": "^6.1.19",
+    "antd": "^5.27.6",
+    "@chakra-ui/react": "^3.28.0",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "react-bootstrap": "^2.10.10",
+    "react-jsonschema-form": "^1.8.1",
+    "debounce": "^2.2.0",
+    "react-use": "^17.6.0",
+
+
+
+
+
+
+
+
+
 
 
 
