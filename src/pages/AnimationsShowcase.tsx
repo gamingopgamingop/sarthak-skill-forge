@@ -125,14 +125,16 @@ export default function AnimationsShowcase() {
         )}
       </Section>
 
-      <Section title="React Motion" docsHref="https://github.com/chenglou/motion">
-        <Availability installed={hasMotion} pkg="motion" />
+      <Section title="framer-motion" docsHref="https://www.framer.com/motion/">
+        <Availability installed={hasMotion} pkg="framer-motion" />
         {hasMotion ? (
           <React.Suspense fallback={<div>Loading…</div>}>
             <MotionDemo />
           </React.Suspense>
         ) : (
-          <div className="text-sm text-muted-foreground">Install <code className="px-1 rounded bg-muted">motion</code> to enable this demo.</div>
+          <div className="text-sm text-muted-foreground">
+            Install <code className="px-1 rounded bg-muted">framer-motion</code> to enable this demo.
+          </div>
         )}
       </Section>
 
@@ -182,14 +184,15 @@ const SpringDemo = React.lazy(async () => {
 });
 
 const MotionDemo = React.lazy(async () => {
-  const motion = await import("react-motion");
-  const { Motion, spring } = motion as any;
+  const { motion } = await import("framer-motion");
   const Comp: React.FC = () => (
-    <Motion defaultStyle={{ x: 0 }} style={{ x: spring(100) }}>
-      {(val: any) => (
-        <div style={{ transform: `translateX(${val.x}px)` }} className="w-24 h-10 rounded bg-secondary/30 flex items-center justify-center">Motion</div>
-      )}
-    </Motion>
+    <motion.div
+      animate={{ x: [0, 100, 0] }}
+      transition={{ repeat: Infinity, repeatType: "loop", duration: 1.5 }}
+      className="w-24 h-10 rounded bg-secondary/30 flex items-center justify-center"
+    >
+      Motion
+    </motion.div>
   );
   return { default: Comp };
 });
