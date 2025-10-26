@@ -123,7 +123,9 @@
     "gsap": "^3.13.0",
     "@gsap/react": "^2.1.2",
     "router5-plugin-browser": "^8.0.1",
-    "@react-spring/web": "^10.0.3"
+    "@react-spring/web": "^10.0.3",
+    "popmotion": "^11.0.5"
+
 
 
 
