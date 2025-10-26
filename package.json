@@ -184,7 +184,10 @@
     "jotai-immer": "^0.4.1",
     "lru-cache": "^11.2.2",
     "webpack-config-single-spa-react": "^8.0.0",
-    "qiankun": "^2.10.16"
+    "qiankun": "^2.10.16",
+    "@rspack/cli": "^1.5.8",
+    "@rspack/core": "^1.5.8"
+
 
 
 
