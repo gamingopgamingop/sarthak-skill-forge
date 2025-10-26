@@ -124,7 +124,9 @@
     "@gsap/react": "^2.1.2",
     "router5-plugin-browser": "^8.0.1",
     "@react-spring/web": "^10.0.3",
-    "popmotion": "^11.0.5"
+    "popmotion": "^11.0.5",
+    "lottie-react": "^2.4.1"
+
 
 
 
