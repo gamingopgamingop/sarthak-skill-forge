@@ -221,7 +221,25 @@
     "vite-plugin-sitemap": "^0.8.2",
     "eslint-config-prettier": "^10.1.8",
     "prettier": "^3.6.2",
-    "husky": "^9.1.7"
+    "husky": "^9.1.7",
+    "vite-plugin-pwa": "^1.1.0",
+    "vite-plugin-svgr": "^4.5.0",
+    "@tailwindcss/forms": "^0.5.10",
+    "@tailwindcss/aspect-ratio": "^0.4.2",
+    "react-error-boundary": "^6.0.0",
+    "vitest": "^4.0.4",
+    "@testing-library/react": "^16.3.0",
+    "cypress": "^15.5.0",
+    "dotenv": "^17.2.3"
+
+
+
+
+
+
+
+
+
 
 
 
