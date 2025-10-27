@@ -1,7 +1,7 @@
-@tailwind base;
+/* @tailwind base;
 @tailwind components;
-@tailwind utilities;
-/* @import "tailwindcss"; */
+@tailwind utilities; */
+@import "tailwindcss";
 
 /* Sarthak's Skill Forge Design System - Modern Tech Portfolio */
 
