@@ -199,6 +199,8 @@
     "@sap-theming/theming-base-content": "^11.32.1",
     "@intentjs/cli": "^0.0.22",
     "primereact": "^10.9.7",
+    "primeflex": "^4.0.0",
+    "primeicons": "^7.0.0",
     "swiper": "^12.0.3",
     "@tailwindcss/vite": "^4.1.16",
     "tailwindcss": "^4.1.16",
