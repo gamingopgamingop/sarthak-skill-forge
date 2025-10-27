@@ -214,7 +214,10 @@
     "yarn": "^1.22.22",
     "ws": "^8.18.3",
     "socket.io-client": "^4.8.1",
-    "@react-three/test-renderer": "^9.1.0"
+    "@react-three/test-renderer": "^9.1.0",
+    "engine.io": "^6.6.4",
+    "engine.io-client": "^6.6.3"
+
 
 
 
