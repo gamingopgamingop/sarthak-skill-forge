@@ -9,7 +9,9 @@
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
     "preview": "vite preview",
-    "build:legacy": "npm install --legacy-peer-deps && react-scripts build"
+    "build:legacy": "npm install --legacy-peer-deps && react-scripts build",
+    "postinstall": "npm install tailwindcss@latest @tailwindcss/postcss@latest --force"
+
 
   },
   "dependencies": {
