@@ -232,7 +232,9 @@
     "rimraf": "^6.0.1",
     "cross-env": "^10.1.0",
     "@sentry/react": "^10.22.0",
-    "react-i18next": "^16.2.1"
+    "react-i18next": "^16.2.1",
+    "babel-plugin-react-compiler": "^1.0.0"
+
   },
   "devDependencies": {
     "@babel/core": "^7.28.5",
