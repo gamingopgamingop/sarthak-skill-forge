@@ -217,7 +217,15 @@
     "@react-three/test-renderer": "^9.1.0",
     "engine.io": "^6.6.4",
     "engine.io-client": "^6.6.3",
-    "react-aria-components": "^1.13.0"
+    "react-aria-components": "^1.13.0",
+    "vite-plugin-sitemap": "^0.8.2",
+    "eslint-config-prettier": "^10.1.8",
+    "prettier": "^3.6.2",
+    "husky": "^9.1.7"
+
+
+
+
 
 
 
