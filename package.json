@@ -10,7 +10,9 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "build:legacy": "npm install --legacy-peer-deps && react-scripts build",
-    "postinstall": "npm install tailwindcss@latest @tailwindcss/postcss@latest --force"
+    "postinstall": "npm install tailwindcss@latest @tailwindcss/postcss@latest --force",
+    "preinstall": "npm config set legacy-peer-deps true && npm config set force true"
+
 
 
   },
