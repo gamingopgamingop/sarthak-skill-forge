@@ -303,7 +303,9 @@
     "@tanstack/config": "^0.22.0",
     "@tanstack/typedoc-config": "^0.3.0",
     "@tanstack/vite-config": "^0.4.0",
-    "@tanstack/publish-config": "^0.2.1"
+    "@tanstack/publish-config": "^0.2.1",
+    "daisyui": "^5.3.10"
+
 
 
 
