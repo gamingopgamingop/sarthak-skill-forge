@@ -280,7 +280,9 @@
     "deno": "^2.5.4",
     "pnpm": "^10.19.0",
     "yarn": "^1.22.22",
-    "@react-three/test-renderer": "^9.1.0"
+    "@react-three/test-renderer": "^9.1.0",
+    "parcel": "^2.16.0"
+
   },
     "optionalDependencies": {
     "bufferutil": "^4.0.9",
