@@ -13,6 +13,8 @@ import 'simplebar-react/dist/simplebar.min.css'
 import './index.css'
 import routes from './routes.tsx'
 import { ConvexProvider, ConvexReactClient } from "convex/react";
+import { ErrorBoundary } from 'react-error-boundary'
+
 
 const VITE_CLERK_PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 
@@ -22,6 +24,20 @@ if (!VITE_CLERK_PUBLISHABLE_KEY) {
 
 
 const convex = new ConvexReactClient(import.meta.env.VITE_CONVEX_URL as string);
+
+const ErrorFallback = ({ error }: { error: Error }) => (
+  <div className="flex flex-col items-center justify-center h-screen text-center text-red-500">
+    <h1 className="text-2xl font-bold mb-2">Oops! Something went wrong 😬</h1>
+    <pre className="text-sm bg-black/10 p-3 rounded">{error.message}</pre>
+    <button
+      onClick={() => window.location.reload()}
+      className="mt-4 px-4 py-2 bg-primary text-white rounded hover:bg-primary/80"
+    >
+      Reload Page
+    </button>
+  </div>
+)
+
 
 // Initialize AOS
 const AOSInit = () => {
@@ -75,7 +91,9 @@ createRoot(document.getElementById('root')!).render(
           <ParallaxProvider>
             <AOSInit />
             <Suspense fallback={<AppLoader />}>
-              <RouterProvider router={routes} />
+              <ErrorBoundary FallbackComponent={ErrorFallback}>
+                <RouterProvider router={routes} />
+              </ErrorBoundary>
             </Suspense>
             <SpeedInsights />
             <ReactQueryDevtools initialIsOpen={false} />
