@@ -1,11 +1,14 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
+import tsConfigPaths from 'vite-tsconfig-paths'
 import { componentTagger } from "lovable-tagger";
 import tailwindcss from '@tailwindcss/vite'
+import viteReact from '@vitejs/plugin-react'
 
 import viteImageminVheemstra from "@vheemstra/vite-plugin-imagemin";
 import viteImageminOriginal from "vite-plugin-imagemin";
+import { tanstackStart } from '@tanstack/react-start/plugin/vite'
 
 import imageminMozjpeg from "imagemin-mozjpeg";
 import imageminWebp from "imagemin-webp";
@@ -21,6 +24,10 @@ export default defineConfig(({ mode }) => ({
   plugins: [
     react(),
     tailwindcss(),
+    tsConfigPaths(),
+    tanstackStart(),
+    viteReact(),
+
 
     mode === "development" && componentTagger(),
 
