@@ -18,3 +18,6 @@ export async function getData() {
  
   return res.json()
 }
+
+// npm install server-only
+// npm i next@latest
