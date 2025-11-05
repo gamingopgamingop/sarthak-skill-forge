@@ -10,13 +10,25 @@
 //   const filters = (await searchParams).filters
 // }
 
-import Modal from './ui/modal'
-import Cart from './ui/cart'
+// import Modal from './ui/modal'
+// import Cart from './ui/cart'
+ 
+// export default function Page() {
+//   return (
+//     <Modal>
+//       <Cart />
+//     </Modal>
+//   )
+// }
+
+import Carousel from './carousel'
  
 export default function Page() {
   return (
-    <Modal>
-      <Cart />
-    </Modal>
+    <div>
+      <p>View pictures</p>
+      {/*  Works, since Carousel is a Client Component */}
+      <Carousel />
+    </div>
   )
 }
