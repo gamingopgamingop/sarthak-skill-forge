@@ -1,3 +1,5 @@
+/// <reference types="vite/client" />
+
 import { QueryClient } from "@tanstack/react-query";
 import { createRootRouteWithContext } from "@tanstack/react-router";
 import { Outlet, Scripts, HeadContent } from "@tanstack/react-router";
