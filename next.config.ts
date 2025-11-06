@@ -5,7 +5,6 @@ const nextConfig: NextConfig = {
   
   compiler: {
     runAfterProductionCompile: async ({ distDir, projectDir }) => {
-      // Your custom code here
     },
     removeConsole: true,
     // removeConsole: { exclude: ['error'] }, // optional
