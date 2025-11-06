@@ -37,3 +37,14 @@ export default function Page() {
 export default function Page() {
   return <Image src="" alt="" />
 }
+
+export default function Page() {
+  return (
+    <Image
+      src="/profile.png"
+      alt="Picture of the author"
+      width={500}
+      height={500}
+    />
+  )
+}
