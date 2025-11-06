@@ -3,6 +3,10 @@ import type { NextConfig } from 'next'
 const nextConfig: NextConfig = {
   cacheComponents: true,
   compiler: {
+    removeConsole: true,
+    // removeConsole: {
+    //   exclude: ['error'],
+    // },
     styledComponents: true,
     reactRemoveProperties: true,
     // reactRemoveProperties: { properties: ['^data-custom$'] },
@@ -12,6 +16,11 @@ const nextConfig: NextConfig = {
       language: 'typescript',
       eagerEsModules: false,
     },
+    {
+    "compilerOptions": {
+        "experimentalDecorators": true
+  }
+}
   },
 }
 
