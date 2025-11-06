@@ -2,7 +2,11 @@ import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
   cacheComponents: true,
+  
   compiler: {
+    runAfterProductionCompile: async ({ distDir, projectDir }) => {
+      // Your custom code here
+    },
     removeConsole: true,
     // removeConsole: { exclude: ['error'] }, // optional
     styledComponents: true,
