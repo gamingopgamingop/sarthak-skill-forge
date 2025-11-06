@@ -32,6 +32,7 @@ import ThemeProvider from './theme-provider'
 import './global.css'
 import { Geist , Roboto} from 'next/font/google'
 import localFont from 'next/font/local'
+import type { Metadata } from 'next'
 
 const roboto = localFont({
   src: [
@@ -133,5 +134,10 @@ export default function RootLayout({
     </html>
   )
 }
-If y
+export const metadata: Metadata = {
+  title: 'My Blog',
+  description: '...',
+}
+ 
+export default function Layout() {}
 
