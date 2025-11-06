@@ -5,6 +5,7 @@ const nextConfig: NextConfig = {
   compiler: {
     styledComponents: true,
     reactRemoveProperties: true,
+    // reactRemoveProperties: { properties: ['^data-custom$'] },
     relay: {
       src: './',
       artifactDirectory: './__generated__',
