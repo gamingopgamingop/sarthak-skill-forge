@@ -4,24 +4,30 @@ const nextConfig: NextConfig = {
   cacheComponents: true,
   compiler: {
     removeConsole: true,
-    // removeConsole: {
-    //   exclude: ['error'],
-    // },
+    // removeConsole: { exclude: ['error'] }, // optional
     styledComponents: true,
     reactRemoveProperties: true,
-    // reactRemoveProperties: { properties: ['^data-custom$'] },
+    // reactRemoveProperties: { properties: ['^data-custom$'] }, // optional
     relay: {
       src: './',
       artifactDirectory: './__generated__',
       language: 'typescript',
       eagerEsModules: false,
     },
-    {
-    "compilerOptions": {
-        "experimentalDecorators": true
-  }
-}
   },
+    images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 's3.amazonaws.com',
+        port: '',
+        pathname: '/my-bucket/**',
+        search: '',
+      },
+    ],
+  },
+
 }
+
 
 export default nextConfig
