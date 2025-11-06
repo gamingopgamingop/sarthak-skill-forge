@@ -14,6 +14,7 @@
     "preinstall": "npm config set legacy-peer-deps true && npm config set force true"
   },
   "dependencies": {
+    "next": "^16.0.1",
     "socket.io": "^4.8.1",
     "classnames": "^2.5.1",
     "axios": "^1.12.2",
