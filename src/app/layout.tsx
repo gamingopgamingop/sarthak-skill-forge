@@ -30,6 +30,7 @@
 
 import ThemeProvider from './theme-provider'
 import './global.css'
+import { Geist } from 'next/font/google'
 
 export default function RootLayout({
   children,
@@ -41,6 +42,20 @@ export default function RootLayout({
       <body>
         <ThemeProvider>{children}</ThemeProvider>
       </body>
+    </html>
+  )
+}
+
+import { Geist } from 'next/font/google'
+ 
+const geist = Geist({
+  subsets: ['latin'],
+})
+ 
+export default function Layout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en" className={geist.className}>
+      <body>{children}</body>
     </html>
   )
 }
