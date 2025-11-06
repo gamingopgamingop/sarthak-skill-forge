@@ -4,6 +4,8 @@ const nextConfig: NextConfig = {
   cacheComponents: true,
   compiler: {
     styledComponents: true,
+    reactRemoveProperties: true,
+
   },
 }
 
