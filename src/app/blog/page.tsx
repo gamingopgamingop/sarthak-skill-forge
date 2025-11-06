@@ -2,6 +2,7 @@
 import { getPosts } from '@/lib/posts'
 import { Post } from '@/ui/post'
 import { db, posts } from '@/lib/db'
+import type { Metadata, ResolvingMetadata } from 'next'
 
 export default async function Page() {
   const posts = await getPosts()
@@ -37,3 +38,27 @@ export default async function Page() {
     </ul>
   )
 }
+
+type Props = {
+  params: Promise<{ slug: string }>
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
+}
+ 
+export async function generateMetadata(
+  { params, searchParams }: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const slug = (await params).slug
+ 
+  // fetch post information
+  const post = await fetch(`https://api.vercel.app/blog/${slug}`).then((res) =>
+    res.json()
+  )
+ 
+  return {
+    title: post.title,
+    description: post.description,
+  }
+}
+ 
+export default function Page({ params, searchParams }: Props) {}
