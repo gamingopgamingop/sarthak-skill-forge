@@ -30,7 +30,7 @@
 
 import ThemeProvider from './theme-provider'
 import './global.css'
-import { Geist } from 'next/font/google'
+import { Geist , Roboto} from 'next/font/google'
 
 export default function RootLayout({
   children,
@@ -74,3 +74,21 @@ export default function RootLayout({
     </html>
   )
 }
+
+const roboto = Roboto({
+  weight: '400',
+  subsets: ['latin'],
+})
+ 
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <html lang="en" className={roboto.className}>
+      <body>{children}</body>
+    </html>
+  )
+}
+
