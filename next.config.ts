@@ -5,7 +5,12 @@ const nextConfig: NextConfig = {
   compiler: {
     styledComponents: true,
     reactRemoveProperties: true,
-
+    relay: {
+      src: './',
+      artifactDirectory: './__generated__',
+      language: 'typescript',
+      eagerEsModules: false,
+    },
   },
 }
 
