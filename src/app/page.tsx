@@ -22,7 +22,8 @@
 // }
 
 import Carousel from './carousel'
- 
+import Image from 'next/image'
+
 export default function Page() {
   return (
     <div>
@@ -31,4 +32,8 @@ export default function Page() {
       <Carousel />
     </div>
   )
+}
+
+export default function Page() {
+  return <Image src="" alt="" />
 }
