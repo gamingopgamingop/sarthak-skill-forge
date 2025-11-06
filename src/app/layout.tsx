@@ -29,7 +29,8 @@
 // }
 
 import ThemeProvider from './theme-provider'
- 
+import './global.css'
+
 export default function RootLayout({
   children,
 }: {
