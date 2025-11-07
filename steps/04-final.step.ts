@@ -1,40 +1,54 @@
 import { z } from 'zod'
  
+// Final step to complete the app - TypeScript
 export const config = {
   type: 'event',
-  name: 'NotificationHandler',
-  description: 'Send notifications after Python processing',
-  subscribes: ['python.done'],
-  emits: ['notification.sent'],
+  name: 'AppFinalizer',
+  description: 'Complete the basic app and log final results',
+  subscribes: ['notification.sent'],
+  emits: ['app.completed'],
   input: z.object({
     id: z.number(),
-    python_message: z.string(),
+    message: z.string(),
     processed_by: z.array(z.string()),
-    processing_time: z.number(),
-    analysis: z.record(z.unknown()).optional()
+    sent_at: z.string(),
+    processing_time: z.number()
   }),
   flows: ['data-processing']
 } as const
  
 export const handler = async (input: any, { logger, emit }: any) => {
-  logger.info('📧 Sending notifications after Python processing', { id: input.id })
+  logger.info('🏁 Finalizing app', { 
+    notificationId: input.id,
+    message: input.message 
+  })
   
-  // Simulate sending notifications (email, slack, etc.)
-  const notification = {
-    id: input.id,
-    message: `Notification: ${input.python_message}`,
-    processed_by: input.processed_by,
-    sent_at: new Date().toISOString()
+  // Create final app summary
+  const summary = {
+    appId: input.id,
+    status: 'completed',
+    completed_at: new Date().toISOString(),
+    steps_executed: [
+      'app-starter',
+      'app-bridge', 
+      'python-processor',
+      'notification-handler',
+      'app-finalizer'
+    ],
+    result: input.message
   }
  
-  // Send notification data to final step
+  // Send to JavaScript summary generator
   await emit({
-    topic: 'notification.sent',
+    topic: 'app.completed',
     data: {
-      ...notification,
-      processing_time: input.processing_time
+      ...summary,
+      total_processing_time: input.processing_time
     }
   })
  
-  logger.info('✅ Notifications sent successfully', { id: input.id })
+  logger.info('✅ App finalized successfully', { 
+    appId: input.id,
+    totalSteps: summary.steps_executed.length
+  })
 }
