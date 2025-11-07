@@ -1,158 +1,81 @@
 import { z } from "zod";
-import { EventConfig, Handlers } from "motia";
-import { WebClient } from "@slack/web-api";
+import { ApiRouteConfig, Handlers } from "motia";
+import { createHmac } from "crypto";
  
-const slack = new WebClient(process.env.SLACK_BOT_TOKEN);
- 
-export const config: EventConfig = {
-  type: "event",
-  name: "SlackNotifier",
-  description: "Sends interactive Slack messages for human review",
-  subscribes: ["content.needs.review"],
-  emits: ["slack.notification.sent"],
-  input: z.object({
-    submissionId: z.string(),
-    userId: z.string(),
-    overallScore: z.number(),
-    textAnalysis: z.string(),
-    imageAnalysis: z.string(),
-    decision: z.string(),
-    reason: z.string(),
-    priority: z.enum(["low", "medium", "high"]),
-    routedAt: z.string(),
-  }),
+export const config: ApiRouteConfig = {
+  type: "api",
+  name: "SlackWebhook",
+  description: "Handles Slack interactive button responses",
+  path: "/slack/webhook",
+  method: "POST",
+  emits: ["slack.decision.received"],
   flows: ["content-moderation"],
 };
  
-export const handler: Handlers["SlackNotifier"] = async (
-  input,
+export const handler: Handlers["SlackWebhook"] = async (
+  req,
   { logger, emit }
 ) => {
-  const { submissionId, userId, overallScore, textAnalysis, imageAnalysis, priority } = input;
-  
-  logger.info("Sending Slack notification for review", { 
-    submissionId, 
-    priority,
-    userId 
+  // Verify Slack signature
+  const signature = req.headers["x-slack-signature"] as string;
+  const timestamp = req.headers["x-slack-request-timestamp"] as string;
+  const body = req.body;
+ 
+  if (!verifySlackSignature(signature, timestamp, body)) {
+    logger.error("Invalid Slack signature");
+    return { status: 401, body: { error: "Unauthorized" } };
+  }
+ 
+  const payload = JSON.parse(body.payload);
+  const { actions, user, message } = payload;
+ 
+  if (!actions || actions.length === 0) {
+    return { status: 200, body: { text: "No action received" } };
+  }
+ 
+  const action = actions[0];
+  const submissionId = action.value;
+  const decision = action.action_id.replace("_content", "");
+  const moderatorId = user.id;
+  const moderatorName = user.name;
+ 
+  logger.info("Slack decision received", {
+    submissionId,
+    decision,
+    moderatorId,
+    moderatorName,
   });
  
-  // Determine channel based on priority
-  let channel: string;
-  switch (priority) {
-    case "high":
-      channel = process.env.SLACK_CHANNEL_URGENT!;
-      break;
-    case "medium":
-      channel = process.env.SLACK_CHANNEL_ESCALATED!;
-      break;
-    default:
-      channel = process.env.SLACK_CHANNEL_MODERATION!;
-  }
+  await emit({
+    topic: "slack.decision.received",
+    data: {
+      submissionId,
+      decision,
+      moderatorId,
+      moderatorName,
+      messageTs: message.ts,
+      decidedAt: new Date().toISOString(),
+    },
+  });
  
-  // Create interactive message with buttons
-  const message = {
-    channel,
-    text: `Content Moderation Review Required`,
-    blocks: [
-      {
-        type: "header",
-        text: {
-          type: "plain_text",
-          text: `🚨 Content Review - ${priority.toUpperCase()} Priority`,
-        },
-      },
-      {
-        type: "section",
-        fields: [
-          {
-            type: "mrkdwn",
-            text: `*Submission ID:*\n${submissionId}`,
-          },
-          {
-            type: "mrkdwn",
-            text: `*User ID:*\n${userId}`,
-          },
-          {
-            type: "mrkdwn",
-            text: `*Risk Score:*\n${(overallScore * 100).toFixed(1)}%`,
-          },
-          {
-            type: "mrkdwn",
-            text: `*Priority:*\n${priority.toUpperCase()}`,
-          },
-        ],
-      },
-      {
-        type: "section",
-        text: {
-          type: "mrkdwn",
-          text: `*AI Analysis:*\n${textAnalysis || imageAnalysis || "No analysis available"}`,
-        },
-      },
-      {
-        type: "actions",
-        elements: [
-          {
-            type: "button",
-            text: {
-              type: "plain_text",
-              text: "✅ Approve",
-            },
-            style: "primary",
-            action_id: "approve_content",
-            value: submissionId,
-          },
-          {
-            type: "button",
-            text: {
-              type: "plain_text",
-              text: "❌ Reject",
-            },
-            style: "danger",
-            action_id: "reject_content",
-            value: submissionId,
-          },
-          {
-            type: "button",
-            text: {
-              type: "plain_text",
-              text: "⚠️ Escalate",
-            },
-            action_id: "escalate_content",
-            value: submissionId,
-          },
-        ],
-      },
-    ],
+  // Update the original message to show decision
+  const responseMessage = `✅ Decision recorded: ${decision.toUpperCase()} by ${moderatorName}`;
+  
+  return {
+    status: 200,
+    body: {
+      text: responseMessage,
+      replace_original: false,
+    },
   };
- 
-  try {
-    const result = await slack.chat.postMessage(message);
-    
-    logger.info("Slack notification sent successfully", {
-      submissionId,
-      channel,
-      messageTs: result.ts,
-    });
- 
-    await emit({
-      topic: "slack.notification.sent",
-      data: {
-        submissionId,
-        userId,
-        channel,
-        messageTs: result.ts,
-        priority,
-        sentAt: new Date().toISOString(),
-      },
-    });
- 
-  } catch (error) {
-    logger.error("Failed to send Slack notification", {
-      error,
-      submissionId,
-      channel,
-    });
-    throw error;
-  }
 };
+ 
+function verifySlackSignature(signature: string, timestamp: string, body: string): boolean {
+  const signingSecret = process.env.SLACK_SIGNING_SECRET!;
+  const baseString = `v0:${timestamp}:${body}`;
+  const expectedSignature = `v0=${createHmac("sha256", signingSecret)
+    .update(baseString)
+    .digest("hex")}`;
+  
+  return signature === expectedSignature;
+}
