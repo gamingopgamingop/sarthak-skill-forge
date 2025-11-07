@@ -11,8 +11,18 @@
     "preview": "vite preview",
     "build:legacy": "npm install --legacy-peer-deps && react-scripts build",
     "postinstall": "npm install tailwindcss@latest @tailwindcss/postcss@latest --force",
-    "preinstall": "npm config set legacy-peer-deps true && npm config set force true"
+    "preinstall": "npm config set legacy-peer-deps true && npm config set force true",
+    "postinstall@motia": "motia install",
+    "dev@motia": "motia dev",
+    "generate-types": "motia generate-types",
+    "build@motia": "motia build",
+    "clean": "rm -rf dist node_modules python_modules .motia .mermaid"
+
   },
+    "keywords": [
+    "motia"
+  ],
+
   "dependencies": {
     "next": "^16.0.1",
     "socket.io": "^4.8.1",
@@ -282,7 +292,14 @@
     "pnpm": "^10.19.0",
     "yarn": "^1.22.22",
     "@react-three/test-renderer": "^9.1.0",
-    "parcel": "^2.16.0"
+    "parcel": "^2.16.0",
+    "@motiadev/core": "^0.9.0-beta.145",
+    "@motiadev/plugin-endpoint": "^0.9.0-beta.145",
+    "@motiadev/plugin-logs": "^0.9.0-beta.145",
+    "@motiadev/plugin-observability": "^0.9.0-beta.145",
+    "@motiadev/plugin-states": "^0.9.0-beta.145",
+    "motia": "^0.9.0-beta.145"
+
 
   },
     "optionalDependencies": {
