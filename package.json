@@ -16,7 +16,9 @@
     "dev@motia": "motia dev",
     "generate-types": "motia generate-types",
     "build@motia": "motia build",
-    "clean": "rm -rf dist node_modules python_modules .motia .mermaid"
+    "clean": "rm -rf dist node_modules python_modules .motia .mermaid",
+    "build:vercel": "npm install --legacy-peer-deps --force && vite build"
+
 
   },
     "keywords": [
