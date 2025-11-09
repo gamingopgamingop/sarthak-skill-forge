@@ -1,5 +1,15 @@
-export default {
-  plugins: {
-    '@tailwindcss/postcss': {},
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "jsx": "react-jsx",
+    "strict": true,
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true
   },
+  "include": ["src"],
+  "exclude": ["dist", "node_modules"]
 }
