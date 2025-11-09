@@ -38,3 +38,19 @@ export const handler = async (input: any, { logger, emit }: any) => {
  
   logger.info('✅ Notifications sent successfully', { id: input.id })
 }
+
+ 
+export const config: EventConfig = {
+  name: 'Notify',
+  type: 'event',
+  subscribes: ['order.created'],
+  input: z.object({
+    orderId: z.string(),
+    amount: z.number(),
+  }),
+}
+ 
+export const handler: Handlers['Notify'] = async (input, { logger }) => {
+  logger.info('Order received', { orderId: input.orderId })
+  // Send notification...
+}
