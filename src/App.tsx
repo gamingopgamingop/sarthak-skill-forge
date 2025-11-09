@@ -24,11 +24,16 @@ import GalleryPage from "@/pages/GalleryPage";
 import NotFound from "@/pages/errors/NotFound";
 import { useQuery } from "convex/react";
 import { api } from "../convex/_generated/api";
+import { MotiaStreamProvider } from '@motiadev/stream-client-react'
+import { useStreamGroup } from '@motiadev/stream-client-react'
+import { useTodoEndpoints, type Todo } from './hook/useTodoEndpoints'
 
 
 const App = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  const { createTodo, updateTodo, deleteTodo } = useTodoEndpoints()
+
 
   useEffect(() => {
     if (location.pathname === "/") {
@@ -36,7 +41,19 @@ const App = () => {
     }
   }, [location.pathname, navigate]);
 
+    const { data: todos } = useStreamGroup<Todo>({ 
+    groupId: 'inbox', 
+    streamName: 'todo' 
+  })
+ 
+  const handleAddTodo = async (description: string) => {
+    await createTodo(description)
+    // No need to manually update UI - stream does it automatically!
+  }
+
+
   return (
+    <MotiaStreamProvider address="ws://localhost:3000">
       <TooltipProvider>
       <Toaster />
       <Sonner />
@@ -64,6 +81,8 @@ const App = () => {
         </div>
       </SimpleBar>
     </TooltipProvider>
+  </MotiaStreamProvider>
+
   );
 };
 
