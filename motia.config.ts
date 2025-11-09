@@ -47,6 +47,24 @@ export default config({
         },
       },
     }),
+    streams: new RedisStreamAdapterManager({
+      host: process.env.REDIS_HOST || 'localhost',
+      port: parseInt(process.env.REDIS_PORT || '6379'),
+      password: process.env.REDIS_PASSWORD,
+      username: process.env.REDIS_USERNAME,
+      database: parseInt(process.env.REDIS_DATABASE || '0'),
+      keyPrefix: process.env.STREAM_KEY_PREFIX || 'motia:stream:',
+      socket: {
+        connectTimeout: 10000,
+        reconnectStrategy: (retries) => {
+          if (retries > 20) {
+            return new Error('Too many retries')
+          }
+          return Math.min(retries * 50, 2000)
+        },
+      },
+    }),
+
 
 
 })
