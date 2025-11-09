@@ -1,3 +1,11 @@
+export const config: EventConfig = {
+  type: 'event',
+  name: 'ProcessFoodOrder',
+  subscribes: ['process-food-order'],
+  emits: ['notification'],
+  flows: ['basic-tutorial']
+}
+
 export const handler: Handlers['ProcessOrder'] = async (input, { logger }) => {
   // Simple message
   logger.info('Processing order')
@@ -7,6 +15,8 @@ export const handler: Handlers['ProcessOrder'] = async (input, { logger }) => {
     orderId: input.id,
     total: input.total
   })
+
+  
  
   // Errors
   try {
