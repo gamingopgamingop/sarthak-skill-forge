@@ -1,0 +1,24 @@
+{
+  "name": "@motiadev/plugin-example",
+  "version": "0.8.2-beta.139",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./plugin": {
+      "types": "./dist/plugin.d.ts",
+      "import": "./dist/plugin.js",
+      "require": "./dist/plugin.cjs"
+    },
+    "./styles.css": "./dist/styles.css"
+  },
+  "peerDependencies": {
+    "@motiadev/ui": "workspace:*",
+    "@motiadev/core": "workspace:*"
+  }
+}
