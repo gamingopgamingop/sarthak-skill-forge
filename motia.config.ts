@@ -8,6 +8,8 @@ import { RedisStateAdapter } from '@motiadev/adapter-redis-state'
 import { RedisStreamAdapterManager } from '@motiadev/adapter-redis-streams'
 import { RabbitMQEventAdapter } from '@motiadev/adapter-rabbitmq-events'
 import { RedisCronAdapter } from '@motiadev/adapter-redis-cron'
+import { MemoryStreamAdapter } from '@motiadev/core'
+
 
 export default config({
   plugins: [
