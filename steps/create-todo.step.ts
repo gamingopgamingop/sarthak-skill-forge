@@ -49,3 +49,20 @@ export const handler: Handlers['CreateTodo'] = async (req, { logger, streams }) 
  
   return { status: 200, body: todo }
 }
+
+export const config: ApiRouteConfig = {
+  type: 'api',
+  name: 'CreateTodo',
+  path: '/todo',
+  method: 'POST',
+  emits: ['todo.created'],
+  bodySchema: z.object({ description: z.string() })
+}
+ 
+export const handler: Handlers['CreateTodo'] = async (req, { emit }) => {
+  const todo = { id: '123', description: req.body.description }
+  
+  await emit({ topic: 'todo.created', data: todo })
+  
+  return { status: 200, body: todo }
+}
