@@ -3,6 +3,7 @@ const statesPlugin = require('@motiadev/plugin-states/plugin')
 const endpointPlugin = require('@motiadev/plugin-endpoint/plugin')
 const logsPlugin = require('@motiadev/plugin-logs/plugin')
 const observabilityPlugin = require('@motiadev/plugin-observability/plugin')
+import { type MotiaPlugin, type MotiaPluginContext } from '@motiadev/core'
 
 import { RedisStateAdapter } from '@motiadev/adapter-redis-state'
 import { RedisStreamAdapterManager } from '@motiadev/adapter-redis-streams'
@@ -17,6 +18,7 @@ export default config({
     statesPlugin,
     endpointPlugin,
     logsPlugin,
+    localPluginExample
   ],
 
   adapters: {
@@ -89,3 +91,40 @@ export default config({
     
   },
 })
+
+function localPluginExample(motia: MotiaPluginContext): MotiaPlugin {
+  // Register custom API endpoint
+  motia.registerApi(
+    {
+      method: 'GET',
+      path: '/__motia/local-plugin-example',
+    },
+    async (req, ctx) => {
+      return {
+        status: 200,
+        body: {
+          message: 'Hello from Motia Plugin!',
+          timestamp: new Date().toISOString(),
+          environment: process.env.NODE_ENV || 'development',
+          status: 'active',
+        },
+      }
+    },
+  )
+ 
+  return {
+    dirname: path.join(__dirname, 'plugins'),
+    steps: ['**/*.step.ts', '**/*_step.py'],
+    workbench: [
+      {
+        componentName: 'Plugin',
+        packageName: '~/plugins',  // Load from local project
+        label: 'Local Plugin Example',
+        position: 'top',
+        labelIcon: 'toy-brick',
+      },
+    ],
+  }
+}
+
+
