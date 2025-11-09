@@ -7,6 +7,7 @@ import tailwindcss from '@tailwindcss/vite'
 import viteReact from '@vitejs/plugin-react'
 import { resolve } from 'path'
 import dts from 'vite-plugin-dts'
+import { reactStart } from '@tanstack/react-start'
 
 import viteImageminVheemstra from "@vheemstra/vite-plugin-imagemin";
 import viteImageminOriginal from "vite-plugin-imagemin";
@@ -29,6 +30,7 @@ export default defineConfig(({ mode }) => ({
     tsConfigPaths(),
     tanstackStart(),
     viteReact(),
+    reactStart()
 
 
     mode === "development" && componentTagger(),
