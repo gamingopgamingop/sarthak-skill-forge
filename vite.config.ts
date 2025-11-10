@@ -12,12 +12,15 @@ import dts from 'vite-plugin-dts'
 import viteImageminVheemstra from "@vheemstra/vite-plugin-imagemin";
 import viteImageminOriginal from "vite-plugin-imagemin";
 import { tanstackStart } from '@tanstack/react-start/plugin/vite'
+import { fileURLToPath, URL } from 'node:url'
 
 import imageminMozjpeg from "imagemin-mozjpeg";
 import imageminWebp from "imagemin-webp";
 import imageminGifsicle from "imagemin-gifsicle";
 import imageminOptipng from "imagemin-optipng";
 import { tanstackStart } from '@tanstack/start-vite-plugin';
+import vue from '@vitejs/plugin-vue'
+import vueDevTools from 'vite-plugin-vue-devtools'
 
 export default defineConfig(({ mode }) => ({
   server: {
@@ -31,7 +34,10 @@ export default defineConfig(({ mode }) => ({
     tsConfigPaths(),
     tanstackStart(),
     viteReact(),
-    reactStart(),
+    // reactStart(),
+    vue(),
+    vueDevTools(),
+
 
 
     mode === "development" && componentTagger(),
