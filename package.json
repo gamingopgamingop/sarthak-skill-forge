@@ -268,7 +268,9 @@
     "@solidjs/router": "^0.15.0",
     "@solidjs/start": "^1.1.0",
     "solid-js": "^1.9.5",
-    "stable": "^0.1.8"
+    "stable": "^0.1.8",
+    "@vercel/node": "^5.5.5"
+
 
 
 
