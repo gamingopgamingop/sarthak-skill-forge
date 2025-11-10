@@ -13,6 +13,7 @@ import viteImageminVheemstra from "@vheemstra/vite-plugin-imagemin";
 import viteImageminOriginal from "vite-plugin-imagemin";
 import { tanstackStart } from '@tanstack/react-start/plugin/vite'
 import { fileURLToPath, URL } from 'node:url'
+import { svelte } from '@sveltejs/vite-plugin-svelte'
 
 import imageminMozjpeg from "imagemin-mozjpeg";
 import imageminWebp from "imagemin-webp";
