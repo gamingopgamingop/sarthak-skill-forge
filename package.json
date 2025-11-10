@@ -252,7 +252,9 @@
     "@motiadev/plugin-logs": "^0.9.0-beta.145",
     "@motiadev/plugin-observability": "^0.9.0-beta.145",
     "@motiadev/plugin-states": "^0.9.0-beta.145",
-    "motia": "^0.9.0-beta.145"
+    "motia": "^0.9.0-beta.145",
+    "@tanstack/react-start": "^1.135.0"
+
 
 
   },
