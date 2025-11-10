@@ -26,6 +26,7 @@ import tanstack from '@tanstack/start-vite-plugin';
 import solidPlugin from 'vite-plugin-solid';
 import devtools from 'solid-devtools/vite';
 import { TanStackStartVitePlugin } from '@tanstack/start-vite-plugin'
+import { tanstackStart } from '@tanstack/start-vite-plugin'
 
 
 export default defineConfig(({ mode }) => ({
