@@ -30,7 +30,7 @@ export default defineConfig(({ mode }) => ({
     tsConfigPaths(),
     tanstackStart(),
     viteReact(),
-    reactStart()
+    reactStart(),
 
 
     mode === "development" && componentTagger(),
