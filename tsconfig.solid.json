@@ -1,0 +1,12 @@
+{
+  "extends": "./tsconfig.json",
+  "include": ["src/**/*.tsx", "src/**/*.ts", "lib/**/*.tsx", "plugins/**/*.tsx"],
+  "compilerOptions": {
+    "jsx": "preserve",
+    "jsxImportSource": "solid-js",
+    "types": ["solid-js"],
+    "allowJs": true,
+    "checkJs": false,
+    "isolatedModules": true
+  }
+}
