@@ -3,9 +3,8 @@
   "outputDirectory": ".vercel/output",
   "framework": "vite",
   "functions": {
-    "api/index.js": {
-      "runtime": "nodejs20.x",
-      "handler": "vercel-server.js"
+    "api/index.ts": {
+      "runtime": "nodejs20.x"
     }
   },
   "routes": [
