@@ -357,7 +357,11 @@
     "solid-js": "^1.9.9",
     "@react-router/node": "^7.9.2",
     "@react-router/serve": "^7.9.2",
-    "isbot": "^5.1.31"
+    "isbot": "^5.1.31",
+    "@remix-run/node": "^2.17.2",
+    "@remix-run/react": "^2.17.2",
+    "@remix-run/serve": "^2.17.2"
+
     
 
     
