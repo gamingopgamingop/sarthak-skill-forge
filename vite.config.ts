@@ -17,6 +17,7 @@ import imageminMozjpeg from "imagemin-mozjpeg";
 import imageminWebp from "imagemin-webp";
 import imageminGifsicle from "imagemin-gifsicle";
 import imageminOptipng from "imagemin-optipng";
+import { tanstackStart } from '@tanstack/start-vite-plugin';
 
 export default defineConfig(({ mode }) => ({
   server: {
