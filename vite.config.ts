@@ -72,6 +72,10 @@ export default defineConfig(({ mode }) => ({
       },
     }),
   ].filter(Boolean),
+  build: {
+    ssr: true,
+    outDir: 'dist',
+  },
 
   resolve: {
     alias: {
