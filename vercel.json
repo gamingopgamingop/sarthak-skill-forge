@@ -4,7 +4,7 @@
   "framework": null,
   "functions": {
     "api/index.ts": {
-      "runtime": "vercel-node@4.0.0"
+      "runtime": "vercel-node"
     }
   },
   "routes": [
