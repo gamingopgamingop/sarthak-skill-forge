@@ -271,7 +271,12 @@
     "@solidjs/start": "^1.1.0",
     "solid-js": "^1.9.5",
     "stable": "^0.1.8",
-    "@vercel/node": "^5.5.5"
+    "@vercel/node": "^5.5.5",    
+    "@react-router/node": "^7.9.2",
+    "@react-router/serve": "^7.9.2",
+    "isbot": "^5.1.31"
+
+
 
 
 
@@ -343,7 +348,13 @@
     "vite-plugin-vue-devtools": "^8.0.3",
     "@sveltejs/vite-plugin-svelte": "^6.2.1",
     "svelte": "^5.43.5",
-    "solid-js": "^1.9.9"
+    "solid-js": "^1.9.9",
+    "@react-router/node": "^7.9.2",
+    "@react-router/serve": "^7.9.2",
+    "isbot": "^5.1.31"
+    
+
+    
 
 
 
