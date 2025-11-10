@@ -32,6 +32,7 @@ import { reactRouter } from "@react-router/dev/vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 import solid from 'vite-plugin-solid'
 
+-installGlobals();
 
 export default defineConfig(({ mode }) => ({
   server: {
