@@ -17,5 +17,7 @@
     "allowSyntheticDefaultImports": true,
     "types": ["vite/client"]
 
-  }
+  },
+    "include": ["api/**/*.ts"]
+
 }
