@@ -18,7 +18,9 @@
     "build@motia": "motia build",
     "clean": "rm -rf dist node_modules python_modules .motia .mermaid",
     "build:vercel": "npm install --legacy-peer-deps --force && vite build",
-    "generate": "nuxt generate"
+    "generate": "nuxt generate",
+    "build@ts": "tsc && vite build"
+
 
 
 
