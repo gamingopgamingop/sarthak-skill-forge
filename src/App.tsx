@@ -27,6 +27,9 @@ import { api } from "../convex/_generated/api";
 import { MotiaStreamProvider } from '@motiadev/stream-client-react'
 import { useStreamGroup } from '@motiadev/stream-client-react'
 import { useTodoEndpoints, type Todo } from './hook/useTodoEndpoints'
+import { Router } from "@solidjs/router";
+import { FileRoutes } from "@solidjs/start/router";
+import { Suspense } from "solid-js";
 
 
 const App = () => {
