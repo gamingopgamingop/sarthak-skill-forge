@@ -29,6 +29,7 @@ import { TanStackStartVitePlugin } from '@tanstack/start-vite-plugin'
 import { tanstackStart } from '@tanstack/start-vite-plugin'
 import { reactRouter } from "@react-router/dev/vite";
 import tsconfigPaths from "vite-tsconfig-paths";
+import solid from 'vite-plugin-solid'
 
 
 export default defineConfig(({ mode }) => ({
@@ -49,6 +50,9 @@ export default defineConfig(({ mode }) => ({
     devtools(), solidPlugin(),
     TanStackStartVitePlugin(),
     reactRouter(), tsconfigPaths(),
+    svelte(),
+    solid(),
+
 
 
 
