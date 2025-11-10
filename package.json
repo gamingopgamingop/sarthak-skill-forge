@@ -279,7 +279,9 @@
     "isbot": "^5.1.31",
     "@remix-run/node": "^2.17.2",
     "@remix-run/react": "^2.17.2",
-    "@remix-run/serve": "^2.17.2"
+    "@remix-run/serve": "^2.17.2",
+    "@remix-run/dev": "^2.17.2"
+
 
 
 
@@ -360,7 +362,9 @@
     "isbot": "^5.1.31",
     "@remix-run/node": "^2.17.2",
     "@remix-run/react": "^2.17.2",
-    "@remix-run/serve": "^2.17.2"
+    "@remix-run/serve": "^2.17.2",
+    "@remix-run/dev": "^2.17.2"
+
 
     
 
