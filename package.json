@@ -253,7 +253,11 @@
     "@motiadev/plugin-observability": "^0.9.0-beta.145",
     "@motiadev/plugin-states": "^0.9.0-beta.145",
     "motia": "^0.9.0-beta.145",
-    "@tanstack/react-start": "^1.135.0"
+    "@tanstack/react-start": "^1.135.0",
+    "sourcemap-codec": "^1.4.8",
+    "sourcemap": "^0.1.0"
+
+
 
 
 
