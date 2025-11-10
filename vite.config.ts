@@ -72,10 +72,6 @@ export default defineConfig(({ mode }) => ({
       },
     }),
   ].filter(Boolean),
-  build: {
-    ssr: true,
-    outDir: 'dist',
-  },
 
   resolve: {
     alias: {
@@ -88,6 +84,8 @@ export default defineConfig(({ mode }) => ({
 
   build: {
     chunkSizeWarningLimit: 3000,
+    ssr: true,
+    outDir: 'dist',
     rollupOptions: {
       output: {
         manualChunks(id) {
