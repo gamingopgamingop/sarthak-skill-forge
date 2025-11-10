@@ -23,6 +23,9 @@ import imageminOptipng from "imagemin-optipng";
 import vue from '@vitejs/plugin-vue'
 import vueDevTools from 'vite-plugin-vue-devtools'
 import tanstack from '@tanstack/start-vite-plugin';
+import solidPlugin from 'vite-plugin-solid';
+import devtools from 'solid-devtools/vite';
+
 
 export default defineConfig(({ mode }) => ({
   server: {
@@ -39,6 +42,7 @@ export default defineConfig(({ mode }) => ({
     // reactStart(),
     vue(),
     vueDevTools(),
+    devtools(), solidPlugin(),
 
 
 
