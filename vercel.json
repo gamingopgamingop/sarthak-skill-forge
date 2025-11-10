@@ -3,7 +3,7 @@
   "outputDirectory": ".vercel/output",
   "framework": null,
   "functions": {
-    "src/app/api/**/*.ts": {
+    "api/index.ts": {
       "runtime": "vercel-node@4.0.0"
     }
   },
