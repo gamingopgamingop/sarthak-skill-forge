@@ -296,7 +296,9 @@
     "@neondatabase/serverless": "^1.0.2",
     "postgres": "^3.4.7",
     "@electric-sql/pglite": "^0.3.14",
-    "gel": "^2.1.1"
+    "gel": "^2.1.1",
+    "@libsql/client": "^0.15.15",
+
 
 
 
