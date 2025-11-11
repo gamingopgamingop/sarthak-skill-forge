@@ -33,6 +33,7 @@ import { tanstackStart } from '@tanstack/start-vite-plugin'
 import { reactRouter } from "@react-router/dev/vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 import solid from 'vite-plugin-solid'
+import { qwikVite } from '@builder.io/qwik/optimizer'
 
 -installGlobals();
 
@@ -57,6 +58,10 @@ export default defineConfig(({ mode }) => ({
     svelte(),
     solid(),
     preact(),
+    qwikVite({
+      csr: true,
+    }),
+
 
 
 
