@@ -21,8 +21,10 @@
     "build:vercel": "npm install --legacy-peer-deps --force && vite build",
     "generate": "nuxt generate",
     "build@ts": "tsc && vite build",
-    "drizzle@change" : "npx drizzle-kit push"
-    
+    "drizzle@change" : "npx drizzle-kit push",
+    "drizzle@generate" : "npx drizzle-kit generate",
+    "drizzle@migrate" : "npx drizzle-kit migrate"
+
 
 
 
