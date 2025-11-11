@@ -6,6 +6,8 @@ import 'dotenv/config';
 import { eq } from 'drizzle-orm';
 import { drizzle } from 'drizzle-orm/vercel-postgres';
 import { usersTable } from './db/schema';
+import { drizzle } from 'drizzle-orm/node-postgres';
+import { Pool } from "pg";
 
 async function main() {
   const db = drizzle();
@@ -43,3 +45,14 @@ async function main() {
 }
 
 main();
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL!,
+});
+
+const db = drizzle({ 
+  connection: { 
+    connectionString: client: pool,
+    ssl: true
+  }
+});
+
