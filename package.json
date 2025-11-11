@@ -287,7 +287,9 @@
     "@react-router/dev": "^7.9.5",
     "@angular/cli": "^20.3.9",
     "@vercel/postgres": "^0.10.0",
-    "drizzle-orm": "^0.44.7"
+    "drizzle-orm": "^0.44.7",
+    "pg": "^8.16.3",
+
 
 
 
@@ -374,7 +376,12 @@
     "@remix-run/react": "^2.17.2",
     "@remix-run/serve": "^2.17.2",
     "@remix-run/dev": "^2.17.2",
-    "prisma": "^6.19.0"
+    "prisma": "^6.19.0",
+    "tsx": "^4.20.6",
+    "@types/pg": "^8.15.6",
+    "drizzle-kit": "^0.31.6"
+
+
 
 
 
