@@ -9,6 +9,8 @@ import { resolve } from 'path'
 import dts from 'vite-plugin-dts'
 // import { reactStart } from '@tanstack/react-start'
 // import { vitePlugin as remix } from "@remix-run/dev";
+import react from '@vitejs/plugin-react-swc'
+import preact from '@preact/preset-vite'
 
 import viteImageminVheemstra from "@vheemstra/vite-plugin-imagemin";
 import viteImageminOriginal from "vite-plugin-imagemin";
@@ -54,6 +56,7 @@ export default defineConfig(({ mode }) => ({
     reactRouter(), tsconfigPaths(),
     svelte(),
     solid(),
+    preact(),
 
 
 
