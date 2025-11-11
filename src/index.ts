@@ -8,6 +8,8 @@ import { drizzle } from 'drizzle-orm/vercel-postgres';
 import { usersTable } from './db/schema';
 import { drizzle } from 'drizzle-orm/node-postgres';
 import { Pool } from "pg";
+import { neon } from '@neondatabase/serverless';
+import { drizzle } from 'drizzle-orm/neon-http';
 
 async function main() {
   const db = drizzle();
