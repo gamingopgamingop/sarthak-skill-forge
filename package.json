@@ -24,7 +24,10 @@
     "drizzle@change" : "npx drizzle-kit push",
     "drizzle@generate" : "npx drizzle-kit generate",
     "drizzle@migrate" : "npx drizzle-kit migrate",
-    "drizzle@pull": "npx drizzle-kit pull"
+    "drizzle@pull": "npx drizzle-kit pull",
+    "drizzle@run" : "npx tsx src/index.ts"
+
+
 
 
 
