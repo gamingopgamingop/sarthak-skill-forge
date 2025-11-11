@@ -34,8 +34,9 @@ import { tanstackStart } from '@tanstack/start-vite-plugin'
 import { reactRouter } from "@react-router/dev/vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 import solid from 'vite-plugin-solid'
-import { qwikVite } from '@builder.io/qwik/optimizer'
+import { qwikVite } from '@builder.io/qwik/optimizer';
 import pkg from "./package.json";
+import { qwikVite } from "@builder.io/qwik/optimizer";
 
 -installGlobals();
 
