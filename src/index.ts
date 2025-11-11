@@ -17,6 +17,8 @@ import { drizzle as db4 } from 'drizzle-orm/pglite';
 import { drizzle } from 'drizzle-orm/bun-sql';
 import { SQL } from 'bun';
 import { drizzle as db5} from "drizzle-orm/gel";
+import { drizzle } from "drizzle-orm/mysql2";
+import mysql from "mysql2/promise";
 
 async function main() {
   const db = db1();
