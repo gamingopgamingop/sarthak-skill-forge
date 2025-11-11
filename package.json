@@ -406,7 +406,16 @@
     "enzyme": "^3.11.0",
     "enzyme-adapter-preact-pure": "^4.1.0",
     "@testing-library/preact": "^3.2.4",
-    "@builder.io/qwik": "^1.17.2"
+    "@builder.io/qwik": "^1.17.2",
+    "@builder.io/qwik-city": "^1.17.2",
+    "typescript-plugin-css-modules": "latest",
+    "undici": "*",
+    "vite-tsconfig-paths": "^4.2.1",
+    "eslint-plugin-qwik": "^1.17.2"
+
+
+
+
 
 
 
