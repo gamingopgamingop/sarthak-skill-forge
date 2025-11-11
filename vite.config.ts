@@ -35,6 +35,7 @@ import { reactRouter } from "@react-router/dev/vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 import solid from 'vite-plugin-solid'
 import { qwikVite } from '@builder.io/qwik/optimizer'
+import pkg from "./package.json";
 
 -installGlobals();
 
