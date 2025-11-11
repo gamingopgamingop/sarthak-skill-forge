@@ -300,7 +300,9 @@
     "@libsql/client": "^0.15.15",
     "preact": "^10.27.2",
     "@testing-library/jest-dom": "^6.9.1",
-    "lit": "^3.3.1"
+    "lit": "^3.3.1",
+    "serve": "^14.2.5"
+
 
     
 
@@ -403,7 +405,9 @@
     "@preact/preset-vite": "^2.10.2",
     "enzyme": "^3.11.0",
     "enzyme-adapter-preact-pure": "^4.1.0",
-    "@testing-library/preact": "^3.2.4"
+    "@testing-library/preact": "^3.2.4",
+    "@builder.io/qwik": "^1.17.2"
+
 
 
 
