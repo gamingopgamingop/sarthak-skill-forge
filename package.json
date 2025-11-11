@@ -23,7 +23,8 @@
     "build@ts": "tsc && vite build",
     "drizzle@change" : "npx drizzle-kit push",
     "drizzle@generate" : "npx drizzle-kit generate",
-    "drizzle@migrate" : "npx drizzle-kit migrate"
+    "drizzle@migrate" : "npx drizzle-kit migrate",
+    "drizzle@pull": "npx drizzle-kit pull"
 
 
 
@@ -291,7 +292,9 @@
     "pg": "^8.16.3",
     "@neondatabase/serverless": "^1.0.2",
     "postgres": "^3.4.7",
-    "@electric-sql/pglite": "^0.3.14"
+    "@electric-sql/pglite": "^0.3.14",
+    "gel": "^2.1.1"
+
 
 
 
