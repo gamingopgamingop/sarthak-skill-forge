@@ -4,15 +4,21 @@
 // const db = drizzle({ client: sql })
 import 'dotenv/config';
 import { eq } from 'drizzle-orm';
-import { drizzle } from 'drizzle-orm/vercel-postgres';
+import { drizzle as d0} from 'drizzle-orm/vercel-postgres';
 import { usersTable } from './db/schema';
-import { drizzle } from 'drizzle-orm/node-postgres';
+import { drizzle as d3 } from 'drizzle-orm/node-postgres';
 import { Pool } from "pg";
 import { neon } from '@neondatabase/serverless';
-import { drizzle } from 'drizzle-orm/neon-http';
+import { drizzle as d1 } from 'drizzle-orm/neon-http';
+import { drizzle as d2} from 'drizzle-orm/postgres-js'
+import postgres from 'postgres'
+import { PGlite } from '@electric-sql/pglite';
+import { drizzle as d4 } from 'drizzle-orm/pglite';
+import { drizzle } from 'drizzle-orm/bun-sql';
+import { SQL } from 'bun';
 
 async function main() {
-  const db = drizzle();
+  const db = d1();
 
   const user: typeof usersTable.$inferInsert = {
     name: 'John',
@@ -51,7 +57,7 @@ const pool = new Pool({
   connectionString: process.env.DATABASE_URL!,
 });
 
-const db = drizzle({ 
+const db = d0({ 
   connection: { 
     connectionString: client: pool,
     ssl: true
