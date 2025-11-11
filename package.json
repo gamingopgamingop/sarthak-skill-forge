@@ -301,7 +301,20 @@
     "preact": "^10.27.2",
     "@testing-library/jest-dom": "^6.9.1",
     "lit": "^3.3.1",
-    "serve": "^14.2.5"
+    "serve": "^14.2.5",
+    "@angular/common": "^20.3.0",
+    "@angular/compiler": "^20.3.0",
+    "@angular/core": "^20.3.0",
+    "@angular/forms": "^20.3.0",
+    "@angular/platform-browser": "^20.3.0",
+    "@angular/platform-server": "^20.3.0",
+    "@angular/router": "^20.3.0",
+    "@angular/ssr": "^20.3.9",
+    "express": "^5.1.0",
+    "rxjs": "~7.8.0",
+    "tslib": "^2.3.0",
+    "zone.js": "~0.15.0"
+
 
 
     
@@ -411,7 +424,19 @@
     "typescript-plugin-css-modules": "latest",
     "undici": "*",
     "vite-tsconfig-paths": "^4.2.1",
-    "eslint-plugin-qwik": "^1.17.2"
+    "eslint-plugin-qwik": "^1.17.2",
+    "@angular/build": "^20.3.9",
+    "@angular/cli": "^20.3.9",
+    "@angular/compiler-cli": "^20.3.0",
+    "@types/express": "^5.0.1",
+    "@types/jasmine": "~5.1.0",
+    "jasmine-core": "~5.9.0",
+    "karma": "~6.4.0",
+    "karma-chrome-launcher": "~3.2.0",
+    "karma-coverage": "~2.2.0",
+    "karma-jasmine": "~5.1.0",
+    "karma-jasmine-html-reporter": "~2.1.0",
+
 
 
 
