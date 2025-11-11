@@ -298,7 +298,9 @@
     "@electric-sql/pglite": "^0.3.14",
     "gel": "^2.1.1",
     "@libsql/client": "^0.15.15",
-    "preact": "^10.27.2"
+    "preact": "^10.27.2",
+    "@testing-library/jest-dom": "^6.9.1"
+
 
 
 
@@ -397,7 +399,9 @@
     "drizzle-kit": "^0.31.6",
     "@preact/preset-vite": "^2.10.2",
     "enzyme": "^3.11.0",
-    "enzyme-adapter-preact-pure": "^4.1.0"
+    "enzyme-adapter-preact-pure": "^4.1.0",
+    "@testing-library/preact": "^3.2.4"
+
 
 
 
