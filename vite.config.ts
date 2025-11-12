@@ -1,4 +1,5 @@
 /// <reference types="vitest" />
+import marko from "@marko/vite";
 
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
@@ -67,6 +68,7 @@ export default defineConfig(({ mode }) => ({
     solid(),
     preact(),
     angular(),
+    marko(),
     qwikVite({
       csr: true,
     }),
