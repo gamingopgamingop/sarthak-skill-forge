@@ -38,6 +38,7 @@ import { qwikVite } from '@builder.io/qwik/optimizer';
 import pkg from "./package.json";
 import { qwikVite } from "@builder.io/qwik/optimizer";
 import angular from '@analogjs/vite-plugin-angular';
+import analog from '@analogjs/platform';
 
 -installGlobals();
 
@@ -49,6 +50,7 @@ export default defineConfig(({ mode }) => ({
 
   plugins: [
     react(),
+    analog(),
     tailwindcss(),
     tsConfigPaths(),
     tanstackStart(),
