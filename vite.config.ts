@@ -37,6 +37,7 @@ import solid from 'vite-plugin-solid'
 import { qwikVite } from '@builder.io/qwik/optimizer';
 import pkg from "./package.json";
 import { qwikVite } from "@builder.io/qwik/optimizer";
+import angular from '@analogjs/vite-plugin-angular';
 
 -installGlobals();
 
@@ -61,6 +62,7 @@ export default defineConfig(({ mode }) => ({
     svelte(),
     solid(),
     preact(),
+    angular(),
     qwikVite({
       csr: true,
     }),
