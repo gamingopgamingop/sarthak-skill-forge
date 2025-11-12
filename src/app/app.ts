@@ -4,9 +4,16 @@ import { RouterOutlet } from '@angular/router';
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet],
-  templateUrl: './app.html',
-  styleUrl: './app.css'
+  template: `<router-outlet />`,
+  styles: `
+    :host {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 2rem;
+      text-align: center;
+    }
+  `,
 })
 export class App {
-  protected readonly title = signal('vite-pro');
+  protected readonly title = signal('sarthak-skill-forge');
 }
