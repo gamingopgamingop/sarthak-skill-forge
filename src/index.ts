@@ -20,6 +20,12 @@ import { drizzle as db5} from "drizzle-orm/gel";
 import { drizzle as db6} from "drizzle-orm/mysql2";
 import mysql from "mysql2/promise";
 import { drizzle } from 'drizzle-orm/libsql';
+import mysql from "mysql2/promise";
+import { drizzle } from 'drizzle-orm/mysql2';
+import { drizzle } from "drizzle-orm/planetscale-serverless";
+import { Client } from "@planetscale/database";
+import { drizzle as db7} from 'drizzle-orm/planetscale-serverless';
+
 
 async function main() {
   const db = db1();
@@ -61,10 +67,22 @@ const pool = new Pool({
   connectionString: process.env.DATABASE_URL!,
 });
 
-const db = db0({ 
-  connection: { 
+const db = db0({
+  connection: {
     connectionString: client: pool,
     ssl: true
   }
 });
+
+const db3 = drizzle({ client: poolConnection });
+// or if you need client connection
+async function main() {
+  const connection = await mysql.createConnection({
+    host: "host",
+    user: "user",
+    database: "database",
+  });
+  const db3 = drizzle({ client: connection });
+}
+
 
