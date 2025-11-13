@@ -43,6 +43,8 @@ import { qwikVite } from "@builder.io/qwik/optimizer";
 import angular from '@analogjs/vite-plugin-angular';
 import analog from '@analogjs/platform';
 import electron from 'vite-plugin-electron/simple'
+import { redwood } from "rwsdk/vite";
+import { cloudflare } from "@cloudflare/vite-plugin";
 
 -installGlobals();
 
@@ -91,6 +93,10 @@ export default defineConfig(({ mode }) => ({
         ? undefined
         : {},
     }),
+    cloudflare({
+      viteEnvironment: { name: "worker" },
+    }),
+    redwood(),
 
 
 
