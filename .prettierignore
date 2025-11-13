@@ -1,11 +1,10 @@
-save-exact=true
-legacy-peer-deps=true
-strict-peer-dependencies=false
-side-effects-cache=false
-
-public-hoist-pattern[]=@tanstack/react-query
-public-hoist-pattern[]=next
-public-hoist-pattern[]=secure-password
-public-hoist-pattern[]=*jest*
-public-hoist-pattern[]=@testing-library/*
-# Needed for Blitz to work properly. Don't remove the lines above.
+.gitkeep
+.env*
+*.ico
+*.lock
+db/migrations
+.next
+.yarn
+.pnp.*
+node_modules
+README.md
