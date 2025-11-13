@@ -1,6 +1,11 @@
 import type { NextConfig } from 'next'
+const { withBlitz } = require("@blitzjs/next")
 
 const nextConfig: NextConfig = {
+    experimental: {
+    typedRoutes: true,
+  },
+
   cacheComponents: true,
   
   compiler: {
