@@ -40,7 +40,16 @@
     "release": "rw-scripts ensure-deploy-env && npm run clean && npm run build && wrangler deploy",
     "generate@redwood": "rw-scripts ensure-env && wrangler types --include-runtime false",
     "check": "npm run generate && npm run types",
-    "types": "tsc"
+    "types": "tsc",
+    "dev@blitz": "blitz dev",
+    "build@blitz": "blitz build",
+    "start@blitz": "blitz start",
+    "studio@blitz": "blitz prisma studio",
+    "lint@blitz": "eslint --ignore-path .gitignore --ext .js,.ts,.tsx .",
+    "test@blitz": "vitest run --passWithNoTests",
+    "test:watch@blitz": "vitest",
+    "prepare@blitz": "husky install"
+
 
 
 
@@ -395,6 +404,20 @@
 
 
   },
+
+    "prisma": {
+    "schema": "db/schema.prisma"
+  },
+  "prettier": {
+    "semi": false,
+    "printWidth": 100
+  },
+  "lint-staged": {
+    "*.{js,ts,tsx}": [
+      "eslint --fix"
+    ]
+  },
+
   "devDependencies": {
     "@babel/core": "^7.28.5",
     "@babel/preset-env": "^7.28.5",
