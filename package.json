@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    
+
     "dev": "vite",
     "build": "vite build",
     "build:dev": "vite build --mode development",
@@ -280,7 +280,7 @@
     "@solidjs/start": "^1.1.0",
     "solid-js": "^1.9.5",
     "stable": "^0.1.8",
-    "@vercel/node": "^5.5.5",    
+    "@vercel/node": "^5.5.5",
     "@react-router/node": "^7.9.2",
     "@react-router/serve": "^7.9.2",
     "isbot": "^5.1.31",
@@ -331,7 +331,6 @@
 
 
 
-    
 
 
 
@@ -351,7 +350,8 @@
 
 
 
-    
+
+
 
 
 
@@ -488,12 +488,6 @@
     "vite-plugin-electron": "^0.28.6",
     "vite-plugin-electron-renderer": "^0.14.5"
 
-    
-
-
-
-    
-    
 
 
 
@@ -509,9 +503,6 @@
 
 
 
-    
-
-    
 
 
 
@@ -519,7 +510,16 @@
 
 
 
-    
+
+
+
+
+
+
+
+
+
+
 
   },
     "optionalDependencies": {
