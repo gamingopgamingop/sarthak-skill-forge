@@ -29,7 +29,15 @@
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
-    "web": "expo start --web"
+    "web": "expo start --web",
+    "worker:run": "rw-scripts worker-run",
+    "clean:vite": "rm -rf ./node_modules/.vite",
+    "release": "rw-scripts ensure-deploy-env && npm run clean && npm run build && wrangler deploy",
+    "generate@redwood": "rw-scripts ensure-env && wrangler types --include-runtime false",
+    "check": "npm run generate && npm run types",
+    "types": "tsc"
+
+
 
 
 
@@ -336,7 +344,10 @@
     "expo": "~54.0.23",
     "expo-sqlite": "~16.0.9",
     "expo-status-bar": "~3.0.8",
-    "react-native": "0.81.5"
+    "react-native": "0.81.5",
+    "react-server-dom-webpack": "19.3.0-canary-fa50caf5-20251107",
+    "rwsdk": "1.0.0-beta.27"
+
 
 
 
@@ -548,6 +559,7 @@
 
 
 
+
   },
     "optionalDependencies": {
     "bufferutil": "^4.0.9",
@@ -561,7 +573,15 @@
     "vite": "4 - 7"
   },
 
-  "main": "dist-electron/main.js"
+  "main": "dist-electron/main.js",
+    "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "sharp",
+      "workerd"
+    ]
+  }
+
 
 
 }
