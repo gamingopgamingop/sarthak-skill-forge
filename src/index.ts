@@ -19,12 +19,16 @@ import { SQL } from 'bun';
 import { drizzle as db5} from "drizzle-orm/gel";
 import { drizzle as db6} from "drizzle-orm/mysql2";
 import mysql from "mysql2/promise";
-import { drizzle } from 'drizzle-orm/libsql';
-import mysql from "mysql2/promise";
-import { drizzle } from 'drizzle-orm/mysql2';
-import { drizzle } from "drizzle-orm/planetscale-serverless";
+import { drizzle as db11} from 'drizzle-orm/libsql';
+import { drizzle as db10} from 'drizzle-orm/mysql2';
+import { drizzle as db9} from "drizzle-orm/planetscale-serverless";
 import { Client } from "@planetscale/database";
 import { drizzle as db7} from 'drizzle-orm/planetscale-serverless';
+import { connect } from '@tidbcloud/serverless';
+import { drizzle as db8} from 'drizzle-orm/tidb-serverless';
+import { int, singlestoreTable, varchar } from 'drizzle-orm/singlestore-core';
+import { drizzle as db12} from 'drizzle-orm/libsql';
+import { createClient } from '@libsql/client';
 
 
 async function main() {
