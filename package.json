@@ -1,8 +1,13 @@
 {
   "name": "vite_react_shadcn_ts",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
+  "description": "",
+  "author": "",
+  "license": "MIT",
+
+
   "scripts": {
 
     "dev": "vite",
