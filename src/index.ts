@@ -29,6 +29,7 @@ import { drizzle as db8} from 'drizzle-orm/tidb-serverless';
 import { int, singlestoreTable, varchar } from 'drizzle-orm/singlestore-core';
 import { drizzle as db12} from 'drizzle-orm/libsql';
 import { createClient } from '@libsql/client';
+import { drizzle as db13} from 'drizzle-orm/d1';
 
 
 async function main() {
