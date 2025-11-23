@@ -196,6 +196,23 @@ export default defineConfig(({ mode }) => ({
     ssr: true,
     outDir: 'dist',
     rollupOptions: {
+      external: [...Object.keys(dependencies), 'bcrypt'],
+      input: {
+        main: path.resolve(__dirname, 'src/index.html'),
+        server: path.resolve(__dirname, 'src/server.ts'),
+        'index.liquid.html': path.resolve(__dirname, 'index.liquid.html'),
+        'index.twig.html': path.resolve(__dirname, 'index.twig.html'),
+        'index.njk.html': path.resolve(__dirname, 'index.njk.html'),
+        'index.hbs.html': path.resolve(__dirname, 'index.hbs.html'),
+        'index.pug.html': path.resolve(__dirname, 'index.pug.html'),
+        'index.ejs.html': path.resolve(__dirname, 'index.ejs.html'),
+        'index.haml.html': path.resolve(__dirname, 'index.haml.html'),
+        'index.jade.html': path.resolve(__dirname, 'index.jade.html'),
+        'index.swig.html': path.resolve(__dirname, 'index.swig.html'),
+        'index.ejs.html': path.resolve(__dirname, 'index.ejs.html'),
+        'index.hbs.html': path.resolve(__dirname, 'index.hbs.html'),
+        
+      },
       output: {
         manualChunks(id) {
           if (id.includes("node_modules")) return "vendor";
@@ -253,7 +270,7 @@ export defineConfig(({ command, mode }): UserConfig => {
      * This is an advanced setting. It improves the bundling of your server code. To use it, make sure you understand when your consumed packages are dependencies or dev dependencies. (otherwise things will break in production)
      */
     // ssr:
-    //   command === "build" && mode === "production"
+      // command === "build" && mode === "production"
     //     ? {
     //         // All dev dependencies should be bundled in the server build
     //         noExternal: Object.keys(devDependencies),
