@@ -52,6 +52,27 @@ import liquidNode from 'liquid-node'
 import liquidNodeMiddleware from 'liquid-node-middleware'
 import { installGlobals } from 'vituum/globals'
 import vituum from 'vituum'
+import pages from 'vituum/plugins/pages.js'
+import redirects from 'vituum/plugins/redirects.js'
+import sitemap from 'vituum/plugins/sitemap.js'
+import robots from 'vituum/plugins/robots.js'
+import manifest from 'vituum/plugins/manifest.js'
+import prerender from 'vituum/plugins/prerender.js'
+import prerenderMiddleware from 'vituum/plugins/prerender-middleware.js'
+import prerenderNode from 'vituum/plugins/prerender-node.js'
+import prerenderNodeMiddleware from 'vituum/plugins/prerender-node-middleware.js'
+import imports from 'vituum/plugins/imports.js'
+import tailwindcss from '@vituum/vite-plugin-tailwindcss'
+import postcss from '@vituum/vite-plugin-postcss'
+import juice from '@vituum/vite-plugin-juice'
+import { optimize } from '@vituum/vite-plugin-optimize'
+import send from '@vituum/vite-plugin-send'
+import concat from '@vituum/vite-plugin-concat'
+import twig from '@vituum/vite-plugin-twig'
+import latte from '@vituum/vite-plugin-latte'
+import nunjucks from '@vituum/vite-plugin-nunjucks'
+import handlebars from '@vituum/vite-plugin-handlebars'
+
 -installGlobals();
 
 export default defineConfig(({ mode }) => ({
@@ -61,6 +82,27 @@ export default defineConfig(({ mode }) => ({
   },
 
   plugins: [
+    handlebars(),
+    nunjucks(),
+    latte(),
+    twig(),
+    concat(),
+    send(),
+    juice(),
+    optimize(),
+    postcss(),
+    tailwindcss(),
+    imports(),
+    vituum(),
+    pages(),
+    redirects(),
+    sitemap(),
+    robots(),
+    manifest(),
+    prerender(),
+    prerenderMiddleware(),
+    prerenderNode(),
+    prerenderNodeMiddleware(),
     posthtml(),
     liquid(),
     liquidMiddleware(),
