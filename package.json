@@ -64,7 +64,10 @@
     "test:watch@blitz": "vitest",
     "prepare@blitz": "husky install",
     "auto:dev": "bun dev || pnpm dev || yarn dev || npm run dev",
-    "auto:install": "bun install || pnpm install || yarn install || npm install"
+    "auto:install": "bun install || pnpm install || yarn install || npm install",
+    "clean:full": "rimraf node_modules package-lock.json yarn.lock pnpm-lock.yaml bun.lockb && npm cache clean --force",
+    "install:full": "npm run clean:full && npm install --legacy-peer-deps --force"
+  
 
 
 
