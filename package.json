@@ -417,7 +417,27 @@
     "nunjucks": "^3.2",
     "pug": "^3.0",
     "handlebars": "^4.7",
-    "@tanstack/react-pacer": "^0.17.4"
+    "@tanstack/react-pacer": "^0.17.4",
+    "@tanstack/solid-pacer": "^0.16.1",
+    "@tanstack/pacer": "^0.16.4",
+    "@tanstack/react-devtools": "^0.8.2",
+    "@tanstack/react-pacer-devtools": "^0.4.1",
+    "@tanstack/solid-virtual": "^3.13.12",
+    "@tanstack/svelte-virtual": "^3.13.12",
+    "@tanstack/vue-virtual": "^3.13.12",
+    "@tanstack/lit-virtual": "^3.13.13",
+    "@tanstack/angular-virtual": "^4.0.0",
+    "@tanstack/virtual-core": "^3.13.12"
+
+
+
+
+
+
+
+
+
+
 
 
 
