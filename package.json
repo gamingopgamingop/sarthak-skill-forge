@@ -430,7 +430,11 @@
     "@tanstack/virtual-core": "^3.13.12",
     "@tanstack/ai": "^0.0.2",
     "@tanstack/ai-openai": "^0.0.2",
-    "@tanstack/ai-react": "^0.0.2"
+    "@tanstack/ai-react": "^0.0.2",
+    "kafkajs": "^2.2.4",
+    "amqplib": "^0.10.9"
+
+
 
 
 
