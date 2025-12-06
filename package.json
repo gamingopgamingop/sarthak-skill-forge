@@ -427,7 +427,11 @@
     "@tanstack/vue-virtual": "^3.13.12",
     "@tanstack/lit-virtual": "^3.13.13",
     "@tanstack/angular-virtual": "^4.0.0",
-    "@tanstack/virtual-core": "^3.13.12"
+    "@tanstack/virtual-core": "^3.13.12",
+    "@tanstack/ai": "^0.0.2",
+    "@tanstack/ai-openai": "^0.0.2",
+    "@tanstack/ai-react": "^0.0.2"
+
 
 
 
