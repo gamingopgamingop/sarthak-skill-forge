@@ -416,7 +416,9 @@
     "minimatch": "^10.0",
     "nunjucks": "^3.2",
     "pug": "^3.0",
-    "handlebars": "^4.7"
+    "handlebars": "^4.7",
+    "@tanstack/react-pacer": "^0.17.4"
+
 
 
 
