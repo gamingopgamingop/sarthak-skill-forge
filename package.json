@@ -447,7 +447,11 @@
     "@headlessui/react": "^2.2.9",
     "@floating-ui/react": "^0.27.16",
     "swr": "^2.3.7",
-    "react-aria": "^3.44.0"
+    "react-aria": "^3.44.0",
+    "vite-imagetools": "^9.0.2",
+    "@vitejs/plugin-legacy": "^7.2.1"
+
+
 
 
 
