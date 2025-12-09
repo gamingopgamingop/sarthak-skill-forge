@@ -695,7 +695,9 @@
     "@tanstack/solid-devtools": "^0.7.15",
     "msw": "^2.12.4",
     "@testing-library/user-event": "^14.6.1",
-    "vite-plugin-env-compatible": "^2.0.1"
+    "vite-plugin-env-compatible": "^2.0.1",
+    "@vitejs/plugin-legacy": "^7.2.1"
+
 
 
 
