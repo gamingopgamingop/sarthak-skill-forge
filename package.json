@@ -250,7 +250,7 @@
     "react-hook-form-persist": "^3.0.0",
     "react-redux": "^9.2.0",
     "redux": "^5.0.1",
-    "@reduxjs/toolkit": "^2.9.2",
+    "@reduxjs/toolkit": "^2.11.1",
     "mobx": "^6.15.0",
     "mobx-react-lite": "^4.1.1",
     "jotai": "^2.15.0",
@@ -443,7 +443,17 @@
     "@apollo/client": "^4.0.9",
     "@formkit/auto-animate": "^0.9.0",
     "@trpc/client": "^11.7.2",
-    "@trpc/react-query": "^11.7.2"
+    "@trpc/react-query": "^11.7.2",
+    "@headlessui/react": "^2.2.9",
+    "@floating-ui/react": "^0.27.16",
+    "swr": "^2.3.7",
+    "react-aria": "^3.44.0"
+
+
+
+    
+
+
 
 
 
