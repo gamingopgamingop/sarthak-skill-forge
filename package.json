@@ -434,7 +434,9 @@
     "kafkajs": "^2.2.4",
     "amqplib": "^0.10.9",
     "playwright-core": "^1.57.0",
-    "puppeteer-core": "^24.32.1"
+    "puppeteer-core": "^24.32.1",
+    "esbuild": "^0.25.12"
+
 
 
 
