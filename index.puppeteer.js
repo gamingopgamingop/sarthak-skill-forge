@@ -21,18 +21,39 @@ const puppeteeropts = {
   const context = await browser.createBrowserContext();
   const page = await context.newPage();
  
-  // Go to Wikipedia page.
-  await page.goto("https://en.wikipedia.org/wiki/Web_browser");
+  // Go to hackernews home page.
+  await page.goto("https://news.ycombinator.com/");
  
-  // Extract all links from the references list of the page.
-  const reflist = await page.evaluate(() => {
-    return Array.from(document.querySelectorAll('.reflist a.external')).map(row => {
-      return row.getAttribute('href');
+  // Find the search box at the bottom of the page and type the term lightpanda
+  // to search.
+  await page.type('input[name="q"]','lightpanda');
+  // Press enter key to run the search.
+  await page.keyboard.press('Enter');
+ 
+  // Wait until the search results are loaded on the page, with a 5 seconds
+  // timeout limit.
+  await page.waitForFunction(() => {
+      return document.querySelector('.Story_container') != null;
+  }, {timeout: 5000});
+ 
+  // Loop over search results to extract data.
+  const res = await page.evaluate(() => {
+    return Array.from(document.querySelectorAll('.Story_container')).map(row => {
+      return {
+        // Extract the title.
+        title: row.querySelector('.Story_title span').textContent,
+        // Extract the URL.
+        url: row.querySelector('.Story_title a').getAttribute('href'),
+        // Extract the list of meta data.
+        meta: Array.from(row.querySelectorAll('.Story_meta > span:not(.Story_separator, .Story_comment)')).map(row => {
+          return row.textContent;
+        }),
+      }
     });
   });
  
   // Display the result.
-  console.log("all reference links", reflist);
+  console.log(res);
  
   // Disconnect Puppeteer.
   await page.close();
