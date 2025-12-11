@@ -28,6 +28,13 @@
   "bugs": {
     "url": "https://github.com/gamingopgamingop/vite_react_shadcn_ts/issues"
   },
+  "files": [
+    "dist",
+    "marko.json",
+    "!**/*.test.*",
+    "!*.tsbuildinfo",
+    "!**/{,*.}stories.*"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -472,6 +479,14 @@
     "@marko/webpack": "^10.0.1",
     "@marko/rollup": "^4.0.3",
     "lasso-marko": "^5.0.1",
+    "@marko/testing-library": "^6.3.1",
+    "@marko/type-check": "^2.0.0",
+    "@storybook/marko": "^10.0.0",
+    "@storybook/marko-vite": "^3.0.0",
+    "@vitest/browser": "^3.2.4",
+    "@vitest/coverage-istanbul": "^3.2.4",
+    "eslint-formatter-unix": "^8.40.0",
+    "eslint-plugin-simple-import-sort": "^12.1.1",
 
     "react-datepicker": "^9.0.0",
     "react-easy-crop": "^5.5.6",
