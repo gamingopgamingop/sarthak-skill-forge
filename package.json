@@ -737,7 +737,10 @@
     "msw": "^2.12.4",
     "@testing-library/user-event": "^14.6.1",
     "vite-plugin-env-compatible": "^2.0.1",
-    "@vitejs/plugin-legacy": "^7.2.1"
+    "@vitejs/plugin-legacy": "^7.2.1",
+    "postcss-cli": "^11.0.1",
+    "cssnano": "^7.1.2"
+
 
 
 
