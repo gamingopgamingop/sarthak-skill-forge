@@ -28,3 +28,29 @@ test("Double", async () => {
   expect($btn).toHaveTextContent("2");
   expect(emitted("increment")).toHaveLength(1);
 });
+
+test("Default", async () => {
+  const onIncrement = vi.fn();
+  await render(Default, { onIncrement });
+  const $btn = screen.getByRole("button");
+
+  expect($btn).toHaveTextContent("0");
+
+  await fireEvent.click($btn);
+
+  expect($btn).toHaveTextContent("1");
+  expect(onIncrement).toHaveBeenCalled();
+});
+
+test("Double", async () => {
+  const onIncrement = vi.fn();
+  await render(Double, { onIncrement });
+  const $btn = screen.getByRole("button");
+
+  expect($btn).toHaveTextContent("0");
+
+  await fireEvent.click($btn);
+
+  expect($btn).toHaveTextContent("2");
+  expect(onIncrement).toHaveBeenCalled();
+});

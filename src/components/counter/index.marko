@@ -1,7 +1,11 @@
 import style from "./styles.module.css";
 export interface Input {
   multiplier?: number;
+  onIncrement?: () => void;
+
 }
+<let/count=0>
+
 class {
   declare state: {
     count: number;
@@ -21,4 +25,13 @@ class {
 
 <button class=style.test onClick("increment")>
   ${state.count * (input.multiplier ?? 1)}
+</button>
+
+<button
+  class=style.test
+  onClick() {
+    count++;
+    input.onIncrement?.();
+  }>
+  ${count * (input.multiplier ?? 1)}
 </button>
