@@ -465,6 +465,7 @@
     "@tiptap/react": "^3.13.0",
     "@tiptap/starter-kit": "^3.13.0",
     "@marko/webpack": "^10.0.1",
+    "@marko/rollup": "^4.0.3",
 
     "react-datepicker": "^9.0.0",
     "react-easy-crop": "^5.5.6",
