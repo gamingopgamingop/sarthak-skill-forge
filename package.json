@@ -396,7 +396,6 @@
     "liquidjs": "^10.9",
     "liquid-node": "^5.2.2",
     "liquid-express": "^1.0.0",
-    "liquid-express-middleware": "^1.0.0",
     "postcss-import": "^15.1",
     "postcss-nesting": "^12.0",
     "postcss-custom-media": "^10.0",
