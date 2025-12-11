@@ -77,7 +77,12 @@
     "dev:marko": "marko-run",
     "build:marko": "marko-run build",
     "preview:marko": "marko-run preview",
-    "start:marko": "marko-run start"
+    "start:marko": "marko-run start",
+    "build:rollup": "rimraf dist && rollup -c -m --environment NODE_ENV:production",
+    "dev:rollup": "rimraf dist && rollup -c -m -w",
+    "dev:inspect": "INSPECT=1 npm run dev",
+    "start:rollup": "npm run env NODE_ENV=production -- node dist"
+
 
   
 
@@ -502,7 +507,13 @@
     "zustand-utils": "^2.1.1",
     "immer": "^11.0.1",
     "use-immer": "^0.11.0",
-    "ramda": "^0.32.0"
+    "ramda": "^0.32.0",
+    "raptor-pubsub": "^1.0.5"
+
+
+    
+
+    
 
 
 
@@ -769,7 +780,26 @@
     "vite-plugin-env-compatible": "^2.0.1",
     "@vitejs/plugin-legacy": "^7.2.1",
     "postcss-cli": "^11.0.1",
-    "cssnano": "^7.1.2"
+    "cssnano": "^7.1.2",
+    "@ironkinoko/rollup-plugin-styles": "^4.0.3",
+    "@marko/express": "^2.1.0",
+    "@marko/rollup": "^4.0.3",
+    "@rollup/plugin-babel": "^6.0.3",
+    "@rollup/plugin-commonjs": "^25.0.0",
+    "@rollup/plugin-json": "^6.0.0",
+    "@rollup/plugin-node-resolve": "^15.0.2",
+    "@rollup/plugin-run": "^3.0.1",
+    "@rollup/plugin-terser": "^0.4.3",
+    "@rollup/plugin-url": "^8.0.1",
+    "marked": "^5.0.2",
+    "postcss-preset-env": "^8.4.1",
+    "rimraf": "^5.0.1",
+    "rollup": "^3.22.0",
+    "rollup-plugin-livereload": "^2.0.5"
+
+
+
+
 
 
 
