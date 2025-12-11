@@ -9,3 +9,5 @@ for (const [name, story] of Object.entries(composeStories(stories))) {
     expect(normalize(screen.getByRole("button"))).toMatchSnapshot();
   });
 }
+
+
