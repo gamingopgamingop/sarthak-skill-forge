@@ -66,7 +66,12 @@
     "auto:dev": "bun dev || pnpm dev || yarn dev || npm run dev",
     "auto:install": "bun install || pnpm install || yarn install || npm install",
     "clean:full": "rimraf node_modules package-lock.json yarn.lock pnpm-lock.yaml bun.lockb && npm cache clean --force",
-    "install:full": "npm run clean:full && npm install --legacy-peer-deps --force"
+    "install:full": "npm run clean:full && npm install --legacy-peer-deps --force",
+    "dev:marko": "marko-run",
+    "build:marko": "marko-run build",
+    "preview:marko": "marko-run preview",
+    "start:marko": "marko-run start"
+
   
 
 
