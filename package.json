@@ -394,7 +394,7 @@
     "secure-password": "4.0.0",
     "vituum": "^1.1",
     "liquidjs": "^10.9",
-    "liquid-node": "^5.2.2",
+    "liquid-node": "3.0.1",
     "liquid-express": "^1.0.0",
     "postcss-import": "^15.1",
     "postcss-nesting": "^12.0",
