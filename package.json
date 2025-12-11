@@ -487,6 +487,13 @@
     "@vitest/coverage-istanbul": "^3.2.4",
     "eslint-formatter-unix": "^8.40.0",
     "eslint-plugin-simple-import-sort": "^12.1.1",
+    "lint-staged": "^16.1.2",
+    "playwright": "^1.54.1",
+    "postcss-auto-modules": "^1.0.1",
+    "prettier-plugin-marko": "^3.2.7",
+    "prettier-plugin-packagejson": "^2.5.18",
+    "stylelint": "^16.21.1",
+    "stylelint-config-standard": "^38.0.0",
 
     "react-datepicker": "^9.0.0",
     "react-easy-crop": "^5.5.6",
@@ -826,7 +833,9 @@
     },
     "peerDependencies": {
     "@marko/compiler": "^5",
-    "vite": "4 - 7"
+    "vite": "4 - 7",
+    "marko": "5 - 6"
+
   },
 
   "main": "dist-electron/main.js",
