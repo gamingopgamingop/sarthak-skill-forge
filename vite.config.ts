@@ -217,6 +217,14 @@ export default defineConfig(({ mode }) => ({
     assetsInlineLimit: 0, // This is currently a work around for loading the favicon since datauri does not work.
     sourcemap: true, // Generate sourcemaps for all builds.
     emptyOutDir: false, // Avoid server & client deleting files from each other.
+    assetsInlineLimit: 0, // This is currently a work around for loading the favicon since datauri does not work.
+    rollupOptions: {
+      output: {
+        // Output ESM for the server build also.
+        // Remove when https://github.com/vitejs/vite/issues/2152 is resolved.
+        format: "es",
+      },
+    },
 
 
     chunkSizeWarningLimit: 3000,

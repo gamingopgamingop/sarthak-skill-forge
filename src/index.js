@@ -4,6 +4,8 @@ import markoMiddleware from "@marko/express";
 import indexPage from "./pages/index";
 import usersService from "./services/users";
 import { Router } from "express";
+import { send } from "./send";
+import template from "./template.marko";
 
 const port = process.env.PORT || 3000;
 
@@ -23,3 +25,9 @@ express()
 export const router = Router()
   .get("/", indexPage)
   .get("/services/users", usersService);
+
+export async function handler(req, res) {
+  res.statusCode = 200;
+  res.setHeader('Content-Type', 'text/html; charset=UTF-8');
+  send(res, template.stream());
+}
