@@ -795,7 +795,10 @@
     "postcss-preset-env": "^8.4.1",
     "rimraf": "^5.0.1",
     "rollup": "^3.22.0",
-    "rollup-plugin-livereload": "^2.0.5"
+    "rollup-plugin-livereload": "^2.0.5",
+    "@marko/serve": "^4",
+    "@marko/build": "^4"
+
 
 
 
