@@ -248,7 +248,7 @@ export default defineConfig(({ mode }) => ({
         
       },
       output: {
-        manualChunks(id : Parameters<GetManualChunk>[0]) {
+        manualChunks(id : Parameters<GetManualChunk>[0] | string) {
           if (id.includes("node_modules")) return "vendor";
         },
         assetFileNames: (assetInfo) => {
