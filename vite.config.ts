@@ -1,5 +1,6 @@
 /// <reference types="vitest" />
 import marko from "@marko/vite";
+import type { GetManualChunk } from 'rollup';
 
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
@@ -244,12 +245,10 @@ export default defineConfig(({ mode }) => ({
         'index.haml.html': path.resolve(__dirname, 'index.haml.html'),
         'index.jade.html': path.resolve(__dirname, 'index.jade.html'),
         'index.swig.html': path.resolve(__dirname, 'index.swig.html'),
-        'index.ejs.html': path.resolve(__dirname, 'index.ejs.html'),
-        'index.hbs.html': path.resolve(__dirname, 'index.hbs.html'),
         
       },
       output: {
-        manualChunks(id) {
+        manualChunks(id : Parameters<GetManualChunk>[0]) {
           if (id.includes("node_modules")) return "vendor";
         },
         assetFileNames: (assetInfo) => {
@@ -296,7 +295,7 @@ errorOnDuplicatesPkgDeps(devDependencies, dependencies);
 /**
  * Note that Vite normally starts from `index.html` but the qwikCity plugin makes start at `src/entry.ssr.tsx` instead.
  */
-export defineConfig(({ command, mode }): UserConfig => {
+// export defineConfig(({ command, mode }): UserConfig => {
   return {
     plugins: [qwikCity(), qwikVite(), tsconfigPaths({ root: "." })],
     // This tells Vite which dependencies to pre-build in dev mode.
@@ -312,13 +311,13 @@ export defineConfig(({ command, mode }): UserConfig => {
     // ssr:
       // command === "build" && mode === "production"
     //     ? {
-    //         // All dev dependencies should be bundled in the server build
+            // All dev dependencies should be bundled in the server build
     //         noExternal: Object.keys(devDependencies),
-    //         // Anything marked as a dependency will not be bundled
-    //         // These should only be production binary deps (including deps of deps), CLI deps, and their module graph
-    //         // If a dep-of-dep needs to be external, add it here
-    //         // For example, if something uses `bcrypt` but you don't have it as a dep, you can write
-    //         // external: [...Object.keys(dependencies), 'bcrypt']
+            // Anything marked as a dependency will not be bundled
+            // These should only be production binary deps (including deps of deps), CLI deps, and their module graph
+            // If a dep-of-dep needs to be external, add it here
+            // For example, if something uses `bcrypt` but you don't have it as a dep, you can write
+            // external: [...Object.keys(dependencies), 'bcrypt']
     //         external: Object.keys(dependencies),
     //       }
     //     : undefined,
@@ -336,7 +335,7 @@ export defineConfig(({ command, mode }): UserConfig => {
       },
     },
   };
-});
+// });
 
 // *** utils ***
 
