@@ -19,6 +19,7 @@
   "noImplicitThis": false,
   "noImplicitReturns": false,
   "noImplicitIndexSignatures": false,
+  
   "noImplicitOverride": false,
   "repository": {
     "type": "git",
@@ -80,8 +81,15 @@
     "start:marko": "marko-run start",
     "build:rollup": "rimraf dist && rollup -c -m --environment NODE_ENV:production",
     "dev:rollup": "rimraf dist && rollup -c -m -w",
-    "dev:inspect": "INSPECT=1 npm run dev",
-    "start:rollup": "npm run env NODE_ENV=production -- node dist"
+    "dev:inspect:rollup": "INSPECT=1 npm run dev",
+    "start:rollup": "npm run env NODE_ENV=production -- node dist",
+    "build:all": "rimraf dist && npm run build:worker && npm run build:client",
+    "build:client": "cross-env NODE_ENV=production vite build",
+    "build:worker": "cross-env NODE_ENV=production vite build --ssr src/worker.js",
+    "dev:all": "node --enable-source-maps src/dev-server.js",
+    "dev:inspect": "node --inspect --enable-source-maps src/dev-server.js",
+    "preview": "npx wrangler dev"
+
 
 
   
@@ -499,6 +507,8 @@
     "prettier-plugin-packagejson": "^2.5.18",
     "stylelint": "^16.21.1",
     "stylelint-config-standard": "^38.0.0",
+    "@cloudflare/kv-asset-handler": "^0.3.0",
+    "url-router": "^13.0.0",
 
     "react-datepicker": "^9.0.0",
     "react-easy-crop": "^5.5.6",
@@ -879,6 +889,7 @@
       "workerd"
     ]
   }
+
 
 
 
