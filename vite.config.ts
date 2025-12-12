@@ -78,6 +78,7 @@ import handlebars from '@vituum/vite-plugin-handlebars'
 
 const { NODE_ENV } = process.env;
 const isProd = NODE_ENV === "production";
+const __dirname = dirname(__filename);
 
 
 export default defineConfig(({ mode }) => ({
