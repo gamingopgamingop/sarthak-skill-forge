@@ -509,6 +509,10 @@
     "stylelint-config-standard": "^38.0.0",
     "@cloudflare/kv-asset-handler": "^0.3.0",
     "url-router": "^13.0.0",
+    "@fastify/compress": "^7.0.3",
+    "@fastify/static": "^7.0.3",
+    "@marko/fastify": "^1.1.1",
+    "fastify": "^4.26.2",
 
     "react-datepicker": "^9.0.0",
     "react-easy-crop": "^5.5.6",
