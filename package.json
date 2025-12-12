@@ -531,6 +531,10 @@
     "web-vitals": "^5.1.0",
     "@storybook/react-vite": "^10.1.8",
     "axe-core": "^4.11.0",
+    "redis": "^5.10.0",
+    "bullmq": "^5.66.0"
+
+
 
 
 
@@ -837,7 +841,13 @@
     "@commitlint/cli": "^20.2.0",
     "@commitlint/config-conventional": "^20.2.0",
     "commitlint": "^20.2.0",
-    
+    "semantic-release": "^25.0.2",
+    "typedoc": "^0.28.15",
+    "prisma-extension-pagination": "^0.7.6"
+
+
+
+
 
 
 
