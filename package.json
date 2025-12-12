@@ -524,7 +524,9 @@
     "immer": "^11.0.1",
     "use-immer": "^0.11.0",
     "ramda": "^0.32.0",
-    "raptor-pubsub": "^1.0.5"
+    "raptor-pubsub": "^1.0.5",
+    "@marko/express": "^1.0.0"
+
 
 
     
@@ -813,7 +815,16 @@
     "rollup": "^3.22.0",
     "rollup-plugin-livereload": "^2.0.5",
     "@marko/serve": "^4",
-    "@marko/build": "^4"
+    "@marko/build": "^4",
+    "@marko/webpack": "^9.2.0",
+    "css-loader": "^6.5.0",
+    "css-minimizer-webpack-plugin": "^3.1.1",
+    "mini-css-extract-plugin": "^2.4.3",
+    "spawn-server-webpack-plugin": "^6.1.0",
+    "webpack-node-externals": "^3.0.0"
+
+
+
 
 
 
