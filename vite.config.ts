@@ -133,12 +133,12 @@ export default defineConfig(({ mode }) => ({
     {
       apply: "build",
       name: "worker-condition",
-      config(options) {
+      config(options : import('vite').UserConfig) {
         if (options.build.ssr && options.ssr?.target === "webworker") {
           // Add the `worker` export condition to tell Marko to load worker compatible stream apis.
           // Remove when https://github.com/vitejs/vite/issues/6401 is resolved.
           options.resolve = {
-            conditions: ["worker"],
+            conditions: ["worker", ...(options.resolve?.conditions || [])],
           };
         }
 
