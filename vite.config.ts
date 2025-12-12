@@ -48,7 +48,7 @@ import { redwood } from "rwsdk/vite";
 import { cloudflare } from "@cloudflare/vite-plugin";
 import posthtml from '@vituum/vite-plugin-posthtml'
 import liquid from 'liquid-express'
-// import liquidMiddleware from 'liquid-express-middleware'
+import liquidMiddleware from 'liquid-express-middleware'
 import liquidNode from 'liquid-node'
 import liquidNodeMiddleware from 'liquid-node-middleware'
 import { installGlobals } from 'vituum/globals'
