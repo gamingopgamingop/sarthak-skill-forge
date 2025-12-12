@@ -3,6 +3,7 @@ import compressionMiddleware from "compression";
 import markoMiddleware from "@marko/express";
 import indexPage from "./pages/index";
 import usersService from "./services/users";
+import { Router } from "express";
 
 const port = process.env.PORT || 3000;
 
@@ -19,3 +20,6 @@ express()
 
     console.log(`Listening on port ${port}`);
   });
+export const router = Router()
+  .get("/", indexPage)
+  .get("/services/users", usersService);

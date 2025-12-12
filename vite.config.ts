@@ -215,6 +215,9 @@ export default defineConfig(({ mode }) => ({
     outDir: "dist", // Server and client builds should output assets to the same folder.
     emptyOutDir: false, // Avoid server / client deleting files from each other.
     assetsInlineLimit: 0, // This is currently a work around for loading the favicon since datauri does not work.
+    sourcemap: true, // Generate sourcemaps for all builds.
+    emptyOutDir: false, // Avoid server & client deleting files from each other.
+
 
     chunkSizeWarningLimit: 3000,
     ssr: true,
