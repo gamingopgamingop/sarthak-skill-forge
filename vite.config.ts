@@ -22,7 +22,7 @@ import { qwikCity } from "@builder.io/qwik-city/vite";
 
 import viteImageminVheemstra from "@vheemstra/vite-plugin-imagemin";
 import viteImageminOriginal from "vite-plugin-imagemin";
-import { tanstackStart } from '@tanstack/react-start/plugin/vite'
+import { viteTanstackStart } from '@tanstack/react-start/plugin/vite'
 import { fileURLToPath, URL } from 'node:url'
 import { svelte } from '@sveltejs/vite-plugin-svelte'
 
@@ -80,8 +80,8 @@ import nunjucks from '@vituum/vite-plugin-nunjucks'
 import handlebars from '@vituum/vite-plugin-handlebars'
 import { dirname } from "node:path";
 // import redirects from "vituum/src/plugins/redirects.js"
-import liquid  from '@vituum/vite-plugin-liquid'
-import tailwindcss from '@vituum/vite-plugin-tailwindcss'
+import vitummliquid  from '@vituum/vite-plugin-liquid'
+// import tailwindcss from '@vituum/vite-plugin-tailwindcss'
 
 installGlobals();
 
@@ -141,6 +141,11 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
     angular(),
     marko(),
     vituumTailwind(),
+    vitummliquid(),
+    viteTanstackStart(),
+    dts({
+      insertTypesEntry: true,
+    }),
     {
       apply: "build",
       name: "worker-condition",
