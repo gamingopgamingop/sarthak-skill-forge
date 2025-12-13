@@ -3,8 +3,9 @@ import marko from "@marko/vite";
 import type { GetManualChunk } from 'rollup';
 import type { OutputAsset } from "rollup";
 import type { UserConfig , Plugin , ConfigEnv} from "vite";
+// import type { Plugin} from "vite";
 
-import { defineConfig } from "vite";
+import { defineConfig  , Plugin} from "vite";
 // import react from "@vitejs/plugin-react-swc";
 import path from "path";
 import tsConfigPaths from 'vite-tsconfig-paths'
@@ -95,7 +96,7 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
     port: 8080,
   },
 
-  plugins: Plugin[][
+  plugins: [
     handlebars(),
     nunjucks(),
     latte(),
