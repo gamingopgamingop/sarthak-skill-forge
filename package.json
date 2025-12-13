@@ -863,7 +863,9 @@
     "semantic-release": "^25.0.2",
     "typedoc": "^0.28.15",
     "prisma-extension-pagination": "^0.7.6",
-    "@vituum/vite-plugin-postcss": "^1.1.0"
+    "@vituum/vite-plugin-postcss": "^1.1.0",
+    "@vituum/vite-plugin-juice": "^1.4.0"
+
 
 
 
