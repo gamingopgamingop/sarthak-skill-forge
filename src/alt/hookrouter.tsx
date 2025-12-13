@@ -1,7 +1,7 @@
 import React from "react";
 import { useRoutes, A } from "hookrouter";
 
-const routes = {
+const routes: Record<string, () => JSX.Element> = {
   "/alt/hookrouter": () => <div>hookrouter Home</div>,
   "/alt/hookrouter/about": () => <div>About (hookrouter)</div>,
 };
