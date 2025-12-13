@@ -417,7 +417,6 @@
     "blitz": "3.0.2",
     "formik": "2.4.9",
     "secure-password": "4.0.0",
-    "vituum": "^1.1",
     "liquidjs": "^10.9",
     "liquid-node": "3.0.1",
     "liquid-express": "^1.0.0",
@@ -532,7 +531,9 @@
     "@storybook/react-vite": "^10.1.8",
     "axe-core": "^4.11.0",
     "redis": "^5.10.0",
-    "bullmq": "^5.66.0"
+    "bullmq": "^5.66.0",
+    "vituum": "^1.2.0",
+
 
 
 
