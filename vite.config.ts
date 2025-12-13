@@ -56,7 +56,7 @@ import liquidNode from 'liquid-node'
 import liquidNodeMiddleware from 'liquid-node-middleware'
 import { installGlobals } from 'vituum/globals'
 // import vituum from 'vituum'
-import vituum from 'vituum/globals'
+// import vituum from 'vituum/globals'
 
 import pages from 'vituum/plugins/pages.js'
 import redirects from 'vituum/plugins/redirects.js'
@@ -87,8 +87,7 @@ const isProd = NODE_ENV === "production";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const isTest = import.meta.env.MODE === 'test';
 
-
-export default defineConfig(({ mode }) => ({
+export default defineConfig(({ mode }: ConfigEnv) => ({
   server: {
     host: "::",
     port: 8080,
