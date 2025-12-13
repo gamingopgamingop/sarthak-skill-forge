@@ -66,7 +66,7 @@ import pages from 'vituum/plugins/pages.js'
 // import prerender from 'vituum/plugins/prerender.js'
 // import prerenderMiddleware from 'vituum/plugins/prerender-middleware.js'
 // import prerenderNode from 'vituum/plugins/prerender-node.js'
-import prerenderNodeMiddleware from 'vituum/plugins/prerender-node-middleware.js'
+// import prerenderNodeMiddleware from 'vituum/plugins/prerender-node-middleware.js'
 import imports from 'vituum/plugins/imports.js'
 import vituumTailwind from "@vituum/vite-plugin-tailwindcss";
 import postcss from '@vituum/vite-plugin-postcss'
@@ -117,7 +117,7 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
     // prerender(),
     // prerenderMiddleware(),
     // prerenderNode(),
-    prerenderNodeMiddleware(),
+    // prerenderNodeMiddleware(),
     posthtml(),
     liquid(),
     // liquidMiddleware(),
