@@ -540,7 +540,9 @@
     "express-liquid": "^0.2.6",
     "liquidjs": "^10.24.0",
     "@types/hookrouter": "^2.2.9",
-    "@storybook/router": "^8.6.14"
+    "@storybook/router": "^8.6.14",
+    "@vituum/vite-plugin-tailwindcss": "^1.2.0"
+
 
 
 
