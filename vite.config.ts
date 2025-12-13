@@ -3,6 +3,7 @@ import marko from "@marko/vite";
 import type { GetManualChunk } from 'rollup';
 import type { OutputAsset } from "rollup";
 import type { UserConfig , Plugin} from "vite";
+import type { ConfigEnv } from 'vite';
 
 import { defineConfig } from "vite";
 // import react from "@vitejs/plugin-react-swc";
@@ -322,10 +323,19 @@ function errorOnDuplicatesPkgDeps(
 
 errorOnDuplicatesPkgDeps(devDependencies, dependencies);
 
+function qwikOnlyConfig(
+  callback: (config: UserConfig, env: { mode: string; command: string }) => UserConfig
+): UserConfig {
+  return defineConfig((env: { mode: string; command: string | 'serve' | 'build' }) => callback({}, env));
+}
+
+
 /**
  * Note that Vite normally starts from `index.html` but the qwikCity plugin makes start at `src/entry.ssr.tsx` instead.
  */
     qwikOnlyConfig((config: UserConfig, env: { mode: string; command: string }): UserConfig => {
+          const { mode, command } = env;
+
       return {
         plugins: [qwikCity(), qwikVite(), tsconfigPaths({ root: "." })],
         // This tells Vite which dependencies to pre-build in dev mode.
