@@ -254,8 +254,8 @@ export default defineConfig(({ mode }) => ({
       },
       output: {
         format: "es",
-        manualChunks(id : Parameters<GetManualChunk>[0] | string) {
-          if (id.includes("node_modules")) return "vendor";
+        manualChunks(id : Parameters<GetManualChunk>[0] | string  | unknown) {
+          if (typeof id === "string" && id.includes("node_modules")) return "vendor";
         },
         assetFileNames: (assetInfo : OutputAsset ) => {
           const ext = assetInfo.name.split(".").pop();
