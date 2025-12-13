@@ -61,7 +61,7 @@ import vituum , { installGlobals } from 'vituum'
 import pages from 'vituum/plugins/pages.js'
 // import redirects from 'vituum/plugins/redirects.js'
 // import sitemap from 'vituum/plugins/sitemap.js'
-import robots from 'vituum/plugins/robots.js'
+// import robots from 'vituum/plugins/robots.js'
 import manifest from 'vituum/plugins/manifest.js'
 import prerender from 'vituum/plugins/prerender.js'
 import prerenderMiddleware from 'vituum/plugins/prerender-middleware.js'
@@ -112,7 +112,7 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
     pages(),
     // redirects(),
     // sitemap(),
-    robots(),
+    // robots(),
     manifest(),
     prerender(),
     prerenderMiddleware(),
