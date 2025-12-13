@@ -19,6 +19,7 @@ import dts from 'vite-plugin-dts'
 import react from '@vitejs/plugin-react-swc'
 import preact from '@preact/preset-vite'
 import { qwikCity } from "@builder.io/qwik-city/vite";
+import tailwindcss from '@vituum/vite-plugin-tailwindcss'
 
 import viteImageminVheemstra from "@vheemstra/vite-plugin-imagemin";
 import viteImageminOriginal from "vite-plugin-imagemin";
@@ -68,7 +69,7 @@ import pages from 'vituum/plugins/pages.js'
 // import prerenderNode from 'vituum/plugins/prerender-node.js'
 // import prerenderNodeMiddleware from 'vituum/plugins/prerender-node-middleware.js'
 import imports from 'vituum/plugins/imports.js'
-import vituumTailwind from "@vituum/vite-plugin-tailwindcss";
+// import vituumTailwind from "@vituum/vite-plugin-tailwindcss";
 import postcss from '@vituum/vite-plugin-postcss'
 import juice from '@vituum/vite-plugin-juice'
 import { optimize } from '@vituum/vite-plugin-optimize'
