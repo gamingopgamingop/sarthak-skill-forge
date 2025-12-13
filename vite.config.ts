@@ -2,8 +2,7 @@
 import marko from "@marko/vite";
 import type { GetManualChunk } from 'rollup';
 import type { OutputAsset } from "rollup";
-import type { UserConfig , Plugin} from "vite";
-import type { ConfigEnv } from 'vite';
+import type { UserConfig , Plugin , ConfigEnv} from "vite";
 
 import { defineConfig } from "vite";
 // import react from "@vitejs/plugin-react-swc";
@@ -96,7 +95,7 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
     port: 8080,
   },
 
-  plugins:[
+  plugins: Plugin[][
     handlebars(),
     nunjucks(),
     latte(),
@@ -110,7 +109,7 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
     imports(),
     vituum(),
     pages(),
-    redirects(),
+    // redirects(),
     sitemap(),
     robots(),
     manifest(),
@@ -257,7 +256,7 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
         'index.ejs.html': path.resolve(__dirname, 'index.ejs.html'),
         'index.haml.html': path.resolve(__dirname, 'index.haml.html'),
         'index.jade.html': path.resolve(__dirname, 'index.jade.html'),
-        'index.swig.html': path.resolve(__dirname, 'index.swig.html'),
+        'index.swig.html': path.resolve(__dirname, 'index.swig.html'), 
         
       },
       output: {
