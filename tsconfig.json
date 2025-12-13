@@ -12,7 +12,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "sourceMap": true,
-    "types": ["vite/client", "node"],
+    "types": ["vite/client", "node", "react", "react-dom", "vituum", "vitest", "vitest/globals"],
     "strict": true,
     "noEmit": true,
     "verbatimModuleSyntax": true
