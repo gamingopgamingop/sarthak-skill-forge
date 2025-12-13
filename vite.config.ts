@@ -1,6 +1,7 @@
 /// <reference types="vitest" />
 import marko from "@marko/vite";
 import type { GetManualChunk } from 'rollup';
+import type { OutputAsset } from "rollup";
 
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
@@ -215,11 +216,11 @@ export default defineConfig(({ mode }) => ({
   },
 
   build: {
-    minify: true,
+    minify: [true, "terser"],
     outDir: "dist", // Server and client builds should output assets to the same folder.
     // emptyOutDir: false, // Avoid server / client deleting files from each other.
     assetsInlineLimit: 0, // This is currently a work around for loading the favicon since datauri does not work.
-    sourcemap: true, // Generate sourcemaps for all builds.
+    sourcemap: [true, mode === "development", mode === "test", mode === "production"], // Generate sourcemaps for all builds.
     emptyOutDir: false, // Avoid server & client deleting files from each other.
     // assetsInlineLimit: 0, // This is currently a work around for loading the favicon since datauri does not work.
     // rollupOptions: {
@@ -256,7 +257,7 @@ export default defineConfig(({ mode }) => ({
         manualChunks(id : Parameters<GetManualChunk>[0] | string) {
           if (id.includes("node_modules")) return "vendor";
         },
-        assetFileNames: (assetInfo) => {
+        assetFileNames: (assetInfo : OutputAsset ) => {
           const ext = assetInfo.name.split(".").pop();
           if (/\.(png|jpe?g|svg|gif|tiff|bmp|ico)$/i.test(assetInfo.name)) {
             return `assets/images/[name]-[hash].${ext}`;
@@ -265,12 +266,10 @@ export default defineConfig(({ mode }) => ({
         },
       },
     },
-    minify: "terser",
     terserOptions: {
       compress: { drop_console: mode === "production", drop_debugger: mode === "production" },
       format: { comments: false },
     },
-    sourcemap: mode === "development",
   },
   test: {
     globals: true,
