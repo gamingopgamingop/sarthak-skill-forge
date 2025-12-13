@@ -19,7 +19,7 @@ import dts from 'vite-plugin-dts'
 import react from '@vitejs/plugin-react-swc'
 import preact from '@preact/preset-vite'
 import { qwikCity } from "@builder.io/qwik-city/vite";
-import tailwindcss from '@vituum/vite-plugin-tailwindcss'
+import tailwindcssVite from '@vituum/vite-plugin-tailwindcss'
 
 import viteImageminVheemstra from "@vheemstra/vite-plugin-imagemin";
 import viteImageminOriginal from "vite-plugin-imagemin";
@@ -141,7 +141,7 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
     preact(),
     angular(),
     marko(),
-    vituumTailwind(),
+    tailwindcssVite(),
     vitummliquid(),
     viteTanstackStart(),
     dts({
