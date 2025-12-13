@@ -146,6 +146,8 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
     viteTanstackStart(),
     dts({
       insertTypesEntry: true,
+      tsConfigPath: resolve(__dirname, 'tsconfig.json'),
+      entryPoints: ['src/main.ts'],
     }),
     {
       apply: "build",
