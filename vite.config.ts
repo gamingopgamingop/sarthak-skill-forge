@@ -2,6 +2,7 @@
 import marko from "@marko/vite";
 import type { GetManualChunk } from 'rollup';
 import type { OutputAsset } from "rollup";
+import type { UserConfig , Plugin} from "vite";
 
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
@@ -137,7 +138,9 @@ export default defineConfig(({ mode }) => ({
     {
       apply: "build",
       name: "worker-condition",
-      config(options : import('vite').UserConfig) {
+      // config(options : import('vite').UserConfig) {
+      config(options : UserConfig, config : UserConfig) {
+
         if (options.build.ssr && options.ssr?.target === "webworker") {
           // Add the `worker` export condition to tell Marko to load worker compatible stream apis.
           // Remove when https://github.com/vitejs/vite/issues/6401 is resolved.
@@ -146,9 +149,9 @@ export default defineConfig(({ mode }) => ({
           };
         }
 
-        return options;
+        return [options, config];
       },
-    },
+    }, 
     qwikVite({
       csr: true,
     }),
