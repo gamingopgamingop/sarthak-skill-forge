@@ -39,9 +39,9 @@ import devtools from 'solid-devtools/vite';
 import { TanStackStartVitePlugin } from '@tanstack/start-vite-plugin'
 import { tanstackStart } from '@tanstack/start-vite-plugin'
 import { reactRouter } from "@react-router/dev/vite";
-import tsconfigPaths from "vite-tsconfig-paths";
+// import tsconfigPaths from "vite-tsconfig-paths";
 import solid from 'vite-plugin-solid'
-import { qwikVite } from '@builder.io/qwik/optimizer';
+// import { qwikVite } from '@builder.io/qwik/optimizer';
 import pkg from "./package.json";
 import { qwikVite } from "@builder.io/qwik/optimizer";
 import angular from '@analogjs/vite-plugin-angular';
