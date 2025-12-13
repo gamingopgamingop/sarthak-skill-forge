@@ -58,7 +58,7 @@ import liquidNodeMiddleware from 'liquid-node-middleware'
 import vituum , { installGlobals } from 'vituum'
 // import vituum from 'vituum/globals'
 // import { installGlobals } from 'vituum/dist/globals.js'
-// import pages from 'vituum/plugins/pages.js'
+import pages from 'vituum/plugins/pages.js'
 import redirects from 'vituum/plugins/redirects.js'
 import sitemap from 'vituum/plugins/sitemap.js'
 import robots from 'vituum/plugins/robots.js'
@@ -131,7 +131,7 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
     vueDevTools(),
     devtools(), solidPlugin(),
     TanStackStartVitePlugin(),
-    reactRouter(), tsconfigPaths(),
+    reactRouter(), tsConfigPaths(),
     svelte(),
     solid(),
     preact(),
@@ -337,7 +337,7 @@ function qwikOnlyConfig(
           const { mode, command } = env;
 
       return {
-        plugins: [qwikCity(), qwikVite(), tsconfigPaths({ root: "." })],
+        plugins: [qwikCity(), qwikVite(), tsConfigPaths({ root: "." })],
         // This tells Vite which dependencies to pre-build in dev mode.
         optimizeDeps: {
           // Put problematic deps that break bundling here, mostly those with binaries.
