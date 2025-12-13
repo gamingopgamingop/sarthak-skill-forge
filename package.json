@@ -539,7 +539,9 @@
     "@vituum/vite-plugin-posthtml": "^1.1.0",
     "express-liquid": "^0.2.6",
     "liquidjs": "^10.24.0",
-    "@types/hookrouter": "^2.2.9"
+    "@types/hookrouter": "^2.2.9",
+    "@storybook/router": "^8.6.14"
+
 
 
 
