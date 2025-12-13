@@ -59,7 +59,7 @@ import vituum , { installGlobals } from 'vituum'
 // import vituum from 'vituum/globals'
 // import { installGlobals } from 'vituum/dist/globals.js'
 import pages from 'vituum/plugins/pages.js'
-import redirects from 'vituum/plugins/redirects.js'
+// import redirects from 'vituum/plugins/redirects.js'
 import sitemap from 'vituum/plugins/sitemap.js'
 import robots from 'vituum/plugins/robots.js'
 import manifest from 'vituum/plugins/manifest.js'
@@ -79,6 +79,9 @@ import latte from '@vituum/vite-plugin-latte'
 import nunjucks from '@vituum/vite-plugin-nunjucks'
 import handlebars from '@vituum/vite-plugin-handlebars'
 import { dirname } from "node:path";
+// import redirects from "vituum/src/plugins/redirects.js"
+import liquid  from '@vituum/vite-plugin-liquid'
+import tailwindcss from '@vituum/vite-plugin-tailwindcss'
 
 installGlobals();
 
