@@ -72,7 +72,7 @@ import imports from 'vituum/plugins/imports.js'
 // import vituumTailwind from "@vituum/vite-plugin-tailwindcss";
 // import postcss from '@vituum/vite-plugin-postcss'
 import juice from '@vituum/vite-plugin-juice'
-import { optimize } from '@vituum/vite-plugin-optimize'
+// import { optimize } from '@vituum/vite-plugin-optimize'
 import send from '@vituum/vite-plugin-send'
 import concat from '@vituum/vite-plugin-concat'
 import twig from '@vituum/vite-plugin-twig'
@@ -106,7 +106,7 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
     concat(),
     send(),
     juice(),
-    optimize(),
+    // optimize(),
     postcss(),
     tailwindcss(),
     imports(),
