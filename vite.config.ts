@@ -70,7 +70,7 @@ import pages from 'vituum/plugins/pages.js'
 // import prerenderNodeMiddleware from 'vituum/plugins/prerender-node-middleware.js'
 import imports from 'vituum/plugins/imports.js'
 // import vituumTailwind from "@vituum/vite-plugin-tailwindcss";
-import postcss from '@vituum/vite-plugin-postcss'
+// import postcss from '@vituum/vite-plugin-postcss'
 import juice from '@vituum/vite-plugin-juice'
 import { optimize } from '@vituum/vite-plugin-optimize'
 import send from '@vituum/vite-plugin-send'
@@ -83,6 +83,7 @@ import { dirname } from "node:path";
 // import redirects from "vituum/src/plugins/redirects.js"
 import vitummliquid  from '@vituum/vite-plugin-liquid'
 // import tailwindcss from '@vituum/vite-plugin-tailwindcss'
+import postcss from '@vituum/vite-plugin-postcss'
 
 installGlobals();
 
@@ -144,6 +145,7 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
     tailwindcssVite(),
     vitummliquid(),
     viteTanstackStart(),
+    // postcss(),
     dts({
       insertTypesEntry: true,
       tsConfigPath: resolve(__dirname, 'tsconfig.json'),
