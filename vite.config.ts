@@ -63,7 +63,7 @@ import pages from 'vituum/plugins/pages.js'
 // import sitemap from 'vituum/plugins/sitemap.js'
 // import robots from 'vituum/plugins/robots.js'
 // import manifest from 'vituum/plugins/manifest.js'
-import prerender from 'vituum/plugins/prerender.js'
+// import prerender from 'vituum/plugins/prerender.js'
 import prerenderMiddleware from 'vituum/plugins/prerender-middleware.js'
 import prerenderNode from 'vituum/plugins/prerender-node.js'
 import prerenderNodeMiddleware from 'vituum/plugins/prerender-node-middleware.js'
@@ -114,7 +114,7 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
     // sitemap(),
     // robots(),
     // manifest(),
-    prerender(),
+    // prerender(),
     prerenderMiddleware(),
     prerenderNode(),
     prerenderNodeMiddleware(),
