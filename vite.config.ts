@@ -68,7 +68,7 @@ import prerenderMiddleware from 'vituum/plugins/prerender-middleware.js'
 import prerenderNode from 'vituum/plugins/prerender-node.js'
 import prerenderNodeMiddleware from 'vituum/plugins/prerender-node-middleware.js'
 import imports from 'vituum/plugins/imports.js'
-import tailwindcss from '@vituum/vite-plugin-tailwindcss'
+import vituumTailwind from "@vituum/vite-plugin-tailwindcss";
 import postcss from '@vituum/vite-plugin-postcss'
 import juice from '@vituum/vite-plugin-juice'
 import { optimize } from '@vituum/vite-plugin-optimize'
@@ -140,6 +140,7 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
     preact(),
     angular(),
     marko(),
+    vituumTailwind(),
     {
       apply: "build",
       name: "worker-condition",
