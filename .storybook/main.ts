@@ -1,7 +1,7 @@
 import type { StorybookConfig } from "@storybook/marko-vite";
-import { marko } from "@storybook/addon-marko";
-import { angular } from "@storybook/addon-angular";
-import { remix } from "storybook-addon-remix-react-router";
+// import { marko } from "@storybook/addon-marko";
+// import { angular } from "@storybook/addon-angular";
+// import { remix } from "storybook-addon-remix-react-router";
 /** @type { import('@storybook/react-vite').StorybookConfig } */
 export default {
   framework: "@storybook/marko-vite",
