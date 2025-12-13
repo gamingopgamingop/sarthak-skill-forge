@@ -5,7 +5,7 @@ import type { OutputAsset } from "rollup";
 import type { UserConfig , Plugin} from "vite";
 
 import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react-swc";
+// import react from "@vitejs/plugin-react-swc";
 import path from "path";
 import tsConfigPaths from 'vite-tsconfig-paths'
 import { componentTagger } from "lovable-tagger";
@@ -77,12 +77,13 @@ import twig from '@vituum/vite-plugin-twig'
 import latte from '@vituum/vite-plugin-latte'
 import nunjucks from '@vituum/vite-plugin-nunjucks'
 import handlebars from '@vituum/vite-plugin-handlebars'
+import { dirname } from "node:path";
 
 installGlobals();
 
 const { NODE_ENV } = process.env;
 const isProd = NODE_ENV === "production";
-const __dirname = dirname(__filename);
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 
 export default defineConfig(({ mode }) => ({
@@ -297,19 +298,41 @@ const { dependencies = {}, devDependencies = {} } = pkg as any as {
   devDependencies: PkgDep;
   [key: string]: unknown;
 };
+
+function errorOnDuplicatesPkgDeps(
+  devDependencies: PkgDep,
+  dependencies: PkgDep,
+) {
+  const duplicateDeps = Object.keys(devDependencies).filter(
+    (dep) => dependencies[dep],
+  );
+
+  const qwikPkg = Object.keys(dependencies).filter((v) => /qwik/i.test(v));
+
+  if (qwikPkg.length) {
+    throw new Error(`Move qwik packages ${qwikPkg.join(", ")} to devDependencies`);
+  }
+
+  if (duplicateDeps.length) {
+    throw new Error(
+      `Duplicate deps in dependencies & devDependencies: ${duplicateDeps.join(", ")}`
+    );
+  }
+}
+
 errorOnDuplicatesPkgDeps(devDependencies, dependencies);
 
 /**
  * Note that Vite normally starts from `index.html` but the qwikCity plugin makes start at `src/entry.ssr.tsx` instead.
  */
-qwikOnlyConfig((config: UserConfig, env: { mode: string; command: string }): UserConfig => {
-  return {
-    plugins: [qwikCity(), qwikVite(), tsconfigPaths({ root: "." })],
-    // This tells Vite which dependencies to pre-build in dev mode.
-    optimizeDeps: {
-      // Put problematic deps that break bundling here, mostly those with binaries.
-      // For example ['better-sqlite3'] if you use that in server functions.
-      exclude: [],
+    qwikOnlyConfig((config: UserConfig, env: { mode: string; command: string }): UserConfig => {
+      return {
+        plugins: [qwikCity(), qwikVite(), tsconfigPaths({ root: "." })],
+        // This tells Vite which dependencies to pre-build in dev mode.
+        optimizeDeps: {
+          // Put problematic deps that break bundling here, mostly those with binaries.
+          // For example ['better-sqlite3'] if you use that in server functions.
+          exclude: [],
     },
 
     /**
@@ -351,43 +374,43 @@ qwikOnlyConfig((config: UserConfig, env: { mode: string; command: string }): Use
  * @param {Object} devDependencies - List of development dependencies
  * @param {Object} dependencies - List of production dependencies
  */
-function errorOnDuplicatesPkgDeps(
-  devDependencies: PkgDep,
-  dependencies: PkgDep,
-) {
-  let msg = "";
+// function errorOnDuplicatesPkgDeps(
+//   devDependencies: PkgDep,
+//   dependencies: PkgDep,
+// ) {
+//   let msg = "";
   // Create an array 'duplicateDeps' by filtering devDependencies.
   // If a dependency also exists in dependencies, it is considered a duplicate.
-  const duplicateDeps = Object.keys(devDependencies).filter(
-    (dep) => dependencies[dep],
-  );
+//   const duplicateDeps = Object.keys(devDependencies).filter(
+//     (dep) => dependencies[dep],
+//   );
 
   // include any known qwik packages
-  const qwikPkg = Object.keys(dependencies).filter((value) =>
-    /qwik/i.test(value),
-  );
+//   const qwikPkg = Object.keys(dependencies).filter((value) =>
+//     /qwik/i.test(value),
+//   );
 
   // any errors for missing "qwik-city-plan"
   // [PLUGIN_ERROR]: Invalid module "@qwik-city-plan" is not a valid package
-  msg = `Move qwik packages ${qwikPkg.join(", ")} to devDependencies`;
+//   msg = `Move qwik packages ${qwikPkg.join(", ")} to devDependencies`;
 
-  if (qwikPkg.length > 0) {
-    throw new Error(msg);
-  }
+//   if (qwikPkg.length > 0) {
+//     throw new Error(msg);
+//   }
 
   // Format the error message with the duplicates list.
   // The `join` function is used to represent the elements of the 'duplicateDeps' array as a comma-separated string.
-  msg = `
-    Warning: The dependency "${duplicateDeps.join(", ")}" is listed in both "devDependencies" and "dependencies".
-    Please move the duplicated dependencies to "devDependencies" only and remove it from "dependencies"
-  `;
+//   msg = `
+//     Warning: The dependency "${duplicateDeps.join(", ")}" is listed in both "devDependencies" and "dependencies".
+//     Please move the duplicated dependencies to "devDependencies" only and remove it from "dependencies"
+//   `;
 
   // Throw an error with the constructed message.
-  if (duplicateDeps.length > 0) {
-    throw new Error(msg);
+//   if (duplicateDeps.length > 0) {
+//     throw new Error(msg);
   
 
     
-  }
-}
+//   }
+// }
 
