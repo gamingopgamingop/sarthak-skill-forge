@@ -2,10 +2,6 @@
 
 This is a custom routing module developed by Sarthak Bansal for use in his personal portfolio website. It demonstrates modern React routing techniques with TypeScript support.
 
-## ⚠️ Repository Status
-
-**This repository is archived and is not accepting pull requests or discussions.** This module is maintained as part of a personal portfolio website.
-
 ## Overview
 
 This routing module is a customized implementation of client-side routing for React applications, used in Sarthak Bansal's personal portfolio website. It was originally based on [@reach/router](https://github.com/reach/router) concepts but has been tailored specifically for portfolio use with TypeScript support for improved type safety.
@@ -117,6 +113,10 @@ This routing module is part of Sarthak Bansal's personal portfolio website imple
 
 It serves as both a functional component of the portfolio and a demonstration of technical skills.
 
+## Public Repository
+
+This code is part of a public GitHub repository showcasing Sarthak Bansal's frontend development skills. You can view the full portfolio repository to see how this module integrates with other components.
+
 ## License
 
 MIT
@@ -125,4 +125,4 @@ MIT
 
 **Sarthak Bansal**
 
-This module is part of a personal portfolio website and is not intended for general distribution or use.
+This module is part of a personal portfolio website hosted in a public repository for demonstration purposes.
