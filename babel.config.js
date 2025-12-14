@@ -1,11 +1,28 @@
 module.exports = api => {
-  const config = {
-    presets: ["@babel/env"]
-  };
+  // Disable caching for now
+  api.cache(false);
 
-  if (api.caller(it => it.target) === "server") {
-    config.targets = { node: "current" };
+  const presets = [];
+  const plugins = [];
+
+  // Add preset-env only for production builds
+  if (process.env.NODE_ENV === 'production') {
+    presets.push('@babel/preset-env');
   }
 
-  return config;
+  // Always add React preset
+  presets.push('@babel/preset-react');
+
+  // Handle server-side (Node) builds
+  if (api.caller(caller => caller && caller.target === 'node')) {
+    presets.push([
+      '@babel/preset-env',
+      { targets: { node: 'current' } }
+    ]);
+  }
+
+  return {
+    presets,
+    plugins
+  };
 };
