@@ -19,7 +19,8 @@
   "noImplicitThis": false,
   "noImplicitReturns": false,
   "noImplicitIndexSignatures": false,
-  
+  "workspaces": ["packages/*"],
+
   "noImplicitOverride": false,
   "repository": {
     "type": "git",
@@ -541,7 +542,10 @@
     "@types/hookrouter": "^2.2.9",
     "@vituum/vite-plugin-tailwindcss": "^1.2.0",
     "@vituum/vite-plugin-send": "^1.2.0",
-    "liquid": "^5.1.1"
+    "liquid": "^5.1.1",
+    "react-navi": "^0.15.0",
+    
+
 
 
 
