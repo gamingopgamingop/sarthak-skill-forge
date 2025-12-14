@@ -4,6 +4,7 @@ import type { GetManualChunk } from 'rollup';
 import type { OutputAsset } from "rollup";
 import type { UserConfig , Plugin , ConfigEnv} from "vite";
 // import type { Plugin} from "vite";
+import { tanstackStart } from '@tanstack/react-start/plugin/vite'
 
 import { defineConfig  , Plugin} from "vite";
 // import react from "@vitejs/plugin-react-swc";
