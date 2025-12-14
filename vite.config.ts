@@ -149,6 +149,9 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
     vitummliquid(),
     viteTanstackStart(),
     // postcss(),
+    tanstackStart(),
+    tanstack(),
+ 
     dts({
       insertTypesEntry: true,
       tsConfigPath: resolve(__dirname, 'tsconfig.json'),
