@@ -90,7 +90,7 @@ import vitummliquid  from '@vituum/vite-plugin-liquid'
 // import tailwindcss from '@vituum/vite-plugin-tailwindcss'
 import postcss from '@vituum/vite-plugin-postcss'
 
-installGlobals();
+// installGlobals();
 
 const { NODE_ENV } = process.env;
 const isProd = NODE_ENV === "production";
