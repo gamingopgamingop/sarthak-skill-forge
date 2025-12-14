@@ -1,61 +1,30 @@
-# @reach/router
+# Router Module for Portfolio Website
 
-Next generation Routing for React, modernized for React 19 with full TypeScript support.
+This is a custom routing module developed by Sarthak Bansal for use in his personal portfolio website. It demonstrates modern React routing techniques with TypeScript support.
+
+## ⚠️ Repository Status
+
+**This repository is archived and is not accepting pull requests or discussions.** This module is maintained as part of a personal portfolio website.
 
 ## Overview
 
-This is a modernized fork of [@reach/router](https://github.com/reach/router) that has been upgraded to be compatible with React 19 and converted to TypeScript. It maintains backward compatibility with React 15 and 16 while adding full type safety and modern build tooling.
+This routing module is a customized implementation of client-side routing for React applications, used in Sarthak Bansal's personal portfolio website. It was originally based on [@reach/router](https://github.com/reach/router) concepts but has been tailored specifically for portfolio use with TypeScript support for improved type safety.
 
 ## Features
 
-- **React 19 Compatible**: Fully compatible with the latest React features and APIs
+- **React Compatible**: Designed for modern React applications
 - **TypeScript Support**: Complete TypeScript definitions for all components and hooks
-- **Backward Compatible**: Works with React 15, 16, and 19
-- **Lightweight**: Minimal footprint with no external dependencies
+- **Lightweight**: Minimal footprint suitable for portfolio websites
 - **Accessible**: Built with accessibility in mind
 - **Simple API**: Easy-to-use routing components
 
-## Installation
+## Portfolio Implementation
 
-```bash
-npm install @reach/router
-```
-
-or
-
-```bash
-yarn add @reach/router
-```
-
-## Quick Start
-
-```jsx
-import React from "react";
-import { Router, Link } from "@reach/router";
-
-const Home = () => <div>Home</div>;
-const About = () => <div>About</div>;
-const NotFound = () => <div>404 - Not Found</div>;
-
-function App() {
-  return (
-    <div>
-      <nav>
-        <Link to="/">Home</Link>
-        <Link to="/about">About</Link>
-      </nav>
-      
-      <Router>
-        <Home path="/" />
-        <About path="/about" />
-        <NotFound default />
-      </Router>
-    </div>
-  );
-}
-
-export default App;
-```
+This module is integrated into Sarthak Bansal's personal portfolio website to demonstrate:
+- Modern React development practices
+- TypeScript integration with React components
+- Client-side routing implementation
+- Component architecture and design patterns
 
 ## Key Components
 
@@ -65,107 +34,71 @@ The main router component that manages routing state.
 ```jsx
 <Router>
   <Home path="/" />
-  <User path="/user/:userId" />
+  <Projects path="/projects" />
+  <Contact path="/contact" />
   <NotFound default />
 </Router>
 ```
 
 ### Link
-A navigational component that uses the router.
+Navigation component for portfolio pages.
 
 ```jsx
-<Link to="/user/123">User Profile</Link>
-<Link to="/search" state={{ query: "react" }}>Search</Link>
+<Link to="/projects">View Projects</Link>
+<Link to="/contact" state={{ from: "header" }}>Contact Me</Link>
 ```
 
 ### Redirect
-Programmatically redirect from one route to another.
+Handle navigation redirects within the portfolio.
 
 ```jsx
-<Redirect from="/old" to="/new" />
-<Redirect from="/users/:userId" to="/profile/:userId" />
-```
-
-### Match
-Component for conditionally rendering based on a route.
-
-```jsx
-<Match path="/user/:userId">
-  {props => props.match ? <UserProfile {...props} /> : <div>Not matched</div>}
-</Match>
+<Redirect from="/old-portfolio" to="/projects" />
 ```
 
 ## Hooks
 
 ### useLocation
-Access the current location object.
+Access the current location for analytics or UI updates.
 
 ```jsx
 import { useLocation } from "@reach/router";
 
-function Component() {
+function PortfolioHeader() {
   const location = useLocation();
-  // location.pathname, location.search, etc.
-  return <div>Current path: {location.pathname}</div>;
+  // Highlight active navigation based on current path
+  return <Navigation currentPath={location.pathname} />;
 }
 ```
 
 ### useNavigate
-Get a function for navigating programmatically.
+Programmatic navigation for portfolio interactions.
 
 ```jsx
 import { useNavigate } from "@reach/router";
 
-function Component() {
+function ProjectCard({ projectId }) {
   const navigate = useNavigate();
   
-  const handleClick = () => {
-    navigate("/somewhere");
-    // or with options
-    navigate("/somewhere", { replace: true });
+  const viewDetails = () => {
+    navigate(`/projects/${projectId}`);
   };
   
-  return <button onClick={handleClick}>Go</button>;
+  return <button onClick={viewDetails}>View Details</button>;
 }
 ```
 
 ### useParams
-Access route parameters.
+Access route parameters for dynamic portfolio content.
 
 ```jsx
 import { useParams } from "@reach/router";
 
-// For route /user/:userId/posts/:postId
-function Component() {
-  const { userId, postId } = useParams();
-  return <div>User {userId}, Post {postId}</div>;
+function ProjectDetail() {
+  const { projectId } = useParams();
+  // Display project details based on projectId
+  return <ProjectDisplay id={projectId} />;
 }
 ```
-
-### useMatch
-Match a route pattern.
-
-```jsx
-import { useMatch } from "@reach/router";
-
-function Component() {
-  const match = useMatch("/user/:userId");
-  if (match) {
-    return <div>User ID: {match.userId}</div>;
-  }
-  return <div>No match</div>;
-}
-```
-
-## Modernization Details
-
-This version of @reach/router has been modernized with the following improvements:
-
-1. **TypeScript Conversion**: Full conversion to TypeScript with comprehensive type definitions
-2. **React 19 Compatibility**: Updated to work with React 19 while maintaining backward compatibility
-3. **Modern Build System**: Updated build tools including Babel 7 and modern Rollup plugins
-4. **Removed Legacy Dependencies**: Eliminated outdated polyfills and dependencies not needed in modern React
-5. **Improved Developer Experience**: Better error messages and tooling support
 
 ## Browser Support
 
@@ -174,44 +107,22 @@ This version of @reach/router has been modernized with the following improvement
 - Safari 12+
 - Edge 79+
 
-## Contributing
+## About This Module
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a pull request
+This routing module is part of Sarthak Bansal's personal portfolio website implementation, showcasing proficiency in:
+- React component development
+- TypeScript integration
+- Frontend architecture
+- Modern JavaScript/ES6+ features
 
-## Development
-
-### Install Dependencies
-
-```bash
-yarn install
-```
-
-### Build
-
-```bash
-yarn build
-```
-
-### Test
-
-```bash
-yarn test
-```
-
-### Watch Mode
-
-```bash
-yarn watch
-```
+It serves as both a functional component of the portfolio and a demonstration of technical skills.
 
 ## License
 
-MIT © Ryan Florence
+MIT
 
-## Acknowledgements
+## Author
 
-This project is a modernized fork of the original [@reach/router](https://github.com/reach/router) by Ryan Florence. We thank the original author and contributors for their excellent work.
+**Sarthak Bansal**
+
+This module is part of a personal portfolio website and is not intended for general distribution or use.
