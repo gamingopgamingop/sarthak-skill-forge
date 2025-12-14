@@ -90,7 +90,8 @@ installGlobals();
 const { NODE_ENV } = process.env;
 const isProd = NODE_ENV === "production";
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const isTest = import.meta.env.MODE === 'test';
+// const isTest = import.meta.env.MODE === 'test';
+const isTest = process.env.NODE_ENV === 'test';
 
 export default defineConfig(({ mode }: ConfigEnv) => ({
   server: {
