@@ -541,7 +541,9 @@
     "liquidjs": "^10.24.0",
     "@types/hookrouter": "^2.2.9",
     "@storybook/router": "^8.6.14",
-    "@vituum/vite-plugin-tailwindcss": "^1.2.0"
+    "@vituum/vite-plugin-tailwindcss": "^1.2.0",
+    "@vituum/vite-plugin-send": "^1.2.0"
+
 
 
 
@@ -864,7 +866,9 @@
     "typedoc": "^0.28.15",
     "prisma-extension-pagination": "^0.7.6",
     "@vituum/vite-plugin-postcss": "^1.1.0",
-    "@vituum/vite-plugin-juice": "^1.4.0"
+    "@vituum/vite-plugin-juice": "^1.4.0",
+    "@vituum/vite-plugin-send": "^1.2.0"
+
 
 
 
