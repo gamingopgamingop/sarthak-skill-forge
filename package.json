@@ -540,7 +540,9 @@
     "liquidjs": "^10.24.0",
     "@types/hookrouter": "^2.2.9",
     "@vituum/vite-plugin-tailwindcss": "^1.2.0",
-    "@vituum/vite-plugin-send": "^1.2.0"
+    "@vituum/vite-plugin-send": "^1.2.0",
+    "liquid": "^5.1.1"
+
 
 
 
