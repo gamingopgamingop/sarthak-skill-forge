@@ -39,7 +39,7 @@ import tanstack from '@tanstack/start-vite-plugin';
 import solidPlugin from 'vite-plugin-solid';
 import devtools from 'solid-devtools/vite';
 // import { TanStackStartVitePlugin } from '@tanstack/start-vite-plugin'
-import TanStackStartVitePlugin from "@tanstack/start-vite-plugin";
+// import TanStackStartVitePlugin from "@tanstack/start-vite-plugin";
 import { tanstackStart } from '@tanstack/start-vite-plugin'
 import { reactRouter } from "@react-router/dev/vite";
 // import tsconfigPaths from "vite-tsconfig-paths";
@@ -138,7 +138,7 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
     vue(),
     vueDevTools(),
     devtools(), solidPlugin(),
-    TanStackStartVitePlugin(),
+    // TanStackStartVitePlugin(),
     reactRouter(), tsConfigPaths(),
     svelte(),
     solid(),
