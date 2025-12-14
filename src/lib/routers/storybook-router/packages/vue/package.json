@@ -1,0 +1,52 @@
+{
+  "name": "storybook-vue-router",
+  "version": "2.0.0",
+  "description": "A storybook decorator that allows you to use routing-aware components in your stories. Updated for Vue 3 and TypeScript support.",
+  "main": "./dist/vue.js",
+  "types": "./dist/vue.d.ts",
+  "license": "MIT",
+  "author": "Gianni Valdambrini",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gvaldambrini/storybook-router.git"
+  },
+  "bugs": {
+    "url": "https://github.com/gvaldambrini/storybook-router/issues"
+  },
+  "homepage": "https://github.com/gvaldambrini/storybook-router",
+  "keywords": [
+    "storybook",
+    "vue",
+    "vue-router",
+    "typescript",
+    "vue-3"
+  ],
+  "peerDependencies": {
+    "@storybook/addon-actions": "^8.0.0",
+    "@storybook/vue3": "^8.0.0",
+    "vue": "^3.0.0",
+    "vue-router": "^4.0.0"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@storybook/addon-actions": "^8.0.0",
+    "@storybook/vue3": "^8.0.0",
+    "@types/node": "^20.0.0",
+    "@vue/cli-service": "^5.0.0",
+    "typescript": "^5.0.0",
+    "vue": "^3.0.0",
+    "vue-router": "^4.0.0",
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/preset-typescript": "^7.0.0",
+    "@types/vue-router": "^2.0.0"
+  },
+  "scripts": {
+    "prepublish": "NODE_ENV=production npm run build",
+    "build": "babel -d dist/ vue.ts --extensions \".ts\""
+  },
+  "files": [
+    "dist/**/*"
+  ]
+}

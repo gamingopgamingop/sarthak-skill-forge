@@ -1,0 +1,36 @@
+{
+  "name": "storybook-react-router-examples",
+  "description": "Storybook-router react-router examples",
+  "license": "MIT",
+  "author": "Gianni Valdambrini",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gvaldambrini/storybook-router.git"
+  },
+  "bugs": {
+    "url": "https://github.com/gvaldambrini/storybook-router/issues"
+  },
+  "homepage": "https://github.com/gvaldambrini/storybook-router",
+  "keywords": [
+    "react",
+    "storybook",
+    "react-router"
+  ],
+  "dependencies": {
+    "@storybook/addon-actions": "^4.0.9||^5.0.2||5.2.0-beta.13",
+    "@storybook/addon-links": "^4.0.9||^5.0.2||5.2.0-beta.13",
+    "@storybook/react": "^4.0.9||^5.0.2||5.2.0-beta.13",
+    "prop-types": "^15.7.2",
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4",
+    "react-router": "^5.0.0",
+    "react-router-dom": "^5.0.0",
+    "react-scripts": "3.0.1",
+    "storybook-react-router": "^1.0.8"
+  },
+  "scripts": {
+    "storybook": "start-storybook -p 9001 -c .storybook"
+  },
+  "private": true,
+  "version": "1.0.8"
+}

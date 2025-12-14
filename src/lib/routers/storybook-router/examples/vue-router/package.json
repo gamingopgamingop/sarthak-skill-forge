@@ -1,0 +1,37 @@
+{
+  "name": "storybook-vue-router-examples",
+  "description": "Storybook-router vue-router examples",
+  "license": "MIT",
+  "author": "Gianni Valdambrini",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gvaldambrini/storybook-router.git"
+  },
+  "bugs": {
+    "url": "https://github.com/gvaldambrini/storybook-router/issues"
+  },
+  "homepage": "https://github.com/gvaldambrini/storybook-router",
+  "keywords": [
+    "vue",
+    "storybook",
+    "vue-router"
+  ],
+  "dependencies": {
+    "@storybook/addon-actions": "^4.0.9||^5.0.2||5.2.0-beta.13",
+    "@storybook/addon-links": "^4.0.9||^5.0.2||5.2.0-beta.13",
+    "@storybook/addons": "^4.0.9||^5.0.2||5.2.0-beta.13",
+    "@storybook/vue": "^4.0.9||^5.0.2||5.2.0-beta.13",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "storybook-vue-router": "^1.0.7",
+    "vue": "^2.6.9",
+    "vue-loader": "^15.7.0",
+    "vue-router": "^3.0.2",
+    "vue-template-compiler": "^2.6.9"
+  },
+  "scripts": {
+    "storybook": "start-storybook -p 9002 -c .storybook"
+  },
+  "private": true,
+  "version": "1.0.7"
+}
