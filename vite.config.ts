@@ -25,7 +25,7 @@ import tailwindcssVite from '@vituum/vite-plugin-tailwindcss'
 
 import viteImageminVheemstra from "@vheemstra/vite-plugin-imagemin";
 import viteImageminOriginal from "vite-plugin-imagemin";
-import { viteTanstackStart } from '@tanstack/react-start/plugin/vite'
+// import { viteTanstackStart } from '@tanstack/react-start/plugin/vite'
 import { fileURLToPath, URL } from 'node:url'
 import { svelte } from '@sveltejs/vite-plugin-svelte'
 
@@ -153,7 +153,7 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
     marko(),
     tailwindcssVite(),
     vitummliquid(),
-    viteTanstackStart(),
+    // viteTanstackStart(),
     // postcss(),
     tanstackStart(),
     tanstackStart(),
