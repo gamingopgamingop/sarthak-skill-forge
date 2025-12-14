@@ -5,5 +5,9 @@
     "@clerk/clerk-react": "^6.9.2"
     "postcss-cli-nano": "^1.0.1",
     "vite-plugin-marko": "^1.3.3",
+    "hookrouter": "^1.2.5", ==> added its source code and modify it
+    "@reach/router": "^1.3.4", ==> added its source code and modify it
+    "@storybook/router": "^8.6.14", ==> added its source code and modify it
+
 
     "typescript-eslint": "^8.45.0",
