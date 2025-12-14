@@ -1,0 +1,99 @@
+{
+  "name": "@reach/router",
+  "version": "1.3.4",
+  "description": "Next generation Routing for React.",
+  "main": "index.tsx",
+  "module": "es/index.tsx",
+  "files": [
+    "es",
+    "index.tsx",
+    "umd",
+    "lib"
+  ],
+  "scripts": {
+    "build": "node build/build.js",
+    "watch": "watch -p \"src/**/*.ts\" -c \"yarn build\"",
+    "test": "jest",
+    "clean": "rm -rf lib es umd index.js",
+    "precommit": "pretty-quick --staged",
+    "format": "prettier '**/*.ts' --write",
+    "lint": "eslint src --ext .ts,.tsx"
+  },
+  "jest": {
+    "globals": {
+      "__DEV__": true
+    },
+    "testRegex": ".+\\.test\\.(j|t)sx?$",
+    "testURL": "http://localhost"
+  },
+  "peerDependencies": {
+    "react": "15.x || 16.x || 16.4.0-alpha.0911da3 || ^19.0.0",
+    "react-dom": "15.x || 16.x || 16.4.0-alpha.0911da3 || ^19.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@babel/cli": "^7.24.0",
+    "@babel/core": "^7.24.0",
+    "@babel/plugin-proposal-class-properties": "^7.18.6",
+    "@babel/plugin-proposal-object-rest-spread": "^7.20.7",
+    "@babel/plugin-transform-inline-environment-variables": "^7.24.0",
+    "@babel/preset-env": "^7.24.0",
+    "@babel/preset-react": "^7.24.0",
+    "@babel/plugin-external-helpers": "^7.24.0",
+    "babel-plugin-dev-expression": "^0.2.1",
+    "babel-plugin-transform-react-remove-prop-types": "^0.4.13",
+    "cpy-cli": "^5.0.0",
+    "rimraf": "^5.0.0",
+    "eslint": "^4.18.2",
+    "eslint-config-react-app": "^2.1.0",
+    "eslint-plugin-flowtype": "^2.34.1",
+    "eslint-plugin-import": "^2.9.0",
+    "eslint-plugin-jsx-a11y": "^5.1.1",
+    "eslint-plugin-react": "^7.1.0",
+    "@typescript-eslint/eslint-plugin": "^4.0.0",
+    "@typescript-eslint/parser": "^4.0.0",
+    "gzip-size": "^4.1.0",
+    "husky": "^0.14.3",
+    "jest": "^22.4.2",
+    "prettier": "^1.13.4",
+    "pretty-bytes": "^4.0.2",
+    "pretty-quick": "^1.6.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-test-renderer": "^19.0.0",
+    "render-markdown-js": "^1.3.0",
+    "rollup": "^0.56.3",
+    "@rollup/plugin-babel": "^6.0.0",
+    "@rollup/plugin-commonjs": "^25.0.0",
+    "@rollup/plugin-node-resolve": "^15.0.0",
+    "@rollup/plugin-replace": "^5.0.0",
+    "rollup-plugin-typescript2": "^0.30.0",
+    "rollup-plugin-terser": "^7.0.0",
+    "typescript": "^4.0.0",
+    "watch-cli": "^0.2.2"
+  },
+  "author": "Ryan Florence",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/reach/router.git"
+  },
+  "keywords": [
+    "react",
+    "react router"
+  ],
+  "prettier": {
+    "printWidth": 80
+  },
+  "dependencies": {
+    "create-react-context": "0.3.0",
+    "invariant": "^2.2.3",
+    "prop-types": "^15.6.1",
+    "react-lifecycles-compat": "^3.0.4"
+  },
+  "bugs": {
+    "url": "https://github.com/reach/router/issues"
+  },
+  "homepage": "https://github.com/reach/router#readme"
+}

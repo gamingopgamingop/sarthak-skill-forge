@@ -1,0 +1,20 @@
+{
+  "extends": ["react-app"],
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"],
+  "globals": {
+    "__DEV__": true
+  },
+  "rules": {
+    "react/prop-types": ["off"],
+    "@typescript-eslint/no-unused-vars": ["warn"]
+  },
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx"],
+      "rules": {
+        "no-undef": "off"
+      }
+    }
+  ]
+}
