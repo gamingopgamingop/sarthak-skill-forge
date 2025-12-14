@@ -871,7 +871,9 @@
     "@vituum/vite-plugin-concat": "^1.1.1",
     "@vituum/vite-plugin-twig": "^1.1.0",
     "@vituum/vite-plugin-latte": "^1.4.0",
-    "@vituum/vite-plugin-nunjucks": "^1.1.0"
+    "@vituum/vite-plugin-nunjucks": "^1.1.0",
+    "@vituum/vite-plugin-handlebars": "^1.1.0"
+
 
 
 
