@@ -867,7 +867,9 @@
     "prisma-extension-pagination": "^0.7.6",
     "@vituum/vite-plugin-postcss": "^1.1.0",
     "@vituum/vite-plugin-juice": "^1.4.0",
-    "@vituum/vite-plugin-send": "^1.2.0"
+    "@vituum/vite-plugin-send": "^1.2.0",
+    "@vituum/vite-plugin-concat": "^1.1.1"
+
 
 
 
