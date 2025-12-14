@@ -868,7 +868,9 @@
     "@vituum/vite-plugin-postcss": "^1.1.0",
     "@vituum/vite-plugin-juice": "^1.4.0",
     "@vituum/vite-plugin-send": "^1.2.0",
-    "@vituum/vite-plugin-concat": "^1.1.1"
+    "@vituum/vite-plugin-concat": "^1.1.1",
+    "@vituum/vite-plugin-twig": "^1.1.0"
+
 
 
 
