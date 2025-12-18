@@ -79,7 +79,7 @@ const SEO = ({
   const articleSchema = article
     ? {
         "@context": "https://schema.org",
-        "@type": "Article",
+        "@type": ["Article", "BlogPosting"],
         headline: title,
         description,
         author: {
