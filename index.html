@@ -67,37 +67,61 @@
       "
     />
 
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Sarthak Bansal",
-        "url": "https://sarthakdev.me",
-        "image": "https://sarthakdev.me/profile_banner.png",
-        "jobTitle": "Python Developer & Tech Entrepreneur",
-        "description": "Python developer specializing in automation, web development, AI tools, and programming eBooks.",
-        "sameAs": [
-          "https://www.linkedin.com/in/sarthak-bansal-01550432b",
-          "https://github.com/sarthakdev",
-          "https://twitter.com/sarthakdev"
-        ],
-        "alumniOf": {
-          "@type": "CollegeOrUniversity",
-          "name": "Bachelor of Computer Applications (BCA)"
-        },
-        "knowsAbout": [
-          "Python",
-          "Flask",
-          "FastAPI",
-          "Django",
-          "AI Automation",
-          "LangChain",
-          "Machine Learning",
-          "Software Engineering",
-          "eBook Publishing"
-        ]
-      }
-    </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://sarthakdev.me/#person",
+  "name": "Sarthak Bansal",
+  "url": "https://sarthakdev.me",
+  "image": "https://sarthakdev.me/profile_banner.png",
+  "jobTitle": "Python Developer & Tech Entrepreneur",
+  "sameAs": [
+    "https://www.linkedin.com/in/sarthak-bansal-01550432b",
+    "https://github.com/sarthakdev",
+    "https://twitter.com/sarthakdev"
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://sarthakdev.me/#website",
+  "name": "Sarthak Bansal",
+  "url": "https://sarthakdev.me",
+  "publisher": {
+    "@id": "https://sarthakdev.me/#person"
+  }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "https://sarthakdev.me/#homepage",
+  "url": "https://sarthakdev.me",
+  "name": "Sarthak Bansal | Official Website",
+  "about": {
+    "@id": "https://sarthakdev.me/#person"
+  },
+  "isPartOf": {
+    "@id": "https://sarthakdev.me/#website"
+  }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  "mainEntity": {
+    "@id": "https://sarthakdev.me/#person"
+  }
+}
+</script>
 
     <link href="/src/index.css" rel="stylesheet" />
     <link href="/src/App.css" rel="stylesheet" />
