@@ -37,7 +37,10 @@ const SEO = ({
     image: imageUrl,
     jobTitle: "Python Developer & AI Specialist",
     worksFor: { "@type": "Organization", name: "Freelance" },
-    alumniOf: "Bachelor of Computer Applications",
+    alumniOf: {
+      "@type": "CollegeOrUniversity",
+      name: "Bachelor of Computer Applications (BCA)"
+    },
     description,
     sameAs: [
       "https://github.com/gamingopgamingop",
