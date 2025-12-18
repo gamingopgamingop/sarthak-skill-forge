@@ -26,11 +26,17 @@ const SEO = ({
 }: SEOProps) => {
   const siteUrl = "https://sarthakdevs.me";
   const fullUrl = canonicalUrl || siteUrl;
-  const imageUrl = `${siteUrl}${ogImage}`;
+  // const imageUrl = `${siteUrl}${ogImage}`;
+  const imageUrl = ogImage.startsWith("http")
+  ? ogImage
+  : `${siteUrl}${ogImage}`;
+
 
   // Core schemas
   const personSchema = {
     "@context": "https://schema.org",
+    "@id": [siteUrl, "#person"],
+    
     "@type": "Person",
     name: "Sarthak Bansal",
     url: siteUrl,
