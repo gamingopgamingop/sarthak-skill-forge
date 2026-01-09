@@ -1,8 +1,12 @@
 {
   "compilerOptions": {
-    "target": "ESNext",
+    "target": "ESNext", 
     "module": "ESNext",
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "allowSyntheticDefaultImports": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
     "moduleResolution": "bundler",
     "jsx": "react-jsx",
     "allowJs": true,
@@ -12,11 +16,15 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "sourceMap": true,
-    "types": ["vite/client", "node", "react", "react-dom", "vituum", "vitest", "vitest/globals"],
+    "types": ["vite/client", "node", "react", "react-dom", "vituum", "vitest", "vitest/globals", "vike-react"
+],
     "strict": true,
     "noEmit": true,
-    "verbatimModuleSyntax": true
+    "verbatimModuleSyntax": true,
+    "jsxImportSource": "react"
+
   },
+
   "include": [
     "src",
     "lib",
