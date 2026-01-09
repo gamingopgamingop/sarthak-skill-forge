@@ -548,7 +548,10 @@
     "@types/hookrouter": "^2.2.9",
     "@vituum/vite-plugin-tailwindcss": "^1.2.0",
     "@vituum/vite-plugin-send": "^1.2.0",
-    "liquid": "^5.1.1"
+    "liquid": "^5.1.1",
+    "@vitejs/plugin-rsc": "latest",
+    "rsc-html-stream": "^0.0.7"
+
     
 
 

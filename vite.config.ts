@@ -7,6 +7,7 @@ import type { UserConfig , Plugin , ConfigEnv} from "vite";
 import { tanstackStart } from '@tanstack/react-start/plugin/vite'
 import pug from '@vituum/vite-plugin-pug'
 import vike from "vike/plugin";
+import rsc from '@vitejs/plugin-rsc'
 
 import { defineConfig  , Plugin} from "vite";
 // import react from "@vitejs/plugin-react-swc";
@@ -106,6 +107,16 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
   },
 
   plugins: [
+        rsc({
+      // `entries` option is only a shorthand for specifying each `rollupOptions.input` below
+      // > entries: { rsc, ssr, client },
+      //
+      // by default, the plugin setup request handler based on `default export` of `rsc` environment `rollupOptions.input.index`.
+      // This can be disabled when setting up own server handler e.g. `@cloudflare/vite-plugin`.
+      // > serverHandler: false
+    }),
+
+
     vike(),
     handlebars(),
     pug({
@@ -238,6 +249,51 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
       },
     }),
   ].filter(Boolean),
+    environments: {
+    // `rsc` environment loads modules with `react-server` condition.
+    // this environment is responsible for:
+    // - RSC stream serialization (React VDOM -> RSC stream)
+    // - server functions handling
+    rsc: {
+      build: {
+        rollupOptions: {
+          input: {
+            index: './src/framework/entry.rsc.tsx',
+          },
+        },
+      },
+    },
+
+    // `ssr` environment loads modules without `react-server` condition.
+    // this environment is responsible for:
+    // - RSC stream deserialization (RSC stream -> React VDOM)
+    // - traditional SSR (React VDOM -> HTML string/stream)
+    ssr: {
+      build: {
+        rollupOptions: {
+          input: {
+            index: './src/framework/entry.ssr.tsx',
+          },
+        },
+      },
+    },
+    
+    // client environment is used for hydration and client-side rendering
+    // this environment is responsible for:
+    // - RSC stream deserialization (RSC stream -> React VDOM)
+    // - traditional CSR (React VDOM -> Browser DOM tree mount/hydration)
+    // - refetch and re-render RSC
+    // - calling server functions
+    client: {
+      build: {
+        rollupOptions: {
+          input: {
+            index: './src/framework/entry.browser.tsx',
+          },
+        },
+      },
+    },
+
 
   resolve: {
     alias: {
