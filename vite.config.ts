@@ -407,7 +407,7 @@ function errorOnDuplicatesPkgDeps(
 
 errorOnDuplicatesPkgDeps(devDependencies, dependencies);
 
-function qwikOnlyConfig(
+export function qwikOnlyConfig(
   callback: (config: UserConfig, env: { mode: string; command: string }) => UserConfig
 ): UserConfig {
   return defineConfig((env: { mode: string; command: string | 'serve' | 'build' }) => callback({}, env));
@@ -417,7 +417,7 @@ function qwikOnlyConfig(
 /**
  * Note that Vite normally starts from `index.html` but the qwikCity plugin makes start at `src/entry.ssr.tsx` instead.
  */
-    qwikOnlyConfig((config: UserConfig, env: { mode: string; command: string }): UserConfig => {
+   qwikOnlyConfig((config: UserConfig, env: { mode: string; command: string }): UserConfig => {
           const { mode, command } = env;
 
       return {
