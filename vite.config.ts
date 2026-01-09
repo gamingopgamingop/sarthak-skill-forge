@@ -293,6 +293,7 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
         },
       },
     },
+  },
 
 
   resolve: {
