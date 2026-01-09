@@ -6,6 +6,7 @@ import type { UserConfig , Plugin , ConfigEnv} from "vite";
 // import type { Plugin} from "vite";
 import { tanstackStart } from '@tanstack/react-start/plugin/vite'
 import pug from '@vituum/vite-plugin-pug'
+import vike from "vike/plugin";
 
 import { defineConfig  , Plugin} from "vite";
 // import react from "@vitejs/plugin-react-swc";
@@ -105,6 +106,7 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
   },
 
   plugins: [
+    vike(),
     handlebars(),
     pug({
         root: './src'

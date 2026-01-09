@@ -117,6 +117,8 @@
   ],
 
   "dependencies": {
+    "vike": "^0.4.250",
+    "vike-react": "^0.6.18",
     "next": "^16.0.1",
     "socket.io": "^4.8.1",
     "classnames": "^2.5.1",
