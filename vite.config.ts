@@ -375,7 +375,7 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
     target: "webworker",
     noExternal: isProd,
   },
-});
+}));
 
 type PkgDep = Record<string, string>;
 const { dependencies = {}, devDependencies = {} } = pkg as any as {
