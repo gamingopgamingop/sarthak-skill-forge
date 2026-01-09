@@ -89,7 +89,11 @@
     "build:worker": "cross-env NODE_ENV=production vite build --ssr src/worker.js",
     "dev:all": "node --enable-source-maps src/dev-server.js",
     "dev:inspect": "node --inspect --enable-source-maps src/dev-server.js",
-    "preview": "npx wrangler dev"
+    "preview": "npx wrangler dev",
+    "dev:vike": "vike dev",
+    "build:vike": "vike build",
+    "preview:vike": "vike build && vike preview"
+
 
 
 
