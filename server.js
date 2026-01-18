@@ -20,6 +20,6 @@ app.get("/", async (req, res) => {
   const template = (await loadTemplate()).default;
   // When the template is loaded, it will automaticall have `vite` assets inlined.
   template.render({ hello: "world" }, res);
-);
+});
 
 app.listen(3000);
