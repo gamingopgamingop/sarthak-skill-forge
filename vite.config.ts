@@ -104,7 +104,7 @@ import { execSync } from 'child_process';
 import { readFileSync } from 'fs';
 import { join } from 'path';
 
-const env = process.env.NODE_ENV || 'development';
+// const env = process.env.NODE_ENV || 'development';
 dotenv.config();
 
 // Get detailed git info with fallbacks
@@ -186,7 +186,7 @@ if (duplicateDeps.length > 0) {
 const { NODE_ENV } = process.env;
 const isProd = NODE_ENV === "production";
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const isTest = import.meta.env.MODE === 'test';
+// const isTest = import.meta.env.MODE === 'test';
 // (removed unused isTest)
 
 export default defineConfig(({ mode }: ConfigEnv) => ({
@@ -541,8 +541,9 @@ export function qwikOnlyConfig(
             //         If you have deps that break bundling, add them to the external array
             //         If you have deps that break bundling, add them to the external array
             //         If you have deps that break bundling, add them to the external
-    //         For example, if something uses `bcrypt` but you don't have it as a dep, you can write
-            external: [...Object.keys(dependencies), 'bcrypt', Object.keys(dependencies)],
+            //         For example, if something uses `bcrypt` but you don't have it as a dep, you can write
+            //         external: [...Object.keys(dependencies), 'bcrypt'],
+            //         external: [...Object.keys(dependencies), 'bcrypt', Object.keys(dependencies)],
             externals: [...Object.keys(dependencies), 'bcrypt'],
 
           }
