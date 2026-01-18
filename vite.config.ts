@@ -93,19 +93,108 @@ import vitummliquid  from '@vituum/vite-plugin-liquid'
 import postcss from '@vituum/vite-plugin-postcss'
 
 // installGlobals();
+import { cloudflareDevProxyVitePlugin as remixCloudflareDevProxy, vitePlugin as remixVitePlugin } from '@remix-run/dev';
+import UnoCSS from 'unocss/vite';
+import { defineConfig as defineViteConfig, type ViteDevServer } from 'vite';
+import { nodePolyfills } from 'vite-plugin-node-polyfills';
+import { optimizeCssModules } from 'vite-plugin-optimize-css-modules';
+import tsconfigPaths from 'vite-tsconfig-paths';
+import * as dotenv from 'dotenv';
+import { execSync } from 'child_process';
+import { readFileSync } from 'fs';
+import { join } from 'path';
 
+const env = process.env.NODE_ENV || 'development';
+dotenv.config();
+
+// Get detailed git info with fallbacks
+const getGitInfo = () => {
+  try {
+    return {
+      commitHash: execSync('git rev-parse --short HEAD').toString().trim(),
+      branch: execSync('git rev-parse --abbrev-ref HEAD').toString().trim(),
+      commitTime: execSync('git log -1 --format=%cd').toString().trim(),
+      author: execSync('git log -1 --format=%an').toString().trim(),
+      email: execSync('git log -1 --format=%ae').toString().trim(),
+      remoteUrl: execSync('git config --get remote.origin.url').toString().trim(),
+      repoName: execSync('git config --get remote.origin.url')
+        .toString()
+        .trim()
+        .replace(/^.*github.com[:/]/, '')
+        .replace(/\.git$/, ''),
+    };
+  } catch {
+    return {
+      commitHash: 'no-git-info',
+      branch: 'unknown',
+      commitTime: 'unknown',
+      author: 'unknown',
+      email: 'unknown',
+      remoteUrl: 'unknown',
+      repoName: 'unknown',
+    };
+  }
+};
+
+// Read package.json with detailed dependency info
+const getPackageJson = () => {
+  try {
+    const pkgPath = join(__dirname, 'package.json');
+    const pkg = JSON.parse(readFileSync(pkgPath, 'utf-8'));
+
+    return {
+      name: pkg.name,
+      description: pkg.description,
+      license: pkg.license,
+      dependencies: pkg.dependencies || {},
+      devDependencies: pkg.devDependencies || {},
+      peerDependencies: pkg.peerDependencies || {},
+      optionalDependencies: pkg.optionalDependencies || {},
+    };
+  } catch {
+    return {
+      name: 'bolt.diy',
+      description: 'A DIY LLM interface',
+      license: 'MIT',
+      dependencies: {},
+      devDependencies: {},
+      peerDependencies: {},
+      optionalDependencies: {},
+    };
+  }
+};
+
+const pkg = getPackageJson();
+const gitInfo = getGitInfo();
+
+const duplicateDeps = Object.keys(pkg.dependencies).filter((dep) =>
+  Object.keys(pkg.devDependencies).includes(dep)
+);
+
+let msg = `
+  Warning: The dependency "${duplicateDeps.join(", ")}" is listed in both "devDependencies" and "dependencies".
+  Please move the duplicated dependencies to "devDependencies" only and remove it from "dependencies"
+`;
+const defineConst = (value: unknown) =>
+  JSON.stringify(value ?? 'unknown');
+
+
+
+if (duplicateDeps.length > 0) {
+  throw new Error(msg);
+}
 const { NODE_ENV } = process.env;
 const isProd = NODE_ENV === "production";
 const __dirname = dirname(fileURLToPath(import.meta.url));
-// const isTest = import.meta.env.MODE === 'test';
-const isTest = process.env.NODE_ENV === 'test';
+const isTest = import.meta.env.MODE === 'test';
+// (removed unused isTest)
 
 export default defineConfig(({ mode }: ConfigEnv) => ({
   server: {
     host: "::",
     port: 8080,
   },
-
+  // (removed unused mode)
   plugins: [
         rsc({
       // `entries` option is only a shorthand for specifying each `rollupOptions.input` below
@@ -326,7 +415,7 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
     // outDir: 'dist',
     rollupOptions: {
       
-      external: [...Object.keys(dependencies), 'bcrypt'],
+      externals: [...Object.keys(dependencies), 'bcrypt'],
       input: {
         main: path.resolve(__dirname, 'src/index.html'),
         server: path.resolve(__dirname, 'src/server.ts'),
@@ -417,7 +506,7 @@ export function qwikOnlyConfig(
  * Note that Vite normally starts from `index.html` but the qwikCity plugin makes start at `src/entry.ssr.tsx` instead.
  */
    qwikOnlyConfig((config: UserConfig, env: { mode: string; command: string }): UserConfig => {
-          const { mode, command } = env;
+          // unused: env.mode, env.command
 
       return {
         plugins: [qwikCity(), qwikVite(), tsConfigPaths({ root: "." })],
@@ -437,13 +526,25 @@ export function qwikOnlyConfig(
 
         ? {
     //         All dev dependencies should be bundled in the server build
-            noExternal: Object.keys(devDependencies),
-    //         Anything marked as a dependency will not be bundled
-    //         These should only be production binary deps (including deps of deps), CLI deps, and their module graph
-    //         If a dep-of-dep needs to be external, add it here
+            //         All deps of deps should be bundled in the server build
+            //         All deps of deps of deps should be bundled in the server build
+            //         All deps of deps of deps of deps should be bundled in the server build
+            //         If you have dev deps that break bundling, add them to the exclude array
+            //         If you have deps that break bundling, add them to the noExternal array
+            //         If you have deps that break bundling, add them to the external array
+            //         If you have deps that break bundling, add them to the external array
+            //         If you have deps that break bundling, add them to the external array
+            //         If you have deps that break bundling, add them to the external array
+            //         If you have deps that break bundling, add them to the external array
+            //         If you have deps that break bundling, add them to the external array
+            //         If you have deps that break bundling, add them to the external array
+            //         If you have deps that break bundling, add them to the external array
+            //         If you have deps that break bundling, add them to the external array
+            //         If you have deps that break bundling, add them to the external
     //         For example, if something uses `bcrypt` but you don't have it as a dep, you can write
             external: [...Object.keys(dependencies), 'bcrypt', Object.keys(dependencies)],
-            external: [...Object.keys(dependencies), 'bcrypt'],
+            externals: [...Object.keys(dependencies), 'bcrypt'],
+
           }
         : undefined,
 
@@ -509,3 +610,78 @@ export function qwikOnlyConfig(
 //   }
 // }
 
+export const remixConfig : defineViteConfig = defineConfig(({ mode }: { mode: string }): UserConfig => {
+  const isProduction = mode === 'production';
+  const isTest = mode === 'test';
+
+  // errorOnDuplicatesPkgDeps(pkg.devDependencies, pkg.dependencies);
+  return {
+    /* --------------------------- Global Constants -------------------------- */
+    define: {
+      __APP_VERSION__: JSON.stringify((pkg as any).version || 'unknown'),
+
+      __GIT_COMMIT_HASH__: defineConst(gitInfo.commitHash),
+      __GIT_BRANCH_NAME__: defineConst(gitInfo.branch),
+      __GIT_COMMIT_TIME__: defineConst(gitInfo.commitTime),
+      __GIT_AUTHOR_NAME__: defineConst(gitInfo.author),
+      __GIT_AUTHOR_EMAIL__: defineConst(gitInfo.email),
+      __GIT_REMOTE_URL__: defineConst(gitInfo.remoteUrl),
+      __GIT_REPOSITORY_NAME__: defineConst(gitInfo.repoName),
+
+      __PKG_NAME__: defineConst(pkg.name),
+      __PKG_DESCRIPTION__: defineConst(pkg.description),
+      __PKG_LICENSE__: defineConst(pkg.license),
+      __PKG_DEPENDENCIES__: defineConst(pkg.dependencies),
+      __PKG_DEV_DEPENDENCIES__: defineConst(pkg.devDependencies),
+      __PKG_PEER_DEPENDENCIES__: defineConst(pkg.peerDependencies),
+      __PKG_OPTIONAL_DEPENDENCIES__: defineConst(pkg.optionalDependencies),
+    },
+
+    /* ------------------------------ Build ---------------------------------- */
+    build: {
+      target: 'esnext',
+    },
+
+    /* ------------------------------ Plugins -------------------------------- */
+    plugins: [
+      nodePolyfills({
+        include: ['path', 'buffer', 'process'],
+      }),
+
+      !isTest && remixCloudflareDevProxy(),
+
+      remixVitePlugin({
+        future: {
+          v3_fetcherPersist: true,
+          v3_relativeSplatPath: true,
+          v3_throwAbortReason: true,
+          v3_lazyRouteDiscovery: true,
+        },
+      }),
+
+      UnoCSS(),
+
+      tsconfigPaths(),
+
+      isProduction && optimizeCssModules({ apply: 'build' }),
+    ].filter(Boolean),
+
+    /* --------------------------- Environment Vars --------------------------- */
+    envPrefix: [
+      'VITE_',
+      'OPENAI_LIKE_API_BASE_URL',
+      'OLLAMA_API_BASE_URL',
+      'LMSTUDIO_API_BASE_URL',
+      'TOGETHER_API_BASE_URL',
+    ],
+
+    /* ------------------------------- CSS ----------------------------------- */
+    css: {
+      preprocessorOptions: {
+        scss: {
+          api: 'modern-compiler',
+        },
+      },
+    },
+  };
+});
