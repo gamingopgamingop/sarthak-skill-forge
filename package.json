@@ -92,13 +92,36 @@
     "preview": "npx wrangler dev",
     "dev:vike": "vike dev",
     "build:vike": "vike build",
-    "preview:vike": "vike build && vike preview"
-
-
-
-
-  
-
+    "preview:vike": "vike build && vike preview",
+    "deploy": "npm run build && wrangler pages deploy",
+    "build:remix:client": "remix vite:build",
+    "dev:remix": "node pre-start.cjs  && remix vite:dev",
+    "test": "vitest --run",
+    "test:watch": "vitest",
+    "lint": "eslint --cache --cache-location ./node_modules/.cache/eslint app",
+    "lint:fix": "npm run lint -- --fix && prettier app --write",
+    "start:windows": "wrangler pages dev ./build/client",
+    "start:unix": "bindings=$(./bindings.sh) && wrangler pages dev ./build/client $bindings",
+    "start:remix": "node -e \"const { spawn } = require('child_process'); const isWindows = process.platform === 'win32'; const cmd = isWindows ? 'npm run start:windows' : 'npm run start:unix'; const child = spawn(cmd, { shell: true, stdio: 'inherit' }); child.on('exit', code => process.exit(code));\"",
+    "dockerstart": "bindings=$(./bindings.sh) && wrangler pages dev ./build/client $bindings --ip 0.0.0.0 --port 5173 --no-show-interactive-dev-session",
+    "dockerrun": "docker run -it -d --name bolt-ai-live -p 5173:5173 --env-file .env.local bolt-ai",
+    "dockerbuild:prod": "docker build -t bolt-ai:production -t bolt-ai:latest --target bolt-ai-production .",
+    "dockerbuild": "docker build -t bolt-ai:development -t bolt-ai:latest --target bolt-ai-development .",
+    "typecheck": "tsc",
+    "typegen": "wrangler types",
+    "preview:remix": "pnpm run build && pnpm run start",
+    "prepare": "husky",
+    "clean:remix": "node scripts/clean.js",
+    "clean:remix:dist": "rimraf dist",
+    "build:remix:server": "remix vite:build --ssr",
+    "build:remix:client:production": "remix vite:build --mode production",
+    "build:remix": "npm run build:remix:client && npm run build:remix:server",
+    "build:remix:client:productions": "remix vite:build --mode production",
+   "build:remix:client:development": "remix vite:build",
+    "build:worker:production": "cross-env NODE_ENV=production vite build --ssr src/worker.js",
+    "build:client:production": "vite build --outDir=dist/client",
+    "build:server": "vite build --ssr src/entry-server.tsx --outDir=dist/server",
+    "build:production": "npm run build:client:production && npm run build:server && npm run build:worker:production"
 
 
 

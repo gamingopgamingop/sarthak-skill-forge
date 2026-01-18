@@ -168,8 +168,7 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
     vitummliquid(),
     // viteTanstackStart(),
     // postcss(),
-    tanstackStart(),
-    tanstackStart(),
+
  
     dts({
       insertTypesEntry: true,
@@ -444,6 +443,7 @@ export function qwikOnlyConfig(
     //         If a dep-of-dep needs to be external, add it here
     //         For example, if something uses `bcrypt` but you don't have it as a dep, you can write
             external: [...Object.keys(dependencies), 'bcrypt', Object.keys(dependencies)],
+            external: [...Object.keys(dependencies), 'bcrypt'],
           }
         : undefined,
 
