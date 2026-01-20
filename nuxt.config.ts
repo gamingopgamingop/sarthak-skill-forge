@@ -1,21 +1,21 @@
 import { defineNuxtConfig } from 'nuxt/config'
 // https://nuxt.com/docs/api/configuration/nuxt-config
-import config from './uno.config.ts'
-import { mergeConfigs } from '@unocss/core'
+import config, { mergeConfig } from './uno.config.ts'
+// import { mergeConfig } from './uno.config.ts'
 import { presetUno } from 'unocss'
-import presetIcons from '@unocss/preset-icons'
-import presetAnimations from '@unocss/preset-animations'
-import transformerDirectives from '@unocss/transformer-directives'
-import { customIconCollection } from './uno.config.ts'
-import UnoCSS from '@unocss/vite'
+import presetIcons from './uno.config.ts'
+import presetAnimations from './uno.config.ts'
+import transformerDirectives from './uno.config.ts'
+import { customIconCollection } from "./uno.config.ts"
+import UnoCSS from '@unocss/vite' 
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
-  vite: {
+  vite: {     
     plugins: [
       UnoCSS({
         configFile: './uno.config.ts',
-        config: mergeConfigs(config, {
+        config: mergeConfig({
           presets: [presetUno(), presetIcons(), presetAnimations()],
         }),
       }),

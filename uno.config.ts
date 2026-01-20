@@ -9,10 +9,10 @@ import presetIconsBrowser from "https://esm.sh/@unocss/preset-icons/browser";
 import presetWebFonts from "https://esm.sh/@unocss/preset-web-fonts";
 import presetTypography from "https://esm.sh/@unocss/preset-typography";
 const iconPaths = globSync('./icons/*.svg');
-
 const collectionName = 'bolt';
+import { mergeConfigs } from '@unocss/core';
 
-const customIconCollection = iconPaths.reduce(
+export const customIconCollection = iconPaths.reduce(
   (acc: Record<string, Record<string, () => Promise<string>>>, iconPath: string) => {
     const [iconName] = basename(iconPath).split('.');
 
@@ -24,6 +24,16 @@ const customIconCollection = iconPaths.reduce(
   {} as Record<string, Record<string, () => Promise<string>>>,
 );
 
+export const mergeConfig = mergeConfigs(
+  presetUno(),
+  presetIconsBrowser({
+    collections: customIconCollection,
+    extraProperties: {
+      display: 'inline-block',
+      'vertical-align': 'middle',
+    },
+  }),
+);
 const customIconPreset = presetIcons({
   collections: customIconCollection,
   extraProperties: {
