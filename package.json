@@ -910,7 +910,11 @@
     "@vituum/vite-plugin-nunjucks": "^1.1.0",
     "@vituum/vite-plugin-handlebars": "^1.1.0",
     "@vituum/vite-plugin-liquid": "^1.1.0",
-    "@vituum/vite-plugin-pug": "^1"
+    "@vituum/vite-plugin-pug": "^1",
+    "@vituum/vite-plugin-php": "^1.1.0",
+    "unocss": "^66.6.0"
+
+
 
 
 

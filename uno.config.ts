@@ -2,13 +2,18 @@ import { globSync } from 'fast-glob';
 import fs from 'node:fs/promises';
 import { basename } from 'node:path';
 import { defineConfig, presetIcons, presetUno, transformerDirectives } from 'unocss';
-
+import presetAnimations from 'unocss-preset-animations';
+import { defineConfig as defineConfigRuntime } from "@unocss/runtime";
+import presetWind3 from "https://esm.sh/@unocss/preset-wind3";
+import presetIconsBrowser from "https://esm.sh/@unocss/preset-icons/browser";
+import presetWebFonts from "https://esm.sh/@unocss/preset-web-fonts";
+import presetTypography from "https://esm.sh/@unocss/preset-typography";
 const iconPaths = globSync('./icons/*.svg');
 
 const collectionName = 'bolt';
 
 const customIconCollection = iconPaths.reduce(
-  (acc, iconPath) => {
+  (acc: Record<string, Record<string, () => Promise<string>>>, iconPath: string) => {
     const [iconName] = basename(iconPath).split('.');
 
     acc[collectionName] ??= {};
@@ -19,6 +24,13 @@ const customIconCollection = iconPaths.reduce(
   {} as Record<string, Record<string, () => Promise<string>>>,
 );
 
+const customIconPreset = presetIcons({
+  collections: customIconCollection,
+  extraProperties: {
+    display: 'inline-block',
+    'vertical-align': 'middle',
+  },
+});
 const BASE_COLORS = {
   white: '#FFFFFF',
   gray: {
@@ -93,6 +105,8 @@ const COLOR_PRIMITIVES = {
     white: generateAlphaPalette(BASE_COLORS.white),
     gray: generateAlphaPalette(BASE_COLORS.gray[900]),
     red: generateAlphaPalette(BASE_COLORS.red[500]),
+    orange: generateAlphaPalette(BASE_COLORS.orange[500]),
+    green: generateAlphaPalette(BASE_COLORS.green[500]),
     accent: generateAlphaPalette(BASE_COLORS.accent[500]),
   },
 };
@@ -106,6 +120,31 @@ export default defineConfig({
     'transition-theme': 'transition-[background-color,border-color,color] duration-150 bolt-ease-cubic-bezier',
     kdb: 'bg-bolt-elements-code-background text-bolt-elements-code-text py-1 px-1.5 rounded-md',
     'max-w-chat': 'max-w-[var(--chat-max-width)]',
+    'flex-center': 'flex items-center justify-center',
+    'flex-col-center': 'flex flex-col items-center justify-center',
+    'flex-col-center-start': 'flex flex-col items-center justify-start',
+    'flex-col-center-end': 'flex flex-col items-center justify-end',
+    'flex-col-center-between': 'flex flex-col items-center justify-between',
+    'flex-col-center-around': 'flex flex-col items-center justify-around',
+    'flex-col-center-evenly': 'flex flex-col items-center justify-evenly',
+    'flex-col-start-center': 'flex flex-col items-start justify-center',
+    'flex-col-start-start': 'flex flex-col items-start justify-start',
+    'flex-col-start-end': 'flex flex-col items-start justify-end',
+    'flex-col-start-between': 'flex flex-col items-start justify-between',
+    'flex-col-start-around': 'flex flex-col items-start justify-around',
+    'flex-col-start-evenly': 'flex flex-col items-start justify-evenly',
+    'flex-col-end-center': 'flex flex-col items-end justify-center',
+    'flex-col-end-start': 'flex flex-col items-end justify-start',
+    'flex-col-end-end': 'flex flex-col items-end justify-end',
+    'flex-col-end-between': 'flex flex-col items-end justify-between',
+    'flex-col-end-around': 'flex flex-col items-end justify-around',
+    'flex-col-end-evenly': 'flex flex-col items-end justify-evenly',
+    'flex-col-between-center': 'flex flex-col items-between justify-center',
+    'flex-col-between-start': 'flex flex-col items-between justify-start',
+    'flex-col-between-end': 'flex flex-col items-between justify-end',
+    'flex-col-between-around': 'flex flex-col items-between justify-around',
+    'flex-col-between-evenly': 'flex flex-col items-between justify-evenly',
+
   },
   rules: [
     /**
@@ -113,6 +152,12 @@ export default defineConfig({
      * any conflicts with minified CSS classes.
      */
     ['b', {}],
+    [
+        /^icon-(.*)$/,
+        ([, iconName]: [string, string]) => ({
+          'i-bolt': `i-bolt-${iconName}`,
+        }),
+      ],
   ],
   theme: {
     colors: {
@@ -233,22 +278,65 @@ export default defineConfig({
   },
   transformers: [transformerDirectives()],
   presets: [
+    presetWind3(),
     presetUno({
       dark: {
         light: '[data-theme="light"]',
         dark: '[data-theme="dark"]',
       },
     }),
-    presetIcons({
-      warn: true,
-      collections: {
-        ...customIconCollection,
+    customIconPreset,
+    presetTypography({
+      cssExtend: {
+        'h1,h2,h3,h4,h5,h6': {
+          'font-weight': '600',
+        },
       },
-      unit: 'em',
     }),
   ],
-});
 
+  
+// (duplicate theme property removed; merge its content into the first theme.colors above)
+    colors: {
+      primary: {
+        100: '#F5F5F5',
+        200: '#EEEEEE',
+        300: '#E0E0E0',
+        400: '#BDBDBD',
+        500: '#9E9E9E',
+        600: '#757575',
+        700: '#616161',
+        800: '#424242',
+        900: '#212121',
+      },
+      secondary: {
+        100: '#E8F5E9',
+        200: '#C8E6C9',
+        300: '#A5D6A7',
+        400: '#81C784',
+        500: '#66BB6A',
+        600: '#4CAF50',
+        700: '#43A047',
+        800: '#388E3C',
+        900: '#2E7D32',
+      },
+      success: {
+        100: '#E8F5E9',
+        200: '#C8E6C9',
+        300: '#A5D6A7',
+        400: '#81C784',
+        500: '#66BB6A',
+        600: '#4CAF50',
+        700: '#43A047',
+        800: '#388E3C',
+        900: '#2E7D32',
+    },
+  },
+  },
+);
+
+
+// (duplicate theme property removed; merge its content into the first theme.colors above)
 /**
  * Generates an alpha palette for a given hex color.
  *
