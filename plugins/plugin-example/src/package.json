@@ -21,9 +21,5 @@
       "require": "./dist/plugin.cjs"
     },
     "./styles.css": "./dist/styles.css"
-  },
-  "peerDependencies": {
-    "@motiadev/ui": "workspace:*",
-    "@motiadev/core": "workspace:*"
   }
 }
