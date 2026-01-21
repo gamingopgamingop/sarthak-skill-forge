@@ -19,7 +19,9 @@
   "noImplicitThis": false,
   "noImplicitReturns": false,
   "noImplicitIndexSignatures": false,
-  "workspaces": ["packages/*"],
+  "workspaces": ["packages/*",     "plugins/*",
+    "apps/*"
+],
 
   "noImplicitOverride": false,
   "repository": {
