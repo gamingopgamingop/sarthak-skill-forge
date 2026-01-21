@@ -56,7 +56,7 @@ import electron from 'vite-plugin-electron/simple'
 import { redwood } from "rwsdk/vite";
 import { cloudflare } from "@cloudflare/vite-plugin";
 import posthtml from '@vituum/vite-plugin-posthtml'
-import liquid from 'liquid-express'
+// import liquid from 'liquid-express'
 // import liquidMiddleware from 'liquid-express-middleware'
 import liquidNode from 'liquid-node'
 // import liquidNodeMiddleware from 'liquid-node-middleware'
@@ -232,7 +232,7 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
     // prerenderNode(),
     // prerenderNodeMiddleware(),
     posthtml(),
-    liquid(),
+    // liquid(),
     // liquidMiddleware(),
     liquidNode(),
     // liquidNodeMiddleware(),
