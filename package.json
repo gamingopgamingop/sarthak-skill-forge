@@ -602,7 +602,9 @@
     "react-toastify": "^8.0.3",
     "uuid": "^8.3.2",
     "@sveltejs/kit": "^2.50.0",
-    "@sveltejs/adapter-netlify": "^5.2.4"
+    "@sveltejs/adapter-netlify": "^5.2.4",
+    "@sveltejs/adapter-node": "^5.5.1"
+
 
 
 
