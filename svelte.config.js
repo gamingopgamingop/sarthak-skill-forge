@@ -54,6 +54,17 @@ async function getAdapter() {
       });
     }
 
+    case 'rolldown': {
+      const { default: RolldownsvelteAdapter } = await import(
+        '@sveltejs/adapter-node-rolldown'
+      );
+      return RolldownsvelteAdapter({
+        out: 'build',
+        precompress: true,
+        envPrefix: ''
+      });
+    }
+
     case 'node': {
       const { default: nodeAdapter } = await import(
         '@sveltejs/adapter-node'
