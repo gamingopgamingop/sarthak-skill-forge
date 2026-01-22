@@ -27,7 +27,7 @@ const config = {
         includePaths: ['src/styles', 'src/lib'],
       }
     }),
-    mdsvex(),
+    // mdsvex(),
 
     // 📝 Markdown support → .md files become Svelte pages
     mdsvex({
@@ -63,8 +63,8 @@ const config = {
     },
 
     // For adapters (node, vercel, cloudflare, static)
-    adapter: undefined, // add your adapter
-    adaptar : adapter()
+    // adapter: undefined, // add your adapter
+    adapter : adapter()
   }
 };
 
