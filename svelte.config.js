@@ -15,58 +15,76 @@ import verceladapter from '@sveltejs/adapter-vercel';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-function getAdapter() {
+async function getAdapter() {
   switch (process.env.DEPLOY_TARGET) {
-    case 'cloudflare':
+    case 'cloudflare': {
+      const { default: cloudflareAdapter } = await import(
+        '@sveltejs/adapter-cloudflare'
+      );
       return cloudflareAdapter({
         fallback: 'plaintext',
         routes: {
           include: ['/*'],
-          exclude: ['<all>'],
-          split: false
+          exclude: ['<all>']
         }
       });
+    }
 
-    case 'netlify':
-      return netlifyadapter({
+    case 'netlify': {
+      const { default: netlifyAdapter } = await import(
+        '@sveltejs/adapter-netlify'
+      );
+      return netlifyAdapter({
         edge: false,
         split: false
       });
+    }
 
-    case 'vercel':
-      return verceladapter({
+    case 'vercel': {
+      const { default: vercelAdapter } = await import(
+        '@sveltejs/adapter-vercel'
+      );
+      return vercelAdapter({
         images: {
           sizes: [640, 828, 1200, 1920, 3840],
           formats: ['image/avif', 'image/webp'],
-          minimumCacheTTL: 300,
-          domains: ['example-app.vercel.app'],
-          split: false
-
+          minimumCacheTTL: 300
         }
       });
+    }
 
-    case 'node':
-      return nodeadapter({
+    case 'node': {
+      const { default: nodeAdapter } = await import(
+        '@sveltejs/adapter-node'
+      );
+      return nodeAdapter({
         out: 'build',
         precompress: true,
         envPrefix: ''
-        
       });
+    }
 
-    case 'static':
-      return staticadapter({
+    case 'static': {
+      const { default: staticAdapter } = await import(
+        '@sveltejs/adapter-static'
+      );
+      return staticAdapter({
         pages: 'build',
         assets: 'build',
         precompress: false,
-        strict: true,
-                  split: false
-
+        strict: true
       });
+    }
 
-    default:
+    default: {
+      const { default: autoAdapter } = await import(
+        '@sveltejs/adapter-auto'
+      );
       return autoAdapter();
+    }
   }
 }
+
 
 
 /** @type {import('@sveltejs/vite-plugin-svelte').SvelteConfig} */
