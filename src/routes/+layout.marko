@@ -1,5 +1,7 @@
 <script>
-  export const Layout = true
+  export function Layout(input) {
+    return input.content
+  }
 </script>
 
 <!doctype html>
@@ -12,7 +14,7 @@
     <title>${$global.meta.pageTitle || "Marko"}</title>
   </head>
   <body>
-    <${input.content}/>
+    <Layout content=input.content />
   </body>
 </html>
 
