@@ -581,7 +581,9 @@
     "tinyliquid": "^0.2.34",
     "liquidless": "^1.3.4",
     "liquid-linter": "^1.0.2",
-    "mdsvex": "^0.12.6"
+    "mdsvex": "^0.12.6",
+    "@sveltejs/adapter-auto": "^7.0.0"
+
 
 
 
