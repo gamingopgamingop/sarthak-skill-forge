@@ -10,6 +10,7 @@ import netlifyadapter from '@sveltejs/adapter-netlify';
 import nodeadapter from '@sveltejs/adapter-node';
 import staticadapter from '@sveltejs/adapter-static';
 import verceladapter from '@sveltejs/adapter-vercel';
+import RolldownsvelteAdapter from '@sveltejs/adapter-node-rolldown';
 
 /** Resolve current directory for cross-platform support */
 const __filename = fileURLToPath(import.meta.url);
