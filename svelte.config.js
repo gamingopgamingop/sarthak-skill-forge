@@ -3,6 +3,7 @@ import autoprefixer from 'autoprefixer';
 import { mdsvex } from 'mdsvex';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import adapter from '@sveltejs/adapter-auto'
 
 /** Resolve current directory for cross-platform support */
 const __filename = fileURLToPath(import.meta.url);
@@ -21,10 +22,12 @@ const config = {
       postcss: {
         plugins: [autoprefixer()],
       },
+      
       scss: {
         includePaths: ['src/styles', 'src/lib'],
       }
     }),
+    mdsvex(),
 
     // 📝 Markdown support → .md files become Svelte pages
     mdsvex({
@@ -38,7 +41,7 @@ const config = {
   // ------------------------------------------------------------
   // 📁 Extensions
   // ------------------------------------------------------------
-  extensions: ['.svelte', '.md'],
+  extensions: ['.svelte', '.md' , '.svx'],
 
   // ------------------------------------------------------------
   // 🔍 Svelte Inspect Tool (optional)
@@ -61,6 +64,7 @@ const config = {
 
     // For adapters (node, vercel, cloudflare, static)
     adapter: undefined, // add your adapter
+    adaptar : adapter()
   }
 };
 
