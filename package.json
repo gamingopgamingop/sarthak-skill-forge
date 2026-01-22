@@ -119,11 +119,18 @@
     "build:remix:client:production": "remix vite:build --mode production",
     "build:remix": "npm run build:remix:client && npm run build:remix:server",
     "build:remix:client:productions": "remix vite:build --mode production",
-   "build:remix:client:development": "remix vite:build",
+    "build:remix:client:development": "remix vite:build",
     "build:worker:production": "cross-env NODE_ENV=production vite build --ssr src/worker.js",
     "build:client:production": "vite build --outDir=dist/client",
     "build:server": "vite build --ssr src/entry-server.tsx --outDir=dist/server",
-    "build:production": "npm run build:client:production && npm run build:server && npm run build:worker:production"
+    "build:production": "npm run build:client:production && npm run build:server && npm run build:worker:production",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "lint:fix:client": "eslint --fix .",
+    "start:worker": "ts-node src/worker.ts",
+    "start.watch": "nodemon src/worker.ts",
+    "workflow": "ts-node src/client.ts"
+
 
 
 
@@ -588,7 +595,13 @@
     "@temporalio/client": "^1.14.1",
     "@temporalio/common": "^1.14.1",
     "@temporalio/worker": "^1.14.1",
-    "@temporalio/workflow": "^1.14.1"
+    "@temporalio/workflow": "^1.14.1",
+    "@tsconfig/node24": "^24.0.0",
+    "@typescript-eslint/parser": "^8.18.0",
+    "@typescript-eslint/eslint-plugin": "^8.18.0"
+
+
+
 
 
 
@@ -747,6 +760,16 @@
       "eslint --fix"
     ]
   },
+    "nodemonConfig": {
+    "execMap": {
+      "ts": "ts-node"
+    },
+    "ext": "ts",
+    "watch": [
+      "src"
+    ]
+  },
+
 
   "devDependencies": {
     "@babel/core": "^7.28.5",
@@ -920,7 +943,11 @@
     "@vituum/vite-plugin-liquid": "^1.1.0",
     "@vituum/vite-plugin-pug": "^1",
     "unocss": "^66.6.0",
-    "@playwright/test": "^1.57.0"
+    "@playwright/test": "^1.57.0",
+    "eslint-plugin-deprecation": "^3.0.0",
+    "nodemon": "^3.1.7"
+
+
 
 
 
