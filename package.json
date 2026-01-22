@@ -583,7 +583,13 @@
     "liquid-linter": "^1.0.2",
     "mdsvex": "^0.12.6",
     "@sveltejs/adapter-auto": "^7.0.0",
-    "@sveltejs/adapter-cloudflare": "^7.2.5"
+    "@sveltejs/adapter-cloudflare": "^7.2.5",
+    "@temporalio/activity": "^1.14.1",
+    "@temporalio/client": "^1.14.1",
+    "@temporalio/common": "^1.14.1",
+    "@temporalio/worker": "^1.14.1",
+    "@temporalio/workflow": "^1.14.1"
+
 
 
 
