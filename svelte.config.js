@@ -146,10 +146,14 @@ const config = {
   // ------------------------------------------------------------
   // 🔍 Svelte Inspect Tool (optional)
   // ------------------------------------------------------------
+  // 🔧 Vite Plugin Configurations
+  // ------------------------------------------------------------
   vitePlugin: {
   inspector: {
     toggleKeyCombo: 'meta-shift',
-    holdMode: true
+    holdMode: true,
+
+
   }
 },
 
