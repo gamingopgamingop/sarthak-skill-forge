@@ -24,7 +24,42 @@ const __dirname = path.dirname(__filename);
 const adapter = await getAdapter();     
 
 installPolyfills();
+
 type MaybePromise<T> = T | Promise<T>;
+/**
+ * Full Prerendered interface (for reference / augmentation)
+ */
+interface PrerenderedResult {
+  pages: Map<
+    string,
+    {
+      /** The location of the .html file relative to the output directory */
+      file: string;
+    }
+  >;
+
+  assets: Map<
+    string,
+    {
+      /** The MIME type of the asset */
+      type: string;
+    }
+  >;
+
+  redirects: Map<
+    string,
+    {
+      status: number;
+      location: string;
+    }
+  >;
+
+  /**
+   * An array of prerendered paths (no trailing slashes,
+   * regardless of trailingSlash config)
+   */
+  paths: string[];
+}
 
 interface Logger {
   (msg: string): void;
@@ -277,9 +312,43 @@ const config = {
     paths: {
 			base: process.argv.includes('dev') ? '' : process.env.BASE_PATH
 		}
-	}
-};
+	},
+    prerender: {
+      entries: ['*'],
 
+      /**
+       * Called after prerendering finishes
+       */
+      onComplete(prerendered: Prerendered) {
+        const result = prerendered as unknown as PrerenderedResult;
+
+        // ---- PAGES ----
+        for (const [path, { file }] of result.pages) {
+          console.log(`PAGE: ${path} → ${file}`);
+        }
+
+        // ---- ASSETS ----
+        for (const [path, { type }] of result.assets) {
+          console.log(`ASSET: ${path} (${type})`);
+        }
+
+        // ---- REDIRECTS ----
+        for (const [path, redirect] of result.redirects) {
+          console.log(
+            `REDIRECT: ${path} → ${redirect.location} (${redirect.status})`
+          );
+        }
+
+        // ---- PATHS (useful for sitemap) ----
+        writeFileSync(
+          'build/prerendered-paths.json',
+          JSON.stringify(result.paths, null, 2)
+        );
+
+
+    }
+  }
+};
 // function getRequest({
 // 	request,
 // 	base,
