@@ -97,6 +97,18 @@ interface RequestOptions {
   platform?: App.Platform;
 }
 
+type PrerenderOption = boolean | 'auto';
+
+type PrerenderUnseenRoutesHandlerValue =
+	| 'fail'
+	| 'warn'
+	| 'ignore'
+	| PrerenderUnseenRoutesHandler;
+
+interface PrerenderUnseenRoutesHandler {
+(details: { routes: string[]; message: string }): void;
+}
+
 interface Prerendered {}
 pages: Map<
 string,
