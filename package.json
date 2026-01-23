@@ -901,7 +901,6 @@
     "wrangler": "^3.114.15",
     "@cloudflare/workers-types": "^4.20251111.0",
     "@testing-library/jest-dom": "5.16.5",
-    "@testing-library/react": "16.0.1",
     "@types/preview-email": "2.0.1",
     "ajv": "^8.17.1",
     "eslint-config-next": "12.3.1",
