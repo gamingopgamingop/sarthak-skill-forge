@@ -5,7 +5,8 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import autoAdapter from '@sveltejs/adapter-auto'
 import cloudflareAdapter   from '@sveltejs/adapter-cloudflare';
-import { vitePreprocess } from '@sveltejs/kit/vite';
+// import { vitePreprocess } from '@sveltejs/kit/vite';
+import { sveltekit } from '@sveltejs/kit/vite';
 import netlifyAdapter from '@sveltejs/adapter-netlify';
 import nodeAdapter from '@sveltejs/adapter-node';
 import staticAdapter from '@sveltejs/adapter-static';
