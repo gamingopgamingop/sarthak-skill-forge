@@ -55,6 +55,21 @@ async function getAdapter() {
       });
     }
 
+    case 'cloudflare-workers': {
+      const { default: cloudflareAdapter } = await import(
+        '@sveltejs/adapter-cloudflare'
+      );
+      return cloudflareAdapter({
+        fallback: 'plaintext',
+        routes: {
+          include: ['/*'],
+          exclude: ['<all>']
+        }
+      });
+    }
+
+    
+
     case 'rolldown': {
       const { default: RolldownsvelteAdapter } = await import(
         '@siddharatha/adapter-node-rolldown'
