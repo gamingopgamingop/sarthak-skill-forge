@@ -106,6 +106,7 @@ import { join } from 'path';
 
 // const env = process.env.NODE_ENV || 'development';
 dotenv.config();
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 // Get detailed git info with fallbacks
 const getGitInfo = () => {
@@ -185,7 +186,6 @@ if (duplicateDeps.length > 0) {
 }
 const { NODE_ENV } = process.env;
 const isProd = NODE_ENV === "production";
-const __dirname = dirname(fileURLToPath(import.meta.url));
 // const isTest = import.meta.env.MODE === 'test';
 // (removed unused isTest)
 
@@ -221,8 +221,11 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
     postcss(),
     tailwindcss(),
     imports(),
-    vituum(),
-    pages(),
+    vituum({root: './src',}),
+    pages({
+  dir: 'pages',
+  extensions: ['html', 'pug', 'njk', 'twig', 'hbs', 'liquid'],
+}),
     // redirects(),
     // sitemap(),
     // robots(),
