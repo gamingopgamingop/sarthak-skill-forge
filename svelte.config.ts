@@ -16,6 +16,7 @@ import vercelAdapter from '@sveltejs/adapter-vercel';
 import RolldownsvelteAdapter from '@siddharatha/adapter-node-rolldown';
 import {createReadableStream,getRequest,setResponse} from '@sveltejs/kit/node';
 import {	Server,	VERSION,	error,	fail,	invalid,	isActionFailure,	isHttpError,	isRedirect,	isValidationError,	json,	normalizeUrl,	redirect,	text} from '@sveltejs/kit';
+import type { Transport } from '@sveltejs/kit';
 import { installPolyfills } from '@sveltejs/kit/node/polyfills';
 /** Resolve current directory for cross-platform support */
 const __filename = fileURLToPath(import.meta.url);
@@ -61,6 +62,28 @@ interface PrerenderedResult {
   paths: string[];
 }
 
+interface Transporter<
+	T = any,
+	U = Exclude<
+		any,
+		false | 0 | '' | null | undefined | typeof NaN
+	>
+> {
+encode: (value: T) => false | U;
+decode: (data: U) => T; }
+
+
+interface ValidationError {
+issues: StandardSchemaV1.Issue[];
+}
+
+
+
+interface AdapterEntry {
+id: string;
+filter(route: RouteDefinition): boolean;
+}
+
 namespace Csp {
 	type ActionSource = 'strict-dynamic' | 'report-sample';
 	type BaseSource =
@@ -98,7 +121,56 @@ namespace Csp {
 	type Sources = Source[];
 }
 
+declare class MyCustomType {
+	data: any
+}
 
+type SubmitFunction<
+	Success extends
+		| Record<string, unknown>
+		| undefined = Record<string, any>,
+	Failure extends
+		| Record<string, unknown>
+		| undefined = Record<string, any>
+> = (input: {
+	action: URL;
+	formData: FormData;
+	formElement: HTMLFormElement;
+	controller: AbortController;
+	submitter: HTMLElement | null;
+	cancel: () => void;
+}) => MaybePromise<
+	| void
+	| ((opts: {
+			formData: FormData;
+			formElement: HTMLFormElement;
+			action: URL;
+			result: ActionResult<Success, Failure>;
+			/**
+			 * Call this to get the default behavior of a form submission response.
+			 * @param options Set `reset: false` if you don't want the `<form>` values to be reset after a successful submission.
+			 * @param invalidateAll Set `invalidateAll: false` if you don't want the action to call `invalidateAll` after submission.
+			 */
+			update: (options?: {
+				reset?: boolean;
+				invalidateAll?: boolean;
+			}) => Promise<void>;
+	  }) => MaybePromise<void>)
+>;
+
+interface Snapshot<T = any> {
+capture: () => T;
+restore: (snapshot: T) => void;
+}
+// hooks.js
+export const transport: Transport = {
+	MyCustomType: {
+		encode: (value) => value instanceof MyCustomType && [value.data],
+		decode: ([data]) => new MyCustomType(data)
+	}
+};
+type Transport = Record<string, Transporter>;
+type Transported<T> = T extends Transporter<infer U> ? U : never;
 interface CspDirectives {
 'child-src'?: Csp.Sources;
 'default-src'?: Array<Csp.Source | Csp.ActionSource>;
