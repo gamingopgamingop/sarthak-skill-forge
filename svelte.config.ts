@@ -91,6 +91,7 @@ type PrerenderMissingIdHandlerValue =
 	| PrerenderMissingIdHandler;
 
 type TrailingSlash = 'never' | 'always' | 'ignore';
+type IsAny<T> = 0 extends 1 & T ? true : false;
 
 interface RequestOptions {
   getClientAddress(): string;
@@ -98,6 +99,8 @@ interface RequestOptions {
 }
 
 type PrerenderOption = boolean | 'auto';
+
+
 
 type PrerenderUnseenRoutesHandlerValue =
 	| 'fail'
