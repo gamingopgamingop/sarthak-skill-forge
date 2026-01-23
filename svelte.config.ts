@@ -62,6 +62,66 @@ interface PrerenderedResult {
   paths: string[];
 }
 
+type Reroute = (event: {
+	url: URL;
+	fetch: typeof fetch;
+}) => MaybePromise<void | string>;
+
+type RequestHandler<
+	Params extends
+		AppLayoutParams<'/'> = AppLayoutParams<'/'>,
+	RouteId extends AppRouteId | null = AppRouteId | null
+> = (
+	event: RequestEvent<Params, RouteId>
+) => MaybePromise<Response>;
+
+
+interface ResolveOptions {
+transformPageChunk?: (input: { html: string; done: boolean }) => MaybePromise<string | undefined>;
+
+filterSerializedResponseHeaders?: (name: string, value: string) => boolean;
+
+preload?: (input: { type: 'font' | 'css' | 'js' | 'asset'; path: string }) => boolean;
+
+}
+interface RouteDefinition<Config = any> {
+id: string;
+api: {
+	methods: Array<HttpMethod | '*'>;
+};
+page: {
+	methods: Array<Extract<HttpMethod, 'GET' | 'POST'>>;
+};
+pattern: RegExp;
+prerender: PrerenderOption;
+segments: RouteSegment[];
+methods: Array<HttpMethod | '*'>;
+config: Config;
+}
+
+type ServerInit = () => MaybePromise<void>;
+interface SSRManifest {
+appDir: string;
+appPath: string;
+assets: Set<string>;
+// Static files from kit.config.files.assets and the service worker (if any).
+
+mimeTypes: Record<string, string>;
+_: {}
+// private fields
+
+client: NonNullable<BuildData['client']>;
+nodes: SSRNodeLoader[];
+remotes: Record<string, () => Promise<any>>;
+// hashed filename -> import to that file
+
+routes: SSRRoute[];
+prerendered_routes: Set<string>;
+matchers: () => Promise<Record<string, ParamMatcher>>;
+server_assets: Record<string, number>;
+}
+
+
 interface Transporter<
 	T = any,
 	U = Exclude<
@@ -77,12 +137,47 @@ interface ValidationError {
 issues: StandardSchemaV1.Issue[];
 }
 
+interface ServerInitOptions {
+  env: Record<string, string>;
+  read?: (file: string) => MaybePromise<ReadableStream | null>;
+}
+
+
+type ServerLoad<
+	Params extends
+		AppLayoutParams<'/'> = AppLayoutParams<'/'>,
+	ParentData extends Record<string, any> = Record<
+		string,
+		any
+	>,
+	OutputData extends Record<string, any> | void = Record<
+		string,
+		any
+	> | void,
+	RouteId extends AppRouteId | null = AppRouteId | null
+> = (
+	event: ServerLoadEvent<Params, ParentData, RouteId>
+) => MaybePromise<OutputData>;
 
 
 interface AdapterEntry {
 id: string;
 filter(route: RouteDefinition): boolean;
 }
+
+interface ServerLoadEvent<
+	Params extends
+		AppLayoutParams<'/'> = AppLayoutParams<'/'>,
+	ParentData extends Record<string, any> = Record<
+		string,
+		any
+	>,
+	RouteId extends AppRouteId | null = AppRouteId | null
+> extends RequestEvent<Params, RouteId> {
+    parent: () => Promise<ParentData>;
+    depends: (...deps: string[]) => void;
+}
+
 
 namespace Csp {
 	type ActionSource = 'strict-dynamic' | 'report-sample';
