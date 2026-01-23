@@ -907,7 +907,6 @@
     "eslint-config-standard": "^17.1.0",
     "@types/twig": "^1.12.15",
     "@tanstack/react-ai-devtools": "^0.0.2",
-    "@tanstack/react-devtools": "^0.8.2",
     "@tanstack/solid-ai-devtools": "^0.0.2",
     "@tanstack/solid-devtools": "^0.7.15",
     "@testing-library/user-event": "^14.6.1",
