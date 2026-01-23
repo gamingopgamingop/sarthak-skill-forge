@@ -21,6 +21,8 @@ import {
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+
+
 async function getAdapter() {
   switch (process.env.DEPLOY_TARGET) {
     case 'cloudflare': {
@@ -143,10 +145,8 @@ const config = {
       scss: {
         includePaths: ['src/styles', 'src/lib'],
       }
-    }),
-      vitePreprocessSvelte({
-    /* plugin-specific options */
-  }),
+      }),
+
 
     // mdsvex(),
 
@@ -198,5 +198,38 @@ const config = {
 	}
 };
 
+// function getRequest({
+// 	request,
+// 	base,
+// 	bodySizeLimit
+// }: {
+// 	request: import('http').IncomingMessage;
+// 	base: string;
+// 	bodySizeLimit?: number;
+// }): Promise<Request>;
+// // Use getRequest to turn Node req into a Web-standard Request
+// async function handleNodeRequest(
+//   nodeReq: import('http').IncomingMessage,
+//   basePath: string
+// ): Promise<Request> {
+//   return getRequest({
+//     request: nodeReq,
+//     base: basePath,
+//     bodySizeLimit: undefined, // optional limit
+//   });
+// }
+
+// // Use createReadableStream to stream a file as a ReadableStream
+// function streamFile(filePath: string): ReadableStream {
+//   return createReadableStream(filePath);
+// }
+
+// // Use setResponse to pipe a Web Response back to Node res
+// async function sendNodeResponse(
+//   nodeRes: import('http').ServerResponse,
+//   webResponse: Response
+// ): Promise<void> {
+//   await setResponse(nodeRes, webResponse);
+// }
 
 export default config;
