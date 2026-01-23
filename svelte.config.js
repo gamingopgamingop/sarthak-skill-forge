@@ -12,7 +12,11 @@ import nodeAdapter from '@sveltejs/adapter-node';
 import staticAdapter from '@sveltejs/adapter-static';
 import vercelAdapter from '@sveltejs/adapter-vercel';
 import RolldownsvelteAdapter from '@siddharatha/adapter-node-rolldown';
-
+import {
+	createReadableStream,
+	getRequest,
+	setResponse
+} from '@sveltejs/kit/node';
 /** Resolve current directory for cross-platform support */
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
