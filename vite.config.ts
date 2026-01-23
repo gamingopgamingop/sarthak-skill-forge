@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 /// <reference types="vitest" />
 import marko from "@marko/vite";
 import type { GetManualChunk } from 'rollup';

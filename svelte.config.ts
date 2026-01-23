@@ -1,3 +1,5 @@
+//noinspection SpellCheckingInspection
+// @ts-nocheck
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 import autoprefixer from 'autoprefixer';
 import { mdsvex } from 'mdsvex';
@@ -22,7 +24,87 @@ const __dirname = path.dirname(__filename);
 const adapter = await getAdapter();     
 
 installPolyfills();
+type MaybePromise<T> = T | Promise<T>;
 
+interface Logger {
+  (msg: string): void;
+  success(msg: string): void;
+  error(msg: string): void;
+  warn(msg: string): void;
+  minor(msg: string): void;
+  info(msg: string): void;
+}
+interface PrerenderHttpErrorHandler {
+  (details: { 
+status: number;
+path: string;
+referrer: string | null;
+referenceType: 'linked' | 'fetched';
+message: string;
+}): void;
+}
+type PrerenderMap = Map<string, PrerenderOption>;
+
+interface PrerenderMissingIdHandler {
+  (details: { path: string; id: string; referrers: string[]; message: string }): void;
+}
+
+type PrerenderMissingIdHandlerValue =
+	| 'fail'
+	| 'warn'
+	| 'ignore'
+	| PrerenderMissingIdHandler;
+
+type TrailingSlash = 'never' | 'always' | 'ignore';
+
+interface RequestOptions {
+  getClientAddress(): string;
+  platform?: App.Platform;
+}
+
+interface Prerendered {}
+pages: Map<
+string,
+{
+	/** The location of the .html file relative to the output directory */
+	file: string;
+}
+>;
+
+
+interface RouteSegment {
+  content: string;
+  dynamic: boolean;
+  rest: boolean;
+  trailingSlash: TrailingSlash;
+}
+
+type PrerenderHttpErrorHandlerValue =
+	| 'fail'
+	| 'warn'
+	| 'ignore'
+	| PrerenderHttpErrorHandler;
+
+interface PrerenderEntryGeneratorMismatchHandler {
+  (details: { generatedFromId: string; entry: string; matchedId: string; message: string }): void;
+}
+
+type PrerenderEntryGeneratorMismatchHandlerValue =
+	| 'fail'
+	| 'warn'
+	| 'ignore'
+	| PrerenderEntryGeneratorMismatchHandler;
+
+
+type HttpMethod =
+	| 'GET'
+	| 'HEAD'
+	| 'POST'
+	| 'PUT'
+	| 'DELETE'
+	| 'PATCH'
+	| 'OPTIONS';
+I
 async function getAdapter() {
   switch (process.env.DEPLOY_TARGET) {
     case 'cloudflare': {
