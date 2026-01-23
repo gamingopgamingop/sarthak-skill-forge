@@ -1,4 +1,4 @@
-import { vitePreprocess  as vitePreprocessSvelte } from '@sveltejs/vite-plugin-svelte';
+import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 import autoprefixer from 'autoprefixer';
 import { mdsvex } from 'mdsvex';
 import path from 'path';
