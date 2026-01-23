@@ -10,7 +10,7 @@ import netlifyAdapter from '@sveltejs/adapter-netlify';
 import nodeAdapter from '@sveltejs/adapter-node';
 import staticAdapter from '@sveltejs/adapter-static';
 import vercelAdapter from '@sveltejs/adapter-vercel';
-import RolldownsvelteAdapter from '@sveltejs/adapter-node-rolldown';
+import RolldownsvelteAdapter from '@siddharatha/adapter-node-rolldown';
 
 /** Resolve current directory for cross-platform support */
 const __filename = fileURLToPath(import.meta.url);
@@ -33,7 +33,7 @@ async function getAdapter() {
 
     case 'netlify': {
       const { default: netlifyAdapter } = await import(
-        '@sveltejs/adapter-netlify'
+        '@/adapter-netlify'
       );
       return netlifyAdapter({
         edge: false,
@@ -44,6 +44,7 @@ async function getAdapter() {
     case 'vercel': {
       const { default: vercelAdapter } = await import(
         '@sveltejs/adapter-vercel'
+
       );
       return vercelAdapter({
         images: {
@@ -56,7 +57,7 @@ async function getAdapter() {
 
     case 'rolldown': {
       const { default: RolldownsvelteAdapter } = await import(
-        '@sveltejs/adapter-node-rolldown'
+        '@siddharatha/adapter-node-rolldown'
       );
       return RolldownsvelteAdapter({
         out: 'build',
