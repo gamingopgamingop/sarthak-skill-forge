@@ -3,13 +3,13 @@ import autoprefixer from 'autoprefixer';
 import { mdsvex } from 'mdsvex';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import adapter from '@sveltejs/adapter-auto'
+import autoAdapter from '@sveltejs/adapter-auto'
 import cloudflareAdapter   from '@sveltejs/adapter-cloudflare';
 import { vitePreprocess } from '@sveltejs/kit/vite';
 import netlifyAdapter from '@sveltejs/adapter-netlify';
-import nodeadapter from '@sveltejs/adapter-node';
-import staticadapter from '@sveltejs/adapter-static';
-import verceladapter from '@sveltejs/adapter-vercel';
+import nodeAdapter from '@sveltejs/adapter-node';
+import staticAdapter from '@sveltejs/adapter-static';
+import vercelAdapter from '@sveltejs/adapter-vercel';
 import RolldownsvelteAdapter from '@sveltejs/adapter-node-rolldown';
 
 /** Resolve current directory for cross-platform support */
