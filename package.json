@@ -886,7 +886,6 @@
     "mocha-snap": "^5.0.0",
     "nyc": "^17.1.0",
     "playwright": "^1.54.1",
-    "prettier": "^3.6.2",
     "prettier-plugin-packagejson": "^2.5.18",
     "serve-handler": "^6.1.6",
     "ts-morph": "27.0.2",
