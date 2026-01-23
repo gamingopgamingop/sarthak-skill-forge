@@ -61,6 +61,105 @@ interface PrerenderedResult {
   paths: string[];
 }
 
+namespace Csp {
+	type ActionSource = 'strict-dynamic' | 'report-sample';
+	type BaseSource =
+		| 'self'
+		| 'unsafe-eval'
+		| 'unsafe-hashes'
+		| 'unsafe-inline'
+		| 'wasm-unsafe-eval'
+		| 'none';
+	type CryptoSource =
+		`${'nonce' | 'sha256' | 'sha384' | 'sha512'}-${string}`;
+	type FrameSource =
+		| HostSource
+		| SchemeSource
+		| 'self'
+		| 'none';
+	type HostNameScheme = `${string}.${string}` | 'localhost';
+	type HostSource =
+		`${HostProtocolSchemes}${HostNameScheme}${PortScheme}`;
+	type HostProtocolSchemes = `${string}://` | '';
+	type HttpDelineator = '/' | '?' | '#' | '\\';
+	type PortScheme = `:${number}` | '' | ':*';
+	type SchemeSource =
+		| 'http:'
+		| 'https:'
+		| 'data:'
+		| 'mediastream:'
+		| 'blob:'
+		| 'filesystem:';
+	type Source =
+		| HostSource
+		| SchemeSource
+		| CryptoSource
+		| BaseSource;
+	type Sources = Source[];
+}
+
+
+interface CspDirectives {
+'child-src'?: Csp.Sources;
+'default-src'?: Array<Csp.Source | Csp.ActionSource>;
+'frame-src'?: Csp.Sources;
+'worker-src'?: Csp.Sources;
+'connect-src'?: Csp.Sources;
+'font-src'?: Csp.Sources;
+'img-src'?: Csp.Sources;
+'manifest-src'?: Csp.Sources;
+'media-src'?: Csp.Sources;
+'object-src'?: Csp.Sources;
+'prefetch-src'?: Csp.Sources;
+'script-src'?: Array<Csp.Source | Csp.ActionSource>;
+'script-src-elem'?: Csp.Sources;
+'script-src-attr'?: Csp.Sources;
+'style-src'?: Array<Csp.Source | Csp.ActionSource>;
+'style-src-elem'?: Csp.Sources;
+'style-src-attr'?: Csp.Sources;
+'base-uri'?: Array<Csp.Source | Csp.ActionSource>;
+sandbox?: Array<
+| 'allow-downloads-without-user-activation'
+| 'allow-forms'
+| 'allow-modals'
+| 'allow-orientation-lock'
+| 'allow-pointer-lock'
+| 'allow-popups'
+| 'allow-popups-to-escape-sandbox'
+| 'allow-presentation'
+| 'allow-same-origin'
+| 'allow-scripts'
+| 'allow-storage-access-by-user-activation'
+| 'allow-top-navigation'
+| 'allow-top-navigation-by-user-activation'
+>;
+'form-action'?: Array<Csp.Source | Csp.ActionSource>;
+'frame-ancestors'?: Array<Csp.HostSource | Csp.SchemeSource | Csp.FrameSource>;
+'navigate-to'?: Array<Csp.Source | Csp.ActionSource>;
+'report-uri'?: string[];
+'report-to'?: string[];
+'require-trusted-types-for'?: Array<'script'>;
+'trusted-types'?: Array<'none' | 'allow-duplicates' | '*' | string>;
+'upgrade-insecure-requests'?: boolean;
+'require-sri-for'?: Array<'script' | 'style' | 'script style'>;
+
+'block-all-mixed-content'?: boolean;
+
+'plugin-types'?: Array<`${string}/${string}` | 'none'>;
+referrer?: Array<
+| 'no-referrer'
+| 'no-referrer-when-downgrade'
+| 'origin'
+| 'origin-when-cross-origin'
+| 'same-origin'
+| 'strict-origin'
+| 'strict-origin-when-cross-origin'
+| 'unsafe-url'
+| 'none'
+>;
+}
+
+
 interface Logger {
   (msg: string): void;
   success(msg: string): void;
