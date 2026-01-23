@@ -608,7 +608,9 @@
     "@sveltejs/adapter-static": "^3.0.10",
     "@sveltejs/adapter-vercel": "^6.3.1",
     "@vercel/mcp-adapter": "^1.0.0",
-    "@sveltejs/vite-plugin-svelte-inspector": "^5.0.2"
+    "@sveltejs/vite-plugin-svelte-inspector": "^5.0.2",
+    "@rolldown/pluginutils": "^1.0.0-rc.1"
+
 
 
 
