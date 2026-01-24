@@ -557,7 +557,6 @@
     "browserslist-useragent": "^3.1.4",
     "jest-environment-jsdom": "^30.2.0",
     "web-vitals": "^5.1.0",
-    "@storybook/react-vite": "^10.1.8",
     "axe-core": "^4.11.0",
     "redis": "^5.10.0",
     "bullmq": "^5.66.0",
