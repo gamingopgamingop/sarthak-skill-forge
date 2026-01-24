@@ -232,9 +232,9 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
     imports(),
     vituum({root: './src',}),
     pages({
-  dir: 'pages',
+    dir: 'src/pages', // Be specific about where your pages live
   extensions: ['html', 'pug', 'njk', 'twig', 'hbs', 'liquid'],
-}),
+  root: './src'}),
     // redirects(),
     // sitemap(),
     // robots(),
