@@ -1,4 +1,5 @@
 // @ts-nocheck
+import { nitro } from 'nitro/vite'
 
 /// <reference types="vitest" />
 import marko from "@marko/vite";
@@ -105,6 +106,7 @@ import * as dotenv from 'dotenv';
 import { execSync } from 'child_process';
 import { readFileSync } from 'fs';
 import { join } from 'path';
+import viteTsConfigPaths from 'vite-tsconfig-paths'
 
 // const env = process.env.NODE_ENV || 'development';
 dotenv.config();
@@ -206,6 +208,10 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
       // This can be disabled when setting up own server handler e.g. `@cloudflare/vite-plugin`.
       // > serverHandler: false
     }),
+      viteTsConfigPaths({
+      projects: ['./tsconfig.json'],
+    }),
+
 
 
     vike(),
@@ -213,6 +219,7 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
     pug({
         root: './src'
     }),
+    nitro(),
     nunjucks(),
     latte(),
     twig(),
