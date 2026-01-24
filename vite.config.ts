@@ -428,8 +428,8 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
     ssr: true,
     // outDir: 'dist',
     rollupOptions: {
-      
-      externals: [...Object.keys(dependencies), 'bcrypt'],
+      external: [...Object.keys(pkg.dependencies), 'bcrypt'],
+      // externals: [...Object.keys(dependencies), 'bcrypt'],
       input: {
         main: path.resolve(__dirname, 'src/index.html'),
         server: path.resolve(__dirname, 'src/server.ts'),
@@ -558,8 +558,8 @@ export function qwikOnlyConfig(
             //         For example, if something uses `bcrypt` but you don't have it as a dep, you can write
             //         external: [...Object.keys(dependencies), 'bcrypt'],
             //         external: [...Object.keys(dependencies), 'bcrypt', Object.keys(dependencies)],
-            externals: [...Object.keys(dependencies), 'bcrypt'],
-
+            // externals: [...Object.keys(dependencies), 'bcrypt'],
+            external: [...Object.keys(pkg.dependencies), 'bcrypt'],
           }
         : undefined,
 
