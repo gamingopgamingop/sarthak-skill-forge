@@ -420,7 +420,7 @@ type HttpMethod =
 	| 'DELETE'
 	| 'PATCH'
 	| 'OPTIONS';
-I
+
 async function getAdapter() {
   switch (process.env.DEPLOY_TARGET) {
     case 'cloudflare': {
