@@ -1,4 +1,4 @@
-let count = 0;
+let count= 0;
 
 export async function load({ untrack, url }: { untrack: (fn: () => boolean) => boolean; url: URL }) {
 
