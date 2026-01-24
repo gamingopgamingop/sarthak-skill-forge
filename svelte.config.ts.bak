@@ -1,0 +1,667 @@
+//noinspection SpellCheckingInspection
+// @ts-nocheck
+import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
+import autoprefixer from 'autoprefixer';
+import { mdsvex } from 'mdsvex';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import autoAdapter from '@sveltejs/adapter-auto'
+import cloudflareAdapter   from '@sveltejs/adapter-cloudflare';
+// import { vitePreprocess } from '@sveltejs/kit/vite';
+import { sveltekit } from '@sveltejs/kit/vite';
+import netlifyAdapter from '@sveltejs/adapter-netlify';
+import nodeAdapter from '@sveltejs/adapter-node';
+import staticAdapter from '@sveltejs/adapter-static';
+import vercelAdapter from '@sveltejs/adapter-vercel';
+import RolldownsvelteAdapter from '@siddharatha/adapter-node-rolldown';
+import {createReadableStream,getRequest,setResponse} from '@sveltejs/kit/node';
+import {VERSION,	error,	fail,	invalid,	isActionFailure,	isHttpError,	isRedirect,	isValidationError,	json,	normalizeUrl,	redirect,	text} from '@sveltejs/kit';
+import type { Transport } from '@sveltejs/kit';
+import { installPolyfills } from '@sveltejs/kit/node/polyfills';
+/** Resolve current directory for cross-platform support */
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const adapter = await getAdapter();     
+
+installPolyfills();
+
+type MaybePromise<T> = T | Promise<T>;
+/**
+ * Full Prerendered interface (for reference / augmentation)
+ */
+interface PrerenderedResult {
+  pages: Map<
+    string,
+    {
+      /** The location of the .html file relative to the output directory */
+      file: string;
+    }
+  >;
+
+  assets: Map<
+    string,
+    {
+      /** The MIME type of the asset */
+      type: string;
+    }
+  >;
+
+  redirects: Map<
+    string,
+    {
+      status: number;
+      location: string;
+    }
+  >;
+
+  /**
+   * An array of prerendered paths (no trailing slashes,
+   * regardless of trailingSlash config)
+   */
+  paths: string[];
+}
+
+type Reroute = (event: {
+	url: URL;
+	fetch: typeof fetch;
+}) => MaybePromise<void | string>;
+
+type RequestHandler<
+	Params extends
+		AppLayoutParams<'/'> = AppLayoutParams<'/'>,
+	RouteId extends AppRouteId | null = AppRouteId | null
+> = (
+	event: RequestEvent<Params, RouteId>
+) => MaybePromise<Response>;
+
+
+interface ResolveOptions {
+transformPageChunk?: (input: { html: string; done: boolean }) => MaybePromise<string | undefined>;
+
+filterSerializedResponseHeaders?: (name: string, value: string) => boolean;
+
+preload?: (input: { type: 'font' | 'css' | 'js' | 'asset'; path: string }) => boolean;
+
+}
+interface RouteDefinition<Config = any> {
+id: string;
+api: {
+	methods: Array<HttpMethod | '*'>;
+};
+page: {
+	methods: Array<Extract<HttpMethod, 'GET' | 'POST'>>;
+};
+pattern: RegExp;
+prerender: PrerenderOption;
+segments: RouteSegment[];
+methods: Array<HttpMethod | '*'>;
+config: Config;
+}
+
+type ServerInit = () => MaybePromise<void>;
+interface SSRManifest {
+appDir: string;
+appPath: string;
+assets: Set<string>;
+// Static files from kit.config.files.assets and the service worker (if any).
+
+mimeTypes: Record<string, string>;
+_: {}
+// private fields
+
+client: NonNullable<BuildData['client']>;
+nodes: SSRNodeLoader[];
+remotes: Record<string, () => Promise<any>>;
+// hashed filename -> import to that file
+
+routes: SSRRoute[];
+prerendered_routes: Set<string>;
+matchers: () => Promise<Record<string, ParamMatcher>>;
+server_assets: Record<string, number>;
+}
+
+
+interface Transporter<
+	T = any,
+	U = Exclude<
+		any,
+		false | 0 | '' | null | undefined | typeof NaN
+	>
+> {
+encode: (value: T) => false | U;
+decode: (data: U) => T; }
+
+
+interface ValidationError {
+issues: StandardSchemaV1.Issue[];
+}
+
+interface ServerInitOptions {
+  env: Record<string, string>;
+  read?: (file: string) => MaybePromise<ReadableStream | null>;
+}
+
+
+type ServerLoad<
+	Params extends
+		AppLayoutParams<'/'> = AppLayoutParams<'/'>,
+	ParentData extends Record<string, any> = Record<
+		string,
+		any
+	>,
+	OutputData extends Record<string, any> | void = Record<
+		string,
+		any
+	> | void,
+	RouteId extends AppRouteId | null = AppRouteId | null
+> = (
+	event: ServerLoadEvent<Params, ParentData, RouteId>
+) => MaybePromise<OutputData>;
+
+
+interface AdapterEntry {
+id: string;
+filter(route: RouteDefinition): boolean;
+}
+
+interface ServerLoadEvent<
+	Params extends
+		AppLayoutParams<'/'> = AppLayoutParams<'/'>,
+	ParentData extends Record<string, any> = Record<
+		string,
+		any
+	>,
+	RouteId extends AppRouteId | null = AppRouteId | null
+> extends RequestEvent<Params, RouteId> {
+    parent: () => Promise<ParentData>;
+    depends: (...deps: string[]) => void;
+}
+
+
+namespace Csp {
+	type ActionSource = 'strict-dynamic' | 'report-sample';
+	type BaseSource =
+		| 'self'
+		| 'unsafe-eval'
+		| 'unsafe-hashes'
+		| 'unsafe-inline'
+		| 'wasm-unsafe-eval'
+		| 'none';
+	type CryptoSource =
+		`${'nonce' | 'sha256' | 'sha384' | 'sha512'}-${string}`;
+	type FrameSource =
+		| HostSource
+		| SchemeSource
+		| 'self'
+		| 'none';
+	type HostNameScheme = `${string}.${string}` | 'localhost';
+	type HostSource =
+		`${HostProtocolSchemes}${HostNameScheme}${PortScheme}`;
+	type HostProtocolSchemes = `${string}://` | '';
+	type HttpDelineator = '/' | '?' | '#' | '\\';
+	type PortScheme = `:${number}` | '' | ':*';
+	type SchemeSource =
+		| 'http:'
+		| 'https:'
+		| 'data:'
+		| 'mediastream:'
+		| 'blob:'
+		| 'filesystem:';
+	type Source =
+		| HostSource
+		| SchemeSource
+		| CryptoSource
+		| BaseSource;
+	type Sources = Source[];
+}
+
+declare class MyCustomType {
+	data: any
+}
+
+type SubmitFunction<
+	Success extends
+		| Record<string, unknown>
+		| undefined = Record<string, any>,
+	Failure extends
+		| Record<string, unknown>
+		| undefined = Record<string, any>
+> = (input: {
+	action: URL;
+	formData: FormData;
+	formElement: HTMLFormElement;
+	controller: AbortController;
+	submitter: HTMLElement | null;
+	cancel: () => void;
+}) => MaybePromise<
+	| void
+	| ((opts: {
+			formData: FormData;
+			formElement: HTMLFormElement;
+			action: URL;
+			result: ActionResult<Success, Failure>;
+			/**
+			 * Call this to get the default behavior of a form submission response.
+			 * @param options Set `reset: false` if you don't want the `<form>` values to be reset after a successful submission.
+			 * @param invalidateAll Set `invalidateAll: false` if you don't want the action to call `invalidateAll` after submission.
+			 */
+			update: (options?: {
+				reset?: boolean;
+				invalidateAll?: boolean;
+			}) => Promise<void>;
+	  }) => MaybePromise<void>)
+>;
+
+interface Snapshot<T = any> {
+capture: () => T;
+restore: (snapshot: T) => void;
+}
+// hooks.js
+export const transport: Transport = {
+	MyCustomType: {
+		encode: (value) => value instanceof MyCustomType && [value.data],
+		decode: ([data]) => new MyCustomType(data)
+	}
+};
+type Transport = Record<string, Transporter>;
+type Transported<T> = T extends Transporter<infer U> ? U : never;
+interface CspDirectives {
+'child-src'?: Csp.Sources;
+'default-src'?: Array<Csp.Source | Csp.ActionSource>;
+'frame-src'?: Csp.Sources;
+'worker-src'?: Csp.Sources;
+'connect-src'?: Csp.Sources;
+'font-src'?: Csp.Sources;
+'img-src'?: Csp.Sources;
+'manifest-src'?: Csp.Sources;
+'media-src'?: Csp.Sources;
+'object-src'?: Csp.Sources;
+'prefetch-src'?: Csp.Sources;
+'script-src'?: Array<Csp.Source | Csp.ActionSource>;
+'script-src-elem'?: Csp.Sources;
+'script-src-attr'?: Csp.Sources;
+'style-src'?: Array<Csp.Source | Csp.ActionSource>;
+'style-src-elem'?: Csp.Sources;
+'style-src-attr'?: Csp.Sources;
+'base-uri'?: Array<Csp.Source | Csp.ActionSource>;
+sandbox?: Array<
+| 'allow-downloads-without-user-activation'
+| 'allow-forms'
+| 'allow-modals'
+| 'allow-orientation-lock'
+| 'allow-pointer-lock'
+| 'allow-popups'
+| 'allow-popups-to-escape-sandbox'
+| 'allow-presentation'
+| 'allow-same-origin'
+| 'allow-scripts'
+| 'allow-storage-access-by-user-activation'
+| 'allow-top-navigation'
+| 'allow-top-navigation-by-user-activation'
+>;
+'form-action'?: Array<Csp.Source | Csp.ActionSource>;
+'frame-ancestors'?: Array<Csp.HostSource | Csp.SchemeSource | Csp.FrameSource>;
+'navigate-to'?: Array<Csp.Source | Csp.ActionSource>;
+'report-uri'?: string[];
+'report-to'?: string[];
+'require-trusted-types-for'?: Array<'script'>;
+'trusted-types'?: Array<'none' | 'allow-duplicates' | '*' | string>;
+'upgrade-insecure-requests'?: boolean;
+'require-sri-for'?: Array<'script' | 'style' | 'script style'>;
+
+'block-all-mixed-content'?: boolean;
+
+'plugin-types'?: Array<`${string}/${string}` | 'none'>;
+referrer?: Array<
+| 'no-referrer'
+| 'no-referrer-when-downgrade'
+| 'origin'
+| 'origin-when-cross-origin'
+| 'same-origin'
+| 'strict-origin'
+| 'strict-origin-when-cross-origin'
+| 'unsafe-url'
+| 'none'
+>;
+}
+
+
+interface Logger {
+  (msg: string): void;
+  success(msg: string): void;
+  error(msg: string): void;
+  warn(msg: string): void;
+  minor(msg: string): void;
+  info(msg: string): void;
+}
+interface PrerenderHttpErrorHandler {
+  (details: { 
+status: number;
+path: string;
+referrer: string | null;
+referenceType: 'linked' | 'fetched';
+message: string;
+}): void;
+}
+type PrerenderMap = Map<string, PrerenderOption>;
+
+interface PrerenderMissingIdHandler {
+  (details: { path: string; id: string; referrers: string[]; message: string }): void;
+}
+
+type PrerenderMissingIdHandlerValue =
+	| 'fail'
+	| 'warn'
+	| 'ignore'
+	| PrerenderMissingIdHandler;
+
+type TrailingSlash = 'never' | 'always' | 'ignore';
+type IsAny<T> = 0 extends 1 & T ? true : false;
+
+interface RequestOptions {
+  getClientAddress(): string;
+  platform?: App.Platform;
+}
+
+type PrerenderOption = boolean | 'auto';
+
+
+
+type PrerenderUnseenRoutesHandlerValue =
+	| 'fail'
+	| 'warn'
+	| 'ignore'
+	| PrerenderUnseenRoutesHandler;
+
+interface PrerenderUnseenRoutesHandler {
+(details: { routes: string[]; message: string }): void;
+}
+
+interface Prerendered {}
+pages: Map<
+string,
+{
+	/** The location of the .html file relative to the output directory */
+	file: string;
+}
+>;
+
+
+interface RouteSegment {
+  content: string;
+  dynamic: boolean;
+  rest: boolean;
+  trailingSlash: TrailingSlash;
+}
+
+type PrerenderHttpErrorHandlerValue =
+	| 'fail'
+	| 'warn'
+	| 'ignore'
+	| PrerenderHttpErrorHandler;
+
+interface PrerenderEntryGeneratorMismatchHandler {
+  (details: { generatedFromId: string; entry: string; matchedId: string; message: string }): void;
+}
+
+type PrerenderEntryGeneratorMismatchHandlerValue =
+	| 'fail'
+	| 'warn'
+	| 'ignore'
+	| PrerenderEntryGeneratorMismatchHandler;
+
+
+type HttpMethod =
+	| 'GET'
+	| 'HEAD'
+	| 'POST'
+	| 'PUT'
+	| 'DELETE'
+	| 'PATCH'
+	| 'OPTIONS';
+
+async function getAdapter() {
+  switch (process.env.DEPLOY_TARGET) {
+    case 'cloudflare': {
+      const { default: cloudflareAdapter } = await import(
+        '@sveltejs/adapter-cloudflare'
+      );
+      return cloudflareAdapter({
+        fallback: 'plaintext',
+        routes: {
+          include: ['/*'],
+          exclude: ['<all>']
+        }
+      });
+    }
+
+    case 'netlify': {
+      const { default: netlifyAdapter } = await import(
+        '@/adapter-netlify'
+      );
+      return netlifyAdapter({
+        edge: false,
+        split: false
+      });
+    }
+
+    case 'vercel': {
+      const { default: vercelAdapter } = await import(
+        '@sveltejs/adapter-vercel'
+
+      );
+      return vercelAdapter({
+        images: {
+          sizes: [640, 828, 1200, 1920, 3840],
+          formats: ['image/avif', 'image/webp'],
+          minimumCacheTTL: 300
+        }
+      });
+    }
+
+    case 'cloudflare-workers': {
+      const { default: cloudflareAdapter } = await import(
+        '@sveltejs/adapter-cloudflare'
+      );
+      return cloudflareAdapter({
+        fallback: 'plaintext',
+        routes: {
+          include: ['/*'],
+          exclude: ['<all>']
+        }
+      });
+    }
+
+    
+
+    case 'rolldown': {
+      const { default: RolldownsvelteAdapter } = await import(
+        '@siddharatha/adapter-node-rolldown'
+      );
+      return RolldownsvelteAdapter({
+        out: 'build',
+        precompress: true,
+        envPrefix: ''
+      });
+    }
+
+    case 'node': {
+      const { default: nodeAdapter } = await import(
+        '@sveltejs/adapter-node'
+      );
+      return nodeAdapter({
+        out: 'build',
+        precompress: true,
+        envPrefix: ''
+      });
+    }
+
+    case 'static': {
+      const { default: staticAdapter } = await import(
+        '@sveltejs/adapter-static'
+      );
+      return staticAdapter({
+        pages: 'build',
+        assets: 'build',
+        precompress: false,
+        strict: true
+      });
+    }
+
+    default: {
+      const { default: autoAdapter } = await import(
+        '@sveltejs/adapter-auto'
+      );
+      return autoAdapter();
+    }
+  }
+}
+
+
+
+/** @type {import('@sveltejs/vite-plugin-svelte').SvelteConfig} */
+const config = {
+  	isr: {
+		expiration: 60,
+		bypassToken: crypto.randomUUID(),
+		allowQuery: ['search']
+	},
+
+  // ------------------------------------------------------------
+  // 🧩 Preprocessors
+  // ------------------------------------------------------------
+  preprocess: [
+    vitePreprocess({
+      script: true,
+      style: true,
+      markup: true,
+      postcss: {
+        plugins: [autoprefixer()],
+      },
+      
+      scss: {
+        includePaths: ['src/styles', 'src/lib'],
+      }
+      }),
+
+
+    // mdsvex(),
+
+    // 📝 Markdown support → .md files become Svelte pages
+    mdsvex({
+      extensions: ['.md'],
+      layout: {
+        blog: 'src/lib/layouts/BlogLayout.svelte'
+      }
+    })
+  ],
+
+  // ------------------------------------------------------------
+  // 📁 Extensions
+  // ------------------------------------------------------------
+  extensions: ['.svelte', '.md' , '.svx'],
+
+  // ------------------------------------------------------------
+  // 🔍 Svelte Inspect Tool (optional)
+  // ------------------------------------------------------------
+  // 🔧 Vite Plugin Configurations
+  // ------------------------------------------------------------
+  vitePlugin: {
+  inspector: {
+    toggleKeyCombo: 'meta-shift',
+    holdMode: true,
+
+
+  }
+},
+
+  // ------------------------------------------------------------
+  // 📦 Alias Support
+  // ------------------------------------------------------------
+  kit: {
+    alias: {
+      '@components': path.resolve(__dirname, 'src/components'),
+      '@lib': path.resolve(__dirname, 'src/lib'),
+      '@routes': path.resolve(__dirname, 'src/routes'),
+      '@styles': path.resolve(__dirname, 'src/styles'),
+    },
+
+    // For adapters (node, vercel, cloudflare, static)
+    // adapter: undefined, // add your adapter
+    adapter : getAdapter(),
+    paths: {
+			base: process.argv.includes('dev') ? '' : process.env.BASE_PATH
+		}
+	},
+    prerender: {
+      entries: ['*'],
+
+      /**
+       * Called after prerendering finishes
+       */
+      onComplete(prerendered: Prerendered) {
+        const result = prerendered as unknown as PrerenderedResult;
+
+        // ---- PAGES ----
+        for (const [path, { file }] of result.pages) {
+          console.log(`PAGE: ${path} → ${file}`);
+        }
+
+        // ---- ASSETS ----
+        for (const [path, { type }] of result.assets) {
+          console.log(`ASSET: ${path} (${type})`);
+        }
+
+        // ---- REDIRECTS ----
+        for (const [path, redirect] of result.redirects) {
+          console.log(
+            `REDIRECT: ${path} → ${redirect.location} (${redirect.status})`
+          );
+        }
+
+        // ---- PATHS (useful for sitemap) ----
+        writeFileSync(
+          'build/prerendered-paths.json',
+          JSON.stringify(result.paths, null, 2)
+        );
+
+
+    }
+  }
+};
+// function getRequest({
+// 	request,
+// 	base,
+// 	bodySizeLimit
+// }: {
+// 	request: import('http').IncomingMessage;
+// 	base: string;
+// 	bodySizeLimit?: number;
+// }): Promise<Request>;
+// // Use getRequest to turn Node req into a Web-standard Request
+// async function handleNodeRequest(
+//   nodeReq: import('http').IncomingMessage,
+//   basePath: string
+// ): Promise<Request> {
+//   return getRequest({
+//     request: nodeReq,
+//     base: basePath,
+//     bodySizeLimit: undefined, // optional limit
+//   });
+// }
+
+// // Use createReadableStream to stream a file as a ReadableStream
+// function streamFile(filePath: string): ReadableStream {
+//   return createReadableStream(filePath);
+// }
+
+// // Use setResponse to pipe a Web Response back to Node res
+// async function sendNodeResponse(
+//   nodeRes: import('http').ServerResponse,
+//   webResponse: Response
+// ): Promise<void> {
+//   await setResponse(nodeRes, webResponse);
+// }
+
+export default config;
