@@ -182,6 +182,12 @@ const getPackageJson = () => {
   }
 };
 
+const input =
+  process.env.VITE_INPUT && process.env.VITE_INPUT.trim()
+    ? process.env.VITE_INPUT
+    : "src/pages/**/*.html";
+
+
 const pkg = getPackageJson();
 const gitInfo = getGitInfo();
 
@@ -243,18 +249,12 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
     postcss(),
     tailwindcss(),
     imports(),
-vituum({
-  root: './src',
-  input: [
-    '**/*.{html,pug,njk,twig,hbs,liquid}'
-  ],
-  build: { ssr: false }
-}),
-pages({
-  root: './src',
-  dir: mode === "development" ? "src/pages": "src/pages",
-  extensions: ['html', 'pug', 'njk', 'twig', 'hbs', 'liquid']
-}),
+    ...(isProd ? [vituum({ input: "src/pages/**/*.html" })] : []),
+    pages({
+      root: './src',
+      dir: mode === "development" ? "src/pages": "src/pages",
+      extensions: ['html', 'pug', 'njk', 'twig', 'hbs', 'liquid']
+    }),
 
     // redirects(),
     // sitemap(),
