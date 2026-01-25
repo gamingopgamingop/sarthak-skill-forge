@@ -184,13 +184,11 @@ const getPackageJson = () => {
 
 const getVituumInput = () => {
   const envInput = process.env.VITE_INPUT;
-  // Return valid string or undefined (vituum will use its defaults)
   if (envInput && typeof envInput === 'string' && envInput.trim()) {
     return envInput.trim();
   }
-  // Instead of returning a default pattern, return undefined
-  // This lets vituum use its own internal defaults
-  return undefined;
+  // Return a valid default pattern instead of undefined
+  return 'src/pages/**/*.html';
 };
 
 const input = getVituumInput();
