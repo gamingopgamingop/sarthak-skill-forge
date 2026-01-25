@@ -256,14 +256,14 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
     tailwindcss(),
     imports(),
     // vituum({ input: getVituumInput() }),
-vituum({
-  input: getVituumInput()
-}),
-    pages({
-      root: './src',
-      dir: mode === "development" ? "src/pages": "src/pages",
-      extensions: ['html', 'pug', 'njk', 'twig', 'hbs', 'liquid']
-    }),
+// vituum({
+//   input: getVituumInput()
+// }),
+//     pages({
+//       root: './src',
+//       dir: mode === "development" ? "src/pages": "src/pages",
+//       extensions: ['html', 'pug', 'njk', 'twig', 'hbs', 'liquid']
+//     }),
 
     // redirects(),
     // sitemap(),
