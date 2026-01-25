@@ -1,13 +1,20 @@
 {
   "buildCommand": "npm run build",
-  "outputDirectory": ".vercel/output",
-  "framework": null,
+  "outputDirectory": "dist",
+  "installCommand": "npm install --legacy-peer-deps",
   "functions": {
-    "api/index.ts": {
+    "api/**/*.ts": {
       "runtime": "@vercel/node@3.2.0"
     }
   },
-  "routes": [
-    { "src": "/(.*)", "dest": "/api/index.js" }
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "/api/:path*"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
   ]
 }
