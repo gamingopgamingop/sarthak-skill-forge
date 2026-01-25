@@ -249,9 +249,7 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
     postcss(),
     tailwindcss(),
     imports(),
-    vituum({ 
-  input: "src/pages/**/*.html"
-}),
+vituum({ input }),
 
     pages({
       root: './src',
