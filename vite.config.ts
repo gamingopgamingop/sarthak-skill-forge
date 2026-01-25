@@ -244,18 +244,17 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
     tailwindcss(),
     imports(),
 vituum({
-  root: './src',
+  root: '.',
   input: [
-    'pages/**/*.{html,pug,njk,twig,hbs,liquid}'
+    '*.{html,pug,njk,twig,hbs,liquid}'
   ],
   build: { ssr: false }
-
-
-    }),
-    pages({
-    dir: 'pages', // Be specific about where your pages live
+}),
+pages({
+  root: '.',
+  dir: '.',
   extensions: ['html', 'pug', 'njk', 'twig', 'hbs', 'liquid'],
-  root: './src'}),
+}),
     // redirects(),
     // sitemap(),
     // robots(),
