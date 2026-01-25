@@ -184,22 +184,12 @@ const getPackageJson = () => {
 
 const getVituumInput = () => {
   const envInput = process.env.VITE_INPUT;
-  if (envInput && typeof envInput === 'string' && envInput.trim()) {
-    return envInput.trim();
-  }
-  // Check if any template files exist and return appropriate pattern
-  const patterns = [
-    'src/pages/**/*.html',
-    'src/**/*.html',
-    '*.html'
-  ];
-  
-  for (const pattern of patterns) {
-    // Return first valid pattern
-    return pattern;
+  if (envInput && typeof envInput === 'string' && envInput.trim().length > 0) {
+    return [envInput.trim()]; // Return as ARRAY
   }
   
-  return 'src/pages/**/*.html'; // fallback
+  // Return array of patterns as fallback
+  return ['src/pages/**/*.html'];
 };
 const input = getVituumInput();
 
