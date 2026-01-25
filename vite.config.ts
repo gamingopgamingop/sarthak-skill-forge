@@ -141,6 +141,18 @@ const getGitInfo = () => {
   }
 };
 
+const htmlInputs = Object.fromEntries(
+  [
+    'index.liquid.html',
+    'index.twig.html',
+    'index.njk.html',
+    'index.hbs.html',
+    'index.pug.html',
+  ]
+    .filter(f => fs.existsSync(path.resolve(__dirname, f)))
+    .map(f => [f, path.resolve(__dirname, f)])
+);
+
 // Read package.json with detailed dependency info
 const getPackageJson = () => {
   try {
@@ -230,7 +242,14 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
     postcss(),
     tailwindcss(),
     imports(),
-    vituum({root: './src',}),
+    vituum({root: './src',
+        input: ['src/pages/**/*.{html,pug,njk,twig,hbs,liquid}'],
+
+        build: {
+    ssr: false,
+  },
+
+    }),
     pages({
     dir: 'pages', // Be specific about where your pages live
   extensions: ['html', 'pug', 'njk', 'twig', 'hbs', 'liquid'],
@@ -441,7 +460,9 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
         'index.ejs.html': path.resolve(__dirname, 'index.ejs.html'),
         'index.haml.html': path.resolve(__dirname, 'index.haml.html'),
         'index.jade.html': path.resolve(__dirname, 'index.jade.html'),
-        'index.swig.html': path.resolve(__dirname, 'index.swig.html'), 
+        'index.swig.html': path.resolve(__dirname, 'index.swig.html'),
+        ...htmlInputs,
+ 
         
       },
       output: {
