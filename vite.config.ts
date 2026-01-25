@@ -1,5 +1,6 @@
 // @ts-nocheck
 import { nitro } from 'nitro/vite'
+import fs from "fs";
 
 /// <reference types="vitest" />
 import marko from "@marko/vite";
@@ -419,6 +420,8 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
     alias: {
       "~": path.resolve(__dirname, "./src"),
       '@': fileURLToPath(new URL('./src', import.meta.url)),
+      '*': path.resolve(__dirname, 'src'),
+
 
       // '@': fileURLToPath(new URL('./src', import.meta.url))
 
