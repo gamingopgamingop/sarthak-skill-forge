@@ -13,7 +13,7 @@ import pug from '@vituum/vite-plugin-pug'
 import vike from "vike/plugin";
 import rsc from '@vitejs/plugin-rsc'
 
-import { defineConfig  , Plugin} from "vite";
+import { defineConfig } from "vite";
 // import react from "@vitejs/plugin-react-swc";
 import path from "path";
 import tsConfigPaths from 'vite-tsconfig-paths'
@@ -244,17 +244,18 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
     tailwindcss(),
     imports(),
 vituum({
-  root: '.',
+  root: './src',
   input: [
-    '*.{html,pug,njk,twig,hbs,liquid}'
+    '**/*.{html,pug,njk,twig,hbs,liquid}'
   ],
   build: { ssr: false }
 }),
 pages({
-  root: '.',
-  dir: '.',
-  extensions: ['html', 'pug', 'njk', 'twig', 'hbs', 'liquid'],
+  root: './src',
+  dir: '.', // 👈 important
+  extensions: ['html', 'pug', 'njk', 'twig', 'hbs', 'liquid']
 }),
+
     // redirects(),
     // sitemap(),
     // robots(),
@@ -367,9 +368,9 @@ pages({
           { name: "removeEmptyAttrs", active: true },
         ],
       },
-    }),
-  ].filter(Boolean),
-    environments: {
+    })
+  ].filter(Boolean) as Plugin[],
+  environments: {
     // `rsc` environment loads modules with `react-server` condition.
     // this environment is responsible for:
     // - RSC stream serialization (React VDOM -> RSC stream)
