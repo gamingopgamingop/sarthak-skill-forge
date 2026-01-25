@@ -12,7 +12,7 @@ import { tanstackStart } from '@tanstack/react-start/plugin/vite'
 import pug from '@vituum/vite-plugin-pug'
 import vike from "vike/plugin";
 import rsc from '@vitejs/plugin-rsc'
-
+import { vercelPreset } from "@vercel/react-router/vite"; // Add this
 import { defineConfig } from "vite";
 // import react from "@vitejs/plugin-react-swc";
 import path, { resolve, dirname, join } from "node:path";
@@ -251,6 +251,9 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
     concat(),
     send(),
     juice(),
+    reactRouter({
+      presets: [vercelPreset()], // Use the preset
+    }),
     // optimize(),
     postcss(),
     tailwindcss(),
