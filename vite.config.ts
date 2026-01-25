@@ -182,10 +182,18 @@ const getPackageJson = () => {
   }
 };
 
-const input =
-  process.env.VITE_INPUT && process.env.VITE_INPUT.trim()
-    ? process.env.VITE_INPUT
-    : "src/pages/**/*.html";
+const getVituumInput = () => {
+  const envInput = process.env.VITE_INPUT;
+  // Return valid string or undefined (vituum will use its defaults)
+  if (envInput && typeof envInput === 'string' && envInput.trim()) {
+    return envInput.trim();
+  }
+  // Instead of returning a default pattern, return undefined
+  // This lets vituum use its own internal defaults
+  return undefined;
+};
+
+const input = getVituumInput();
 
 
 const pkg = getPackageJson();
@@ -249,7 +257,7 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
     postcss(),
     tailwindcss(),
     imports(),
-vituum({ input }),
+    input && vituum({ input }),
 
     pages({
       root: './src',
