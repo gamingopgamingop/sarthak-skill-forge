@@ -187,10 +187,20 @@ const getVituumInput = () => {
   if (envInput && typeof envInput === 'string' && envInput.trim()) {
     return envInput.trim();
   }
-  // Return a valid default pattern instead of undefined
-  return 'src/pages/**/*.html';
+  // Check if any template files exist and return appropriate pattern
+  const patterns = [
+    'src/pages/**/*.html',
+    'src/**/*.html',
+    '*.html'
+  ];
+  
+  for (const pattern of patterns) {
+    // Return first valid pattern
+    return pattern;
+  }
+  
+  return 'src/pages/**/*.html'; // fallback
 };
-
 const input = getVituumInput();
 
 
