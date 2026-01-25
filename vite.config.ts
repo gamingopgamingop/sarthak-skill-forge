@@ -252,7 +252,7 @@ vituum({
 }),
 pages({
   root: './src',
-  dir: '.', // 👈 important
+  dir: mode === "development" ? "src/pages": "src/pages",
   extensions: ['html', 'pug', 'njk', 'twig', 'hbs', 'liquid']
 }),
 
