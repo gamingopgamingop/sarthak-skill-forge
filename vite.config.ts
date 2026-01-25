@@ -243,12 +243,13 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
     postcss(),
     tailwindcss(),
     imports(),
-    vituum({root: './src',
-        input: ['src/pages/**/*.{html,pug,njk,twig,hbs,liquid}'],
+vituum({
+  root: './src',
+  input: [
+    'pages/**/*.{html,pug,njk,twig,hbs,liquid}'
+  ],
+  build: { ssr: false }
 
-        build: {
-    ssr: false,
-  },
 
     }),
     pages({
