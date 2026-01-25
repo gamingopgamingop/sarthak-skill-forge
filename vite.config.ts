@@ -256,8 +256,9 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
     tailwindcss(),
     imports(),
     // vituum({ input: getVituumInput() }),
-    vituum(),
-
+vituum({
+  input: getVituumInput()
+}),
     pages({
       root: './src',
       dir: mode === "development" ? "src/pages": "src/pages",
