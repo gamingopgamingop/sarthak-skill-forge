@@ -1,7 +1,7 @@
 // @ts-nocheck
 import { nitro } from 'nitro/vite'
 import fs from "fs";
-
+import { defineConfig } from "vite";
 /// <reference types="vitest" />
 import marko from "@marko/vite";
 import type { GetManualChunk } from 'rollup';
