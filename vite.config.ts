@@ -257,7 +257,7 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
     postcss(),
     tailwindcss(),
     imports(),
-    input && vituum({ input }),
+    vituum({ input: getVituumInput() }),
 
     pages({
       root: './src',
