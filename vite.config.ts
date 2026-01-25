@@ -15,7 +15,7 @@ import rsc from '@vitejs/plugin-rsc'
 
 import { defineConfig } from "vite";
 // import react from "@vitejs/plugin-react-swc";
-import path from "path";
+import path, { resolve, dirname, join } from "node:path";
 import tsConfigPaths from 'vite-tsconfig-paths'
 import { componentTagger } from "lovable-tagger";
 import tailwindcss from '@tailwindcss/vite'
