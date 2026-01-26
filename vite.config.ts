@@ -261,6 +261,7 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
     postcss(),
     tailwindcss(),
     imports(),
+    vike({ prerender: true }),
     // vituum({ input: getVituumInput() }),
 // vituum({
 //   input: getVituumInput()

@@ -607,7 +607,11 @@
     "@rolldown/pluginutils": "^1.0.0-rc.1",
     "core-js": "^3.48.0",
     "glob": "^13.0.0",
-    "isbot": "5.1.31"
+    "isbot": "5.1.31",
+    "@vue/server-renderer": "^3.4.27",
+        "vike-vue": "^0.6.6"
+
+
 
 
 
