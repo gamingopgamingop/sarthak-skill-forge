@@ -219,6 +219,8 @@ const isProd = NODE_ENV === "production";
 // (removed unused isTest)
 
 export default defineConfig(({ mode }: ConfigEnv) => ({
+  normalizePath: true,
+  base: "/",
   server: {
     host: "::",
     port: 8080,
