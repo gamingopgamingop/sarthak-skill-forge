@@ -506,6 +506,12 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
           if (id.includes('express')) return 'vendor-express';
           if (id.includes('mongoose')) return 'vendor-mongoose';
           if (id.includes('node:') || id.includes('node_modules')) return 'vendor-node';
+          if (id.includes('node:')) return 'vendor-node';
+          if (id.includes('node_modules')) return 'vendor-node_modules';
+          if (id.includes('server')) return 'server';
+          if (id.includes('index')) return 'index';
+          if (id.includes('browser')) return 'browser';
+          if(id.includes('src')) return 'src';
           return 'index', id , id.split('/').pop()?.split('.')[0];
 
         },
