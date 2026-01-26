@@ -465,7 +465,7 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
 
 
     chunkSizeWarningLimit: 3000,
-    ssr: true,
+    // ssr: true,
     // outDir: 'dist',
     rollupOptions: {
       external: [...Object.keys(pkg.dependencies), 'bcrypt'],
