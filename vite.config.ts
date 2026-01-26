@@ -296,7 +296,7 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
     devtools(), 
     solidPlugin(),
     // TanStackStartVitePlugin(),
-    reactRouter(), 
+    // reactRouter(), 
     tsConfigPaths(),
     svelte({ include: [/\.svelte$/] }),
     solid(),
