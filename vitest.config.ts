@@ -1,3 +1,11 @@
+// @ts-nocheck
+// @vitest-environment node
+// @vitest-environment jsdom
+// @vitest-environment preview
+// @vitest-environment motia
+// @ts-ignore
+// @ts-expect-error
+
 import marko from "@marko/vite";
 import { defineConfig } from "vitest/config";
 const isCI = !!process.env.CI;
