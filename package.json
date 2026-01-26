@@ -773,7 +773,7 @@
     "printWidth": 100
   },
   "lint-staged": {
-    "*.{js,ts,tsx}": [
+    "*.{js,ts,tsx,jsx,json,css,scss,md,html,vue,svelte,py,cjs,mjs,c,cc,h,hh,hpp,hxx,ipp,i,ii,ixx,mm,m,mi,ii,ixx,ipp}": [
       "eslint --fix"
     ]
   },
