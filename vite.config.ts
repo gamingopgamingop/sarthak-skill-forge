@@ -438,7 +438,7 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
     alias: {
       "~": path.resolve(__dirname, "./src"),
       '@': fileURLToPath(new URL('./src', import.meta.url)),
-      '*': path.resolve(__dirname, 'src'),
+      // '*': path.resolve(__dirname, 'src'),
 
 
       // '@': fileURLToPath(new URL('./src', import.meta.url))
@@ -454,7 +454,7 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
     // emptyOutDir: false, // Avoid server / client deleting files from each other.
     assetsInlineLimit: 0, // This is currently a work around for loading the favicon since datauri does not work.
     sourcemap: [true, mode === "development", mode === "test", mode === "production"], // Generate sourcemaps for all builds.
-    ssr: true, // Crucial for Vercel + React Router
+    // ssr: true, // Crucial for Vercel + React Router
     emptyOutDir: false, // Avoid server & client deleting files from each other.
     // assetsInlineLimit: 0, // This is currently a work around for loading the favicon since datauri does not work.
     // rollupOptions: {
