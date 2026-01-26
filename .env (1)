@@ -1,0 +1,84 @@
+VITE_CLERK_PUBLISHABLE_KEY=pk_test_cmljaC1wZWdhc3VzLTI3LmNsZXJrLmFjY291bnRzLmRldiQ
+VITE_SUPABASE_URL=<SUBSTITUTE_SUPABASE_URL>
+VITE_SUPABASE_PUBLISHABLE_KEY=<SUBSTITUTE_SUPABASE_PUBLISHABLE_KEY>
+OPENAI_API_KEY="sk-..."
+
+SLACK_BOT_TOKEN="xoxb-your-bot-token"
+SLACK_SIGNING_SECRET="your-signing-secret"
+
+SLACK_CHANNEL_MODERATION="C1234567890"  # Normal priority
+SLACK_CHANNEL_URGENT="C0987654321"      # High priority
+SLACK_CHANNEL_ESCALATED="C1122334455"   # Escalated content
+OPENAI_API_KEY="sk-..."
+WEAVIATE_URL="https://your-cluster.weaviate.network"
+WEAVIATE_API_KEY="your-weaviate-api-key"
+
+TRELLO_API_KEY=your_trello_api_key
+TRELLO_TOKEN=your_trello_token
+
+OPENAI_API_KEY=your_openai_api_key
+OPENAI_MODEL=your_openai_model
+
+SLACK_WEBHOOK_URL=your_slack_webhook_url
+
+TRELLO_NEW_TASKS_LIST_ID=your_new_tasks_list_id
+TRELLO_IN_PROGRESS_LIST_ID=your_in_progress_list_id
+TRELLO_NEEDS_REVIEW_LIST_ID=your_needs_review_list_id
+TRELLO_COMPLETED_LIST_ID=your_completed_list_id
+
+# Required: Discord webhook for alerts
+DISCORD_WEBHOOK="https://discord.com/api/webhooks/123456789/your-webhook-token"
+
+# Required: JSON array of URLs to monitor
+SITES='["https://example.com", "https://api.yourdomain.com", "https://blog.yoursite.org"]'
+
+# Optional: Check frequency (default: every minute)
+CHECK_INTERVAL_CRON="*/1 * * * *"
+
+# Optional: Rate limiting (default: 3 alerts per 5 minutes)
+ALERT_BURST="3"
+ALERT_WINDOW_SEC="300"
+
+# Required: GitHub webhook secret for security
+GITHUB_WEBHOOK_SECRET="your-secure-random-secret"
+
+# Optional: GitHub personal access token for enhanced API limits
+GITHUB_TOKEN="ghp_your_github_token"
+
+GOOGLE_CLIENT_ID=your_client_id
+GOOGLE_CLIENT_SECRET=your_client_secret
+
+ALPHA_VANTAGE_API_KEY=your_alpha_vantage_api_key_here
+SERPER_API_KEY=your_serper_api_key_here
+OPENAI_API_KEY=your_openai_api_key_here
+
+# Required
+OPENAI_API_KEY=your-openai-api-key-here
+FIRECRAWL_API_KEY=your-firecrawl-api-key-here
+
+# Optional
+# OPENAI_MODEL=gpt-4o
+# FIRECRAWL_BASE_URL=http://your-firecrawl-instance-url
+
+# Environment variables declared in this file are NOT automatically loaded by Prisma.
+# Please add `import "dotenv/config";` to your `prisma.config.ts` file, or use the Prisma CLI with Bun
+# to load environment variables from .env files: https://pris.ly/prisma-config-env-vars.
+
+# Prisma supports the native connection string format for PostgreSQL, MySQL, SQLite, SQL Server, MongoDB and CockroachDB.
+# See the documentation for all the connection string options: https://pris.ly/d/connection-strings
+
+DATABASE_URL="postgresql://johndoe:randompassword@localhost:5432/mydb?schema=public"
+POSTGRES_URL=
+
+TURSO_DATABASE_URL=
+TURSO_AUTH_TOKEN=
+
+DATABASE_HOST=
+DATABASE_USERNAME=
+DATABASE_PASSWORD=
+
+DB_FILE_NAME=
+NODE_ENV="development"|"production"|"test"|"undefined"|""\n# Optional: Lightpanda Cloud URL and Token\n
+LIGHTPANDA_CLOUD_URL=wss://cloud.lightpanda.ai:443
+LIGHTPANDA_CLOUD_TOKEN=YOUR_TOKEN_HERE
+
