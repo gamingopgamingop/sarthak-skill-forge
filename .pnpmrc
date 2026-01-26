@@ -1,0 +1,17 @@
+save-exact=true
+legacy-peer-deps=true
+strict-peer-dependencies=false
+side-effects-cache=false
+fetch-retries=5
+fetch-retry-factor=2
+fetch-retry-mintimeout=20000
+fetch-retry-maxtimeout=120000
+
+public-hoist-pattern[]=@tanstack/react-query
+public-hoist-pattern[]=next
+public-hoist-pattern[]=secure-password
+public-hoist-pattern[]=*jest*
+public-hoist-pattern[]=@testing-library/*
+# Needed for Blitz to work properly. Don't remove the lines above.
+
+# Add your own public-hoist-patterns below this line.
