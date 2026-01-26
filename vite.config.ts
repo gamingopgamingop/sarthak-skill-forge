@@ -1,19 +1,19 @@
 // @ts-nocheck
 import { nitro } from 'nitro/vite'
 import fs from "fs";
-import { defineConfig } from "vite";
+// import { defineConfig } from "vite";
 /// <reference types="vitest" />
 import marko from "@marko/vite";
 import type { GetManualChunk } from 'rollup';
 import type { OutputAsset } from "rollup";
-import type { UserConfig , Plugin , ConfigEnv} from "vite";
+import { defineConfig, type UserConfig, type Plugin, type ConfigEnv } from "vite";
 // import type { Plugin} from "vite";
 import { tanstackStart } from '@tanstack/react-start/plugin/vite'
 import pug from '@vituum/vite-plugin-pug'
 import vike from "vike/plugin";
 import rsc from '@vitejs/plugin-rsc'
 import { vercelPreset } from "@vercel/react-router/vite"; // Add this
-import { defineConfig } from "vite";
+// import { defineConfig } from "vite";
 // import react from "@vitejs/plugin-react-swc";
 import path, { resolve, dirname, join } from "node:path";
 import tsConfigPaths from 'vite-tsconfig-paths'
