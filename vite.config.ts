@@ -491,13 +491,13 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
         manualChunks(id : Parameters<GetManualChunk>[0] | string  | unknown) {
           if (typeof id === "string" && id.includes("node_modules")) return "vendor";
         },
-        assetFileNames: (assetInfo : OutputAsset ) => {
-          const ext = assetInfo.name.split(".").pop();
-          if (/\.(png|jpe?g|svg|gif|tiff|bmp|ico)$/i.test(assetInfo.name)) {
-            return `assets/images/[name]-[hash].${ext}`;
-          }
-          return `assets/[name]-[hash].${ext}`;
-        },
+        // assetFileNames: (assetInfo : OutputAsset ) => {
+        //   const ext = assetInfo.name.split(".").pop();
+        //   if (/\.(png|jpe?g|svg|gif|tiff|bmp|ico)$/i.test(assetInfo.name)) {
+        //     return `assets/images/[name]-[hash].${ext}`;
+        //   }
+        //   return `assets/[name]-[hash].${ext}`;
+        // },
       },
     },
     terserOptions: {
