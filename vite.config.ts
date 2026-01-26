@@ -252,7 +252,8 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
     send(),
     juice(),
     reactRouter({
-      presets: [vercelPreset()], // Use the preset
+      presets: [vercelPreset()],
+      ssr: true, // Use the preset
     }),
     // optimize(),
     postcss(),
