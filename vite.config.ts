@@ -492,6 +492,22 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
         format: "es",
         manualChunks(id : Parameters<GetManualChunk>[0] | string  | unknown) {
           if (typeof id === "string" && id.includes("node_modules")) return "vendor";
+          if (id.includes('react')) return 'vendor-react';
+          if (id.includes('angular') || id.includes('rxjs')) return 'vendor-angular';
+          if (id.includes('vue')) return 'vendor-vue';
+          if (id.includes('svelte')) return 'vendor-svelte';
+          if (id.includes('lit')) return 'vendor-lit';
+          if (id.includes('preact')) return 'vendor-preact';
+          if (id.includes('marko')) return 'vendor-marko';
+          if (id.includes('solid')) return 'vendor-solid';
+          if (id.includes('alpinejs')) return 'vendor-alpinejs';
+          if (id.includes('motia')) return 'vendor-motia';
+          if (id.includes('bcrypt')) return 'vendor-bcrypt';
+          if (id.includes('express')) return 'vendor-express';
+          if (id.includes('mongoose')) return 'vendor-mongoose';
+          if (id.includes('node:') || id.includes('node_modules')) return 'vendor-node';
+          return 'index', id , id.split('/').pop()?.split('.')[0];
+
         },
         // assetFileNames: (assetInfo : OutputAsset ) => {
         //   const ext = assetInfo.name.split(".").pop();
