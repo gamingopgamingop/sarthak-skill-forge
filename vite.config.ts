@@ -512,6 +512,10 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
           if (id.includes('index')) return 'index';
           if (id.includes('browser')) return 'browser';
           if(id.includes('src')) return 'src';
+          if(id.includes('public')) return 'public';
+          if(id.includes('assets')) return 'assets';
+          if(id.includes('styles')) return 'styles';
+          if(id.includes('components')) return 'components';
           return 'index', id , id.split('/').pop()?.split('.')[0];
 
         },
