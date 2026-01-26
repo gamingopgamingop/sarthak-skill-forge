@@ -449,7 +449,9 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
 
   build: {
     minify: [true, "terser"],
-    input: path.resolve(__dirname, 'index.html'),
+    input: {
+      index: path.resolve(__dirname, 'index.html'),
+    },
     outDir: "dist", // Server and client builds should output assets to the same folder.
     // emptyOutDir: false, // Avoid server / client deleting files from each other.
     assetsInlineLimit: 0, // This is currently a work around for loading the favicon since datauri does not work.
