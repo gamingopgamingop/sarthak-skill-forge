@@ -385,7 +385,17 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
           { name: "removeEmptyAttrs", active: true },
         ],
       },
-    })
+    }),
+    {
+  name: "fix-vike-rollup-input",
+  enforce: "post",
+  config(config) {
+    if (config.build?.rollupOptions?.input) {
+      config.build.rollupOptions.input = "index.html";
+    }
+  }
+}
+
   ].filter(Boolean) as Plugin[],
   environments: {
     // `rsc` environment loads modules with `react-server` condition.
