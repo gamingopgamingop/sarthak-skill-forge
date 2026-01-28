@@ -265,7 +265,7 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
     juice(),
     reactRouter({
       presets: [vercelPreset()],
-      ssr: true, // Use the preset
+      ssr: isProd, // Use the preset
     }),
     // optimize(),
     postcss(),
@@ -414,9 +414,9 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
     rsc: {
       build: {
         rollupOptions: {
-          input: {
-            index: './src/framework/entry.rsc.tsx',
-          },
+          // input: {
+          //   index: './src/framework/entry.rsc.tsx',
+          // },
         },
       },
     },
@@ -425,15 +425,15 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
     // this environment is responsible for:
     // - RSC stream deserialization (RSC stream -> React VDOM)
     // - traditional SSR (React VDOM -> HTML string/stream)
-    ssr: {
-      build: {
-        rollupOptions: {
-          input: {
-            index: './src/framework/entry.ssr.tsx',
-          },
-        },
-      },
-    },
+    // ssr: {
+    //   build: {
+    //     rollupOptions: {
+    //       input: {
+    //         index: './src/framework/entry.ssr.tsx',
+    //       },
+    //     },
+    //   },
+    // },
     
     // client environment is used for hydration and client-side rendering
     // this environment is responsible for:
@@ -441,15 +441,15 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
     // - traditional CSR (React VDOM -> Browser DOM tree mount/hydration)
     // - refetch and re-render RSC
     // - calling server functions
-    client: {
-      build: {
-        rollupOptions: {
-          input: {
-            index: './src/framework/entry.browser.tsx',
-          },
-        },
-      },
-    },
+    // client: {
+    //   build: {
+    //     rollupOptions: {
+    //       input: {
+    //         index: './src/framework/entry.browser.tsx',
+    //       },
+    //     },
+    //   },
+    // },
   },
 
 
@@ -497,9 +497,9 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
     rollupOptions: {
       external: [...Object.keys(pkg.dependencies), 'bcrypt'],
       // externals: [...Object.keys(dependencies), 'bcrypt'],
-      input: {
-        // main: path.resolve(__dirname, 'src/index.html'),
-        server: path.resolve(__dirname, 'src/server.ts'),
+      // input: {
+      //   // main: path.resolve(__dirname, 'src/index.html'),
+      //   server: path.resolve(__dirname, 'src/server.ts'),
         // 'index.liquid.html': path.resolve(__dirname, 'index.liquid.html'),
         // 'index.twig.html': path.resolve(__dirname, 'index.twig.html'),
         // 'index.njk.html': path.resolve(__dirname, 'index.njk.html'),
@@ -511,8 +511,8 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
         // 'index.swig.html': path.resolve(__dirname, 'index.swig.html'),
         // ...htmlInputs,
  
-        
-      },
+        // 'index.html': path.resolve(__dirname, 'index.html'),
+      // },
       output: {
         format: "es",
         manualChunks(id : Parameters<GetManualChunk>[0] | string  | unknown) {
