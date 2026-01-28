@@ -502,7 +502,7 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
   build: {
         // ssr: isProd,
     // ssr: true,
-    ssr: { target: "webworker", noExternal: mode === "production" },
+    ssr: isProd ? { target: "webworker", noExternal: mode === "production" } : false,
 
     // minify: [true, "terser"],
     minify: mode === "production" ? "terser" : false,
@@ -611,9 +611,9 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
     include: ['**/*.spec.ts'],
     reporters: ['default'],
   },
-  define: {
-    'import.meta.vitest': mode !== 'production',
-  },
+  // define: {
+  //   'import.meta.vitest': mode !== 'production',
+  // },
   ssr: {
     target: "webworker",
     noExternal: mode === "production",
@@ -779,15 +779,18 @@ export const remixConfig : defineViteConfig = defineConfig(({ mode }: { mode: st
     /* --------------------------- Global Constants -------------------------- */
     define: {
       __APP_VERSION__: JSON.stringify((pkg as any).version || 'unknown'),
+    'import.meta.vitest': mode !== 'production',
 
+      __GIT_TAG_NAME__: defineConst(gitInfo.tagName),
       __GIT_COMMIT_HASH__: defineConst(gitInfo.commitHash),
-      __GIT_BRANCH_NAME__: defineConst(gitInfo.branch),
-      __GIT_COMMIT_TIME__: defineConst(gitInfo.commitTime),
-      __GIT_AUTHOR_NAME__: defineConst(gitInfo.author),
-      __GIT_AUTHOR_EMAIL__: defineConst(gitInfo.email),
+      __GIT_BRANCH__: defineConst(gitInfo.branch),
+      __GIT_COMMIT_DATE__: defineConst(gitInfo.commitTime),
+      __GIT_COMMIT_AUTHOR__: defineConst(gitInfo.author),
+      __GIT_COMMIT_EMAIL__: defineConst(gitInfo.email),
       __GIT_REMOTE_URL__: defineConst(gitInfo.remoteUrl),
       __GIT_REPOSITORY_NAME__: defineConst(gitInfo.repoName),
 
+      __PKG_VERSION__: defineConst(pkg.version),
       __PKG_NAME__: defineConst(pkg.name),
       __PKG_DESCRIPTION__: defineConst(pkg.description),
       __PKG_LICENSE__: defineConst(pkg.license),
