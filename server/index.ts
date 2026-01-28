@@ -10,7 +10,9 @@
 //  - vite-node (https://github.com/antfu/vite-node)
 //  - HatTip (https://github.com/hattipjs/hattip)
 //    - You can use Bati (https://batijs.github.io/) to scaffold a vite-plugin-ssr + HatTip app. Note that Bati generates apps that use the V1 design (https://vite-plugin-ssr.com/migration/v1-design) and Vike packages (https://vite-plugin-ssr.com/vike-packages)
-
+// server/index.ts (Server Middleware)
+// @ts-ignore
+// @ts-nocheck
 import express from 'express'
 import compression from 'compression'
 import { renderPage } from 'vite-plugin-ssr/server'
@@ -52,7 +54,8 @@ async function startServer() {
   // catch-all middleware superseding any middleware placed after it).
   app.get('*', async (req, res, next) => {
     const pageContextInit = {
-      urlOriginal: req.originalUrl
+      urlOriginal: req.originalUrl || req.url,
+      // vike-photon/universal-middleware typically injects 'runtime' here
     }
     const pageContext = await renderPage(pageContextInit)
     const { httpResponse } = pageContext
@@ -66,6 +69,19 @@ async function startServer() {
       // For HTTP streams use httpResponse.pipe() instead, see https://vite-plugin-ssr.com/stream
       res.send(body)
     }
+  })
+
+  // server/index.ts (Server Middleware)
+  // @ts-ignore
+  // @ts-nocheck
+  app.get('*', async (req: express.Request, res: express.Response) => {
+    const pageContextInit = {
+      urlOriginal: req.url,
+      user: req.user, // Injected via auth middleware (Passport, Lucia, etc.)
+      headersOriginal: req.headers
+    }
+    const pageContext = await renderPage(pageContextInit)
+    // ... handle response
   })
 
   const port = process.env.PORT || 3000
