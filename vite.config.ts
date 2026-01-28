@@ -215,10 +215,17 @@ if (duplicateDeps.length > 0) {
 }
 // const isTest = import.meta.env.MODE === 'test';
 // (removed unused isTest)
-const isProd = mode === "production";
-const isDev = mode === "development";
+// const isProd = mode === "production";
+// const isDev = mode === "development";
 export default defineConfig(({ mode }: ConfigEnv) => ({
   // (removed unused mode)
+    build: {
+    minify: mode === "production",
+  },
+  server: {
+    open: mode === "development",
+  },
+
   root: "./src",
   publicDir: "./public",
   cacheDir: "./node_modules/.vite",
