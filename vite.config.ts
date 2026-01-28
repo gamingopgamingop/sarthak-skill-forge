@@ -241,7 +241,7 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
 
 
 
-    vike(),
+    // vike(),
     handlebars(),
     pug({
         root: './src'
@@ -385,15 +385,15 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
         ],
       },
     }),
-    {
-  name: "fix-vike-rollup-input",
-  enforce: "post",
-  config(config) {
-    if (config.build?.rollupOptions?.input) {
-      config.build.rollupOptions.input = "index.html";
-    }
-  }
-}
+    // {
+//   name: "fix-vike-rollup-input",
+//   enforce: "post",
+//   config(config) {
+//     if (config.build?.rollupOptions?.input) {
+//       config.build.rollupOptions.input = "index.html";
+//     }
+//   }
+// }
 
   ].filter(Boolean) as Plugin[],
   environments: {
