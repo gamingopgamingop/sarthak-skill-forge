@@ -501,11 +501,6 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
 
   build: {
       ssr: isProd,
-      rollupOptions: {
-        input: isProd
-          ? './src/server.ts'      // SSR entry
-          : './index.html',        // dev
-      },
 
     // minify: [true, "terser"],
     minify: mode === "production" ? "terser" : false,
@@ -536,6 +531,13 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
     // outDir: 'dist',
     rollupOptions: {
       external: [...Object.keys(pkg.dependencies), 'bcrypt'],
+        input: isProd
+          ? './src/server.ts'      // SSR entry
+          : './index.html',        // dev
+       // input: {
+        //   index: './src/framework/entry.browser.tsx',
+        // },
+
       // externals: [...Object.keys(dependencies), 'bcrypt'],
       // input: {
       //   // main: path.resolve(__dirname, 'src/index.html'),
