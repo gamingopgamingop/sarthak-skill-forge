@@ -500,7 +500,9 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
   },
 
   build: {
-      ssr: isProd,
+        // ssr: isProd,
+    // ssr: true,
+    ssr: { target: "webworker", noExternal: mode === "production" },
 
     // minify: [true, "terser"],
     minify: mode === "production" ? "terser" : false,
