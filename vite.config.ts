@@ -213,12 +213,22 @@ const defineConst = (value: unknown) =>
 if (duplicateDeps.length > 0) {
   throw new Error(msg);
 }
-const { NODE_ENV } = process.env;
-const isProd = NODE_ENV === "production";
 // const isTest = import.meta.env.MODE === 'test';
 // (removed unused isTest)
-
+const isProd = mode === "production";
+const isDev = mode === "development";
 export default defineConfig(({ mode }: ConfigEnv) => ({
+  // (removed unused mode)
+  root: "./src",
+  publicDir: "./public",
+  cacheDir: "./node_modules/.vite",
+  envDir: "./",
+  envPrefix: "VITE_",
+  appType: "mpa",
+  // (removed unused mode)
+  // (removed unused mode)
+  // (removed unused mode)
+  // (removed unused mode)
   normalizePath: true,
   base: "/",
   server: {
