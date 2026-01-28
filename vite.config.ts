@@ -102,12 +102,12 @@ import UnoCSS from 'unocss/vite';
 import { defineConfig as defineViteConfig, type ViteDevServer } from 'vite';
 import { nodePolyfills } from 'vite-plugin-node-polyfills';
 import { optimizeCssModules } from 'vite-plugin-optimize-css-modules';
-import tsconfigPaths from 'vite-tsconfig-paths';
+// import tsconfigPaths from 'vite-tsconfig-paths';
 import * as dotenv from 'dotenv';
 import { execSync } from 'child_process';
 import { readFileSync } from 'fs';
 import { join } from 'path';
-import viteTsConfigPaths from 'vite-tsconfig-paths'
+// import viteTsConfigPaths from 'vite-tsconfig-paths'
 
 // const env = process.env.NODE_ENV || 'development';
 dotenv.config();
