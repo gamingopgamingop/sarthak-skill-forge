@@ -467,6 +467,13 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
   },
 
   build: {
+      ssr: isProd,
+      rollupOptions: {
+        input: isProd
+          ? './src/server.ts'      // SSR entry
+          : './index.html',        // dev
+      },
+
     // minify: [true, "terser"],
     minify: mode === "production" ? "terser" : false,
 
