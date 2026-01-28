@@ -531,7 +531,7 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
           if(id.includes('assets')) return 'assets';
           if(id.includes('styles')) return 'styles';
           if(id.includes('components')) return 'components';
-          return 'index', id , id.split('/').pop()?.split('.')[0];
+          // return 'index', id , id.split('/').pop()?.split('.')[0];
 
 // To (just return undefined if no match):
 // Or simply remove this line entirely since the function should return undefined if no match
