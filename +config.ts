@@ -1,27 +1,21 @@
 // +config.ts
 // @ts-ignore
 // @ts-nocheck
-
-import { defineConfig } from 'vite'
 import type { Config } from 'vike/types'
-export const config: Config = {
-      meta: {
+
+export const config = {
+  meta: {
+    // 1. Define the 'ssr' config property
+    ssr: {
+      env: { config: true } 
+    },
     dataEndpointUrl: {
       env: {
         server: true,
-        // Load the value of /pages/**/+dataEndpointUrl.js only on the server
         client: false
       }
     }
   },
-  // ssr: true,
-  // ssr: { noExternal: true },
-  // target: "webworker",
+  // 2. Now you can safely use it
   ssr: true,
-  // target: "webworker",
-  // noExternal: process.env.NODE_ENV === "production",
-  // ssr: {
-  //   // target: "webworker",
-  //   noExternal: true
-  // }
-}satisfies Config;
+} satisfies Config;
