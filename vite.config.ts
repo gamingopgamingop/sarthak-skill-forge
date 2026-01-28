@@ -458,9 +458,9 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
 
   build: {
     minify: [true, "terser"],
-    input: {
-      index: path.resolve(__dirname, 'index.html'),
-    },
+    // input: {
+    //   // index: path.resolve(__dirname, 'index.html'),
+    // },
     outDir: "dist", // Server and client builds should output assets to the same folder.
     // emptyOutDir: false, // Avoid server / client deleting files from each other.
     assetsInlineLimit: 0, // This is currently a work around for loading the favicon since datauri does not work.
@@ -484,18 +484,18 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
       external: [...Object.keys(pkg.dependencies), 'bcrypt'],
       // externals: [...Object.keys(dependencies), 'bcrypt'],
       input: {
-        main: path.resolve(__dirname, 'src/index.html'),
+        // main: path.resolve(__dirname, 'src/index.html'),
         server: path.resolve(__dirname, 'src/server.ts'),
-        'index.liquid.html': path.resolve(__dirname, 'index.liquid.html'),
-        'index.twig.html': path.resolve(__dirname, 'index.twig.html'),
-        'index.njk.html': path.resolve(__dirname, 'index.njk.html'),
-        'index.hbs.html': path.resolve(__dirname, 'index.hbs.html'),
-        'index.pug.html': path.resolve(__dirname, 'index.pug.html'),
-        'index.ejs.html': path.resolve(__dirname, 'index.ejs.html'),
-        'index.haml.html': path.resolve(__dirname, 'index.haml.html'),
-        'index.jade.html': path.resolve(__dirname, 'index.jade.html'),
-        'index.swig.html': path.resolve(__dirname, 'index.swig.html'),
-        ...htmlInputs,
+        // 'index.liquid.html': path.resolve(__dirname, 'index.liquid.html'),
+        // 'index.twig.html': path.resolve(__dirname, 'index.twig.html'),
+        // 'index.njk.html': path.resolve(__dirname, 'index.njk.html'),
+        // 'index.hbs.html': path.resolve(__dirname, 'index.hbs.html'),
+        // 'index.pug.html': path.resolve(__dirname, 'index.pug.html'),
+        // 'index.ejs.html': path.resolve(__dirname, 'index.ejs.html'),
+        // 'index.haml.html': path.resolve(__dirname, 'index.haml.html'),
+        // 'index.jade.html': path.resolve(__dirname, 'index.jade.html'),
+        // 'index.swig.html': path.resolve(__dirname, 'index.swig.html'),
+        // ...htmlInputs,
  
         
       },
