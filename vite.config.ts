@@ -308,8 +308,13 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
       // This can be disabled when setting up own server handler e.g. `@cloudflare/vite-plugin`.
       // > serverHandler: false
     }),
-      viteTsConfigPaths({
+    tsConfigPaths({
       projects: ['./tsconfig.json'],
+      root: './src',
+      configNames: ['tsconfig.json'],
+      loose: true,
+      extensions: ['.ts', '.tsx', '.js', '.jsx'],
+      ignoreConfigErrors: true
     }),
 
 
