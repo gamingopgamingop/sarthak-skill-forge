@@ -539,6 +539,8 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
   },
 
   build: {
+          target: 'esnext',
+
         // ssr: isProd,
     // ssr: true,
     // ssr: isProd ? { target: "webworker", noExternal: mode === "production" } : false,
@@ -563,6 +565,10 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
         // Output ESM for the server build also.
         // Remove when https://github.com/vitejs/vite/issues/2152 is resolved.
     //     format: "es",
+    //     entryFileNames: "[name].js",
+    //     chunkFileNames: "[name].js",
+    //     assetFileNames: "[name].[ext]",
+    //     manualChunks: undefined,
     //   },
     // },
 
@@ -840,9 +846,8 @@ export const remixConfig : defineViteConfig = defineConfig(({ mode }: { mode: st
     },
 
     /* ------------------------------ Build ---------------------------------- */
-    build: {
-      target: 'esnext',
-    },
+    // build: {
+    //   },
 
     /* ------------------------------ Plugins -------------------------------- */
     plugins: [
