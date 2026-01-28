@@ -644,12 +644,12 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
   // define: {
   //   'import.meta.vitest': mode !== 'production',
   // },
-  ssr: {
-    target: "webworker",
-    noExternal: mode === "production",
-    // noExternal: mode === "production" ? undefined : ['@solidjs/start', '@solidjs/router', '@solidjs/meta'],
-    // noExternal: mode === "production" ? undefined : ['@solidjs/start', '@solidjs/router', '@solidjs/meta', 'solid-js', 'solid-js/web', 'solid-js/store', 'solid-js/universal', 'solid-js/h', 'solid-js/jsx', 'solid-js/jsx-runtime', 'solid-js/web', 'solid-js/store', 'solid-js/universal', 'solid-js/h', 'solid-js/jsx', 'solid-js/jsx-runtime'],
-  },
+  // ssr: {
+  //   target: "webworker",
+  //   noExternal: mode === "production",
+  //   // noExternal: mode === "production" ? undefined : ['@solidjs/start', '@solidjs/router', '@solidjs/meta'],
+  //   // noExternal: mode === "production" ? undefined : ['@solidjs/start', '@solidjs/router', '@solidjs/meta', 'solid-js', 'solid-js/web', 'solid-js/store', 'solid-js/universal', 'solid-js/h', 'solid-js/jsx', 'solid-js/jsx-runtime', 'solid-js/web', 'solid-js/store', 'solid-js/universal', 'solid-js/h', 'solid-js/jsx', 'solid-js/jsx-runtime'],
+  // },
 }));
 
 type PkgDep = Record<string, string>;
