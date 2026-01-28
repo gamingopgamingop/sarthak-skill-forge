@@ -315,19 +315,19 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
       tsConfigPath: resolve(__dirname, 'tsconfig.json'),
       entryPoints: ['src/main.ts'],
     }),
-        {
-      apply: "build",
-      name: "worker-condition",
-      config(config: UserConfig) {
-        if (config.build?.ssr && config.ssr?.target === "webworker") {
-          return {
-            resolve: {
-              conditions: ["worker", ...(config.resolve?.conditions || [])],
-            },
-          };
-        }
-      },
-    },
+    //     {
+    //   apply: "build",
+    //   name: "worker-condition",
+    //   config(config: UserConfig) {
+    //     if (config.build?.ssr && config.ssr?.target === "webworker") {
+    //       return {
+    //         resolve: {
+    //           conditions: ["worker", ...(config.resolve?.conditions || [])],
+    //         },
+    //       };
+    //     }
+    //   },
+    // },
     
  
     qwikVite({
