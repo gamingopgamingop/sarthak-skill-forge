@@ -196,6 +196,8 @@ const input = getVituumInput();
 
 const pkg = getPackageJson();
 const gitInfo = getGitInfo();
+// At the very top of vite.config.ts
+const isProd = process.env.NODE_ENV === 'production';
 
 const duplicateDeps = Object.keys(pkg.dependencies).filter((dep) =>
   Object.keys(pkg.devDependencies).includes(dep)
@@ -222,9 +224,9 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
     build: {
     minify: mode === "production",
   },
-  server: {
-    open: mode === "development",
-  },
+  // server: {
+  //   open: mode === "development",
+  // },
   define: {
     __APP_VERSION__: defineConst(pkg.version),
     __APP_NAME__: defineConst(pkg.name),
@@ -256,6 +258,13 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
   normalizePath: true,
   base: "/",
   server: {
+        open: mode === "development",
+        // (removed unused mode)
+      headers: {
+        // Don't cache the server response in dev mode
+        "Cache-Control": "public, max-age=0",
+      },
+
     host: "::",
     port: 8080,
   },
@@ -603,7 +612,9 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
   },
   ssr: {
     target: "webworker",
-    noExternal: isProd,
+    noExternal: mode === "production",
+    // noExternal: mode === "production" ? undefined : ['@solidjs/start', '@solidjs/router', '@solidjs/meta'],
+    // noExternal: mode === "production" ? undefined : ['@solidjs/start', '@solidjs/router', '@solidjs/meta', 'solid-js', 'solid-js/web', 'solid-js/store', 'solid-js/universal', 'solid-js/h', 'solid-js/jsx', 'solid-js/jsx-runtime', 'solid-js/web', 'solid-js/store', 'solid-js/universal', 'solid-js/h', 'solid-js/jsx', 'solid-js/jsx-runtime'],
   },
 }));
 
@@ -691,12 +702,14 @@ export function qwikOnlyConfig(
           }
         : undefined,
 
-    server: {
-      headers: {
-        // Don't cache the server response in dev mode
-        "Cache-Control": "public, max-age=0",
-      },
-    },
+    // server: {
+    //   headers: {
+    //     // Don't cache the server response in dev mode
+    //     "Cache-Control": "public, max-age=0",
+    //   },
+    //   // For example ['better-sqlite3'] if you use that in server functions.
+    //   exclude: [],
+    // },
     preview: {
       headers: {
         // Do cache the server response in preview (non-adapter production build)
