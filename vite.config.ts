@@ -457,14 +457,18 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
   },
 
   build: {
-    minify: [true, "terser"],
+    // minify: [true, "terser"],
+    minify: mode === "production" ? "terser" : false,
+
     // input: {
     //   // index: path.resolve(__dirname, 'index.html'),
     // },
     outDir: "dist", // Server and client builds should output assets to the same folder.
     // emptyOutDir: false, // Avoid server / client deleting files from each other.
     assetsInlineLimit: 0, // This is currently a work around for loading the favicon since datauri does not work.
-    sourcemap: [true, mode === "development", mode === "test", mode === "production"], // Generate sourcemaps for all builds.
+    // sourcemap: [true, mode === "development", mode === "test", mode === "production"], // Generate sourcemaps for all builds.
+    sourcemap: mode === "development",
+    // sourcemap: true,
     // ssr: true, // Crucial for Vercel + React Router
     emptyOutDir: false, // Avoid server & client deleting files from each other.
     // assetsInlineLimit: 0, // This is currently a work around for loading the favicon since datauri does not work.
@@ -529,6 +533,8 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
           if(id.includes('components')) return 'components';
           return 'index', id , id.split('/').pop()?.split('.')[0];
 
+// To (just return undefined if no match):
+// Or simply remove this line entirely since the function should return undefined if no match
         },
         // assetFileNames: (assetInfo : OutputAsset ) => {
         //   const ext = assetInfo.name.split(".").pop();
