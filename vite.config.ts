@@ -315,23 +315,21 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
       tsConfigPath: resolve(__dirname, 'tsconfig.json'),
       entryPoints: ['src/main.ts'],
     }),
-    {
+        {
       apply: "build",
       name: "worker-condition",
-      // config(options : import('vite').UserConfig) {
-      config(options : UserConfig, config : UserConfig) {
-
-        if (options.build.ssr && options.ssr?.target === "webworker") {
-          // Add the `worker` export condition to tell Marko to load worker compatible stream apis.
-          // Remove when https://github.com/vitejs/vite/issues/6401 is resolved.
-          options.resolve = {
-            conditions: ["worker", ...(options.resolve?.conditions || [])],
+      config(config: UserConfig) {
+        if (config.build?.ssr && config.ssr?.target === "webworker") {
+          return {
+            resolve: {
+              conditions: ["worker", ...(config.resolve?.conditions || [])],
+            },
           };
         }
-
-        return [options, config];
       },
-    }, 
+    },
+    
+ 
     qwikVite({
       csr: true,
     }),
