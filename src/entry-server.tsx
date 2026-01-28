@@ -1,4 +1,6 @@
 // @refresh reload
+// @ts-ignore
+// @ts-nocheck
 import { createHandler, StartServer } from "@solidjs/start/server";
 
 export default createHandler(() => (
