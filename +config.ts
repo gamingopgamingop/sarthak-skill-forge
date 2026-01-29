@@ -22,4 +22,4 @@ export const config = {
   clientRouting: true,
   // ...
 } satisfies Config;
-export default config;
+// export default config;
