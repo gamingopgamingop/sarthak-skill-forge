@@ -429,9 +429,10 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
     // },
     
  
-    qwikVite({
-      csr: true,
-    }),
+    command === 'build' &&
+      qwikVite({
+        csr: true,
+      }),
     electron({
       main: {
         // Shortcut of `build.lib.entry`.
