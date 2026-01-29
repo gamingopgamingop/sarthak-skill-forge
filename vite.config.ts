@@ -341,6 +341,7 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
     juice(),
     tanstackStart(),
     reactRouter({
+      routeFileIgnorePattern: /^\+/,
       presets: [vercelPreset()],
       ssr: mode === "production", // Use the preset
     }),
