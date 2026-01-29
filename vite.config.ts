@@ -578,8 +578,7 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
     // ssr: true, // Crucial for Vercel + React Router
     emptyOutDir: false, // Avoid server & client deleting files from each other.
     // assetsInlineLimit: 0, // This is currently a work around for loading the favicon since datauri does not work.
-    rollupOptions: {
-          input: isProd ? './src/server.ts' : './index.html',    //   output: {
+    // rollupOptions: {
         // Output ESM for the server build also.
         // Remove when https://github.com/vitejs/vite/issues/2152 is resolved.
     //     format: "es",
@@ -588,7 +587,7 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
     //     assetFileNames: "[name].[ext]",
     //     manualChunks: undefined,
     //   },
-    },
+    // },
 
 
     chunkSizeWarningLimit: 3000,
@@ -598,7 +597,8 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
       external: [...Object.keys(pkg.dependencies), 'bcrypt'],
         input: isProd
           ? './src/server.ts'      // SSR entry
-          : './index.html',        // dev
+          : './index.html', 
+                 // dev
        // input: {
         //   index: './src/framework/entry.browser.tsx',
         // },
