@@ -304,6 +304,9 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
   },
   // (removed unused mode)
   plugins: [
+    process.env.TARGET_ENV === 'cloudflare' && cloudflare({
+    viteEnvironment: { name: "worker" },
+  }),
     {
       name: 'rsc-path-fix',
       enforce: 'pre',
