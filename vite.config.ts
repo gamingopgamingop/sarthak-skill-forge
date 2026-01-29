@@ -331,6 +331,7 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
     concat(),
     send(),
     juice(),
+    tanstackStart(),
     reactRouter({
       presets: [vercelPreset()],
       ssr: mode === "production", // Use the preset
@@ -368,7 +369,6 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
     analog(),
     tailwindcss(),
     tsConfigPaths(),
-    tanstackStart(),
     viteReact(),
     // reactStart(),
     vue({ include: [/\.vue$/] }),
