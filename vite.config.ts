@@ -350,7 +350,8 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
     reactRouter({
       routeFileIgnorePattern: [/^\+/, 
       /\+config\.(js|ts)$/, 
-      /\+Page\.(tsx|jsx)$/],
+      /\+Page\.(tsx|jsx)$/,/\.config\./,     
+    /^_/, /\.test\./],
       routeFileIgnorePrefix: "-",
       presets: [vercelPreset()],
       ssr: mode === "production", // Use the preset
