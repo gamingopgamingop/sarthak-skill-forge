@@ -181,7 +181,11 @@ const getPackageJson = () => {
     };
   }
 };
-
+const getRscInput = () => {
+  const defaultEntry = './src/framework/entry.rsc.tsx';
+  // If in production, we force a string to satisfy the 'path.basename' call in the plugin
+  return typeof defaultEntry === 'string' ? defaultEntry : String(defaultEntry);
+};
 const getVituumInput = () => {
   const envInput = process.env.VITE_INPUT;
   if (envInput && typeof envInput === 'string' && envInput.trim().length > 0) {
@@ -308,7 +312,7 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
         return typeof source === 'string' ? source : undefined;
       },
     },
-        rsc({
+        rsc({ serverHandler: false,
       // `entries` option is only a shorthand for specifying each `rollupOptions.input` below
       // > entries: { rsc, ssr, client },
       //
