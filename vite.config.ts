@@ -300,6 +300,14 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
   },
   // (removed unused mode)
   plugins: [
+    {
+      name: 'rsc-path-fix',
+      enforce: 'pre',
+      resolveId(source) {
+        // Ensure all inputs to path functions are strings
+        return typeof source === 'string' ? source : undefined;
+      },
+    },
         rsc({
       // `entries` option is only a shorthand for specifying each `rollupOptions.input` below
       // > entries: { rsc, ssr, client },
