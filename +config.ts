@@ -18,4 +18,7 @@ export const config = {
   },
   // 2. Now you can safely use it
   ssr: true,
+  prerender: false,
+  clientRouting: true,
+  // ...
 } satisfies Config;

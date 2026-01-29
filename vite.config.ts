@@ -339,10 +339,7 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
     postcss(),
     tailwindcss(),
     imports(),
-    vike({ prerender: true , ssr:  true
-      // target: "webworker",
-      // noExternal: process.env.NODE_ENV === "production",
-  }),
+    vike(),
     // vike({ ssr: { noExternal: true } }),
     // vituum({ input: getVituumInput() }),
 // vituum({
