@@ -328,7 +328,7 @@ export default defineConfig(({ mode , command }: ConfigEnv) => ({
       root: './src',
       configNames: ['tsconfig.json'],
       loose: true,
-      extensions: ['.ts', '.tsx', '.js', '.jsx'],
+      extensions: ['.ts', '.tsx', '.js', '.jsx', '.json' , 'mdx'],
       ignoreConfigErrors: true
     }),
 
