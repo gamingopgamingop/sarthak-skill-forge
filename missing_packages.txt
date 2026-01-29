@@ -10,6 +10,8 @@
     "@storybook/router": "^8.6.14", ==> added its source code and modify it
     "react-navi": "^0.15.0", ==> added its source code and modify it
     "h3": "^2.0.1-rc.11", ==> i create my own h3 bcz not supported by node modules 
+    "vike": "^0.4.250", ==> i create my own vike bcz not supported by node modules ==> update it too 1.0.0
+    "react-router": "^6.27.0", ==> i create my own react-router bcz not supported by node modules
 
 
     "typescript-eslint": "^8.45.0",
