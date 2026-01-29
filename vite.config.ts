@@ -349,6 +349,7 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
     tanstackStart(),
     reactRouter({
       routeFileIgnorePattern: /^\+/,
+      routeFileIgnorePrefix: "-",
       presets: [vercelPreset()],
       ssr: mode === "production", // Use the preset
     }),
