@@ -2,6 +2,8 @@
 // @ts-ignore
 // @ts-nocheck
 // import type { Config } from 'vike/types'
+
+
 export const config = {
   meta: {
     // 1. Define the 'ssr' config property

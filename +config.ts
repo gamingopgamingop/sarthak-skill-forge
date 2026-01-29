@@ -2,6 +2,12 @@
 // @ts-ignore
 // @ts-nocheck
 import type { Config } from 'vike/types'
+// src/routes/+config.ts
+export type VikeConfig = {
+  ssr: boolean
+  prerender: boolean
+  clientRouting: boolean
+}
 
 export const config = {
   meta: {
