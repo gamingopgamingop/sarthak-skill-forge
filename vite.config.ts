@@ -223,7 +223,7 @@ if (duplicateDeps.length > 0) {
 // (removed unused isTest)
 // const isProd = mode === "production";
 // const isDev = mode === "development";
-export default defineConfig(({ mode }: ConfigEnv) => ({
+export default defineConfig(({ mode , command }: ConfigEnv) => ({
   // (removed unused mode)
   // (removed unused mode)
   // (removed unused mode)
