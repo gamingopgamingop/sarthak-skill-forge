@@ -360,7 +360,9 @@ export default defineConfig(({ mode , command }: ConfigEnv) => ({
     postcss(),
     tailwindcss(),
     imports(),
-    vike({routeFileIgnorePattern: [/\/?\+config\.(js|ts|jsx|tsx)$/]}),
+    // vike({routeFileIgnorePattern: [/\/?\+config\.(js|ts|jsx|tsx)$/]}
+    // vi
+    vike(),
     // vike({ ssr: { noExternal: true } }),
     // vituum({ input: getVituumInput() }),
 // vituum({
