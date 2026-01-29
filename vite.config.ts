@@ -251,9 +251,9 @@ export default defineConfig(({ mode }: ConfigEnv) => ({
   // (removed unused mode)
   // (removed unused mode)
   // (removed unused mode)
-    build: {
-    minify: mode === "production",
-  },
+  //   build: {
+  //   minify: mode === "production",
+  // },
   // server: {
   //   open: mode === "development",
   // },
