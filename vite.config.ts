@@ -578,7 +578,7 @@ export default defineConfig(({ mode , command }: ConfigEnv) => ({
     sourcemap: mode === "development",
     // sourcemap: true,
     // ssr: true, // Crucial for Vercel + React Router
-    emptyOutDir: false, // Avoid server & client deleting files from each other.
+    emptyOutDir: true, // Avoid server & client deleting files from each other.
     // assetsInlineLimit: 0, // This is currently a work around for loading the favicon since datauri does not work.
     // rollupOptions: {
         // Output ESM for the server build also.
@@ -596,7 +596,7 @@ export default defineConfig(({ mode , command }: ConfigEnv) => ({
     // ssr: true,
     // outDir: 'dist',
     rollupOptions: {
-      external: [...Object.keys(pkg.dependencies), 'bcrypt'],
+      external: [...Object.keys(pkg.dependencies), 'bcrypt', 'mongoose', 'express', 'node:path', 'node:fs'],
         input: isProd
           ? './src/server.ts'      // SSR entry
           : './index.html', 
