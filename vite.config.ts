@@ -625,6 +625,7 @@ export default defineConfig(({ mode , command }: ConfigEnv) => ({
       output: {
         format: "es",
         manualChunks(id : Parameters<GetManualChunk>[0] | string  | unknown) {
+          const moduleId = String(id);
           if (typeof id === "string" && id.includes("node_modules")) return "vendor";
           if (id.includes('react')) return 'vendor-react';
           if (id.includes('angular') || id.includes('rxjs')) return 'vendor-angular';
