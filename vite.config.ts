@@ -339,7 +339,7 @@ export default defineConfig(({ mode , command }: ConfigEnv) => ({
     pug({
         root: './src'
     }),
-    nitro(),
+    nitro({dev: mode === 'development'}),
     nunjucks(),
     latte(),
     twig(),
@@ -351,7 +351,7 @@ export default defineConfig(({ mode , command }: ConfigEnv) => ({
       routeFileIgnorePattern: [/^\+/, 
       /\+config\.(js|ts)$/, 
       /\+Page\.(tsx|jsx)$/,/\.config\./,     
-    /^_/, /\.test\./],
+    /^_/, /\.test\./, /\+config/, /\.svelte$/, /\.vue$/, /\.qwik/],
       routeFileIgnorePrefix: "-",
       presets: [vercelPreset()],
       ssr: mode === "production", // Use the preset
