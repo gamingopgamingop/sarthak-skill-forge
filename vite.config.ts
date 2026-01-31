@@ -142,7 +142,8 @@ const getGitInfo = () => {
     };
   }
 };
-
+const isRSC = true
+const isSSR = true
 const htmlInputs = Object.fromEntries(
   [
     'index.liquid.html',
@@ -281,6 +282,18 @@ export default defineConfig(({ mode , command }: ConfigEnv) => ({
     __GIT_REMOTE_BRANCH__: defineConst(gitInfo.remoteBranch),
     __GIT_REMOTE_COMMIT_HASH__: defineConst(gitInfo.remoteCommitHash),
     __GIT_REMOTE_TAG__: defineConst(gitInfo.remoteTag),
+    __TARGET_ENV__: defineConst(process.env.TARGET_ENV),
+    __IS_RSC__: defineConst(isRSC),
+    __IS_SSR__: defineConst(isSSR),
+    __IS_CLIENT__: defineConst(isClient),
+    __IS_WORKER__: defineConst(isWorker),
+    __IS_CLOUDFLARE__: defineConst(isCloudflare),
+    __IS_VERCEL__: defineConst(isVercel),
+    __IS_NODE__: defineConst(isNode),
+    __IS_WEB__: defineConst(isWeb),
+    __IS_BROWSER__: defineConst(isBrowser),
+    'process.env.NODE_ENV': JSON.stringify('production')
+
   },
   root: "./",
   publicDir: "/public",
@@ -318,7 +331,7 @@ export default defineConfig(({ mode , command }: ConfigEnv) => ({
         return typeof source === 'string' ? source : undefined;
       },
     },
-        rsc({ serverHandler: false, reactServerComponents: true,
+      isRSC &&  rsc({ serverHandler: false, reactServerComponents: true,
       // `entries` option is only a shorthand for specifying each `rollupOptions.input` below
       // > entries: { rsc, ssr, client },
       //
@@ -326,6 +339,10 @@ export default defineConfig(({ mode , command }: ConfigEnv) => ({
       // This can be disabled when setting up own server handler e.g. `@cloudflare/vite-plugin`.
       // > serverHandler: false
     }),
+      isSSR && ssr({
+        serverHandler: false,
+        reactServerComponents: true,
+      }),
     tsConfigPaths({
       projects: ['./tsconfig.json'],
       root: './src',
@@ -334,6 +351,8 @@ export default defineConfig(({ mode , command }: ConfigEnv) => ({
       extensions: ['.ts', '.tsx', '.js', '.jsx', '.json' , 'mdx'],
       ignoreConfigErrors: true
     }),
+      !isRSC && qwik(),
+
 
 
 
@@ -608,7 +627,7 @@ export default defineConfig(({ mode , command }: ConfigEnv) => ({
     rollupOptions: {
       external: [...Object.keys(pkg.dependencies), 'bcrypt', 'mongoose', 'express', 'node:path', 'node:fs', 'node:http', 'node:https', 'node:net','#nitro/virtual/polyfills'],
       // input: isProd ? './src/server.ts' : './index.html',
-            input: './index.html',
+            input: 'src/server.ts',
 
       // input: isProd ? './src/server.ts' : './index.html',
                  // dev
