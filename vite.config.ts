@@ -659,7 +659,7 @@ export default defineConfig(({ mode , command }: ConfigEnv) => ({
           if(moduleId.includes('assets')) return 'assets';
           if(moduleId.includes('styles')) return 'styles';
           if(moduleId.includes('components')) return 'components';
-          return moduleId.split('/').pop()?.split('.')[0] || 'index';
+          return moduleId.split('/').pop()?.split('.')[0] || 'index' || moduleId || undefined;
           // return 'index', id , id.split('/').pop()?.split('.')[0];
 
 // To (just return undefined if no match):
