@@ -28,6 +28,8 @@ import react from '@vitejs/plugin-react-swc'
 import preact from '@preact/preset-vite'
 import { qwikCity } from "@builder.io/qwik-city/vite";
 import tailwindcssVite from '@vituum/vite-plugin-tailwindcss'
+import reactOxc from '@vitejs/plugin-react-oxc'
+import mdx from '@mdx-js/rollup'
 
 import viteImageminVheemstra from "@vheemstra/vite-plugin-imagemin";
 import viteImageminOriginal from "vite-plugin-imagemin";
@@ -331,6 +333,15 @@ export default defineConfig(({ mode , command }: ConfigEnv) => ({
         return typeof source === 'string' ? source : undefined;
       },
     },
+    { enforce: 'pre', ...mdx() },
+    reactOxc({ include: /\.(mdx|js|jsx|ts|tsx)$/ , jsxImportSource: '@emotion/react', tsDecorators: true , plugins: [['@swc/plugin-styled-components', {}]], devTarget: 'es2022', parserConfig(id) {
+    if (id.endsWith('.res')) return { syntax: 'ecmascript', jsx: true }
+    if (id.endsWith('.ts')) return { syntax: 'typescript', tsx: false }
+  },reactRefreshHost: 'http://localhost:3000',  useAtYourOwnRisk_mutateSwcOptions(options) {
+    options.jsc.parser.decorators = true
+    options.jsc.transform.decoratorVersion = '2022-03'
+  },disableOxcRecommendation: true
+}),
       isRSC &&  rsc({ serverHandler: false, reactServerComponents: true,
       // `entries` option is only a shorthand for specifying each `rollupOptions.input` below
       // > entries: { rsc, ssr, client },
