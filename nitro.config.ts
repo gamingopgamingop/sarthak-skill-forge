@@ -9,7 +9,9 @@ export default defineNitroConfig({
   preset: 'vercel',
 
   output: {
-    format: 'web'
+    format: ['web', 'worker', 'cloudflare', 'vercel', 'node'],
+    serverDir: './dist/server',
+    publicDir: './dist/public'
   },
 
   experimental: {
