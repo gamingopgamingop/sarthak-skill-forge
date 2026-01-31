@@ -461,11 +461,11 @@ export default defineConfig(({ mode , command }: ConfigEnv) => ({
     // }),
     redwood(),
 
-    
-        ...(isCloudflare && !isVercel ? [
-      cloudflare({ viteEnvironment: { name: 'worker' } }),
-      remixCloudflareDevProxy(),
-    ] : []),
+
+    //     ...(isCloudflare && !isVercel ? [
+    //   cloudflare({ viteEnvironment: { name: 'worker' } }),
+    //   remixCloudflareDevProxy(),
+    // ] : []),
   // ======= First plugin: @vheemstra/vite-plugin-imagemin =======
 
     // ======= Second plugin: vite-plugin-imagemin =======
