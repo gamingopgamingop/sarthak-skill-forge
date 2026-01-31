@@ -20,7 +20,7 @@ import tsConfigPaths from 'vite-tsconfig-paths'
 import { componentTagger } from "lovable-tagger";
 import tailwindcss from '@tailwindcss/vite'
 import viteReact from '@vitejs/plugin-react'
-import { resolve } from 'path'
+// import { resolve } from 'path'
 import dts from 'vite-plugin-dts'
 // import { reactStart } from '@tanstack/react-start'
 // import { vitePlugin as remix } from "@remix-run/dev";
@@ -91,7 +91,7 @@ import twig from '@vituum/vite-plugin-twig'
 import latte from '@vituum/vite-plugin-latte'
 import nunjucks from '@vituum/vite-plugin-nunjucks'
 import handlebars from '@vituum/vite-plugin-handlebars'
-import { dirname } from "node:path";
+// import { dirname } from "node:path";
 // import redirects from "vituum/src/plugins/redirects.js"
 import vitummliquid  from '@vituum/vite-plugin-liquid'
 // import tailwindcss from '@vituum/vite-plugin-tailwindcss'
