@@ -635,33 +635,33 @@ export default defineConfig(({ mode , command }: ConfigEnv) => ({
       output: {
         format: "es",
         manualChunks(id : Parameters<GetManualChunk>[0] | string  | unknown) {
-          const moduleId = String(id);
+          const moduleId = typeof id === "string" ? id : String(id);
           if (typeof id === "string" && id.includes("node_modules")) return "vendor";
-          if (id.includes('react')) return 'vendor-react';
-          if (id.includes('angular') || id.includes('rxjs')) return 'vendor-angular';
-          if (id.includes('vue')) return 'vendor-vue';
-          if (id.includes('svelte')) return 'vendor-svelte';
-          if (id.includes('lit')) return 'vendor-lit';
-          if (id.includes('preact')) return 'vendor-preact';
-          if (id.includes('marko')) return 'vendor-marko';
-          if (id.includes('solid')) return 'vendor-solid';
-          if (id.includes('alpinejs')) return 'vendor-alpinejs';
-          if (id.includes('motia')) return 'vendor-motia';
-          if (id.includes('bcrypt')) return 'vendor-bcrypt';
-          if (id.includes('express')) return 'vendor-express';
-          if (id.includes('mongoose')) return 'vendor-mongoose';
-          if (id.includes('node:') || id.includes('node_modules')) return 'vendor-node';
-          if (id.includes('node:')) return 'vendor-node';
-          if (id.includes('node_modules')) return 'vendor-node_modules';
-          if (id.includes('server')) return 'server';
-          if (id.includes('index')) return 'index';
-          if (id.includes('browser')) return 'browser';
-          if(id.includes('src')) return 'src';
-          if(id.includes('public')) return 'public';
-          if(id.includes('assets')) return 'assets';
-          if(id.includes('styles')) return 'styles';
-          if(id.includes('components')) return 'components';
-          return id.split('/').pop()?.split('.')[0] || 'index';
+          if (moduleId.includes('react')) return 'vendor-react';
+          if (moduleId.includes('angular') || moduleId.includes('rxjs')) return 'vendor-angular';
+          if (moduleId.includes('vue')) return 'vendor-vue';
+          if (moduleId.includes('svelte')) return 'vendor-svelte';
+          if (moduleId.includes('lit')) return 'vendor-lit';
+          if (moduleId.includes('preact')) return 'vendor-preact';
+          if (moduleId.includes('marko')) return 'vendor-marko';
+          if (moduleId.includes('solid')) return 'vendor-solid';
+          if (moduleId.includes('alpinejs')) return 'vendor-alpinejs';
+          if (moduleId.includes('motia')) return 'vendor-motia';
+          if (moduleId.includes('bcrypt')) return 'vendor-bcrypt';
+          if (moduleId.includes('express')) return 'vendor-express';
+          if (moduleId.includes('mongoose')) return 'vendor-mongoose';
+          if (moduleId.includes('node:') || moduleId.includes('node_modules')) return 'vendor-node';
+          if (moduleId.includes('node:')) return 'vendor-node';
+          if (moduleId.includes('node_modules')) return 'vendor-node_modules';
+          if (moduleId.includes('server')) return 'server';
+          if (moduleId.includes('index')) return 'index';
+          if (moduleId.includes('browser')) return 'browser';
+          if(moduleId.includes('src')) return 'src';
+          if(moduleId.includes('public')) return 'public';
+          if(moduleId.includes('assets')) return 'assets';
+          if(moduleId.includes('styles')) return 'styles';
+          if(moduleId.includes('components')) return 'components';
+          return moduleId.split('/').pop()?.split('.')[0] || 'index';
           // return 'index', id , id.split('/').pop()?.split('.')[0];
 
 // To (just return undefined if no match):
