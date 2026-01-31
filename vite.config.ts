@@ -607,7 +607,10 @@ export default defineConfig(({ mode , command }: ConfigEnv) => ({
     // outDir: 'dist',
     rollupOptions: {
       external: [...Object.keys(pkg.dependencies), 'bcrypt', 'mongoose', 'express', 'node:path', 'node:fs', 'node:http', 'node:https', 'node:net','#nitro/virtual/polyfills'],
-      input: './index.html',
+      // input: isProd ? './src/server.ts' : './index.html',
+            input: './index.html',
+
+      // input: isProd ? './src/server.ts' : './index.html',
                  // dev
        // input: {
         //   index: './src/framework/entry.browser.tsx',
