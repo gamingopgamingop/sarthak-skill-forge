@@ -215,6 +215,8 @@ let msg = `
 const defineConst = (value: unknown) =>
   JSON.stringify(value ?? 'unknown');
 
+const isCloudflare = process.env.TARGET_ENV === 'cloudflare'
+const isVercel = process.env.VERCEL === '1'
 
 
 if (duplicateDeps.length > 0) {
@@ -305,9 +307,9 @@ export default defineConfig(({ mode , command }: ConfigEnv) => ({
   },
   // (removed unused mode)
   plugins: [
-    process.env.TARGET_ENV === 'cloudflare' && cloudflare({
-    viteEnvironment: { name: "worker" },
-  }),
+  //   process.env.TARGET_ENV === 'cloudflare' && cloudflare({
+  //   viteEnvironment: { name: "worker" },
+  // }),
     {
       name: 'rsc-path-fix',
       enforce: 'pre',
