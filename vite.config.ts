@@ -607,9 +607,7 @@ export default defineConfig(({ mode , command }: ConfigEnv) => ({
     // outDir: 'dist',
     rollupOptions: {
       external: [...Object.keys(pkg.dependencies), 'bcrypt', 'mongoose', 'express', 'node:path', 'node:fs'],
-        input: isProd
-          ? './src/server.ts'      // SSR entry
-          : './index.html', 
+      input: isProd ? './src/server.ts' : './index.html',
                  // dev
        // input: {
         //   index: './src/framework/entry.browser.tsx',
