@@ -334,14 +334,6 @@ export default defineConfig(({ mode , command }: ConfigEnv) => ({
       },
     },
     { enforce: 'pre', ...mdx() },
-    reactOxc({ include: /\.(mdx|js|jsx|ts|tsx)$/ , jsxImportSource: '@emotion/react', tsDecorators: true , plugins: [['@swc/plugin-styled-components', {}]], devTarget: 'es2022', parserConfig(id) {
-    if (id.endsWith('.res')) return { syntax: 'ecmascript', jsx: true }
-    if (id.endsWith('.ts')) return { syntax: 'typescript', tsx: false }
-  },reactRefreshHost: 'http://localhost:3000',  useAtYourOwnRisk_mutateSwcOptions(options) {
-    options.jsc.parser.decorators = true
-    options.jsc.transform.decoratorVersion = '2022-03'
-  },disableOxcRecommendation: true
-}),
       isRSC &&  rsc({ serverHandler: false, reactServerComponents: true,
       // `entries` option is only a shorthand for specifying each `rollupOptions.input` below
       // > entries: { rsc, ssr, client },
@@ -389,6 +381,15 @@ export default defineConfig(({ mode , command }: ConfigEnv) => ({
       presets: [vercelPreset()],
       ssr: mode === "production", // Use the preset
     }),
+        reactOxc({ include: /\.(mdx|js|jsx|ts|tsx)$/ , jsxImportSource: '@emotion/react', tsDecorators: true , plugins: [['@swc/plugin-styled-components', {}]], devTarget: 'es2022', parserConfig(id) {
+    if (id.endsWith('.res')) return { syntax: 'ecmascript', jsx: true }
+    if (id.endsWith('.ts')) return { syntax: 'typescript', tsx: false }
+  },reactRefreshHost: 'http://localhost:3000',  useAtYourOwnRisk_mutateSwcOptions(options) {
+    options.jsc.parser.decorators = true
+    options.jsc.transform.decoratorVersion = '2022-03'
+  },disableOxcRecommendation: true
+}),
+
     // optimize(),
     postcss(),
     tailwindcss(),
