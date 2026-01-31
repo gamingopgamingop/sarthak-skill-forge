@@ -285,7 +285,7 @@ export default defineConfig(({ mode , command }: ConfigEnv) => ({
     __TARGET_ENV__: defineConst(process.env.TARGET_ENV),
     __IS_RSC__: defineConst(isRSC),
     __IS_SSR__: defineConst(isSSR),
-    __IS_CLIENT__: defineConst(isClient),
+    // __IS_CLIENT__: defineConst(isClient),
     __IS_WORKER__: defineConst(isWorker),
     __IS_CLOUDFLARE__: defineConst(isCloudflare),
     __IS_VERCEL__: defineConst(isVercel),
