@@ -27,6 +27,10 @@ startTransition(() => {
   hydrateRoot(
     document,
     <RemixBrowser />
+    // Optional: Add error boundary
+    // <ErrorBoundary fallback={<ErrorPage />}>
+    //   <RemixBrowser />
+    // </ErrorBoundary>
   )
 })
 
