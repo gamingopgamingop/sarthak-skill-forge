@@ -654,9 +654,11 @@ export default defineConfig(({ mode , command }: ConfigEnv) => ({
           if(id.includes('assets')) return 'assets';
           if(id.includes('styles')) return 'styles';
           if(id.includes('components')) return 'components';
+          return id.split('/').pop()?.split('.')[0] || 'index';
           // return 'index', id , id.split('/').pop()?.split('.')[0];
 
 // To (just return undefined if no match):
+          // return undefined;
 // Or simply remove this line entirely since the function should return undefined if no match
         },
         // assetFileNames: (assetInfo : OutputAsset ) => {
