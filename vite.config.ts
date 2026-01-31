@@ -625,7 +625,7 @@ export default defineConfig(({ mode , command }: ConfigEnv) => ({
     // ssr: true,
     // outDir: 'dist',
     rollupOptions: {
-      external: [...Object.keys(pkg.dependencies), 'bcrypt', 'mongoose', 'express', 'node:path', 'node:fs', 'node:http', 'node:https', 'node:net','#nitro/virtual/polyfills'],
+      external: [...Object.keys(pkg.dependencies), 'bcrypt', 'mongoose', 'express', 'node:path', 'node:fs', 'node:http', 'node:https', 'node:net', 'node:crypto', 'node:stream', 'node:util', 'node:zlib', 'node:events', 'node:buffer', 'node:assert', 'node:process', 'node:querystring', 'node:url', 'node:dns', 'node:net', 'node:tls', 'node:http2', 'node:https', 'node:stream', 'node:util', 'node:zlib', 'node:events', 'node:buffer', 'node:assert', 'node:process', 'node:querystring', 'node:url', 'node:dns', 'node:net', 'node:tls', 'node:http2'],
       // input: isProd ? './src/server.ts' : './index.html',
             input: 'src/server.ts',
 
