@@ -318,7 +318,7 @@ export default defineConfig(({ mode , command }: ConfigEnv) => ({
         return typeof source === 'string' ? source : undefined;
       },
     },
-        rsc({ serverHandler: false,
+        rsc({ serverHandler: false, reactServerComponents: true,
       // `entries` option is only a shorthand for specifying each `rollupOptions.input` below
       // > entries: { rsc, ssr, client },
       //
