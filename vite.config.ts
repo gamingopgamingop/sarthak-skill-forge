@@ -350,10 +350,10 @@ export default defineConfig(({ mode , command }: ConfigEnv) => ({
       // This can be disabled when setting up own server handler e.g. `@cloudflare/vite-plugin`.
       // > serverHandler: false
     }),
-      isSSR && ssr({
-        serverHandler: false,
-        reactServerComponents: true,
-      }),
+      // isSSR && ssr({
+      //   serverHandler: false,
+      //   reactServerComponents: true,
+      // }),
     tsConfigPaths({
       projects: ['./tsconfig.json'],
       root: './src',
