@@ -456,12 +456,19 @@ export default defineConfig(({ mode , command }: ConfigEnv) => ({
         ? undefined
         : {},
     }),
-    cloudflare({
-      viteEnvironment: { name: "worker" },
-    }),
+    // cloudflare({
+    //   viteEnvironment: { name: "worker" },
+    // }),
     redwood(),
 
+    
+        ...(isCloudflare && !isVercel ? [
+      cloudflare({ viteEnvironment: { name: 'worker' } }),
+      remixCloudflareDevProxy(),
+    ] : []),
+  // ======= First plugin: @vheemstra/vite-plugin-imagemin =======
 
+    // ======= Second plugin: vite-plugin-imagemin =======
 
 
 
@@ -880,7 +887,7 @@ export const remixConfig : defineViteConfig = defineConfig(({ mode }: { mode: st
         include: ['path', 'buffer', 'process'],
       }),
 
-      !isTest && remixCloudflareDevProxy(),
+      // !isTest && remixCloudflareDevProxy(),
 
       remixVitePlugin({
         future: {
