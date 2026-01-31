@@ -819,6 +819,7 @@
     "@types/react-dom": "^19.2.2",
     "autoprefixer": "^10.4.21",
     "rolldown": "^1.0.0-rc.2",
+    "vite": "npm:rolldown-vite@latest",
 
     "eslint": "^9.32.0",
     "eslint-plugin-react-hooks": "^5.2.0",
