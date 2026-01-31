@@ -288,12 +288,12 @@ export default defineConfig(({ mode , command }: ConfigEnv) => ({
     __IS_RSC__: defineConst(isRSC),
     __IS_SSR__: defineConst(isSSR),
     // __IS_CLIENT__: defineConst(isClient),
-    __IS_WORKER__: defineConst(isWorker),
+    // __IS_WORKER__: defineConst(isWorker),
     __IS_CLOUDFLARE__: defineConst(isCloudflare),
     __IS_VERCEL__: defineConst(isVercel),
-    __IS_NODE__: defineConst(isNode),
-    __IS_WEB__: defineConst(isWeb),
-    __IS_BROWSER__: defineConst(isBrowser),
+    // __IS_NODE__: defineConst(isNode),
+    // __IS_WEB__: defineConst(isWeb),
+    // __IS_BROWSER__: defineConst(isBrowser),
     'process.env.NODE_ENV': JSON.stringify('production')
 
   },
@@ -424,7 +424,21 @@ export default defineConfig(({ mode , command }: ConfigEnv) => ({
     analog(),
     tailwindcss(),
     tsConfigPaths(),
-    viteReact(),
+    viteReact({ include: /\.(mdx|js|jsx|ts|tsx)$/ , exclude: [/\/pdf\//, /\.solid\.tsx$/, /\/node_modules\//], jsxImportSource: '@emotion/react' , jsxRuntime: 'classic',  
+      babel: {
+    presets: [],
+    // Your plugins run before any built-in transform (eg: Fast Refresh)
+    plugins: [],
+    // Use .babelrc files
+    babelrc: true,
+    // Use babel.config.js files
+    configFile: true,
+   parserOpts: {
+      plugins: ['decorators-legacy'],
+    },
+
+  }, reactRefreshHost: 'http://localhost:3000'
+}),
     // reactStart(),
     vue({ include: [/\.vue$/] }),
     vueDevTools(),
