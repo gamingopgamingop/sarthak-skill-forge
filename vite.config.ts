@@ -9,7 +9,7 @@ import { createFilter } from '@rollup/pluginutils'
 import marko from "@marko/vite";
 import type { GetManualChunk } from 'rollup';
 import type { OutputAsset } from "rollup";
-import { defineConfig, type UserConfig, type Plugin, type ConfigEnv } from "vite";
+import { defineConfig, type UserConfig, type Plugin, type ConfigEnv , loadEnv} from "vite";
 // import type { Plugin} from "vite";
 import { tanstackStart } from '@tanstack/react-start/plugin/vite'
 import pug from '@vituum/vite-plugin-pug'
@@ -188,6 +188,8 @@ const getPackageJson = () => {
     };
   }
 };
+const filter = createFilter(/\.svg\?react$/)
+
 const getRscInput = () => {
   const defaultEntry = './src/framework/entry.rsc.tsx';
   // If in production, we force a string to satisfy the 'path.basename' call in the plugin
@@ -232,8 +234,9 @@ if (duplicateDeps.length > 0) {
 // (removed unused isTest)
 // const isProd = mode === "production";
 // const isDev = mode === "development";
-export default defineConfig(({ mode , command }: ConfigEnv) => ({
-  
+export default defineConfig(({ command, mode, isSsrBuild, isPreview}: ConfigEnv) => ({
+    env: loadEnv(mode, process.cwd(), ''),
+
   // (removed unused mode)
   // (removed unused mode)
   // (removed unused mode)
@@ -272,6 +275,7 @@ export default defineConfig(({ mode , command }: ConfigEnv) => ({
   //   open: mode === "development",
   // },
   define: {
+     __APP_ENV__: JSON.stringify(env.APP_ENV),
     __APP_VERSION__: defineConst(pkg.version),
     __APP_NAME__: defineConst(pkg.name),
     __APP_DESCRIPTION__: defineConst(pkg.description),
@@ -291,6 +295,9 @@ export default defineConfig(({ mode , command }: ConfigEnv) => ({
     __TARGET_ENV__: defineConst(process.env.TARGET_ENV),
     __IS_RSC__: defineConst(isRSC),
     __IS_SSR__: defineConst(isSSR),
+        __API_URL__: 'window.__backend_api_url',
+    __APP_VERSION__: JSON.stringify('v1.0.0'),
+
     // __IS_CLIENT__: defineConst(isClient),
     // __IS_WORKER__: defineConst(isWorker),
     __IS_CLOUDFLARE__: defineConst(isCloudflare),
@@ -314,6 +321,8 @@ export default defineConfig(({ mode , command }: ConfigEnv) => ({
   normalizePath: true,
   base: "/",
   server: {
+          port: env.APP_PORT ? Number(env.APP_PORT) : 5173,
+
         open: mode === "development",
         // (removed unused mode)
       headers: {
@@ -326,13 +335,15 @@ export default defineConfig(({ mode , command }: ConfigEnv) => ({
   },
   // (removed unused mode)
   plugins: [
-    svgr(),
-        withFilter(
-      svgr({
-        /*...*/
-      }),
-      { load: { id: /\.svg\?react$/ } },
-    ),
+
+    {
+  ...svgr(),
+  load(id) {
+    if (!filter(id)) return
+    return this.load(id)
+  }
+},
+
 {
     name: "my-plugin",
     resolveId() {
