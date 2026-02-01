@@ -1,12 +1,14 @@
 // @ts-nocheck
 import { nitro } from 'nitro/vite'
 import fs from "fs";
+import svgr from 'vite-plugin-svgr'
+
 // import { defineConfig } from "vite";
 /// <reference types="vitest" />
 import marko from "@marko/vite";
 import type { GetManualChunk } from 'rollup';
 import type { OutputAsset } from "rollup";
-import { defineConfig, type UserConfig, type Plugin, type ConfigEnv } from "vite";
+import { defineConfig, type UserConfig, type Plugin, type ConfigEnv, withFilter } from "vite";
 // import type { Plugin} from "vite";
 import { tanstackStart } from '@tanstack/react-start/plugin/vite'
 import pug from '@vituum/vite-plugin-pug'
@@ -230,6 +232,7 @@ if (duplicateDeps.length > 0) {
 // const isProd = mode === "production";
 // const isDev = mode === "development";
 export default defineConfig(({ mode , command }: ConfigEnv) => ({
+  
   // (removed unused mode)
   // (removed unused mode)
   // (removed unused mode)
@@ -322,6 +325,45 @@ export default defineConfig(({ mode , command }: ConfigEnv) => ({
   },
   // (removed unused mode)
   plugins: [
+    svgr(),
+        withFilter(
+      svgr({
+        /*...*/
+      }),
+      { load: { id: /\.svg\?react$/ } },
+    ),
+{
+    name: "my-plugin",
+    resolveId() {
+      if (this.meta.rolldownVersion) {
+        // logic for rolldown-vite
+        console.log("Running under rolldown-vite");
+      } else {
+        // logic for rollup-vite
+        console.log("Running under rollup-vite");
+      }
+    }
+  },
+  {
+    name: 'txt-loader',
+    load(id) {
+      if (id.endsWith('.txt')) {
+        const content = fs.readFileSync(id, 'utf-8');
+        return {
+          code: `export default ${JSON.stringify(content)}`,
+          moduleType: 'js',
+        };
+      }
+    },
+  },
+
+  {
+    name: 'log-config',
+    configResolved(config) {
+      console.log('options', config.optimizeDeps, config.oxc);
+    },
+  },
+
   //   process.env.TARGET_ENV === 'cloudflare' && cloudflare({
   //   viteEnvironment: { name: "worker" },
   // }),
@@ -976,3 +1018,15 @@ export const remixConfig : defineViteConfig = defineConfig(({ mode }: { mode: st
     },
   };
 });
+
+export default {
+  build: {
+    rollupOptions: {
+      output: {
+        advancedChunks: {
+          groups: [{ name: 'vendor', test: /\/react(?:-dom)?/ }]
+        }
+      }
+    }
+  }
+}
