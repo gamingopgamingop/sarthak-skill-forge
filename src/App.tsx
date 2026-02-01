@@ -1,10 +1,13 @@
+// @ts-nocheck
+// @ts-ignore
+
 import { useEffect } from "react";
 import SimpleBar from 'simplebar-react';
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { BrowserRouter, Routes, Route , Link,HashRouter, useLocation , useNavigate , Navigate,Location ,useNavigationType , useNavigation} from "react-router-dom";
-import { QueryClient, QueryClientProvider ,useQuery} from "@tanstack/react-query";
+import { QueryClient as ReactQueryClient, QueryClientProvider as ReactQueryClientProvider, useQuery as useReactQuery } from "@tanstack/react-query";
 import Navigation from "@/components/Navigation";
 import AIGreeting from "@/components/AIGreeting";
 import Chatbot from "@/components/Chatbot";

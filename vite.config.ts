@@ -3,13 +3,14 @@ import { nitro } from 'nitro/vite'
 import fs from "fs";
 import svgr from 'vite-plugin-svgr'
 import { createFilter } from '@rollup/pluginutils'
-
+import stylus from 'stylus'
+import type {CSSModulesConfig,  Drafts,  Features,  NonStandard,  PseudoClasses,  Targets,} from 'lightningcss'
 // import { defineConfig } from "vite";
 /// <reference types="vitest" />
 import marko from "@marko/vite";
 import type { GetManualChunk } from 'rollup';
 import type { OutputAsset } from "rollup";
-import { defineConfig, type UserConfig, type Plugin, type ConfigEnv , loadEnv} from "vite";
+import { defineConfig, type UserConfig, type Plugin, type ConfigEnv , loadEnv, createLogger} from "vite";
 // import type { Plugin} from "vite";
 import { tanstackStart } from '@tanstack/react-start/plugin/vite'
 import pug from '@vituum/vite-plugin-pug'
@@ -118,6 +119,15 @@ import { readFileSync } from 'fs';
 // const env = process.env.NODE_ENV || 'development';
 dotenv.config();
 const __dirname = dirname(fileURLToPath(import.meta.url));
+const logger = createLogger()
+const loggerWarn = logger.warn
+
+logger.warn = (msg, options) => {
+  // Ignore empty CSS files warning
+  if (msg.includes('vite:css') && msg.includes(' is empty')) return
+  loggerWarn(msg, options)
+}
+
 
 // Get detailed git info with fallbacks
 const getGitInfo = () => {
@@ -236,6 +246,15 @@ if (duplicateDeps.length > 0) {
 // const isDev = mode === "development";
 export default defineConfig(({ command, mode, isSsrBuild, isPreview}: ConfigEnv) => ({
     env: loadEnv(mode, process.cwd(), ''),
+    assetsInclude: ['**/*.gltf'],
+    esbuild: {
+      jsxInject: `import React from 'react'`,
+      jsxFactory: 'h',
+      jsxFragment: 'Fragment',
+    },
+
+
+
 
   // (removed unused mode)
   // (removed unused mode)
@@ -275,6 +294,8 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview}: ConfigEnv)
   //   open: mode === "development",
   // },
   define: {
+      'import.meta.env.ENV_VARIABLE': JSON.stringify(process.env.ENV_VARIABLE),
+
      __APP_ENV__: JSON.stringify(env.APP_ENV),
     __APP_VERSION__: defineConst(pkg.version),
     __APP_NAME__: defineConst(pkg.name),
@@ -607,6 +628,50 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview}: ConfigEnv)
 // }
 
   ].filter(Boolean) as Plugin[],
+    css: {
+          lightningcss: {
+      targets: {
+        chrome: 100,
+        firefox: 100,
+      },
+
+      drafts: {
+        nesting: true,
+      },
+
+      nonStandard: {
+        deepSelectorCombinator: true,
+      },
+
+      pseudoClasses: {
+        hover: true,
+      },
+
+      unusedSymbols: ['--unused-var'],
+
+      cssModules: {
+        dashedIdents: true,
+      },
+    },
+    preprocessorOptions: {
+      less: {
+        math: 'parens-division',
+      },
+      styl: {
+        define: {
+          $specialColor: new stylus.nodes.RGBA(51, 197, 255, 1),
+        },
+      },
+      scss: {
+        importers: [
+          // ...
+        ],
+        additionalData: `$injectedColor: orange;`,
+
+      },
+    },
+  },
+
   environments: {
     // `rsc` environment loads modules with `react-server` condition.
     // this environment is responsible for:
