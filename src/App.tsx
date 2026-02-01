@@ -26,7 +26,7 @@ import ServicesPage from "@/pages/ServicesPage";
 import GalleryPage from "@/pages/GalleryPage";
 import NotFound from "@/pages/errors/NotFound";
 import { useQuery } from "convex/react";
-import { api } from "../convex/my-app-authkit/_generated/api";
+import { api } from "src/convex/my-app-authkit/convex/_generated/api.js";
 import { MotiaStreamProvider } from '@motiadev/stream-client-react'
 import { useStreamGroup } from '@motiadev/stream-client-react'
 import { useTodoEndpoints, type Todo } from './hooks/useTodoEndpoints'
@@ -52,6 +52,12 @@ const App = () => {
     streamName: 'todo' 
   })
  
+  const handleDeleteTodo = async (id: string) => {
+    await deleteTodo(id)
+    // No need to manually update UI - stream does it automatically!
+  }
+
+
   const handleAddTodo = async (description: string) => {
     await createTodo(description)
     // No need to manually update UI - stream does it automatically!

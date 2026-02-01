@@ -49,7 +49,6 @@ export const handler: Handlers['CreateTodo'] = async (req, { logger, streams }) 
  
   return { status: 200, body: todo }
 }
-
 export const config: ApiRouteConfig = {
   type: 'api',
   name: 'CreateTodo',
