@@ -361,6 +361,7 @@ export default defineConfig(({ mode , command }: ConfigEnv) => ({
   {
     name: 'log-config',
     configResolved(config) {
+      console.log('options', config.optimizeDeps, config.oxc);
     },
   },
 
