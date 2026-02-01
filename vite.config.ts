@@ -2,6 +2,7 @@
 import { nitro } from 'nitro/vite'
 import fs from "fs";
 import svgr from 'vite-plugin-svgr'
+import { createFilter } from '@rollup/pluginutils'
 
 // import { defineConfig } from "vite";
 /// <reference types="vitest" />
