@@ -631,6 +631,8 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview}: ConfigEnv)
 
   ].filter(Boolean) as Plugin[],
     css: {
+        postcss: "./postcss.config.cjs",
+
           lightningcss: {
       targets: {
         chrome: 100,
