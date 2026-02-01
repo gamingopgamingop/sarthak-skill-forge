@@ -1082,6 +1082,9 @@
       "sharp",
       "workerd"
     ]
+  },
+  "overrides": {
+    "vite": "npm:rolldown-vite@latest"
   }
 
 
