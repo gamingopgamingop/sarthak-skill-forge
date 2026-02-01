@@ -26,7 +26,7 @@ import ServicesPage from "@/pages/ServicesPage";
 import GalleryPage from "@/pages/GalleryPage";
 import NotFound from "@/pages/errors/NotFound";
 import { useQuery } from "convex/react";
-import { api } from "../convex/my-app/_generated/api";
+import { api } from "../convex/my-app-authkit/_generated/api";
 import { MotiaStreamProvider } from '@motiadev/stream-client-react'
 import { useStreamGroup } from '@motiadev/stream-client-react'
 import { useTodoEndpoints, type Todo } from './hooks/useTodoEndpoints'
