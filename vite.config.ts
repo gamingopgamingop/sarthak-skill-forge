@@ -9,7 +9,7 @@ import { createFilter } from '@rollup/pluginutils'
 import marko from "@marko/vite";
 import type { GetManualChunk } from 'rollup';
 import type { OutputAsset } from "rollup";
-import { defineConfig, type UserConfig, type Plugin, type ConfigEnv, withFilter } from "vite";
+import { defineConfig, type UserConfig, type Plugin, type ConfigEnv } from "vite";
 // import type { Plugin} from "vite";
 import { tanstackStart } from '@tanstack/react-start/plugin/vite'
 import pug from '@vituum/vite-plugin-pug'
@@ -361,7 +361,6 @@ export default defineConfig(({ mode , command }: ConfigEnv) => ({
   {
     name: 'log-config',
     configResolved(config) {
-      console.log('options', config.optimizeDeps, config.oxc);
     },
   },
 
