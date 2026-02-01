@@ -1,4 +1,6 @@
 // @ts-nocheck
+// @ts-ignore
+
 import { nitro } from 'nitro/vite'
 import fs from "fs";
 import svgr from 'vite-plugin-svgr'

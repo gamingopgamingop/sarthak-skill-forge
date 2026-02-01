@@ -26,10 +26,10 @@ import ServicesPage from "@/pages/ServicesPage";
 import GalleryPage from "@/pages/GalleryPage";
 import NotFound from "@/pages/errors/NotFound";
 import { useQuery } from "convex/react";
-import { api } from "../convex/_generated/api";
+import { api } from "../convex/my-app/_generated/api";
 import { MotiaStreamProvider } from '@motiadev/stream-client-react'
 import { useStreamGroup } from '@motiadev/stream-client-react'
-import { useTodoEndpoints, type Todo } from './hook/useTodoEndpoints'
+import { useTodoEndpoints, type Todo } from './hooks/useTodoEndpoints'
 import { Router } from "@solidjs/router";
 import { FileRoutes } from "@solidjs/start/router";
 import { Suspense } from "solid-js";
@@ -59,6 +59,7 @@ const App = () => {
 
 
   return (
+    <BrowserRouter>
     <MotiaStreamProvider address="ws://localhost:3000">
       <TooltipProvider>
       <Toaster />
@@ -88,6 +89,7 @@ const App = () => {
       </SimpleBar>
     </TooltipProvider>
   </MotiaStreamProvider>
+  </BrowserRouter>
 
   );
 };
