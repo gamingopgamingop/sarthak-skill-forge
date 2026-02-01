@@ -129,8 +129,8 @@
     "lint:fix:client": "eslint --fix .",
     "start:worker": "ts-node src/worker.ts",
     "start.watch": "nodemon src/worker.ts",
-    "workflow": "ts-node src/client.ts"
-
+    "workflow": "ts-node src/client.ts",
+    "build:codegen": "convex codegen && vite build"
 
 
 
