@@ -737,7 +737,7 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview}: ConfigEnv)
   },
 
   build: {
-        cssMinify: "lightningcss",
+        // cssMinify: "lightningcss",
 
           target: 'esnext',
 
