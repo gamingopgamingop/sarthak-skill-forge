@@ -3,35 +3,35 @@
 
 import { useEffect } from "react";
 import SimpleBar from 'simplebar-react';
-import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
+import { Toaster } from "../../components/ui/toaster";
+import { Toaster as Sonner } from "../../components/ui/sonner";
+import { TooltipProvider } from "../../components/ui/tooltip";
 import { BrowserRouter, Routes, Route , Link,HashRouter, useLocation , useNavigate , Navigate ,useNavigationType , useNavigation} from "react-router-dom";
 import type { Location } from "react-router-dom";
 
 import { QueryClient as ReactQueryClient, QueryClientProvider as ReactQueryClientProvider, useQuery as useReactQuery } from "@tanstack/react-query";
-import Navigation from "@/components/Navigation";
-import AIGreeting from "@/components/AIGreeting";
-import Chatbot from "@/components/Chatbot";
-import CursorEffects from "@/components/CursorEffects";
-import MouseFollower from "@/components/MouseFollower";
-import InteractiveBackground from "@/components/InteractiveBackground";
-import Home from "@/pages/Home";
-import AboutPage from "@/pages/AboutPage";
-import SkillsPage from "@/pages/SkillsPage";
-import ProjectsPage from "@/pages/ProjectsPage";
-import TechPage from "@/pages/TechPage";
-import BlogPage from "@/pages/BlogPage";
-import ContactPage from "@/pages/ContactPage";
-import TestimonialsPage from "@/pages/TestimonialsPage";
-import ServicesPage from "@/pages/ServicesPage";
-import GalleryPage from "@/pages/GalleryPage";
-import NotFound from "@/pages/errors/NotFound";
+import Navigation from "../../components/Navigation";
+import AIGreeting from "../../components/AIGreeting";
+import Chatbot from "../../components/Chatbot";
+import CursorEffects from "../../components/CursorEffects";
+import MouseFollower from "../../components/MouseFollower";
+import InteractiveBackground from "../../components/InteractiveBackground";
+import Home from "../../pages/Home";
+import AboutPage from "../../pages/AboutPage";
+import SkillsPage from "../../pages/SkillsPage";
+import ProjectsPage from "../../pages/ProjectsPage";
+import TechPage from "../../pages/TechPage";
+import BlogPage from "../../pages/BlogPage";
+import ContactPage from "../../pages/ContactPage";
+import TestimonialsPage from "../../pages/TestimonialsPage";
+import ServicesPage from "../../pages/ServicesPage";
+import GalleryPage from "../../pages/GalleryPage";
+import NotFound from "../../pages/errors/NotFound";
 import { useQuery } from "convex/react";
-import { api } from "@/convex/my-app-authkit/convex/_generated/api.js";
-import { MotiaStreamProvider } from '@motiadev/stream-client-react'
+import { api } from "../../convex/my-app-authkit/convex/_generated/api.js";
+import { MotiaStreamProvider } from '../../components/MotiaStreamProvider'
 import { useStreamGroup } from '@motiadev/stream-client-react'
-import { useTodoEndpoints, type Todo } from "@/hooks/useTodoEndpoints"
+import { useTodoEndpoints, type Todo } from "../../hooks/useTodoEndpoints"
 import { Router } from "@solidjs/router";
 import { FileRoutes } from "@solidjs/start/router";
 import { Suspense } from "solid-js";
