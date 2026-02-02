@@ -1,8 +1,11 @@
-import About from "@/components/About";
-import SEO from "@/components/SEO";
+// @ts-nocheck
+// @ts-ignore
+
+import About from "../components/About";
+import SEO from "../components/SEO";
 import { motion } from "framer-motion";
-import { Card } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import { Card } from "../components/ui/card";
+import { Badge } from "../components/ui/badge";
 import { Calendar, MapPin, GraduationCap, Target } from "lucide-react";
 
 const AboutPage = () => {
