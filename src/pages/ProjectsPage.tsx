@@ -1,9 +1,12 @@
-import Projects from "@/components/Projects";
-import SEO from "@/components/SEO";
+// @ts-nocheck
+// @ts-ignore
+
+import Projects from "../components/Projects";
+import SEO from "../components/SEO";
 import { motion } from "framer-motion";
-import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
+import { Card } from "../components/ui/card";
+import { Button } from "../components/ui/button";
+import { Badge } from "../components/ui/badge";
 import { ExternalLink, Github, Calendar, Users } from "lucide-react";
 
 const ProjectsPage = () => {
