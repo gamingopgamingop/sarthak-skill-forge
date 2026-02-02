@@ -1,12 +1,12 @@
 // @ts-nocheck
 // @ts-ignore
 
-import Hero from "@/components/Hero";
-import SEO from "@/components/SEO";
+import Hero from "../../components/Hero";
+import SEO from "../../components/SEO";
 import { motion } from "framer-motion";
 import { Parallax } from 'react-scroll-parallax';
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
+import { Button } from "../../components/ui/button";
+import { Card } from "../../components/ui/card";
 import { ArrowRight, BookOpen, Code2, Rocket } from "lucide-react";
 import { Link } from "react-router-dom";
 
