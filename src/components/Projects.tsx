@@ -11,10 +11,10 @@ import {
   BookOpen, Globe, Bot, Smartphone, Shield, Trophy,
   AlertCircle
 } from "lucide-react";
-import { useProjects, useAdditionalProjects } from "../../hooks/useProjects";
+import { useProjects, useAdditionalProjects } from "../hooks/useProjects";
 import { ProjectCard, ProjectCardSkeleton } from "../components/ProjectCard";
 import { AdditionalProjectCard, AdditionalProjectCardSkeleton } from "../components/AdditionalProjectCard";
-import { useToast } from "../../hooks/use-toast";
+import { useToast } from "../hooks/use-toast";
 
 const Projects = () => {
   const [filter, setFilter] = useState<string>('all');
