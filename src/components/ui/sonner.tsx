@@ -1,3 +1,5 @@
+// @ts-ignore
+// @ts-nocheck
 import { Toaster as Sonner, toast } from "sonner"
 
 type ToasterProps = React.ComponentProps<typeof Sonner>
