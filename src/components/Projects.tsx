@@ -2,18 +2,18 @@
 // @ts-ignore
 
 import React, { useState } from 'react';
-import { Card } from "../../components/ui/card";
-import { Button } from "../../components/ui/button";
-import { Badge } from "../../components/ui/badge";
-import { Skeleton } from "../../components/ui/skeleton";
+import { Card } from "../components/ui/card";
+import { Button } from "../components/ui/button";
+import { Badge } from "../components/ui/badge";
+import { Skeleton } from "../components/ui/skeleton";
 import { 
   Filter, Grid3X3, List, RefreshCw, Search,
   BookOpen, Globe, Bot, Smartphone, Shield, Trophy,
   AlertCircle
 } from "lucide-react";
 import { useProjects, useAdditionalProjects } from "../../hooks/useProjects";
-import { ProjectCard, ProjectCardSkeleton } from "../../components/ProjectCard";
-import { AdditionalProjectCard, AdditionalProjectCardSkeleton } from "../../components/AdditionalProjectCard";
+import { ProjectCard, ProjectCardSkeleton } from "../components/ProjectCard";
+import { AdditionalProjectCard, AdditionalProjectCardSkeleton } from "../components/AdditionalProjectCard";
 import { useToast } from "../../hooks/use-toast";
 
 const Projects = () => {
