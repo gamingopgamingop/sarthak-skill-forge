@@ -26,12 +26,12 @@ import ContactPage from "../../pages/ContactPage";
 import TestimonialsPage from "../../pages/TestimonialsPage";
 import ServicesPage from "../../pages/ServicesPage";
 import GalleryPage from "../../pages/GalleryPage";
-import NotFound from "../../pages/errors/NotFound";
+import NotFound from "@/pages/errors/NotFound";
 import { useQuery } from "convex/react";
-import { api } from "../../convex/my-app-authkit/convex/_generated/api.js";
+import { api } from "@/convex/my-app-authkit/convex/_generated/api.js";
 import { MotiaStreamProvider } from '@motiadev/stream-client-react'
 import { useStreamGroup } from '@motiadev/stream-client-react'
-import { useTodoEndpoints, type Todo } from "../../hooks/useTodoEndpoints"
+import { useTodoEndpoints, type Todo } from "@/hooks/useTodoEndpoints"
 import { Router } from "@solidjs/router";
 import { FileRoutes } from "@solidjs/start/router";
 import { Suspense } from "solid-js";

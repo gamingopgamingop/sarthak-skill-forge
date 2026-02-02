@@ -4,12 +4,12 @@
 import { useEffect } from "react";
 import { motion } from "framer-motion";
 // import { Button } from "@/components/ui/button";
-import { Button } from "../../components/ui/button"
+import { Button } from "@/components/ui/button"
 
-import { Card } from "../../components/ui/card";
+import { Card } from "@/components/ui/card";
 import { Home, ArrowLeft } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
-import SEO from "../../components/SEO";
+import SEO from "@/components/SEO";
 import { Parallax } from 'react-scroll-parallax';
 
 const NotFound = () => {
