@@ -13,6 +13,7 @@
     "vike": "^0.4.250", ==> i create my own vike bcz not supported by node modules ==> update it too 1.0.0
     "react-router": "^6.27.0", ==> i create my own react-router bcz not supported by node modules
     "@vitejs/plugin-react-swc": "^3.11.0", ==> i create my own react-router bcz not supported by node modules and in dependanceis
+    "postcss": "^8.5.6", ==> in dependanceis
 
 
     "typescript-eslint": "^8.45.0",
