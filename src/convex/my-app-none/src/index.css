@@ -1,9 +1,9 @@
 @import "tailwindcss";
 
-@theme {
+/* @theme {
   --color-light: #ffffff;
   --color-dark: #171717;
-}
+} */
 
 @media (prefers-color-scheme: dark) {
   body {
