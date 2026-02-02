@@ -633,30 +633,30 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview}: ConfigEnv)
     css: {
         postcss: "./postcss.config.cjs",
 
-          lightningcss: {
-      targets: {
-        chrome: 100,
-        firefox: 100,
-      },
+          lightningcss: false,
+    //   targets: {
+    //     chrome: 100,
+    //     firefox: 100,
+    //   },
 
-      drafts: {
-        nesting: true,
-      },
+    //   drafts: {
+    //     nesting: true,
+    //   },
 
-      nonStandard: {
-        deepSelectorCombinator: true,
-      },
+    //   nonStandard: {
+    //     deepSelectorCombinator: true,
+    //   },
 
-      pseudoClasses: {
-        hover: true,
-      },
+    //   pseudoClasses: {
+    //     hover: true,
+    //   },
 
-      unusedSymbols: ['--unused-var'],
+    //   unusedSymbols: ['--unused-var'],
 
-      cssModules: {
-        dashedIdents: true,
-      },
-    },
+    //   cssModules: {
+    //     dashedIdents: true,
+    //   },
+    // },
     preprocessorOptions: {
       less: {
         math: 'parens-division',
