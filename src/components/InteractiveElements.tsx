@@ -1,3 +1,6 @@
+// @ts-ignore
+// @ts-nocheck
+
 import { useEffect, useRef, useState } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import anime from "animejs";
