@@ -17,21 +17,23 @@ import CursorEffects from "./components/CursorEffects";
 import MouseFollower from "./components/MouseFollower";
 import InteractiveBackground from "./components/InteractiveBackground";
 import Home from "./pages/Home";
-import AboutPage from "./pages/Abou  tPage";
+import AboutPage from "./pages/AboutPage";
 import SkillsPage from "./pages/SkillsPage";
 import ProjectsPage from "./pages/ProjectsPage";
 import TechPage from "./pages/TechPage";
-import BlogPage from "./pages/BlogPag  e";
+import BlogPage from "./pages/BlogPage";
 import ContactPage from "./pages/ContactPage";
 import TestimonialsPage from "./pages/TestimonialsPage";
 import ServicesPage from "./pages/ServicesPage";
 import GalleryPage from "./pages/GalleryPage";
 import NotFound from "./pages/errors/NotFound";
 import { useQuery } from "convex/react";
-import { api } from "../../convex/my-app-authkit/convex/_generated/api.js";
-import { MotiaStreamProvider } from '../../components/MotiaStreamProvider'
+import { api } from "./convex/my-app-authkit/convex/_generated/api.js";
+import { MotiaStreamProvider } from './components/MotiaStreamProvider'
+import { MotiaStreamProvider } from '@motiadev/stream-client-react'
+
 import { useStreamGroup } from '@motiadev/stream-client-react'
-import { useTodoEndpoints, type Todo } from "../../hooks/useTodoEndpoints"
+import { useTodoEndpoints, type Todo } from "./hooks/useTodoEndpoints"
 import { Router } from "@solidjs/router";
 import { FileRoutes } from "@solidjs/start/router";
 import { Suspense } from "solid-js";

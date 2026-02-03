@@ -153,6 +153,7 @@
   ],
 
   "dependencies": {
+    "@motiadev/stream-client-react": "^0.17.14-beta.196",
     "postcss": "^8.5.6",
     "h3": "^1.15.5",
     "vike": "^0.4.252",    
