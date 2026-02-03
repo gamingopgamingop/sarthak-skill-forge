@@ -358,6 +358,10 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview}: ConfigEnv)
   },
   // (removed unused mode)
   plugins: [
+    tailwindcss(),
+    react(),
+
+
 
     {
   ...svgr(),
@@ -469,7 +473,7 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview}: ConfigEnv)
 
     // optimize(),
     postcss(),
-    tailwindcss(),
+    // tailwindcss(),
     imports(),
     // vike({routeFileIgnorePattern: [/\/?\+config\.(js|ts|jsx|tsx)$/]}
     // vi
@@ -498,7 +502,7 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview}: ConfigEnv)
     // liquidMiddleware(),
     liquidNode(),
     // liquidNodeMiddleware(),
-    react(),
+    // react(),
     analog(),
     tailwindcss(),
     tsConfigPaths(),
@@ -746,6 +750,7 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview}: ConfigEnv)
     // ssr: isProd ? { target: "webworker", noExternal: mode === "production" } : false,
 
     // minify: [true, "terser"],
+    cssMinify: "esbuild",
     minify: mode === "production" ? "terser" : false,
 
     // input: {
