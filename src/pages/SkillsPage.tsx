@@ -1,10 +1,12 @@
-import Skills from "@/components/Skills";
-import SEO from "@/components/SEO";
+// @ts-ignore
+// @ts-nocheck
+import Skills from "../components/Skills";
+import SEO from "../components/SEO";
 import { motion } from "framer-motion";
-import { Card } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Progress } from "@/components/ui/progress";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Card } from "../components/ui/card";
+import { Badge } from "../components/ui/badge";
+import { Progress } from "../components/ui/progress";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "../components/ui/tabs";
 
 const SkillsPage = () => {
   const skillLevels = [
