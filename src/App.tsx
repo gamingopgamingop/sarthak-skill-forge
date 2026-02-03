@@ -29,7 +29,7 @@ import GalleryPage from "./pages/GalleryPage";
 import NotFound from "./pages/errors/NotFound";
 import { useQuery } from "convex/react";
 import { api } from "./convex/my-app-authkit/convex/_generated/api.js";
-import { MotiaStreamProvider } from './components/MotiaStreamProvider'
+// import { MotiaStreamProvider } from './components/MotiaStreamProvider'
 import { MotiaStreamProvider } from '@motiadev/stream-client-react'
 
 import { useStreamGroup } from '@motiadev/stream-client-react'
