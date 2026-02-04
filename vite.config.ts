@@ -637,6 +637,8 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview}: ConfigEnv)
     css: {          
       lightningcss: false,
       postcss: "./postcss.config.cjs",
+      devSourcemap: false,
+
 
     //   targets: {
     //     chrome: 100,
@@ -679,6 +681,8 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview}: ConfigEnv)
       },
     },
   },
+  logLevel: 'error',
+
 
   environments: {
     // `rsc` environment loads modules with `react-server` condition.

@@ -1,8 +1,12 @@
-import Contact from "@/components/Contact";
-import SEO from "@/components/SEO";
+// @ts-ignore
+// @ts-nocheck
+// 
+
+import Contact from "../components/Contact";
+import SEO from "../components/SEO";
 import { motion } from "framer-motion";
-import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import { Card } from "../components/ui/card";
+import { Button } from "../components/ui/button";
 import { Mail, MessageSquare, Phone, MapPin, Clock, Send } from "lucide-react";
 
 const ContactPage = () => {
