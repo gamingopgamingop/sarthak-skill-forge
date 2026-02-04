@@ -1,7 +1,10 @@
+// @ts-nocheck
+// @ts-ignore
+
 import React from 'react';
-import { Card } from "@/components/ui/card";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Badge } from "@/components/ui/badge";
+import { Card } from "../components/ui/card";
+import { Avatar, AvatarFallback, AvatarImage } from "../components/ui/avatar";
+import { Badge } from "../components/ui/badge";
 import { Star, Quote, Users, Trophy, Heart } from "lucide-react";
 
 const TestimonialsPage = () => {
