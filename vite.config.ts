@@ -781,7 +781,7 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview}: ConfigEnv)
     // },
 
 
-    chunkSizeWarningLimit: 3000,
+    chunkSizeWarningLimit: 5000,
     // ssr: true,
     // outDir: 'dist',
     rollupOptions: {
@@ -1117,7 +1117,13 @@ export default {
       output: {
         advancedChunks: {
           groups: [{ name: 'vendor', test: /\/react(?:-dom)?/ }]
-        }
+        },
+        manualChunks: {
+          react: ["react", "react-dom"],
+          router: ["react-router-dom", "@tanstack/router"],
+          animation: ["gsap", "@react-spring/web"],
+      },
+
       }
     }
   }
