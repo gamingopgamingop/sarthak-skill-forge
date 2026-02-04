@@ -1,4 +1,4 @@
-// src/pages/ComingSoon.jsx
+// src/pages/info/ComingSoon.jsx
 // @ts-nocheck
 // @ts-ignore
 
