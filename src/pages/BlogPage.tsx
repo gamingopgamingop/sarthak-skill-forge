@@ -1,5 +1,6 @@
 // @ts-ignore
 // @ts-nocheck
+// @ts-expect-error
 
 import React from "react";
 import SEO from "../components/SEO";
