@@ -754,7 +754,7 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview}: ConfigEnv)
     // ssr: isProd ? { target: "webworker", noExternal: mode === "production" } : false,
 
     // minify: [true, "terser"],
-    cssMinify: "esbuild",
+    // cssMinify: "esbuild",
     minify: mode === "production" ? "terser" : false,
 
     // input: {
