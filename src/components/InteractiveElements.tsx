@@ -4,8 +4,8 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import anime from "animejs";
-import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import { Card } from "../components/ui/card";
+import { Button } from "../components/ui/button";
 import { Sparkles, Zap, Rocket, Code2 } from "lucide-react";
 
 const InteractiveElements = () => {
