@@ -755,7 +755,7 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview}: ConfigEnv)
 
     // minify: [true, "terser"],
     // cssMinify: "esbuild",
-    minify: mode === "production" ? "terser" : false,
+    // minify: mode === "production" ? "terser" : false,
 
     // input: {
     //   // index: path.resolve(__dirname, 'index.html'),
