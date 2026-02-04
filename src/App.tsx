@@ -8,6 +8,7 @@ import { Toaster as Sonner } from "./components/ui/sonner";
 import { TooltipProvider } from "./components/ui/tooltip";
 import { BrowserRouter, Routes, Route , Link,HashRouter, useLocation , useNavigate , Navigate ,useNavigationType , useNavigation} from "react-router-dom";
 import type { Location } from "react-router-dom";
+import { Suspense as ReactSuspense } from "react"
 
 import { QueryClient as ReactQueryClient, QueryClientProvider as ReactQueryClientProvider, useQuery as useReactQuery } from "@tanstack/react-query";
 import Navigation from "./components/Navigation";

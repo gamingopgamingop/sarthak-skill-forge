@@ -1,6 +1,6 @@
 // @ts-ignore
 // @ts-nocheck
-// 
+// @ts-expect-error
 
 import Contact from "../components/Contact";
 import SEO from "../components/SEO";
