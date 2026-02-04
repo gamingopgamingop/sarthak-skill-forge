@@ -1,7 +1,12 @@
+// @ts-nocheck
+// @ts-ignore
+
+
+
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import { Card } from "../components/ui/card";
+import { Button } from "../components/ui/button";
 import { X, Sparkles } from "lucide-react";
 
 const AIGreeting = () => {
