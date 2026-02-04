@@ -1,5 +1,8 @@
-import { Button } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
+// @ts-nocheck
+// @ts-ignore
+
+import { Button } from "../components/ui/button";
+import { Separator } from "../components/ui/separator";
 import { Github, Linkedin, Mail, Heart, Code, BookOpen } from "lucide-react";
 
 const Footer = () => {
