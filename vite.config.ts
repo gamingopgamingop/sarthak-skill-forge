@@ -638,6 +638,7 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview}: ConfigEnv)
       lightningcss: false,
       postcss: "./postcss.config.cjs",
       devSourcemap: false,
+      transformer: "postcss",
 
 
     //   targets: {
