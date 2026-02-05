@@ -15,7 +15,9 @@ import {
   FaReact, FaNodeJs, FaPython, FaJs, FaHtml5, FaCss3Alt
 } from "react-icons/fa6";
 import { SiTypescript, SiTailwindcss, SiNextdotjs, SiVite, SiMongodb, SiPostgresql, SiRedis, SiDocker } from "react-icons/si";
-import { Project, useLikeProject, useViewProject } from "../hooks/useProjects";
+import {  useLikeProject, useViewProject } from "../hooks/useProjects";
+import type { Project } from "../hooks/useProjects.tsx";
+
 
 const iconMap = {
   BookOpen, Globe, Bot, Code, Brain, Zap, 
