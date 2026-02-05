@@ -1,0 +1,12 @@
+language: node_js
+node_js: node
+cache:
+  yarn: true
+  directories:
+    - "node_modules"
+before_script:
+  - yarn run lerna bootstrap
+  - yarn run lerna run prepublish
+script:
+- yarn build
+- yarn test

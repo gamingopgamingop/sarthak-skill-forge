@@ -1,0 +1,69 @@
+{
+  "name": "react-navi",
+  "version": "0.15.0",
+  "description": "A batteries-included router for react.",
+  "author": "James K Nelson <james@jamesknelson.com>",
+  "license": "MIT",
+  "main": "dist/commonjs/index.js",
+  "module": "dist/es/index.js",
+  "types": "dist/types/index.d.ts",
+  "scripts": {
+    "clean": "rimraf dist",
+    "build:commonjs": "tsc --pretty --module commonjs --outDir dist/commonjs",
+    "build:es": "tsc --pretty --module es2015 --outDir dist/es",
+    "build:types": "tsc --pretty --declaration --emitDeclarationOnly --outDir dist/types --isolatedModules false",
+    "build:umd": "tsc --pretty --module es2015 --outDir dist/umd-intermediate && cross-env NODE_ENV=development rollup -c -o dist/umd/react-navi.js && rimraf dist/umd-intermediate",
+    "build:umd:min": "tsc --module es2015 --outDir dist/umd-intermediate && cross-env NODE_ENV=production rollup -c -o dist/umd/react-navi.min.js && rimraf dist/umd-intermediate",
+    "build": "yarn run clean && yarn build:es && yarn build:commonjs && yarn build:types && yarn build:umd && yarn build:umd:min",
+    "build:watch": "yarn run clean && yarn build:es -- --watch",
+    "prepare": "yarn build && yarn test",
+    "test": "jest",
+    "test:watch": "jest --watch"
+  },
+  "keywords": [
+    "navi",
+    "navigation",
+    "react",
+    "router",
+    "routing",
+    "static"
+  ],
+  "peerDependencies": {
+    "navi": "^0.14.0",
+    "react": "^16.8.0"
+  },
+  "dependencies": {
+    "@types/history": "^4.6.2"
+  },
+  "devDependencies": {
+    "navi": "^0.15.0"
+  },
+  "homepage": "https://frontarm.com/navi/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/frontarm/navi.git"
+  },
+  "jest": {
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "testEnvironment": "jsdom",
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "jsx",
+      "ts",
+      "tsx"
+    ],
+    "setupFilesAfterEnv": [
+      "<rootDir>/test/setup.ts"
+    ],
+    "preset": "ts-jest",
+    "testMatch": null,
+    "globals": {
+      "ts-jest": {
+        "babelConfig": null,
+        "diagnostics": false
+      }
+    }
+  },
+  "gitHead": "5a3c7a5b1ffb8ad11b2689cae8c585628790a9e0"
+}

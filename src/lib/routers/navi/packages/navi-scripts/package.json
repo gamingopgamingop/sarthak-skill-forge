@@ -1,0 +1,40 @@
+{
+  "name": "navi-scripts",
+  "engine": {
+    "node": ">=8.0.0"
+  },
+  "version": "0.15.0",
+  "description": "Build static websites with navi-based apps.",
+  "author": "James K Nelson <james@jamesknelson.com>",
+  "license": "MIT",
+  "bin": {
+    "navi-scripts": "./bin/navi-scripts.js"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "@babel/core": "^7.1.2",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/register": "^7.0.0",
+    "ajv": "^6.5.4",
+    "ajv-keywords": "^3.2.0",
+    "chalk": "^2.3.0",
+    "commander": "^2.18.0",
+    "dotenv": "^6.2.0",
+    "finalhandler": "^1.1.0",
+    "fs-extra": "^7.0.0",
+    "he": "^1.2.0",
+    "jsdom": "^13.2.0",
+    "raf": "^3.4.0",
+    "serve-static": "^1.11.2"
+  },
+  "keywords": [
+    "navi",
+    "routing",
+    "static"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/frontarm/navi.git"
+  },
+  "gitHead": "317605d4cf0f7317cc0171630e6cc4c261cbccb6"
+}

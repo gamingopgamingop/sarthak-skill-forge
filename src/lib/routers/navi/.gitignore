@@ -1,0 +1,12 @@
+.esm-cache
+.vscode
+.env.local
+node_modules
+website/build
+notes
+*.log
+NOTES.md
+dist
+navi-website
+packages/navi-website
+.idea
