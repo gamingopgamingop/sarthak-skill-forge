@@ -389,6 +389,12 @@
     "@tanstack/react-start": "^1.132.0",
     "nitro": "npm:nitro-nightly@latest",
     "vinxi": "^0.5.11",
+    "@vinxi/react": "^0.2.5",
+    "@khyo/vinxi": "^0.5.4",
+    "@vinxi/server-functions": "^0.5.1",
+    "@vinxi/plugin-mdx": "^3.7.2",
+    "@vinxi/react-server-dom": "^0.0.3",
+
     "sourcemap-codec": "^1.4.8",
     "sourcemap": "^0.1.0",
     "@jridgewell/sourcemap-codec": "^1.5.5",
