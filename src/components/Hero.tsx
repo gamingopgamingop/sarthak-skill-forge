@@ -3,7 +3,7 @@
 
 import { Button } from "../components/ui/button";
 import { ChevronDown, Github, Linkedin, Mail, FileText } from "lucide-react";
-import heroBg from "@/assets/hero-bg.jpg";
+import heroBg from "../../assets/hero-bg.jpg";
 import { motion } from "framer-motion";
 
 
