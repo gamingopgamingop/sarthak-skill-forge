@@ -43,7 +43,6 @@
   color: #888;
 }
 
-@import "tailwindcss";
 
 /* ---------------- THEME VARIABLES (v4 way) ---------------- */
 @theme {
