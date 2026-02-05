@@ -736,6 +736,8 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview}: ConfigEnv)
     alias: {
       "~": path.resolve(__dirname, "./src"),
       '@': fileURLToPath(new URL('./src', import.meta.url)),
+      "vinxi/routes": "vinxi"
+
       // '*': path.resolve(__dirname, 'src'),
 
 

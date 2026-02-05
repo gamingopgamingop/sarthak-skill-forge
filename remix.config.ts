@@ -1,9 +1,10 @@
-const {
-  createRoutesFromFolders,
-} = require("@remix-run/v1-route-convention");
+// Remix v1.15+ and v2
+// @ts-ignore
+// @ts-nocheck
 
+import { createRoutesFromFolders } from "@remix-run/v1-route-convention";
 /** @type {import('@remix-run/dev').AppConfig} */
-module.exports = {
+export default {
   future: {
     v2_dev: true,
   },
@@ -13,4 +14,3 @@ module.exports = {
     return createRoutesFromFolders(defineRoutes);
   },
 };
-
