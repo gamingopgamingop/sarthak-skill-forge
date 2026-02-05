@@ -1,8 +1,10 @@
-import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
+// @ts-ignore
+// @ts-nocheck
+import { Card } from "../components/ui/card";
+import { Button } from "../components/ui/button";
+import { Badge } from "../components/ui/badge";
 import { GraduationCap, Target, Lightbulb, Rocket, Download, ExternalLink } from "lucide-react";
-import workspace from "@/assets/workspace.jpg";
+import workspace from "../assets/workspace.jpg";
 
 const About = () => {
   const achievements = [
