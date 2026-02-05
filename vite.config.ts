@@ -130,6 +130,25 @@ logger.warn = (msg, options) => {
   loggerWarn(msg, options)
 }
 
+try {
+  const vinxiPkgPath = path.resolve('node_modules/vinxi/package.json');
+  if (fs.existsSync(vinxiPkgPath)) {
+    const pkg = JSON.parse(fs.readFileSync(vinxiPkgPath, 'utf8'));
+    
+    // Check if the fix is needed
+    if (pkg.exports["./routes"] && !pkg.exports["./routes"].import) {
+      pkg.exports["./routes"] = {
+        "import": "./lib/fs-router.js",
+        "types": "./types/routes.d.ts"
+      };
+      fs.writeFileSync(vinxiPkgPath, JSON.stringify(pkg, null, 2));
+      console.log('✅ Vinxi package.json fixed inside vite.config.ts');
+    }
+  }
+} catch (e) {
+  console.warn('⚠️ Could not auto-fix vinxi:', e.message);
+}
+// --- SELF-FIXING LOGIC END ---
 
 // Get detailed git info with fallbacks
 const getGitInfo = () => {
