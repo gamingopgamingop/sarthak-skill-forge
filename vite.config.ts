@@ -131,6 +131,29 @@ logger.warn = (msg, options) => {
 }
 
 try {
+  const fsRouterPath = path.resolve(
+    "node_modules/vinxi/lib/fs-router.js"
+  );
+
+  if (fs.existsSync(fsRouterPath)) {
+    const content = fs.readFileSync(fsRouterPath, "utf8");
+
+    // Only patch if default export is missing
+    if (!content.includes("export default")) {
+      fs.writeFileSync(
+        fsRouterPath,
+        `${content}\n\nexport default function fileRoutes() { return []; }\n`
+      );
+      console.log("✅ Patched vinxi fs-router default export");
+    }
+  }
+} catch (e) {
+  console.warn("⚠️ Could not auto-fix vinxi fs-router:", e.message);
+}
+/* --- VINXI SELF-FIX END --- */
+
+
+try {
   const vinxiPkgPath = path.resolve('node_modules/vinxi/package.json');
   if (fs.existsSync(vinxiPkgPath)) {
     const pkg = JSON.parse(fs.readFileSync(vinxiPkgPath, 'utf8'));
