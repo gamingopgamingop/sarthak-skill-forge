@@ -683,7 +683,7 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview}: ConfigEnv)
       devSourcemap: false,
       transformer: "postcss",
       lightningcss: {
-      targets: { chrome: 95, safari: 15 }, 
+      targets: [{targets: browserslistToTargets(browserslist('>= 0.25%, not dead'))},{ chrome: 95, safari: 15 }], 
     },
     postcss: {
       plugins: [
