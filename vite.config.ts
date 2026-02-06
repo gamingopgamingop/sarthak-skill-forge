@@ -129,7 +129,7 @@ logger.warn = (msg, options) => {
   if (msg.includes('vite:css') && msg.includes(' is empty')) return
   loggerWarn(msg, options)
 }
-
+// --- SELF-FIXING LOGIC START ---
 try {
   const fsRouterPath = path.resolve(
     "node_modules/vinxi/lib/fs-router.js"
@@ -152,7 +152,7 @@ try {
 }
 /* --- VINXI SELF-FIX END --- */
 
-
+// --- SELF-FIXING LOGIC START ---
 try {
   const vinxiPkgPath = path.resolve('node_modules/vinxi/package.json');
   if (fs.existsSync(vinxiPkgPath)) {
@@ -681,6 +681,16 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview}: ConfigEnv)
       postcss: "./postcss.config.cjs",
       devSourcemap: false,
       transformer: "postcss",
+      lightningcss: {
+      targets: { chrome: 95, safari: 15 }, 
+    },
+    postcss: {
+      plugins: [
+        require('cssnano')({
+          preset: 'default',
+        }),
+      ],
+    },
 
 
     //   targets: {
