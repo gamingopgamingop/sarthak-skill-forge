@@ -277,6 +277,18 @@ const getVituumInput = () => {
 };
 const input = getVituumInput();
 
+const detectMixedImports = () => ({
+  name: 'detect-mixed-imports',
+  transform(code: string, id: string) {
+    if (id.endsWith('App.tsx') || id.endsWith('routes.tsx')) {
+      const forbiddenStatic = /import\s+.*\s+from\s+['"].*\/pages\/(Skills|Projects|Tech)Page['"]/g;
+      if (forbiddenStatic.test(code)) {
+        console.warn('\x1b[31m%s\x1b[0m', `🛑 CRITICAL: Static import detected in ${id}. This breaks code splitting for your pages!`);
+      }
+    }
+    return null;
+  },
+});
 
 const pkg = getPackageJson();
 const gitInfo = getGitInfo();
@@ -486,6 +498,7 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview}: ConfigEnv)
       //   serverHandler: false,
       //   reactServerComponents: true,
       // }),
+      detectMixedImports(),
     tsConfigPaths({
       projects: ['./tsconfig.json'],
       root: './src',
