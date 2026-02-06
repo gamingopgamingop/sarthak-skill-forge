@@ -125,6 +125,22 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const logger = createLogger()
 const loggerWarn = logger.warn
 
+const lottiePath = path.resolve('node_modules/lottie-web/build/player/lottie.js');
+
+if (fs.existsSync(lottiePath)) {
+  let content = fs.readFileSync(lottiePath, 'utf8');
+  
+  // Convert direct eval(...) to indirect (0, eval)(...)
+  // This satisfies Rolldown and Vite's security/optimization checks
+  const fixedContent = content.replace(
+    /eval\('\[function _expression_function\(\){' \+ val \+ ';scoped_bm_rt=\$bm_rt}\]'\)/g,
+    "(0, eval)('[function _expression_function(){' + val + ';scoped_bm_rt=$bm_rt}]')"
+  );
+
+  fs.writeFileSync(lottiePath, fixedContent);
+  console.log('✅ Fixed direct eval in lottie-web');
+}
+
 logger.warn = (msg, options) => {
   // Ignore empty CSS files warning
   if (msg.includes('vite:css') && msg.includes(' is empty')) return
@@ -683,7 +699,7 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview}: ConfigEnv)
       devSourcemap: false,
       transformer: "postcss",
       lightningcss: {
-      targets: [{targets: browserslistToTargets(browserslist('>= 0.25%, not dead'))},{ chrome: 95, safari: 15 }], 
+      targets: [{targets: browserslistToTargets(browserslist('>= 0.25%, not dead'))},{ chrome: 95, safari: 15 },{customSelectors: true}], 
     },
     postcss: {
       plugins: [
