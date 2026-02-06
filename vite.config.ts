@@ -821,6 +821,8 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview}: ConfigEnv)
       "vinxi/routes": "vinxi",
       fs: 'unenv/runtime/node/fs/index',
       path: 'unenv/runtime/node/path/index',
+      fs: 'path-browserify', // or a blank polyfill
+      child_process: 'path-browserify',
 
       // '*': path.resolve(__dirname, 'src'),
 
