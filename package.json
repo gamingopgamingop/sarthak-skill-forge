@@ -153,8 +153,7 @@
   ],
 
   "dependencies": {
-        "@solidjs/start": "^1.2.1",
-
+    "@solidjs/start": "^1.2.1",
     "@motiadev/stream-client-react": "^0.17.14-beta.196",
     "postcss": "^8.5.6",
     "h3": "^1.15.5",
