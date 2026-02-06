@@ -43,7 +43,8 @@ import viteImageminOriginal from "vite-plugin-imagemin";
 import { fileURLToPath, URL } from 'node:url'
 import { svelte } from '@sveltejs/vite-plugin-svelte'
 import type { VercelRequest, VercelResponse } from '@vercel/node'
-
+import { browserslistToTargets } from 'lightningcss';
+import browserslist from 'browserslist';
 import imageminMozjpeg from "imagemin-mozjpeg";
 import imageminWebp from "imagemin-webp";
 import imageminGifsicle from "imagemin-gifsicle";
@@ -687,7 +688,7 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview}: ConfigEnv)
     postcss: {
       plugins: [
         require('cssnano')({
-          preset: 'default',
+          preset: ['default', { discardComments: { removeAll: true } }],
         }),
       ],
     },
