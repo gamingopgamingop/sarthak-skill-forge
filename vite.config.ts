@@ -1,6 +1,6 @@
 // @ts-nocheck
 // @ts-ignore
-
+import tailwindcssTheme from '@theme/tailwindcss';
 import { nitro } from 'nitro/vite'
 import fs from "fs";
 import svgr from 'vite-plugin-svgr'
@@ -823,7 +823,6 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview}: ConfigEnv)
       path: 'unenv/runtime/node/path/index',
       fs: 'path-browserify', // or a blank polyfill
       child_process: 'path-browserify',
-
       // '*': path.resolve(__dirname, 'src'),
 
 
@@ -874,7 +873,7 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview}: ConfigEnv)
     // ssr: true,
     // outDir: 'dist',
     rollupOptions: {
-      external: [...Object.keys(pkg.dependencies), 'bcrypt', 'mongoose', 'express', 'node:path', 'node:fs', 'node:http', 'node:https', 'node:net', 'node:crypto', 'node:stream', 'node:util', 'node:zlib', 'node:events', 'node:buffer', 'node:assert', 'node:process', 'node:querystring', 'node:url', 'node:dns', 'node:net', 'node:tls', 'node:http2', 'node:https', 'node:stream', 'node:util', 'node:zlib', 'node:events', 'node:buffer', 'node:assert', 'node:process', 'node:querystring', 'node:url', 'node:dns', 'node:net', 'node:tls', 'node:http2', 'vinxi/routes'],
+      external: [...Object.keys(pkg.dependencies), 'bcrypt', 'mongoose', 'express', 'node:path', 'node:fs', 'node:http', 'node:https', 'node:net', 'node:crypto', 'node:stream', 'node:util', 'node:zlib', 'node:events', 'node:buffer', 'node:assert', 'node:process', 'node:querystring', 'node:url', 'node:dns', 'node:net', 'node:tls', 'node:http2', 'node:https', 'node:stream', 'node:util', 'node:zlib', 'node:events', 'node:buffer', 'node:assert', 'node:process', 'node:querystring', 'node:url', 'node:dns', 'node:net', 'node:tls', 'node:http2', 'vinxi/routes', 'esbuild', 'fdir'],
       // input: isProd ? './src/server.ts' : './index.html',
       input: 'src/server.ts',
       onwarn(warning, warn) {
