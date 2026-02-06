@@ -869,6 +869,13 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview}: ConfigEnv)
         }
         warn(warning);
       },
+      onwarn(warning, warn) {
+        // Skip the eval warning for Lottie
+        if (warning.code === 'EVAL' && warning.id?.includes('lottie-web')) {
+          return;
+        }
+        warn(warning);
+      },
 
 
       // input: isProd ? './src/server.ts' : './index.html',
