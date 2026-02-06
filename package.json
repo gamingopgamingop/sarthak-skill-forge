@@ -394,7 +394,6 @@
     "@vinxi/plugin-mdx": "^3.7.2",
     "@vinxi/react-server-dom": "^0.0.3",
     "@content-collections/vinxi": "^0.1.2",
-
     "sourcemap-codec": "^1.4.8",
     "sourcemap": "^0.1.0",
     "@jridgewell/sourcemap-codec": "^1.5.5",
