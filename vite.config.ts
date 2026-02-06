@@ -1162,6 +1162,12 @@ export const remixConfig : defineViteConfig = defineConfig(({ mode }: { mode: st
     plugins: [
       nodePolyfills({
         include: ['path', 'buffer', 'process'],
+        globals: {
+        Buffer: true,
+        global: true,
+        process: true,
+      },
+      protocolImports: true,
       }),
 
       // !isTest && remixCloudflareDevProxy(),
