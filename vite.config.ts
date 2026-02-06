@@ -935,6 +935,47 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview}: ConfigEnv)
           if(moduleId.includes('styles')) return 'styles';
           if(moduleId.includes('components')) return 'components';
           if(moduleId.includes('pages')) return 'pages';
+          if(moduleId.includes('routes')) return 'routes';
+          if(moduleId.includes('server')) return 'server';
+          if(moduleId.includes('client')) return 'client';
+          if(moduleId.includes('public')) return 'public';
+          if(moduleId.includes('assets')) return 'assets';
+          if(moduleId.includes('styles')) return 'styles';
+          if(moduleId.includes('components')) return 'components';
+          if(moduleId.includes('pages')) return 'pages';
+          if(moduleId.includes('routes')) return 'routes';
+          if(moduleId.includes('server')) return 'server';
+          if(moduleId.includes('client')) return 'client';
+          if(moduleId.includes('public')) return 'public';
+          if(moduleId.includes('assets')) return 'assets';
+          if(moduleId.includes('styles')) return 'styles';
+          if(moduleId.includes('components')) return 'components';
+          if(moduleId.includes('pages')) return 'pages';
+          if(moduleId.includes('routes')) return 'routes';
+          if(moduleId.includes('server')) return 'server';
+          if(moduleId.includes('client')) return 'client';
+          if(moduleId.includes('public')) return 'public';
+          if(moduleId.includes('assets')) return 'assets';
+          if(moduleId.includes('styles')) return 'styles';
+          if(moduleId.includes('components')) return 'components';
+          if(moduleId.includes('pages')) return 'pages';
+          if(moduleId.includes('routes')) return 'routes';
+          if(moduleId.includes('server')) return 'server';
+          if(moduleId.includes('client')) return 'client';
+          if(moduleId.includes('public')) return 'public';
+          if(moduleId.includes('assets')) return 'assets';
+          if(moduleId.includes('styles')) return 'styles';
+          if(moduleId.includes('components')) return 'components';
+          if(moduleId.includes('pages')) return 'pages';
+          if(moduleId.includes('routes')) return 'routes';
+          if(moduleId.includes('server')) return 'server';
+          if(moduleId.includes('client')) return 'client';
+          if (id.includes('src/pages/')) {
+            // Split SkillsPage, ProjectsPage, and TechPage into their own chunks
+            const name = id.split('/').pop()?.split('.')[0];
+            if (name === 'SkillsPage' || name === 'ProjectsPage' || name === 'TechPage') {
+              return `page-${name.toLowerCase()}`;
+            }}
           if (/\/react(?:-dom)?/.test(id)) {
             return 'vendor-react';
           }
