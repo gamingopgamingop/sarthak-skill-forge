@@ -1,7 +1,7 @@
 {
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
-  "installCommand": "npm install --legacy-peer-deps",
+  "installCommand": "npm install --engine-strict=false --legacy-peer-deps",
   "functions": {
     "api/**/*.ts": {
       "runtime": "@vercel/node@3.2.0"
