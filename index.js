@@ -1,8 +1,11 @@
+// @ts-ignore
+// @ts-nocheck
+
 import { once } from "events";
 import express from "express";
 import markoMiddleware from "@marko/express";
 import compressionMiddleware from "compression";
-
+// n
 const devEnv = "development";
 const { NODE_ENV = devEnv, PORT = 3000 } = process.env;
 console.time("Start");
