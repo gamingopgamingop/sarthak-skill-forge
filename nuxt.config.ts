@@ -2,6 +2,9 @@
 // @ts-expect-error
 // @ts-ignore
 import { defineNuxtConfig } from 'nuxt/config'
+import marko from "@marko/vite";
+import babelConfig from "./options.babelConfig";
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import config, { mergeConfig } from './uno.config.ts'
 // import { mergeConfig } from './uno.config.ts'
@@ -16,6 +19,10 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   vite: {     
     plugins: [
+      marko({
+        babelConfig,
+      }),
+
       UnoCSS({
         configFile: './uno.config.ts',
         config: mergeConfig({
