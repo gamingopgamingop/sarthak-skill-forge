@@ -125,6 +125,7 @@ dotenv.config();
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const logger = createLogger()
 const loggerWarn = logger.warn
+const isRolldown = !!(globalThis as any).__rolldown__;
 
 const lottiePath = path.resolve('node_modules/lottie-web/build/player/lottie.js');
 
