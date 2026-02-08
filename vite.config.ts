@@ -922,6 +922,26 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview}: ConfigEnv)
  
         // 'index.html': path.resolve(__dirname, 'index.html'),
       // },
+        advancedChunks: {
+    groups: {
+      react: {
+        test: /react|react-dom/,
+        name: 'vendor-react'
+      },
+      vue: {
+        test: /vue/,
+        name: 'vendor-vue'
+      },
+      angular: {
+        test: /angular|rxjs/,
+        name: 'vendor-angular'
+      },
+      node: {
+        test: /node_modules/,
+        name: 'vendor'
+      }
+    }
+  },
       output: {
         format: "es",
         manualChunks(id : Parameters<GetManualChunk>[0] | string  | unknown) {
@@ -1014,6 +1034,7 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview}: ConfigEnv)
         // },
       },
     },
+    advancedChunks : false,
     terserOptions: {
       compress: { drop_console: mode === "production", drop_debugger: mode === "production" },
       format: { comments: false },
