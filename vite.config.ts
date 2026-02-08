@@ -714,6 +714,7 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview}: ConfigEnv)
     css: {          
       lightningcss: false,
       postcss: "./postcss.config.cjs",
+      postcss: [tailwindcss()],
       devSourcemap: false,
       transformer: "postcss",
       lightningcss: {
