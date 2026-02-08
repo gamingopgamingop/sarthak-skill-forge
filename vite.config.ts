@@ -78,6 +78,7 @@ import liquidNode from 'liquid-node'
 // import vituum , { setupGlobals as installGlobals } from 'vituum'
 // import vituum from 'vituum/globals'
 import vituum from 'vituum'
+// import marko from "@marko/vite";
 
 // import { installGlobals } from 'vituum/dist/globals.js'
 import pages from 'vituum/plugins/pages.js'
@@ -508,6 +509,9 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview}: ConfigEnv)
       ignoreConfigErrors: true
     }),
       !isRSC && qwik(),
+      marko({
+      babelConfig,
+    }),
 
 
 
@@ -605,7 +609,7 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview}: ConfigEnv)
     solid(),
     preact(),
     angular({ include: [/\.html$/] }),
-    marko(),
+    // marko(),
     tailwindcssVite(),
     vitummliquid(),
     // viteTanstackStart(),

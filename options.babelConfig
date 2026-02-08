@@ -1,5 +1,0 @@
-marko({
-  babelConfig: {
-    presets: ["@babel/preset-env"],
-  },
-});
