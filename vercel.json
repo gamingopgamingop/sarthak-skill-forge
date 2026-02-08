@@ -2,6 +2,15 @@
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "installCommand": "npm install --engine-strict=false --legacy-peer-deps",
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/node",
+      "config": { 
+        "nodeVersion": "22.x"
+      }
+    }
+  ],
   "functions": {
     "api/**/*.ts": {
       "runtime": "@vercel/node@3.2.0"
