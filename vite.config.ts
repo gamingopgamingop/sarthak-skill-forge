@@ -1300,6 +1300,8 @@ export default {
           react: ["react", "react-dom"],
           router: ["react-router-dom", "@tanstack/router"],
           animation: ["gsap", "@react-spring/web"],
+          ui: ['@radix-ui/react-*'],
+
       },
 
       }
