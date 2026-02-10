@@ -868,6 +868,7 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview}: ConfigEnv)
     '@tanstack/react-start/server': false,
     '@tanstack/react-start/server-rpc': false,
     'vinxi/server': false,
+    'node:events': 'events',
 
       // '*': path.resolve(__dirname, 'src'),
 
