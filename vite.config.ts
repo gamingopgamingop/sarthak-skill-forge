@@ -126,7 +126,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const logger = createLogger()
 const loggerWarn = logger.warn
 const isRolldown = !!(globalThis as any).__rolldown__;
-
+const targetPath = './node_modules/@tanstack/react-start/package.json';
 const lottiePath = path.resolve('node_modules/lottie-web/build/player/lottie.js');
 
 if (fs.existsSync(lottiePath)) {
@@ -141,6 +141,33 @@ if (fs.existsSync(lottiePath)) {
 
   fs.writeFileSync(lottiePath, fixedContent);
   console.log('✅ Fixed direct eval in lottie-web');
+}
+
+try {
+  // 1. Resolve absolute path to ensure we find it
+  const absolutePath = path.resolve(targetPath);
+
+  if (!fs.existsSync(absolutePath)) {
+    console.error(`❌ Could not find file at: ${absolutePath}`);
+    process.exit(1);
+  }
+
+  // 2. Read and parse the JSON
+  const fileContent = fs.readFileSync(absolutePath, 'utf8');
+  const pkg = JSON.parse(fileContent);
+
+  // 3. Update the node version to 24
+  if (!pkg.engines) pkg.engines = {};
+  pkg.engines.node = ">=24.0.0";
+
+  // 4. Save the changes
+  fs.writeFileSync(absolutePath, JSON.stringify(pkg, null, 2));
+
+  console.log('✅ Successfully updated @tanstack/react-start to require Node 24');
+  console.log(`📍 Path: ${absolutePath}`);
+
+} catch (error) {
+  console.error('❌ Failed to patch the file:', error.message);
 }
 
 logger.warn = (msg, options) => {
