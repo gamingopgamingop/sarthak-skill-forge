@@ -278,7 +278,7 @@ const getVituumInput = () => {
   return ['src/pages/**/*.html'];
 };
 const input = getVituumInput();
-const isProd = process.env.NODE_ENV === 'production'
+// const isProd = process.env.NODE_ENV === 'production'
 
 const detectMixedImports = () => ({
   name: 'detect-mixed-imports',
