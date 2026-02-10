@@ -220,8 +220,8 @@ const getGitInfo = () => {
     };
   }
 };
-const isRSC = true
-const isSSR = true
+const isRSC = process.env.VITE_RSC === 'false'
+const isSSR = process.env.VITE_SSR === 'false'
 const htmlInputs = Object.fromEntries(
   [
     'index.liquid.html',
@@ -711,6 +711,13 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview}: ConfigEnv)
 // }
 
   ].filter(Boolean) as Plugin[],
+    optimizeDeps: {
+    exclude: [
+      '@tanstack/react-start/server',
+      '@tanstack/react-start/server-rpc',
+    ],
+  },
+
     css: {          
       lightningcss: false,
       postcss: "./postcss.config.cjs",
