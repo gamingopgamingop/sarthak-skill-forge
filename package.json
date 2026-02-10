@@ -1103,6 +1103,11 @@
   },
   "overrides": {
     "vite": "^7.1.7",
+    "lightningcss": "^1.28.2",
+    "glob": "^11.0.0",
+    "rimraf": "^6.0.0",
+    "inflight": "npm:@isaacs/inflight-deprecated-do-not-use@1.0.6",
+    "lru-cache": "^11.0.2",
     "@vinxi/react-server-dom": {
       "react": "19.2.4"
     },
@@ -1110,17 +1115,11 @@
       "engines": {
         "node": ">=24.0.0"
       }
-    },
-    "glob": "^11.0.0",
-    "rimraf": "^6.0.0",
-    "inflight": "npm:@isaacs/inflight-deprecated-do-not-use@1.0.6",
-    "lru-cache": "^11.0.0"
-
-  }
+    }
 
 
 
 
 
 }
-
+}
