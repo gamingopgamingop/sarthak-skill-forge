@@ -859,6 +859,7 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview}: ConfigEnv)
         // ssr: isProd,
     // ssr: true,
     // ssr: isProd ? { target: "webworker", noExternal: mode === "production" } : false,
+    ssr: command === 'build' && process.env.BUILD_TARGET === 'server',
 
     // minify: [true, "terser"],
     // cssMinify: "esbuild",
@@ -895,7 +896,12 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview}: ConfigEnv)
       external: [...Object.keys(pkg.dependencies), 'bcrypt', 'mongoose', 'express', 'node:path', 'node:fs', 'node:http', 'node:https', 'node:net', 'node:crypto', 'node:stream', 'node:util', 'node:zlib', 'node:events', 'node:buffer', 'node:assert', 'node:process', 'node:querystring', 'node:url', 'node:dns', 'node:net', 'node:tls', 'node:http2', 'node:https', 'node:stream', 'node:util', 'node:zlib', 'node:events', 'node:buffer', 'node:assert', 'node:process', 'node:querystring', 'node:url', 'node:dns', 'node:net', 'node:tls', 'node:http2', 'vinxi/routes', 'esbuild', 'fdir'],
       // input: isProd ? './src/server.ts' : './index.html',
       // input: 'src/server.ts',
-      input : isProd ? './src/server.ts' : './index.html',
+      // input : isProd ? './src/server.ts' : './index.html',
+            input:
+        command === 'build' && process.env.BUILD_TARGET === 'server'
+          ? './src/server.ts'
+          : './index.html',
+
       onwarn(warning, warn) {
         if (
           warning.code === "EVAL" &&
