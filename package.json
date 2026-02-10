@@ -1104,7 +1104,7 @@
   "overrides": {
     "vite": "^7.1.7",
     "lightningcss": "^1.28.2",
-    "inflight": "npm:@isaacs/inflight-deprecated-do-not-use@1.0.6",
+    "inflight": "npm:@empty",
     "@vinxi/react-server-dom": {
       "react": "19.2.4"
     },
