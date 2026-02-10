@@ -537,7 +537,8 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview}: ConfigEnv)
     /^_/, /\.test\./, /\+config/, /\.svelte$/, /\.vue$/, /\.qwik/],
       routeFileIgnorePrefix: "-",
       presets: [vercelPreset()],
-      ssr: mode === "production", // Use the preset
+      // ssr: mode === "production", // Use the preset
+      ssr: false,
     }),
         reactOxc({ include: /\.(mdx|js|jsx|ts|tsx)$/ , jsxImportSource: '@emotion/react', tsDecorators: true , plugins: [['@swc/plugin-styled-components', {}]], devTarget: 'es2022', parserConfig(id) {
     if (id.endsWith('.res')) return { syntax: 'ecmascript', jsx: true }
@@ -836,6 +837,10 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview}: ConfigEnv)
       path: 'unenv/runtime/node/path/index',
       fs: 'path-browserify', // or a blank polyfill
       child_process: 'path-browserify',
+    '@tanstack/react-start/server': false,
+    '@tanstack/react-start/server-rpc': false,
+    'vinxi/server': false,
+
       // '*': path.resolve(__dirname, 'src'),
 
 
