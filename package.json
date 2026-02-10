@@ -1109,7 +1109,11 @@
       "engines": {
         "node": ">=24.0.0"
       }
-    }
+    },
+    "glob": "^11.0.0",
+    "rimraf": "^6.0.0",
+    "inflight": "npm:@isaacs/inflight-deprecated-do-not-use@1.0.6",
+    "lru-cache": "^11.0.0"
 
   }
 
