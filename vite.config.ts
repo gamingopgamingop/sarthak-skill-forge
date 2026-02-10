@@ -971,6 +971,7 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview}: ConfigEnv)
           if (id.includes('node_modules')) return 'vendor';
           if (typeof id === "string" && id.includes("node_modules")) return "vendor";
           if (moduleId.includes('react')) return 'vendor-react';
+          if (id.includes('@tanstack')) return 'vendor-tanstack';
           if (moduleId.includes('angular') || moduleId.includes('rxjs')) return 'vendor-angular';
           if (moduleId.includes('vue')) return 'vendor-vue';
           if (moduleId.includes('svelte')) return 'vendor-svelte';
