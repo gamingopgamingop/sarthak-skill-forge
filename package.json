@@ -1104,6 +1104,11 @@
     "vite": "^7.1.7",
     "@vinxi/react-server-dom": {
       "react": "19.2.4"
+    },
+    "@tanstack/react-start": {
+      "engines": {
+        "node": ">=24.0.0"
+      }
     }
 
   }
