@@ -42,3 +42,4 @@
       "node": " ^20.9.0 || >=21.1.0 || >=22.0.0 || >=22.12.0" ,
 
 
+  // "installCommand": "npm install  --legacy-peer-deps",
