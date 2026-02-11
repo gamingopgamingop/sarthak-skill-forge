@@ -1,5 +1,9 @@
+// next.config.ts
+// @ts-nocheck
+// @ts-ignore
+
 import type { NextConfig } from 'next'
-const { withBlitz } = require("@blitzjs/next")
+import { withBlitz } from "@blitzjs/next"
 
 const nextConfig: NextConfig = {
     experimental: {
