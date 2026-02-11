@@ -1,7 +1,7 @@
 {
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
-  "installCommand": "npm install --engine-strict=false --legacy-peer-deps",
+  "installCommand": "npm install  --legacy-peer-deps",
   "rewrites": [
     {
       "source": "/api/:path*",
