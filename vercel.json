@@ -1,6 +1,7 @@
 {
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
+  "framework": "nextjs || vite || blitzjs || express || fastify || solidjs || react || nuxtjs || sveltekit || astro || other",
   "rewrites": [
     {
       "source": "/api/:path*",
