@@ -16,10 +16,10 @@ const nextConfig: NextConfig = {
     runAfterProductionCompile: async ({ distDir, projectDir }) => {
     },
     removeConsole: true,
-    // removeConsole: { exclude: ['error'] }, // optional
+    removeConsole: { exclude: ['error'] }, // optional
     styledComponents: true,
     reactRemoveProperties: true,
-    // reactRemoveProperties: { properties: ['^data-custom$'] }, // optional
+    reactRemoveProperties: { properties: ['^data-custom$'] }, // optional
     relay: {
       src: './',
       artifactDirectory: './__generated__',
