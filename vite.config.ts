@@ -106,6 +106,7 @@ import handlebars from '@vituum/vite-plugin-handlebars'
 import vitummliquid  from '@vituum/vite-plugin-liquid'
 // import tailwindcss from '@vituum/vite-plugin-tailwindcss'
 import postcss from '@vituum/vite-plugin-postcss'
+import { VitePWA } from 'vite-plugin-pwa'
 
 // installGlobals();
 import { cloudflareDevProxyVitePlugin as remixCloudflareDevProxy, vitePlugin as remixVitePlugin } from '@remix-run/dev';
@@ -547,6 +548,29 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview}: ConfigEnv)
 
     // vike(),
     handlebars(),
+        VitePWA({
+      registerType: 'autoUpdate',
+      manifest: {
+        name: 'My App',
+        short_name: 'MyApp',
+        description: 'My awesome app',
+        theme_color: '#000000',
+        background_color: '#ffffff',
+        display: 'standalone',
+        icons: [
+          {
+            src: '/icon-192.png',
+            sizes: '192x192',
+            type: 'image/png'
+          },
+          {
+            src: '/icon-512.png',
+            sizes: '512x512',
+            type: 'image/png'
+          }
+        ]
+      }
+    }),
     pug({
         root: './src'
     }),
