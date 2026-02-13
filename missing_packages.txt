@@ -15,6 +15,10 @@
     "@vitejs/plugin-react-swc": "^3.11.0", ==> i create my own react-router bcz not supported by node modules and in dependanceis
     "postcss": "^8.5.6", ==> in dependanceis
 
+    "bun": "^1.3.1",
+    "deno": "^2.5.4",
+    "pnpm": "^10.19.0",
+    "yarn": "^1.22.22",
 
     "typescript-eslint": "^8.45.0",
 
