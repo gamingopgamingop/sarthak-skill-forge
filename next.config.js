@@ -1,13 +1,14 @@
-// // @ts-check
-//  const { withBlitz } = require("@blitzjs/next")
+// @ts-nocheck
+// @ts-ignore
+ const { withBlitz } = require("@blitzjs/next")
 
-// /** @type {import('next').NextConfig} */
-// const nextConfig = {
-//     experimental: {
-//     typedRoutes: true,
-//   },
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+    experimental: {
+    typedRoutes: true,
+  },
 
-//   /* config options here */
-// }
+  /* config options here */
+}
  
-// module.exports = nextConfig
+module.exports = nextConfig
