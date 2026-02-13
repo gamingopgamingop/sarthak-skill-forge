@@ -1,7 +1,6 @@
 {
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
-  "installCommand": "rm -rf node_modules package-lock.json && npm cache clean --force && npm install --engine-strict=false --legacy-peer-deps",
   "rewrites": [
     {
       "source": "/api/:path*",
