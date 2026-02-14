@@ -1,3 +1,7 @@
+// jest.config.js
+// @ts-nocheck
+// @ts-ignore
+
 import nextJest from 'next/jest';
 
 const createJestConfig = nextJest({ dir: './' });
