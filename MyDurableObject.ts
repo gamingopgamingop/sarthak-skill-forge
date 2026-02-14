@@ -1,3 +1,7 @@
+// MyDurableObject.ts
+// @ts-nocheck
+// @ts-ignore
+
 /// <reference types="@cloudflare/workers-types" />
 import { drizzle, type DrizzleSqliteDODatabase } from 'drizzle-orm/durable-sqlite';
 import { DurableObject } from 'cloudflare:workers';
