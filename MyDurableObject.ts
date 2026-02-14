@@ -15,6 +15,22 @@ export interface Env {
   // ANOTHER_BINDING: string;
 }
 
+export class MyDurableObject extends DurableObject<Env> {
+  db: DrizzleSqliteDODatabase;
+
+  constructor(ctx: DurableObjectState, env: Env) {
+    super(ctx, env);
+    this.db = drizzle(ctx.storage, { logger: false });
+    ctx.blockConcurrencyWhile(() => migrate(this.db, migrations));
+  }
+
+  async fetch(request: Request): Promise<Response> {
+    const url = new URL(request.url);
+    // your routes here
+    return new Response('MyDurableObject is running 🚀');
+  }
+}
+
 export class MyDurableObject extends DurableObject {
   storage: DurableObjectStorage;
   db: DrizzleSqliteDODatabase;
