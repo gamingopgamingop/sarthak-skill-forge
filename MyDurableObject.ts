@@ -11,8 +11,8 @@ import migrations from '../drizzle/migrations';
 // Optional: define environment bindings interface
 export interface Env {
   // Example bindings
-  // MY_KV: KVNamespace;
-  // ANOTHER_BINDING: string;
+  MY_KV: KVNamespace;
+  ANOTHER_BINDING: string;
 }
 
 export class MyDurableObject extends DurableObject<Env> {
