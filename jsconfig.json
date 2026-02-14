@@ -3,6 +3,12 @@
     "target": "ESNext",
     "module": "ESNext",
     "moduleResolution": "bundler",
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["src/*"]
+    },
+    "jsx": "react-jsx",
+
 
     /* Svelte recommended */
     "verbatimModuleSyntax": true,
@@ -18,6 +24,7 @@
     /* TypeScript will understand Vite & Svelte env types */
     "types": ["vite/client"]
   },
+  
 
   /* Do NOT include node_modules — avoid slow builds */
   "include": [

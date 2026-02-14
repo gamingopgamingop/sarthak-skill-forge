@@ -18,6 +18,7 @@
     "sourceMap": true,
     "types": ["vite/client", "node", "react", "react-dom", "vituum", "vitest", "vitest/globals", "vike-react"
 ],
+
     "strict": true,
     "noEmit": true,
     "verbatimModuleSyntax": true,
