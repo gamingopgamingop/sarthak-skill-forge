@@ -13,31 +13,39 @@ export default function WebGPUCanvas() {
         return;
       }
       const vertices = new Float32Array([
-  // x,    y,    z, w,   r, g, b, a
-   0.0,  0.6,   0, 1,   1, 0, 0, 1,
-  -0.5, -0.6,   0, 1,   0, 1, 0, 1,
-   0.5, -0.6,   0, 1,   0, 0, 1, 1,
-]);
+        // x,    y,    z, w,   r, g, b, a
+        0.0,  0.6,   0, 1,   1, 0, 0, 1,
+        -0.5, -0.6,   0, 1,   0, 1, 0, 1,
+        0.5, -0.6,   0, 1,   0, 0, 1, 1,
+        ]);
 
-const vertexBuffer = device.createBuffer({
-  size: vertices.byteLength,
-  usage: GPUBufferUsage.VERTEX | GPUBufferUsage.COPY_DST,
-});
+    const vertexBuffer = device.createBuffer({
+        size: vertices.byteLength,
+        usage: GPUBufferUsage.VERTEX | GPUBufferUsage.COPY_DST,
+        });
 
-device.queue.writeBuffer(vertexBuffer, 0, vertices);
+        device.queue.writeBuffer(vertexBuffer, 0, vertices);
 
-renderPass.setVertexBuffer(0, vertexBuffer);
-renderPass.draw(3); // 3 vertices
+        renderPass.setVertexBuffer(0, vertexBuffer);
+        renderPass.draw(3); // 3 vertices
 
-buffers: [
-  {
-    arrayStride: 8 * 4, // 8 floats * 4 bytes
-    attributes: [
-      { shaderLocation: 0, offset: 0, format: "float32x4" },
-      { shaderLocation: 1, offset: 4 * 4, format: "float32x4" },
-    ],
-  },
-]
+        buffers: [
+        {
+            arrayStride: 8 * 4, // 8 floats * 4 bytes
+            attributes: [
+            { shaderLocation: 0, offset: 0, format: "float32x4" },
+            { shaderLocation: 1, offset: 4 * 4, format: "float32x4" },
+            ],
+        },
+        ]
+    const vertexBuffer = device.createBuffer({
+        size: vertices.byteLength, // must match byte size
+        usage: GPUBufferUsage.VERTEX | GPUBufferUsage.COPY_DST,
+        mappedAtCreation: true
+        });
+        device.queue.writeBuffer(vertexBuffer, 0, vertices);
+
+
 
       const adapter = await navigator.gpu.requestAdapter();
       if (!adapter) return;
