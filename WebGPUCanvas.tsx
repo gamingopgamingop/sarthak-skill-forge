@@ -272,6 +272,39 @@ console.log(result);
 
 stagingBuffer.unmap();
 
+const bindGroupLayout = device.createBindGroupLayout({
+  entries: [
+    {
+      binding: 0,
+      visibility: GPUShaderStage.COMPUTE,
+      buffer: {
+        type: "storage",
+      },
+    },
+  ],
+});
+const pipelineLayout = device.createPipelineLayout({
+  bindGroupLayouts: [bindGroupLayout],
+});
+const computePipeline = device.createComputePipeline({
+  layout: pipelineLayout,
+  compute: {
+    module: shaderModule,
+    entryPoint: "main",
+  },
+});
+const bindGroup = device.createBindGroup({
+  layout: bindGroupLayout,
+  entries: [
+    {
+      binding: 0,
+      resource: {
+        buffer: output,
+      },
+    },
+  ],
+});
+
 const renderPipeline = device.createRenderPipeline(pipelineDescriptor);
 const commandEncoder = device.createCommandEncoder();
 passEncoder.setPipeline(renderPipeline);
