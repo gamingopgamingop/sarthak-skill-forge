@@ -858,6 +858,7 @@
 
 
   "devDependencies": {
+    "@webgpu/types": "^0.1.69",
     "assemblyscript": "^0.28.9",
     "vite-plugin-top-level-await": "^1.6.0",
     "vite-plugin-wasm": "^3.5.0",
