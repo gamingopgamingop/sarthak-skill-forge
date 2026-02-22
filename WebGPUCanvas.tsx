@@ -173,6 +173,9 @@ function render() {
 
 const renderPipeline = device.createRenderPipeline(pipelineDescriptor);
 const commandEncoder = device.createCommandEncoder();
+passEncoder.setPipeline(renderPipeline);
+passEncoder.setVertexBuffer(0, vertexBuffer);
+passEncoder.draw(3);
 const renderPass = commandEncoder.beginRenderPass({
   colorAttachments: [
     {
@@ -213,6 +216,9 @@ useEffect(() => {
 
 }, []);
   requestAnimationFrame(frame);
+  passEncoder.end();
+
+device.queue.submit([commandEncoder.finish()]);
 
 
   return (
