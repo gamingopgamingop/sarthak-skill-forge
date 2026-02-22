@@ -618,7 +618,9 @@
     "@vitejs/plugin-react-swc": "^4.2.2",
     "@mdx-js/rollup": "^3.1.1",
     "rolldown-vite": "^7.3.1",
-    "@assemblyscript/loader": "^0.28.9"
+    "@assemblyscript/loader": "^0.28.9",
+    "@wasmer/wasi": "^1.2.2"
+
 
 
 
@@ -1113,7 +1115,14 @@
       "engines": {
         "node": ">=24.0.0"
       }
+    },
+      "exports": {
+    ".": {
+      "import": "./build/release.js",
+      "types": "./build/release.d.ts"
     }
+  }
+
 
 
 
