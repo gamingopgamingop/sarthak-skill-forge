@@ -14,18 +14,24 @@ export default function WebGPUCanvas() {
       }
 
       const adapter = await navigator.gpu.requestAdapter();
+      if (!adapter) return;
+
       const device = await adapter.requestDevice();
 
+      // ✅ React-safe canvas access
       const canvas = canvasRef.current;
+      if (!canvas) return;
+
       const context = canvas.getContext("webgpu");
+      if (!context) return;
 
       context.configure({
         device,
         format: navigator.gpu.getPreferredCanvasFormat(),
-        alphaMode: "premultiplied",
+        alphaMode: "premultiplied", // or "opaque"
       });
 
-      console.log("Canvas configured");
+      console.log("WebGPU context configured");
     }
 
     init();
@@ -34,7 +40,6 @@ export default function WebGPUCanvas() {
   return (
     <canvas
       ref={canvasRef}
-      id="gpuCanvas"
       width={800}
       height={500}
       style={{ border: "1px solid black" }}
