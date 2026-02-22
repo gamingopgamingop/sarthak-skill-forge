@@ -340,6 +340,26 @@ pass.dispatchWorkgroups(Math.ceil(NUM_ELEMENTS / 64));
 
 pass.end();
 
+layout: device.createPipelineLayout({
+  bindGroupLayouts: [bindGroupLayout],
+})
+
+const shaderModule = device.createShaderModule({
+  code: shader,
+});
+
+const pipelineLayout = device.createPipelineLayout({
+  bindGroupLayouts: [bindGroupLayout],
+});
+
+const computePipeline = device.createComputePipeline({
+  layout: pipelineLayout,
+  compute: {
+    module: shaderModule,
+    entryPoint: "main",
+  },
+});
+
       const adapter = await navigator.gpu.requestAdapter();
       if (!adapter) return;
 
