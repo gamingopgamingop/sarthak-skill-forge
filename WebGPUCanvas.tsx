@@ -360,7 +360,11 @@ const computePipeline = device.createComputePipeline({
   },
 });
 
+passEncoder.setPipeline(computePipeline);
+passEncoder.setBindGroup(0, bindGroup);
+passEncoder.dispatchWorkgroups(Math.ceil(NUM_ELEMENTS / 64));
 
+passEncoder.end();
 
       const adapter = await navigator.gpu.requestAdapter();
       if (!adapter) return;
