@@ -45,6 +45,14 @@ export default function WebGPUCanvas() {
         });
         device.queue.writeBuffer(vertexBuffer, 0, vertices);
 
+        device.queue.writeBuffer(
+            vertexBuffer,
+            0,
+            vertices.buffer,
+            vertices.byteOffset,
+            vertices.byteLength
+            );
+device.queue.writeBuffer(vertexBuffer, 0, vertices);
 
 
       const adapter = await navigator.gpu.requestAdapter();
