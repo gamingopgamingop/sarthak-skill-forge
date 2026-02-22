@@ -243,6 +243,35 @@ console.log(result);
 
 readBuffer.unmap();
 
+const output = device.createBuffer({
+  size: BUFFER_SIZE,
+  usage: GPUBufferUsage.STORAGE | GPUBufferUsage.COPY_SRC,
+});
+
+const stagingBuffer = device.createBuffer({
+  size: BUFFER_SIZE,
+  usage: GPUBufferUsage.MAP_READ | GPUBufferUsage.COPY_DST,
+});
+
+encoder.copyBufferToBuffer(
+  output,
+  0,
+  stagingBuffer,
+  0,
+  BUFFER_SIZE
+);
+
+device.queue.submit([encoder.finish()]);
+
+await stagingBuffer.mapAsync(GPUMapMode.READ);
+
+const arrayBuffer = stagingBuffer.getMappedRange();
+const result = new Float32Array(arrayBuffer);
+
+console.log(result);
+
+stagingBuffer.unmap();
+
 const renderPipeline = device.createRenderPipeline(pipelineDescriptor);
 const commandEncoder = device.createCommandEncoder();
 passEncoder.setPipeline(renderPipeline);
