@@ -1,3 +1,6 @@
+// @ts-ignore
+// @ts-nocheck
+
 import { createServer } from 'vite'
 
 const entry = '/src/main.js'
