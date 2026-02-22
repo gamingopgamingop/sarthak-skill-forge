@@ -1,16 +1,16 @@
+import asyncio
 from openai import OpenAI
-openai_client = OpenAI()
+from langsmith import traceable
+from langsmith.wrappers import wrap_openai
+openai_client = wrap_openai(OpenAI())
 
-# This is the retriever we will use in RAG
-# This is mocked out, but it could be anything we want
 def retriever(query: str):
     results = ["Harrison worked at Kensho"]
     return results
 
-# This is the end-to-end RAG chain.
-# It does a retrieval step then calls OpenAI
-def rag(question):
-    docs = retriever(question)
+@traceable
+async def rag(question):
+    docs = await retriever(question)
     system_message = """Answer the users question using only the provided information below:
         {docs}""".format(docs="\n".join(docs))
 
