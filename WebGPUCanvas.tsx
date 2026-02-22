@@ -319,6 +319,26 @@ const renderPass = commandEncoder.beginRenderPass({
     },
   ],
 });
+const bindGroup = device.createBindGroup({
+  layout: bindGroupLayout,
+  entries: [
+    {
+      binding: 0,
+      resource: { buffer: output },
+    },
+  ],
+});
+
+const pass = encoder.beginComputePass();
+
+pass.setPipeline(computePipeline);
+
+// group index must match @group(0)
+pass.setBindGroup(0, bindGroup);
+
+pass.dispatchWorkgroups(Math.ceil(NUM_ELEMENTS / 64));
+
+pass.end();
 
       const adapter = await navigator.gpu.requestAdapter();
       if (!adapter) return;
