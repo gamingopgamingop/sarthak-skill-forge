@@ -93,6 +93,54 @@ const vertexBuffers = [
 renderPass.setVertexBuffer(0, vertexBuffer);
 renderPass.draw(3);
 
+const format = navigator.gpu.getPreferredCanvasFormat();
+
+const pipelineDescriptor = {
+  layout: "auto",
+
+  vertex: {
+    module: shaderModule,
+    entryPoint: "vertex_main",
+    buffers: vertexBuffers,
+  },
+
+  fragment: {
+    module: shaderModule,
+    entryPoint: "fragment_main",
+    targets: [{ format }],
+  },
+
+  primitive: {
+    topology: "triangle-list",
+      cullMode: "back",
+
+  },
+};
+
+targets: [
+  {
+    format,
+    blend: {
+      color: {
+        srcFactor: "src-alpha",
+        dstFactor: "one-minus-src-alpha",
+        operation: "add",
+      },
+      alpha: {
+        srcFactor: "one",
+        dstFactor: "zero",
+        operation: "add",
+      },
+      depthStencil: {
+  format: "depth24plus",
+  depthWriteEnabled: true,
+  depthCompare: "less",
+},
+    },
+  },
+]
+
+const pipeline = device.createRenderPipeline(pipelineDescriptor);
 
       const adapter = await navigator.gpu.requestAdapter();
       if (!adapter) return;
