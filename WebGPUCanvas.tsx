@@ -90,8 +90,8 @@ const vertexBuffers = [
   },
 ];
 
-renderPass.setVertexBuffer(0, vertexBuffer);
-renderPass.draw(3);
+passEncoder.setVertexBuffer(0, vertexBuffer);
+passEncoder.draw(3);
 
 const format = navigator.gpu.getPreferredCanvasFormat();
 
@@ -170,6 +170,78 @@ function render() {
 
   device.queue.submit([commandEncoder.finish()]);
 }
+const NUM_ELEMENTS = 1000;
+const BUFFER_SIZE = NUM_ELEMENTS * 4; // 4 bytes per float
+
+const adapter = await navigator.gpu.requestAdapter();
+const device = await adapter.requestDevice();
+
+const storageBuffer = device.createBuffer({
+  size: BUFFER_SIZE,
+  usage:
+    GPUBufferUsage.STORAGE |
+    GPUBufferUsage.COPY_SRC,
+});
+
+const readBuffer = device.createBuffer({
+  size: BUFFER_SIZE,
+  usage:
+    GPUBufferUsage.COPY_DST |
+    GPUBufferUsage.MAP_READ,
+});
+
+const shaderModule = device.createShaderModule({
+  code: shader,
+});
+
+const computePipeline =
+  device.createComputePipeline({
+    layout: "auto",
+    compute: {
+      module: shaderModule,
+      entryPoint: "main",
+    },
+  });
+
+  const bindGroup = device.createBindGroup({
+  layout: computePipeline.getBindGroupLayout(0),
+  entries: [
+    {
+      binding: 0,
+      resource: { buffer: storageBuffer },
+    },
+  ],
+});
+
+const encoder = device.createCommandEncoder();
+const pass = encoder.beginComputePass();
+
+pass.setPipeline(computePipeline);
+pass.setBindGroup(0, bindGroup);
+
+// ceil(1000 / 64)
+pass.dispatchWorkgroups(Math.ceil(NUM_ELEMENTS / 64));
+
+pass.end();
+
+// Copy GPU → CPU buffer
+encoder.copyBufferToBuffer(
+  storageBuffer,
+  0,
+  readBuffer,
+  0,
+  BUFFER_SIZE
+);
+
+device.queue.submit([encoder.finish()]);
+
+await readBuffer.mapAsync(GPUMapMode.READ);
+const arrayBuffer = readBuffer.getMappedRange();
+const result = new Float32Array(arrayBuffer);
+
+console.log(result);
+
+readBuffer.unmap();
 
 const renderPipeline = device.createRenderPipeline(pipelineDescriptor);
 const commandEncoder = device.createCommandEncoder();
