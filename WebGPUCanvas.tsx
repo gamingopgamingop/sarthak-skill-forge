@@ -397,6 +397,32 @@ commandEncoder.copyBufferToBuffer(
   BUFFER_SIZE,    // Size in bytes
 );
 
+// map staging buffer to read results back to JS
+await stagingBuffer.mapAsync(
+  GPUMapMode.READ,
+  0, // Offset
+  BUFFER_SIZE, // Length, in bytes
+);
+
+const copyArrayBuffer = stagingBuffer.getMappedRange(0, BUFFER_SIZE);
+const data = copyArrayBuffer.slice();
+stagingBuffer.unmap();
+console.log(new Float32Array(data));
+const copyArrayBuffer = stagingBuffer.getMappedRange(128, 256);
+const data2 = copyArrayBuffer.slice();
+stagingBuffer.unmap();
+console.log(new Float32Array(data2));
+stagingBuffer.unmap();
+console.log(new Float32Array(data));
+
+await stagingBuffer.mapAsync(GPUMapMode.READ);
+
+const mapped = stagingBuffer.getMappedRange();
+const data = new Float32Array(mapped.slice());
+
+stagingBuffer.unmap();
+
+console.log(data);
 // End frame by passing array of command buffers to command queue for execution
 device.queue.submit([commandEncoder.finish()]);
 
