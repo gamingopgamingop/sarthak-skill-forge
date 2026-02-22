@@ -619,7 +619,23 @@
     "@mdx-js/rollup": "^3.1.1",
     "rolldown-vite": "^7.3.1",
     "@assemblyscript/loader": "^0.28.9",
-    "@wasmer/wasi": "^1.2.2"
+    "@wasmer/wasi": "^1.2.2",
+    "napi-rs": "^0.3.10",
+    "bindings": "^1.5.0",
+    "wabt": "^1.0.39",
+    "binaryen": "^125.0.0",
+    "node-addon-api": "^8.5.0",
+    "koffi": "^2.15.1",
+    "i": "^0.3.7",
+    "piscina": "^5.1.4"
+
+
+
+
+
+
+
+
 
 
 
