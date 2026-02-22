@@ -360,6 +360,8 @@ const computePipeline = device.createComputePipeline({
   },
 });
 
+
+
       const adapter = await navigator.gpu.requestAdapter();
       if (!adapter) return;
 
