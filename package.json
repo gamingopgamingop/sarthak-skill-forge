@@ -627,7 +627,16 @@
     "node-addon-api": "^8.5.0",
     "koffi": "^2.15.1",
     "i": "^0.3.7",
-    "piscina": "^5.1.4"
+    "piscina": "^5.1.4",
+    "@wasmer/sdk": "^0.10.0",
+    "@webassemblyjs/wasm-parser": "^1.14.1",
+    "wasm-bindgen": "^0.0.1-security",
+     "comlink": "^4.4.2"
+
+
+
+
+
 
 
 
