@@ -366,6 +366,40 @@ passEncoder.dispatchWorkgroups(Math.ceil(NUM_ELEMENTS / 64));
 
 passEncoder.end();
 
+// Copy output buffer to staging buffer
+commandEncoder.copyBufferToBuffer(
+  output,
+  0, // Source offset
+  stagingBuffer,
+  0, // Destination offset
+  BUFFER_SIZE, // Length, in bytes
+);
+
+commandEncoder.copyBufferToBuffer(
+  output,
+  128,
+  stagingBuffer,
+  0,
+  256
+);
+
+device.queue.submit([commandEncoder.finish()]);
+
+await stagingBuffer.mapAsync(GPUMapMode.READ);
+
+await stagingBuffer.mapAsync(GPUMapMode.READ);
+
+commandEncoder.copyBufferToBuffer(
+  output,
+  0,              // Source offset
+  stagingBuffer,
+  0,              // Destination offset
+  BUFFER_SIZE,    // Size in bytes
+);
+
+// End frame by passing array of command buffers to command queue for execution
+device.queue.submit([commandEncoder.finish()]);
+
       const adapter = await navigator.gpu.requestAdapter();
       if (!adapter) return;
 
