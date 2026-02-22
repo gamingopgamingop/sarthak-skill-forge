@@ -809,6 +809,7 @@
 
 
   "devDependencies": {
+    "assemblyscript": "^0.28.9",
     "@semantic-release/github": "^11.0.6",
     "@semantic-release/npm": "^12.0.0",
     "@analogjs/vite-plugin-angular": "^2.2.2",
