@@ -87,3 +87,5 @@ coverage
 
 
   // "installCommand": "npm install  --legacy-peer-deps",
+
+    "three": "^0.180.0",
