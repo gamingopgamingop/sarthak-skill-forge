@@ -120,6 +120,8 @@ import { execSync } from 'child_process';
 import { readFileSync } from 'fs';
 // import { join } from 'path';
 // import viteTsConfigPaths from 'vite-tsconfig-paths'
+import wasm from 'vite-plugin-wasm'
+import topLevelAwait from 'vite-plugin-top-level-await'
 
 // const env = process.env.NODE_ENV || 'development';
 dotenv.config();
@@ -462,6 +464,8 @@ export default defineConfig(({ command, mode, isSsrBuild, isPreview}: ConfigEnv)
   plugins: [
     tailwindcss(),
     react(),
+    wasm(), 
+    topLevelAwait(),
 
 
 
