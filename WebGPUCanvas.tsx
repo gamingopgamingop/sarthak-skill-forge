@@ -54,6 +54,45 @@ export default function WebGPUCanvas() {
             );
 device.queue.writeBuffer(vertexBuffer, 0, vertices);
 
+const pipeline = device.createRenderPipeline({
+  layout: "auto",
+  vertex: {
+    module: shaderModule,
+    entryPoint: "vertex_main",
+    buffers: vertexBuffers,
+  },
+  fragment: {
+    module: shaderModule,
+    entryPoint: "fragment_main",
+    targets: [{ format }],
+  },
+  primitive: {
+    topology: "triangle-list",
+  },
+});
+
+const vertexBuffers = [
+  {
+    arrayStride: 32,
+    stepMode: "vertex",
+    attributes: [
+      {
+        shaderLocation: 0,
+        offset: 0,
+        format: "float32x4",
+      },
+      {
+        shaderLocation: 1,
+        offset: 16,
+        format: "float32x4",
+      },
+    ],
+  },
+];
+
+renderPass.setVertexBuffer(0, vertexBuffer);
+renderPass.draw(3);
+
 
       const adapter = await navigator.gpu.requestAdapter();
       if (!adapter) return;
