@@ -139,8 +139,49 @@ targets: [
     },
   },
 ]
+function render() {
+  const commandEncoder = device.createCommandEncoder();
 
-const pipeline = device.createRenderPipeline(pipelineDescriptor);
+  const textureView = context
+    .getCurrentTexture()
+    .createView();
+
+  const clearColor = { r: 0.0, g: 0.5, b: 1.0, a: 1.0 };
+
+  const renderPassDescriptor = {
+    colorAttachments: [
+      {
+        view: textureView,
+        clearValue: clearColor,
+        loadOp: "clear",
+        storeOp: "store",
+      },
+    ],
+  };
+
+  const passEncoder =
+    commandEncoder.beginRenderPass(renderPassDescriptor);
+
+  passEncoder.setPipeline(pipeline);
+  passEncoder.setVertexBuffer(0, vertexBuffer);
+  passEncoder.draw(3);
+
+  passEncoder.end();
+
+  device.queue.submit([commandEncoder.finish()]);
+}
+
+const renderPipeline = device.createRenderPipeline(pipelineDescriptor);
+const commandEncoder = device.createCommandEncoder();
+const renderPass = commandEncoder.beginRenderPass({
+  colorAttachments: [
+    {
+      view: context.getCurrentTexture().createView(),
+      loadOp: "clear",
+      storeOp: "store",
+    },
+  ],
+});
 
       const adapter = await navigator.gpu.requestAdapter();
       if (!adapter) return;
@@ -165,6 +206,14 @@ const pipeline = device.createRenderPipeline(pipelineDescriptor);
 
     init();
   }, []);
+
+useEffect(() => {
+  render();
+    requestAnimationFrame(frame);
+
+}, []);
+  requestAnimationFrame(frame);
+
 
   return (
     <canvas
