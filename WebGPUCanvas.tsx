@@ -52,6 +52,55 @@ export default function WebGPUCanvas() {
       }
 
       init();
+
+      const canvas = document.querySelector("#gpuCanvas");
+const context = canvas.getContext("webgpu");
+
+context.configure({
+  device,
+  format: navigator.gpu.getPreferredCanvasFormat(),
+  alphaMode: "premultiplied",
+  depthStencil: {
+    depthWriteEnabled: true,
+    depthCompare: "less",
+    format: "depth24plus",
+  },
+  multisample: {
+    count: 1,
+  },
+});
+
+const texture = context.getCurrentTexture();
+const view = texture.createView();
+
+const renderPassDescriptor = {
+  colorAttachments: [
+    {
+      view,
+      clearValue: { r: 0.0, g: 0.0, b: 0.0, a: 1.0 },
+      loadOp: "clear",
+      storeOp: "store",
+    },
+  ],
+};
+
+const passEncoder = context.createRenderPassEncoder(renderPassDescriptor);
+passEncoder.setPipeline(pipeline);
+passEncoder.setVertexBuffer(0, vertexBuffer);
+passEncoder.draw(3); // 3 vertices
+
+passEncoder.end();
+context.present();
+
+colorAttachments: [{
+  view,
+  loadOp: "clear",
+  storeOp: "store"
+}]
+
+canvas.width = canvas.clientWidth * window.devicePixelRatio;
+canvas.height = canvas.clientHeight * window.devicePixelRatio;
+
 }, []);
     const vertexBuffer = device.createBuffer({
         size: vertices.byteLength,
