@@ -133,6 +133,29 @@ const bindGroup = device.createBindGroup({
   label: "my_bind_group",
 
 });
+const commandBuffer = commandEncoder.finish();
+device.queue.submit([commandBuffer]);
+const commandBuffer = commandEncoder.finish();
+commandBuffer.label = "my_command_buffer";
+console.log(commandBuffer.label); // "my_command_buffer"
+context.unconfigure();
+
+
+const commandEncoder = device.createCommandEncoder();
+
+const renderPassDescriptor = {
+  colorAttachments: [
+    {
+      clearValue: [0, 0, 0, 1], // Opaque black
+      loadOp: "clear",
+      storeOp: "store",
+      view: context.getCurrentTexture().createView(),
+    },
+  ],
+};
+
+const passEncoder = commandEncoder.beginRenderPass(renderPassDescriptor);
+
 
 bindGroup.label = "my_bind_group";
 
@@ -142,17 +165,29 @@ const output = device.createBuffer({
   usage: GPUBufferUsage.STORAGE | GPUBufferUsage.COPY_SRC,
 });
 
+output.label = "my_buffer";
+
+console.log(output.label); // "my_buffer"
+
 const stagingBuffer = device.createBuffer({
   size: BUFFER_SIZE,
   usage: GPUBufferUsage.MAP_READ | GPUBufferUsage.COPY_DST,
 });
-
+  
+stagingBuffer.label = "my_staging_buffer";
 
 await stagingBuffer.mapAsync(
   GPUMapMode.READ,
   0, // Offset
   BUFFER_SIZE, // Length
 );
+
+output.destroy();
+
+getMappedRange()
+getMappedRange(offset)
+getMappedRange(offset, size)
+
 
 const copyArrayBuffer = stagingBuffer.getMappedRange(0, BUFFER_SIZE);
 const data = copyArrayBuffer.slice(0);
@@ -168,6 +203,7 @@ const output = device.createBuffer({
 output.label = "my_buffer";
 
 console.log(output.label); // "my_buffer"
+const BUFFER_SIZE = 1000;
 
 const output = device.createBuffer({
   size: BUFFER_SIZE,
