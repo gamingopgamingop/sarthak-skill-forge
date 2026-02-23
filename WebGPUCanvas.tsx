@@ -18,40 +18,40 @@ export default function WebGPUCanvas() {
         -0.5, -0.6,   0, 1,   0, 1, 0, 1,
         0.5, -0.6,   0, 1,   0, 0, 1, 1,
         ]);
-async function init() {
-  if (!("gpu" in navigator)) {
-    throw new Error("WebGPU not supported in this browser.");
-  }
+    async function init() {
+      if (!("gpu" in navigator)) {
+        throw new Error("WebGPU not supported in this browser.");
+      }
 
-  const adapter = await navigator.gpu.requestAdapter({
-    powerPreference: "high-performance",
-  });
+      const adapter = await navigator.gpu.requestAdapter({
+        powerPreference: "high-performance",
+      });
 
-  if (!adapter) {
-    throw new Error("Failed to get GPU adapter.");
-  }
+      if (!adapter) {
+        throw new Error("Failed to get GPU adapter.");
+      }
 
-  const device = await adapter.requestDevice();
+      const device = await adapter.requestDevice();
 
-  device.lost.then((info) => {
-    console.error("Device was lost:", info);
-  });
+      device.lost.then((info) => {
+        console.error("Device was lost:", info);
+      });
 
-  return device;
-}
-useEffect(() => {
-  let device;
+      return device;
+    }
+    useEffect(() => {
+      let device;
 
-  async function init() {
-    if (!navigator.gpu) return;
+      async function init() {
+        if (!navigator.gpu) return;
 
-    const adapter = await navigator.gpu.requestAdapter();
-    device = await adapter.requestDevice();
+        const adapter = await navigator.gpu.requestAdapter();
+        device = await adapter.requestDevice();
 
-    // Setup compute or render here
-  }
+        // Setup compute or render here
+      }
 
-  init();
+      init();
 }, []);
     const vertexBuffer = device.createBuffer({
         size: vertices.byteLength,
