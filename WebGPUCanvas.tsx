@@ -44,6 +44,12 @@ export default function WebGPUCanvas() {
 
       async function init() {
         if (!navigator.gpu) return;
+        const wgslFeatures = navigator.gpu.wgslLanguageFeatures;
+        const valueIterator = wgslFeatures.values();
+            for (const value of valueIterator) {
+              console.log(value);
+            }
+
 
         const adapter = await navigator.gpu.requestAdapter();
         device = await adapter.requestDevice();
