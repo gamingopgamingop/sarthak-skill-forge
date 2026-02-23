@@ -1,0 +1,27 @@
+{
+  "public" : {
+    "ga": {
+      "id":"UA-XXXXXXXX-X"
+    },
+    "app": {
+      "pageSize": 15,
+      "hotlistSize": 50
+    }
+  },
+  "cronJobs": {
+    "compute hotlist": {
+      "schedule": "every 1 hours"
+    }
+  },
+  "accounts": {
+    "twitter": {
+      "consumerKey": "twitter-consumer-key",
+      "secret": "twitter-secret"
+    },
+    "soundcloud": {
+      "clientId": "soundcloud-client-id",
+      "secret": "soundcloud-secret"
+    }
+  }
+}
+

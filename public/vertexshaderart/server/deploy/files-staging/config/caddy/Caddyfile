@@ -1,0 +1,13 @@
+staging.vertexshaderart.com {
+
+  proxy / c_meteor_1:80 {
+    transparent
+    websocket
+  }
+
+  gzip
+
+  tls letsencrypt@greggman.com
+
+}
+

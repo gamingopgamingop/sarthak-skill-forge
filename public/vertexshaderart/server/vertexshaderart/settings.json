@@ -1,0 +1,18 @@
+{
+  "public" : {
+    "ga": {
+      "account":"UA-XXXXXXXX-X"
+    },
+    "app": {
+      "pageSize": 3,
+      "hotlistSize": 150,
+      "addRankInfo": true
+    }
+  },
+  "cronJobs": {
+    "compute hotlist": {
+      "schedule": "every 5 mins"
+    }
+  }
+}
+
