@@ -130,7 +130,61 @@ const bindGroup = device.createBindGroup({
       },
     },
   ],
+  label: "my_bind_group",
+
 });
+
+bindGroup.label = "my_bind_group";
+
+
+const output = device.createBuffer({
+  size: BUFFER_SIZE,
+  usage: GPUBufferUsage.STORAGE | GPUBufferUsage.COPY_SRC,
+});
+
+const stagingBuffer = device.createBuffer({
+  size: BUFFER_SIZE,
+  usage: GPUBufferUsage.MAP_READ | GPUBufferUsage.COPY_DST,
+});
+
+
+await stagingBuffer.mapAsync(
+  GPUMapMode.READ,
+  0, // Offset
+  BUFFER_SIZE, // Length
+);
+
+const copyArrayBuffer = stagingBuffer.getMappedRange(0, BUFFER_SIZE);
+const data = copyArrayBuffer.slice(0);
+stagingBuffer.unmap();
+console.log(new Float32Array(data));
+
+
+const output = device.createBuffer({
+  size: BUFFER_SIZE,
+  usage: GPUBufferUsage.STORAGE | GPUBufferUsage.COPY_SRC,
+});
+
+output.label = "my_buffer";
+
+console.log(output.label); // "my_buffer"
+
+const output = device.createBuffer({
+  size: BUFFER_SIZE,
+  usage: GPUBufferUsage.STORAGE | GPUBufferUsage.COPY_SRC,
+  label: "my_buffer",
+});
+
+console.log(output.label); // "my_buffer"
+
+await stagingBuffer.mapAsync(
+  GPUMapMode.READ,
+  0, // Offset
+  BUFFER_SIZE, // Length
+);
+
+console.log(stagingBuffer.mapState); // "mapped"
+
 
 context.configure({
   device,
