@@ -23,6 +23,53 @@ export default function WebGPUCanvas() {
         throw new Error("WebGPU not supported in this browser.");
       }
 
+        const requiredFeatures = [];
+
+        if (adapter.features.has("texture-compression-astc")) {
+          requiredFeatures.push("texture-compression-astc");
+        }
+
+        const device = await adapter.requestDevice({
+          requiredFeatures,
+        });
+        const isFallback = adapter.isFallbackAdapter;
+        console.log(isFallback);
+
+        const adapterInfo = adapter.info;
+        console.log(adapterInfo.vendor);
+        console.log(adapterInfo.architecture);
+
+          const adapterInfo = await adapter.requestAdapterInfo();
+          console.log(adapterInfo.vendor);
+          console.log(adapterInfo.architecture);
+
+          const requiredLimits = {};
+
+          // App ideally needs 6 bind groups, so we'll try to request what the app needs
+          if (adapter.limits.maxBindGroups >= 6) {
+            requiredLimits.maxBindGroups = 6;
+          }
+
+          const device = await adapter.requestDevice({
+            requiredLimits,
+          });
+
+            const adapterInfo = await adapter.requestAdapterInfo();
+            console.log(adapterInfo.vendor);
+            console.log(adapterInfo.architecture);
+
+            const myDevice = await adapter.requestDevice();
+
+function optimizeForGpuDevice(device) {
+  if (device.adapterInfo.vendor === "amd") {
+    // Use AMD-specific optimizations
+  } else if (device.adapterInfo.architecture.includes("turing")) {
+    // Optimize for NVIDIA Turing architecture
+  }
+}
+
+optimizeForGpuDevice(myDevice);
+
       const adapter = await navigator.gpu.requestAdapter({
         powerPreference: "high-performance",
       });
