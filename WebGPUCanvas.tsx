@@ -159,6 +159,14 @@ const passEncoder = commandEncoder.beginRenderPass(renderPassDescriptor);
 
 bindGroup.label = "my_bind_group";
 
+  const shaderInfo = await shaderModule.getCompilationInfo();
+  const firstMessage = shaderInfo.messages[0];
+
+  console.log(firstMessage.lineNum); // 9
+  console.log(firstMessage.message); // "expected ')' for function declaration"
+  console.log(firstMessage.type); // "error"
+  // …
+
 
 const output = device.createBuffer({
   size: BUFFER_SIZE,
