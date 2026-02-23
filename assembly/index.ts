@@ -44,3 +44,27 @@ export function pow(base: i32, exp: i32): i32 {
   }
   return result;
 }
+// Utility: clamp value between min and max
+export function clamp(v: i32, min: i32, max: i32): i32 {
+  return v < min ? min : (v > max ? max : v);
+}
+
+// Utility: swap two integers
+export function swap(a: i32, b: i32): i32[] {
+  return [b, a];
+}
+
+// Utility: check if a number is even
+export function isEven(n: i32): bool {
+  return (n & 1) == 0;
+}
+
+// Utility: compute factorial (n must be non-negative and small enough)
+export function factorial(n: i32): i32 {
+  if (n < 0) return 0;
+  let res: i32 = 1;
+  for (let i: i32 = 2; i <= n; i++) {
+    res *= i;
+  }
+  return res;
+}
