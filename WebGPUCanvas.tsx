@@ -108,6 +108,29 @@ optimizeForGpuDevice(myDevice);
 
       const canvas = document.querySelector("#gpuCanvas");
 const context = canvas.getContext("webgpu");
+const bindGroupLayout = device.createBindGroupLayout({
+  entries: [
+    {
+      binding: 0,
+      visibility: GPUShaderStage.COMPUTE,
+      buffer: {
+        type: "storage",
+      },
+    },
+  ],
+});
+
+const bindGroup = device.createBindGroup({
+  layout: bindGroupLayout,
+  entries: [
+    {
+      binding: 0,
+      resource: {
+        buffer: output,
+      },
+    },
+  ],
+});
 
 context.configure({
   device,
