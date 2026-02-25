@@ -1,0 +1,10 @@
+{
+  "extends": "@intentjs/tooling/tsconfig.app.json",
+  "compilerOptions": {
+    "outDir": "./dist",
+    "baseUrl": ".",
+    "rootDir": ".",
+  },
+  "include": ["app", "bin", "libs", "config", "resources"],
+  "exclude": ["node_modules","dist"],
+}
