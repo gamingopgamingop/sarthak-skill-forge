@@ -1,0 +1,59 @@
+{% load static %}
+{% load tailwind_tags %}
+{% load django_bootstrap5 %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Hybrid UI{% endblock %}</title>
+
+    <!-- Tailwind CSS -->
+    {% tailwind_css %}
+
+    <!-- Bootstrap CSS -->
+    {% bootstrap_css %}
+</head>
+<body class="bg-gray-100">
+
+    <!-- Navbar (Bootstrap) -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">Hybrid Project</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+
+        {% block content %}{% endblock %}
+
+        <!-- Bootstrap Styled Button -->
+        <div class="mb-4">
+            <button class="btn btn-primary">Bootstrap Button</button>
+        </div>
+
+        <!-- Tailwind Styled Button -->
+        <div class="mb-4">
+            <button class="bg-blue-500 text-white px-4 py-2 rounded shadow hover:bg-blue-700">
+                Tailwind Button
+            </button>
+        </div>
+
+        <!-- Hybrid Card -->
+        <div class="card shadow-lg p-4 mb-5 bg-white rounded">
+            <h3 class="text-xl font-bold mb-3">Mixed Styling</h3>
+            <p class="text-gray-700">
+                Bootstrap layout + Tailwind typography.
+            </p>
+        </div>
+
+    </div>
+
+    <!-- Bootstrap JS -->
+    {% bootstrap_javascript %}
+
+</body>
+</html>

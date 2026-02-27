@@ -25,10 +25,16 @@ SECRET_KEY = 'django-insecure-93l-!bgr%4x!w&=z90^sd8_cvu02sv%ngo(c_a&-x2ogdl9_o(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ["127.0.0.1", "localhost"]
 
 # Application definition
+STATIC_URL = 'static/'
+STATICFILES_DIRS = [BASE_DIR / "static"]
+STATIC_ROOT = BASE_DIR / "staticfiles"
+TAILWIND_APP_NAME = "theme"
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / "media"
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -37,8 +43,148 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_browser_reload',
+    'django_bootstrap5',
+
+    # Third-party apps
+    'rest_framework',
+    'tailwind', 
+    
+    # Local apps (add yours here)
+    'accounts',
+    'theme',
+    'bootstrap_theme',
+    'activity_tracker',
+    'admin_tools',
+    'affiliates',
+    'ai_engine',
+    'ai_models',
+    'analytics',
+    'api_gateway',
+    'api_keys',
+    'api_tokens',
+    'archive',
+    'audit_logs',
+    'audit_trails',
+    'auth_api',
+    'auth_system',
+    'background_jobs',
+    'background_tasks',
+    'backup',
+    'billing',
+    'blog',
+    'cart',
+    'catalog',
+    'chat',
+    'checkout',
+    'cms',
+    'comments',
+    'compliance',
+    'core_app',
+    'coupons',
+    'dashboard',
+    'dashboards',
+    'data_pipeline',
+    'data_privacy',
+    'data_retention',
+    'device_management',
+    'embeddings',
+    'encryption',
+    'error_tracking',
+    'event_tracking',
+    'experiments',
+    'exports',
+    'feature_flags',
+    'forecasting',
+    'forums',
+    'fraud_detection',
+    'graph_api',
+    'health_checks',
+    'health_monitoring',
+    'imports',
+    'integrations',
+    'internal_tools',
+    'inventory',
+    'invoices',
+    'localization',
+    'logging_service',
+    'logs',
+    'media_manager',
+    'messaging',
+    'metrics',
+    'monitoring',
+    'notifications',
+    'notifications_email',
+    'notifications_push',
+    'notifications_sms',
+    'oauth',
+    'orders',
+    'payments',
+    'permissions_api',
+    'permissions_app',
+    'personalization',
+    'pipelines',
+    'pricing',
+    'pricing_plans',
+    'products',
+    'profiles',
+    'push_notifications',
+    'quotas',
+    'rate_limit',
+    'rate_limiting',
+    'realtime',
+    'recommendations',
+    'referral',
+    'reports',
+    'restore',
+    'returns',
+    'reviews',
+    'roles',
+    'scheduler',
+    'search',
+    'search_engine',
+    'security',
+    'security_logs',
+    'seo',
+    'user_sessions',
+    'sessions_manager',
+    'settings_app',
+    'shipping',
+    'social_auth',
+    'streaming',
+    'subscriptions',
+    'support',
+    'tagging',
+    'tax',
+    'tenant',
+    'throttling',
+    'transactions',
+    'two_factor',
+    'two_factor_auth',
+    'usage_metering',
+    'users',
+    'user_activity',
+    'user_devices',
+    'user_preferences',
+    'user_settings',
+    'webhooks',
+    'websocket_handler',
+    'wishlist',
+    'workflow',
 ]
 
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.AllowAny',
+    ),
+}
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -47,14 +193,20 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'user_sessions.middleware.SessionMiddleware',
+    
 ]
+if DEBUG:
+    MIDDLEWARE += [
+        "django_browser_reload.middleware.BrowserReloadMiddleware",
+    ]
 
 ROOT_URLCONF = 'core.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / "templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
