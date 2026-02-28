@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on My New Hugo Project</title>
+    <link>http://localhost:1313/posts/</link>
+    <description>Recent content in Posts on My New Hugo Project</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 28 Feb 2026 22:43:37 +0530</lastBuildDate>
+    <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>My First Post</title>
+      <link>http://localhost:1313/posts/my-first-post/</link>
+      <pubDate>Sat, 28 Feb 2026 22:43:37 +0530</pubDate>
+      <guid>http://localhost:1313/posts/my-first-post/</guid>
+      <description>&lt;p&gt;+++&#xA;title = &amp;lsquo;My First Post&amp;rsquo;&#xA;date = 2026-02-28T22:45:00+05:30&#xA;draft = true&#xA;+++&lt;/p&gt;&#xA;&lt;h2 id=&#34;hello-world&#34;&gt;Hello World!&lt;/h2&gt;&#xA;&lt;p&gt;This is my first post using &lt;strong&gt;Hugo Extended&lt;/strong&gt; on Windows.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
