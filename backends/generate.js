@@ -3,6 +3,28 @@ const fs = require('fs');
 const path = require('path');
 
 // ... (keep your existing options and start function)
+const options = { dbs: 3, caches: 2, stores: 2, emails: 3, queues: 4 };
+const DOWN = '\u001b[B';
+const ENTER = '\r\n';
+const sleep = (ms) => new Promise(res => setTimeout(res, ms));
+
+async function start() {
+    let count = 0;
+    for (let d = 0; d < options.dbs; d++) {
+        for (let c = 0; c < options.caches; c++) {
+            for (let s = 0; s < options.stores; s++) {
+                for (let e = 0; e < options.emails; e++) {
+                    for (let q = 0; q < options.queues; q++) {
+                        count++;
+                        const name = `itn-${count}-${d}${c}${s}${e}${q}`;
+                        console.log(`\n🚀 [${count}/144] Starting: ${name}`);
+                        await runIntent(name, [d, c, s, e, q]);
+                    }
+                }
+            }
+        }
+    }
+}
 
 function runIntent(name, choices) {
     return new Promise((resolve) => {
