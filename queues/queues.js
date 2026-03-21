@@ -13,4 +13,18 @@ import { createBullBoard as createBullBoardMQ } from '@bull-board/bullmq';
 import { createBullMQAdapter } from '@bull-board/bullmq/bullMQAdapter';
 import { createBullMQClient } from '@bull-board/bullmq/bullMQClient';
 import {    Queue } from 'bullmq';
+// create a client
+const client = createClient({
+  host: 'localhost',
+  port: 6379,
+});
+// connect the client
+client.connect();
 
+// scheduler queue
+const schedulerQueue = createQueue('scheduler', {
+  redis: {
+    host: 'localhost',
+    port: 6379,
+  },
+});
