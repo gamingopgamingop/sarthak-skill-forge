@@ -130,7 +130,19 @@
     "start:worker": "ts-node src/worker.ts",
     "start.watch": "nodemon src/worker.ts",
     "workflow": "ts-node src/client.ts",
-    "build:codegen": "convex codegen && vite build"
+    "build:codegen": "convex codegen && vite build",
+    "build:gatsby": "gatsby build",
+    "develop:gatsby": "gatsby develop",
+    "format:gatsby": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md,css}\"",
+    "start:gatsby": "gatsby develop",
+    "serve:gatsby": "gatsby serve",
+    "clean:gatsby": "gatsby clean",
+    "test:gatsby": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
+
+
 
 
 
@@ -153,6 +165,13 @@
   ],
 
   "dependencies": {
+    "gatsby": "^5.14.6",
+    "gatsby-plugin-image": "^3.14.0",
+    "gatsby-plugin-manifest": "^5.14.0",
+    "gatsby-plugin-sharp": "^5.14.0",
+    "gatsby-source-filesystem": "^5.14.0",
+    "gatsby-transformer-sharp": "^5.14.0",
+
     "@solidjs/start": "^1.2.1",
     "@motiadev/stream-client-react": "^0.17.14-beta.196",
     "postcss": "^8.5.6",
