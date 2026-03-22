@@ -1039,6 +1039,7 @@
     "@storybook/react-vite": "^10.1.8",
     "axe-core": "^4.11.0",
     "@axe-core/react": "^4.11.0",
+    "vitepress": "^2.0.0-alpha.17",
 
     "@commitlint/cli": "^20.2.0",
     "@commitlint/config-conventional": "^20.2.0",
