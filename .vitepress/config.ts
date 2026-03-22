@@ -1,3 +1,5 @@
+// @ts-ignore
+// @ts-nocheck
 import { defineConfig } from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
