@@ -28,3 +28,10 @@ const schedulerQueue = createQueue('scheduler', {
     port: 6379,
   },
 });
+
+const dispatchQueue = createQueue('dispatch', {
+  redis: {
+    host: 'localhost',
+    port: 6379,
+  },
+});
