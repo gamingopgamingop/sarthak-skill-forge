@@ -171,6 +171,8 @@
     "gatsby-plugin-sharp": "^5.14.0",
     "gatsby-source-filesystem": "^5.14.0",
     "gatsby-transformer-sharp": "^5.14.0",
+    "vite-plugin-top-level-await": "^1.6.0",
+    "vite-plugin-wasm": "^3.6.0",
 
     "@solidjs/start": "^1.2.1",
     "@motiadev/stream-client-react": "^0.17.14-beta.196",
