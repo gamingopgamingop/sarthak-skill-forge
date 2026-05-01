@@ -1,0 +1,16 @@
+{
+  "placeholderImages": [
+    {
+      "id": "hero-auth",
+      "description": "Secure login and authentication visualization",
+      "imageUrl": "https://picsum.photos/seed/auth-hero/1200/800",
+      "imageHint": "security authentication"
+    },
+    {
+      "id": "dashboard-preview",
+      "description": "User dashboard analytics and overview",
+      "imageUrl": "https://picsum.photos/seed/dash/800/600",
+      "imageHint": "dashboard interface"
+    }
+  ]
+}
