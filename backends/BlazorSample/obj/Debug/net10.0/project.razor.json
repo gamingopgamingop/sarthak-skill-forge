@@ -1,0 +1,76 @@
+{
+  "SerializedFilePath": "/workspaces/sarthak-skill-forge/backends/BlazorSample/obj/Debug/net10.0/project.razor.json",
+  "FilePath": "/workspaces/sarthak-skill-forge/backends/BlazorSample/BlazorSample.csproj",
+  "Configuration": {
+    "ConfigurationName": "MVC-3.0",
+    "LanguageVersion": "8.0",
+    "Extensions": [
+      {
+        "ExtensionName": "MVC-3.0"
+      }
+    ]
+  },
+  "ProjectWorkspaceState": {
+    "TagHelpers": [],
+    "CSharpLanguageVersion": 1300
+  },
+  "RootNamespace": "BlazorSample",
+  "Documents": [
+    {
+      "FilePath": "/workspaces/sarthak-skill-forge/backends/BlazorSample/Components/Pages/Error.razor",
+      "TargetPath": "Components\\Pages\\Error.razor",
+      "FileKind": "component"
+    },
+    {
+      "FilePath": "/workspaces/sarthak-skill-forge/backends/BlazorSample/Components/Layout/NavMenu.razor",
+      "TargetPath": "Components\\Layout\\NavMenu.razor",
+      "FileKind": "component"
+    },
+    {
+      "FilePath": "/workspaces/sarthak-skill-forge/backends/BlazorSample/Components/_Imports.razor",
+      "TargetPath": "Components\\_Imports.razor",
+      "FileKind": "componentImport"
+    },
+    {
+      "FilePath": "/workspaces/sarthak-skill-forge/backends/BlazorSample/Components/Pages/Counter.razor",
+      "TargetPath": "Components\\Pages\\Counter.razor",
+      "FileKind": "component"
+    },
+    {
+      "FilePath": "/workspaces/sarthak-skill-forge/backends/BlazorSample/Components/Layout/MainLayout.razor",
+      "TargetPath": "Components\\Layout\\MainLayout.razor",
+      "FileKind": "component"
+    },
+    {
+      "FilePath": "/workspaces/sarthak-skill-forge/backends/BlazorSample/Components/Routes.razor",
+      "TargetPath": "Components\\Routes.razor",
+      "FileKind": "component"
+    },
+    {
+      "FilePath": "/workspaces/sarthak-skill-forge/backends/BlazorSample/Components/Layout/ReconnectModal.razor",
+      "TargetPath": "Components\\Layout\\ReconnectModal.razor",
+      "FileKind": "component"
+    },
+    {
+      "FilePath": "/workspaces/sarthak-skill-forge/backends/BlazorSample/Components/Pages/NotFound.razor",
+      "TargetPath": "Components\\Pages\\NotFound.razor",
+      "FileKind": "component"
+    },
+    {
+      "FilePath": "/workspaces/sarthak-skill-forge/backends/BlazorSample/Components/Pages/Weather.razor",
+      "TargetPath": "Components\\Pages\\Weather.razor",
+      "FileKind": "component"
+    },
+    {
+      "FilePath": "/workspaces/sarthak-skill-forge/backends/BlazorSample/Components/Pages/Home.razor",
+      "TargetPath": "Components\\Pages\\Home.razor",
+      "FileKind": "component"
+    },
+    {
+      "FilePath": "/workspaces/sarthak-skill-forge/backends/BlazorSample/Components/App.razor",
+      "TargetPath": "Components\\App.razor",
+      "FileKind": "component"
+    }
+  ],
+  "SerializationFormat": "0.3"
+}
